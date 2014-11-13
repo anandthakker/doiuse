@@ -1,14 +1,23 @@
 gulp = require('gulp')
-
+gutil = require('gulp-util')
 coffee = require('gulp-coffee')
 
 paths=
   coffee: 'src/**/*.coffee'
 
-gulp.task 'coffee', [], ->
+buildCoffee = (failOnErrors=true) -> ->
+  coffeeStream = coffee(bare:true)
+  coffeeStream.on('error', (args...)->
+    gutil.log(args...)
+    this.emit 'end')  unless failOnErrors
   gulp.src(paths.coffee)
-  .pipe coffee(bare:true)
+  .pipe coffeeStream
   .pipe gulp.dest('.')
 
-gulp.task 'watch', ['coffee'], ->
-  gulp.watch paths.coffee, ['coffee']
+gulp.task 'coffee:dev', [], buildCoffee(false)
+gulp.task 'coffee:build', [], buildCoffee(true)
+
+gulp.task 'watch', ['coffee:dev'], ->
+  gulp.watch paths.coffee, ['coffee:dev']
+
+gulp.task 'build', ['coffee:build'], ->
