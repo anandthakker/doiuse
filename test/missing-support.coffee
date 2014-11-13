@@ -1,5 +1,5 @@
 should = require('should')
-missingSupport = require('../dist/lib/missing')
+missingSupport = require('../dist/lib/missing-support')
 
 describe 'filtering caniuse-db data by browser selection', ->
   describe 'ignore lacking support in previous versions', ->

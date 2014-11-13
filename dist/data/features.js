@@ -38,8 +38,8 @@ module.exports = {
     values: ['display-flex', 'inline-flex', 'flex', 'flex-grow', 'flex-shrink', 'flex-basis', 'flex-direction', 'flex-wrap', 'flex-flow', 'justify-content', 'order', 'align-items', 'align-self', 'align-content']
   },
   'calc': {
-    properties: ['calc'],
-    props: ['*']
+    values: ['calc'],
+    properties: ['']
   },
   'background-img-opts': {
     properties: ['background-clip', 'background-origin', 'background-size']

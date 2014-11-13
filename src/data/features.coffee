@@ -64,8 +64,8 @@ module.exports=
 
   # calc() unit
   'calc':
-    properties: ['calc']
-    props: ['*']
+    values: ['calc']
+    properties: [''] # any property
 
   # Background options
   'background-img-opts':

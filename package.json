@@ -25,15 +25,14 @@
   "dependencies": {
     "autoprefixer-core": "^3.1.2",
     "caniuse-db": "^1.0.30000023",
-    "lodash": "^2.4.1",
-    "postcss": "^3.0.0",
+    "lodash": "^2.4.1"
   },
   "devDependencies": {
     "coffee-script": "^1.8.0",
     "gulp": "^3.8.10",
     "gulp-coffee": "^2.2.0",
     "gulp-mocha": "^1.1.1",
-    "merge-stream": "^0.1.6",
+    "postcss": "^3.0.0",
     "should": "^4.3.0"
   }
 }
