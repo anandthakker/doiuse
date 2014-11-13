@@ -2,7 +2,7 @@
   "name": "doiuse",
   "version": "0.0.0",
   "description": "Lint CSS for browser support against caniuse database.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

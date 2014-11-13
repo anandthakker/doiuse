@@ -12,7 +12,7 @@ buildCoffee = (failOnErrors=true) -> ->
     this.emit 'end')  unless failOnErrors
   gulp.src(paths.coffee)
   .pipe coffeeStream
-  .pipe gulp.dest('.')
+  .pipe gulp.dest('dist')
 
 gulp.task 'coffee:dev', [], buildCoffee(false)
 gulp.task 'coffee:build', [], buildCoffee(true)
