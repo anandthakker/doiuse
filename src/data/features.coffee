@@ -211,3 +211,158 @@ module.exports=
       'mask-repeat'
       'mask-size']
    
+  # @font-face Web fonts
+  'fontface':{}
+
+  # CSS3 Multiple backgrounds
+  'multibackgrounds':{}
+
+  # CSS Table display
+  'css-table':{}
+
+  # CSS Generated content for pseudo-elements
+  'css-gencontent':{}
+
+  # CSS position:fixed
+  'css-fixed':{}
+
+  # CSS 2.1 selectors
+  'css-sel2':{}
+
+  # CSS3 selectors
+  'css-sel3':{}
+
+  # CSS3 Text-shadow
+  'css-textshadow':{}
+
+  # CSS3 Colors
+  'css3-colors':{}
+
+  # CSS3 Media Queries
+  'css-mediaqueries':{}
+
+  # CSS Canvas Drawings
+  'css-canvas':{}
+
+  # CSS Reflections
+  'css-reflections':{}
+
+  # SVG in CSS backgrounds
+  'svg-css':{}
+
+  # CSS Feature Queries
+  'css-featurequeries':{}
+
+  # CSS3 Opacity
+  'css-opacity':{}
+
+  # CSS3 Text-overflow
+  'text-overflow':{}
+
+  # CSS3 Overflow-wrap
+  'wordwrap':{}
+
+  # CSS3 object-fit/object-position
+  'object-fit':{}
+
+  # CSS min/max-width/height
+  'minmaxwh':{}
+
+  # CSS text-stroke
+  'text-stroke':{}
+
+  # CSS inline-block
+  'inline-block':{}
+
+  # CSS Grid Layout
+  'css-grid':{}
+
+  # rem (root em) units
+  'rem':{}
+
+  # TTF/OTF - TrueType and OpenType font support
+  'ttf':{}
+
+  # CSS pointer-events (for HTML)
+  'pointer-events':{}
+
+  # CSS Regions
+  'css-regions':{}
+
+  # CSS Counters
+  'css-counters':{}
+
+  # CSS resize property
+  'css-resize':{}
+
+  # CSS Repeating Gradients
+  'css-repeating-gradients':{}
+
+  # getComputedStyle
+  'getcomputedstyle':{}
+
+  # CSS3 word-break
+  'word-break':{}
+
+  # Viewport units: vw, vh, vmin, vmax
+  'viewport-units':{}
+
+  # Scoped CSS
+  'style-scoped':{}
+
+  # CSS outline
+  'outline':{}
+
+  # CSS3 Cursors (original values)
+  'css3-cursors':{}
+
+  # CSS Variables
+  'css-variables':{}
+
+  # CSS background-blend-mode
+  'css-backgroundblendmode':{}
+
+  # Blending of HTML/SVG elements
+  'css-mixblendmode':{}
+
+  # CSS will-change property
+  'will-change':{}
+
+  # CSS Shapes Level 1
+  'css-shapes':{}
+
+  # Improved kerning pairs & ligatures
+  'kerning-pairs-ligatures':{}
+
+  # CSS3 image-orientation
+  'css-image-orientation':{}
+
+  # CSS Appearance
+  'css-appearance':{}
+
+  # CSS background-position edge offsets
+  'css-background-offsets':{}
+
+  # CSS touch-action property
+  'css-touch-action':{}
+
+  # CSS clip-path property
+  'css-clip-path':{}
+
+  # CSS Font Loading
+  'font-loading':{}
+
+  # Font unicode-range subsetting
+  'font-unicode-range':{}
+
+  # CSS font-stretch
+  'css-font-stretch':{}
+
+  # CSS font-size-adjust
+  'font-size-adjust':{}
+
+  # Media Queries: resolution feature
+  'css-media-resolution':{}
+
+  # CSS image-set
+  'css-image-set':{}
