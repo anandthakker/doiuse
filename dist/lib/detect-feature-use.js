@@ -10,6 +10,26 @@ matches = function(str) {
   };
 };
 
+
+/*
+postcss the use of any of a given list of CSS features.
+
+```
+var detector = new Detector(featureList)
+detector.process(css, cb)
+```
+
+`featureList`: an array of feature slugs (see caniuse-db)
+`cb`: a callback that gets called for each usage of one of the given features,
+called with an argument like:
+```
+{
+  usage: {} // postcss node where usage was found
+  feature: {} // caniuse-db feature slug
+}
+```
+ */
+
 Detector = (function() {
   function Detector(featureList) {
     this.features = _.pick(features, featureList);
