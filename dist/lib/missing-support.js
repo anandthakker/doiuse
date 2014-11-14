@@ -24,11 +24,12 @@ filterStats = function(browsers, stats) {
   });
 };
 
-missing = function(browserRequest, cb) {
+
+/*
+ */
+
+missing = function(browserRequest) {
   var browsers, data, feature, featureData, json, result;
-  if (cb == null) {
-    cb = function() {};
-  }
   browsers = new BrowserSelection(browserRequest);
   result = {};
   for (feature in features) {

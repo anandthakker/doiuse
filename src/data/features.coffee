@@ -1,9 +1,12 @@
 module.exports=
   # Border Radius
   'border-radius':
-    properties: ['border-radius', 'border-top-left-radius',
-    'border-top-right-radius', 'border-bottom-right-radius',
-    'border-bottom-left-radius']
+    properties: [
+      'border-radius'
+      'border-top-left-radius'
+      'border-top-right-radius'
+      'border-bottom-right-radius'
+      'border-bottom-left-radius']
 
   # Box Shadow
   'css-boxshadow':
@@ -11,30 +14,53 @@ module.exports=
 
   # Animation
   'css-animation':
-    properties: ['animation', 'animation-name', 'animation-duration',
-    'animation-delay', 'animation-direction', 'animation-fill-mode',
-    'animation-iteration-count', 'animation-play-state',
-    'animation-timing-function', '@keyframes']
+    properties: [
+      'animation'
+      'animation-name'
+      'animation-duration'
+      'animation-delay'
+      'animation-direction'
+      'animation-fill-mode'
+      'animation-iteration-count'
+      'animation-play-state'
+      'animation-timing-function'
+      '@keyframes']
 
   # Transition
   'css-transitions':
-    properties: ['transition', 'transition-property', 'transition-duration',
-    'transition-delay', 'transition-timing-function']
+    properties: [
+      'transition'
+      'transition-property'
+      'transition-duration'
+      'transition-delay'
+      'transition-timing-function']
 
   # Transform 2D
   'transforms2d':
-    properties: ['transform', 'transform-origin']
+    properties: [
+      'transform'
+      'transform-origin']
 
   # Transform 3D
   'transforms3d':
-    properties: ['perspective', 'perspective-origin', 'transform-style',
-    'backface-visibility']
+    properties: [
+      'perspective'
+      'perspective-origin'
+      'transform-style'
+      'backface-visibility']
 
   # Gradients
   'css-gradients':
-    properties: ['background', 'background-image', 'border-image']
-    values: ['linear-gradient', 'repeating-linear-gradient',
-    'radial-gradient', 'repeating-radial-gradient']
+    properties: [
+      'background'
+      'background-image'
+      'border-image']
+      
+    values: [
+      'linear-gradient'
+      'repeating-linear-gradient'
+      'radial-gradient'
+      'repeating-radial-gradient']
 
   # Box sizing
   'css3-boxsizing':
@@ -46,10 +72,20 @@ module.exports=
 
   # Multicolumns
   'multicolumn':
-    properties: ['columns', 'column-width', 'column-gap',
-    'column-rule', 'column-rule-color', 'column-rule-width',
-    'column-count', 'column-rule-style', 'column-span', 'column-fill',
-    'break-before', 'break-after', 'break-inside']
+    properties: [
+      'columns'
+      'column-width'
+      'column-gap'
+      'column-rule'
+      'column-rule-color'
+      'column-rule-width'
+      'column-count'
+      'column-rule-style'
+      'column-span'
+      'column-fill'
+      'break-before'
+      'break-after'
+      'break-inside']
 
   # User select
   'user-select-none':
@@ -58,9 +94,21 @@ module.exports=
   # Flexible Box Layout
   'flexbox':
     properties: ['display']
-    values: ['display-flex', 'inline-flex', 'flex', 'flex-grow',
-    'flex-shrink', 'flex-basis', 'flex-direction', 'flex-wrap', 'flex-flow',
-    'justify-content', 'order', 'align-items', 'align-self', 'align-content']
+    values: [
+      'display-flex'
+      'inline-flex'
+      'flex'
+      'flex-grow'
+      'flex-shrink'
+      'flex-basis'
+      'flex-direction'
+      'flex-wrap'
+      'flex-flow'
+      'justify-content'
+      'order'
+      'align-items'
+      'align-self'
+      'align-content']
 
   # calc() unit
   'calc':
@@ -69,12 +117,18 @@ module.exports=
 
   # Background options
   'background-img-opts':
-    properties: ['background-clip', 'background-origin', 'background-size']
+    properties: [
+      'background-clip'
+      'background-origin'
+      'background-size']
 
   # Font feature settings
   'font-feature':
-    properties: ['font-feature-settings', 'font-variant-ligatures',
-    'font-language-override','font-kerning']
+    properties: [
+      'font-feature-settings'
+      'font-variant-ligatures'
+      'font-language-override'
+      'font-kerning']
 
   # Border image
   'border-image':
@@ -83,36 +137,46 @@ module.exports=
   # Selection selector
   'css-selection':
     properties: ['::selection']
-    selector: true,
-
-  # Placeholder selector
+    selector: true
+      # Placeholder selector
   'css-placeholder':
     properties: ['::placeholder']
-    selector: true,
-
-  # Hyphenation
+    selector: true
+      # Hyphenation
   'css-hyphens':
     properties: ['hyphens']
 
   # Fullscreen selector
   'fullscreen':
     properties: [':fullscreen']
-    selector: true,
-
-  # Tab size
+    selector: true
+      # Tab size
   'css3-tabsize':
     properties: ['tab-size']
 
   # Intrinsic & extrinsic sizing
   'intrinsic-width':
-    properties: ['width',  'min-width',  'max-width',
-       'height', 'min-height', 'max-height']
-    values: ['max-content', 'min-content', 'fit-content', 'fill-available']
+    properties: [
+      'width'
+      'min-width'
+      'max-width'
+      'height'
+      'min-height'
+      'max-height']
+    values: [
+      'max-content'
+      'min-content'
+      'fit-content'
+      'fill-available']
 
   # Zoom and grab cursor
   'css3-cursors-newer':
     properties: ['cursor']
-    values: ['zoom-in', 'zoom-out', 'grab', 'grabbing']
+    values: [
+      'zoom-in'
+      'zoom-out'
+      'grab'
+      'grabbing']
 
   # Sticky position
   'css-sticky':
@@ -125,8 +189,10 @@ module.exports=
 
   # Text decoration
   'text-decoration':
-    properties: ['text-decoration-style', 'text-decoration-line',
-    'text-decoration-color']
+    properties: [
+      'text-decoration-style'
+      'text-decoration-line'
+      'text-decoration-color']
 
   # Text Size Adjust
   'text-size-adjust':
@@ -134,6 +200,14 @@ module.exports=
 
   # CSS Masks
   'css-masks':
-    properties: ['clip-path', 'mask', 'mask-clip', 'mask-composite',
-    'mask-image', 'mask-origin', 'mask-position', 'mask-repeat', 'mask-size']
+    properties: [
+      'clip-path'
+      'mask'
+      'mask-clip'
+      'mask-composite'
+      'mask-image'
+      'mask-origin'
+      'mask-position'
+      'mask-repeat'
+      'mask-size']
    

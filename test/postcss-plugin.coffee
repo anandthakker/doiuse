@@ -14,7 +14,7 @@ describe 'postcss plugin', ->
     
     out.should.be.equal(css)
     
-  it.only 'calls back for unsupported feature usages', ->
+  it 'calls back for unsupported feature usages', ->
     css = fs.readFileSync(require.resolve('./cases/gradient.css'))
     postcss(doiuse(
       browsers: ['ie 8']

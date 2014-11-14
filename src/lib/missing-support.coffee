@@ -3,7 +3,6 @@ BrowserSelection = require('./browsers')
 _ = require('lodash')
 fs = require('fs')
 
-
 filterStats = (browsers, stats)->
   _.transform stats, (resultStats, versionData, browser)->
     # filter only versions of selected browsers that don't support this feature
@@ -17,8 +16,10 @@ filterStats = (browsers, stats)->
     unless _.keys(versionsWithoutSupport).length is 0
       resultStats[browser] = versionsWithoutSupport
 
-missing = (browserRequest, cb) ->
-  cb ?= ->
+###
+
+###
+missing = (browserRequest) ->
   browsers = new BrowserSelection(browserRequest)
 
   result = {}
