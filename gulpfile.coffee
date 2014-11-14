@@ -24,6 +24,6 @@ gulp.task 'watch', ['coffee:dev'], ->
 
 gulp.task 'build', ['coffee:build'], ->
 
-gulp.task 'test', [], ->
+gulp.task 'test', ['coffee:build'], ->
   gulp.src(paths.test, read:false)
   .pipe(mocha(reporter: 'nyan'))
