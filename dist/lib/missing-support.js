@@ -35,7 +35,10 @@ missing = function(browserRequest, cb) {
     data = features[feature];
     json = fs.readFileSync(require.resolve('caniuse-db/features-json/' + feature));
     featureData = JSON.parse(json);
-    result[feature] = filterStats(browsers, featureData.stats);
+    result[feature] = {
+      missing: filterStats(browsers, featureData.stats),
+      caniuseData: featureData
+    };
   }
   return result;
 };

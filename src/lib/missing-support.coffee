@@ -26,8 +26,9 @@ missing = (browserRequest, cb) ->
   for feature, data of features
     json = fs.readFileSync(require.resolve('caniuse-db/features-json/'+feature))
     featureData = JSON.parse(json)
-    result[feature] = filterStats(browsers, featureData.stats)
-  
+    result[feature] =
+      missing: filterStats(browsers, featureData.stats)
+      caniuseData: featureData
   result
 
 module.exports = missing

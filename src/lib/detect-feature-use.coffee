@@ -7,24 +7,29 @@ class Detector
   constructor: (featureList)->
     @features = _.pick(features, featureList)
 
-  decl: (decl)->
-    result = []
+  decl: (decl, cb)->
     for feat,data of @features
       for prop in (data.properties ? []).filter matches(decl.prop)
         if (not data.values?) or _.find(data.values, matches(decl.value))
-          result.push {usage: decl, feature: feat}
+          cb {usage: decl, feature: feat}
           break
-    result
   
-  rule: (rule)->
-    results = _.flatten(rule.childs.map (decl)=>@decl(decl))
+  rule: (rule, cb)->
     for feat, data of @features
       if _.find(data.selectors ? [], matches(rule.selector))
-        results.push {usage: rule, feature: feat}
-    results
+        cb {usage: rule, feature: feat}
     
-  detect: (css)->
-    _.flatten(css.childs.map (rule)=>@rule(rule))
+    @process(rule, cb)
+  
+  atrule: (atrule, cb)->
+    console.warn "@-rule unimplemented!"
+    @process(atrule, cb)
     
+  process: (node, cb)->
+    node.each (child) =>
+      switch child.type
+        when 'rule' then @rule(child, cb)
+        when 'decl' then @decl(child, cb)
+        when 'atrule' then @atrule(child, cb)
     
 module.exports = Detector
