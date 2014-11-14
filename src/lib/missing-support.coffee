@@ -17,6 +17,25 @@ filterStats = (browsers, stats)->
       resultStats[browser] = versionsWithoutSupport
 
 ###
+Get data on CSS features not supported by the given autoprefixer-like browser
+selection.
+
+Returns:
+```
+{
+  'feature-name': {
+    missing: {
+      'ie': '8', // etc.
+    }
+    caniuseData: {
+      // caniuse-db json data for this feature
+    }
+  },
+  'feature-name-2': {} // etc.
+}
+```
+
+`feature-name` is a caniuse-db slug.
 
 ###
 missing = (browserRequest) ->
