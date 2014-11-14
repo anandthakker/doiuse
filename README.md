@@ -3,6 +3,9 @@ doiuse
 
 Lint CSS for browser support against caniuse database.
 
+**NOTE:** This is a very, very initial release.  Feedback or contributions
+are quite welcome!
+
 #Usage: 
 `postcss(doiuse(opts)).process(css)`, where `opts` is:
 ```javascript
