@@ -92,29 +92,60 @@ module.exports = {
   'css-masks': {
     properties: ['clip-path', 'mask', 'mask-clip', 'mask-composite', 'mask-image', 'mask-origin', 'mask-position', 'mask-repeat', 'mask-size']
   },
-  'fontface': {},
+  'fontface': {
+    atrules: ['@font-face']
+  },
   'multibackgrounds': {},
-  'css-table': {},
-  'css-gencontent': {},
-  'css-fixed': {},
-  'css-sel2': {},
-  'css-sel3': {},
-  'css-textshadow': {},
-  'css3-colors': {},
-  'css-mediaqueries': {},
+  'css-table': {
+    properties: ['display'],
+    values: ['table', 'table-cell', 'table-row', 'table-layout']
+  },
+  'css-gencontent': {
+    selectors: [':before', ':after']
+  },
+  'css-fixed': {
+    properties: ['position'],
+    values: ['fixed']
+  },
+  'css-sel2': {
+    selectors: ['*', '>', ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', '+', '[attr]', '[attr="val"]', '[attr~="val"]', '[attr|="bar"]', '.foo', '#foo']
+  },
+  'css-sel3': {
+    selectors: ['[foo^="bar"]', '[foo$="bar"]', '[foo*="bar"]', ':root', ':nth-child', ':nth-last-child', 'nth-of-type', 'nth-last-of-type', ':last-child', ':first-of-type', ':last-of-type', ':only-child', ':only-of-type', ':empty', ':target', ':enabled', ':disabled', ':checked', ':not', '~']
+  },
+  'css-textshadow': {
+    properties: ['text-shadow']
+  },
+  'css3-colors': {
+    properties: [''],
+    values: ['rgba', 'hsl', 'hsla']
+  },
+  'css-mediaqueries': {
+    atrules: ['@media']
+  },
   'css-canvas': {},
-  'css-reflections': {},
+  'css-reflections': {
+    properties: ['box-reflect']
+  },
   'svg-css': {},
   'css-featurequeries': {},
   'css-opacity': {},
   'text-overflow': {},
   'wordwrap': {},
   'object-fit': {},
-  'minmaxwh': {},
+  'minmaxwh': {
+    properties: ['min-width', 'max-width', 'min-height', 'max-height']
+  },
   'text-stroke': {},
-  'inline-block': {},
+  'inline-block': {
+    properties: ['display'],
+    values: ['inline-block']
+  },
   'css-grid': {},
-  'rem': {},
+  'rem': {
+    properties: [''],
+    values: ['rem']
+  },
   'ttf': {},
   'pointer-events': {},
   'css-regions': {},

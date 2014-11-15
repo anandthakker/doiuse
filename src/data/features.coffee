@@ -212,40 +212,94 @@ module.exports=
       'mask-size']
    
   # @font-face Web fonts
-  'fontface':{}
+  'fontface':
+    atrules: ['@font-face']
 
   # CSS3 Multiple backgrounds
   'multibackgrounds':{}
 
   # CSS Table display
-  'css-table':{}
+  'css-table':
+    properties: ['display']
+    values: ['table','table-cell','table-row','table-layout']
 
   # CSS Generated content for pseudo-elements
-  'css-gencontent':{}
+  'css-gencontent':
+    selectors: [':before', ':after']
 
   # CSS position:fixed
-  'css-fixed':{}
+  'css-fixed':
+    properties: ['position']
+    values: ['fixed']
 
   # CSS 2.1 selectors
-  'css-sel2':{}
+  'css-sel2':
+    selectors: [
+      '*'
+      '>'
+      ':first-child'
+      ':link'
+      ':visited'
+      ':active'
+      ':hover'
+      ':focus'
+      ':lang'
+      '+'
+      '[attr]' # TODO - allow patterns...
+      '[attr="val"]'
+      '[attr~="val"]'
+      '[attr|="bar"]'
+      '.foo'
+      '#foo' ]
+
 
   # CSS3 selectors
-  'css-sel3':{}
+  'css-sel3':
+    selectors: [
+      '[foo^="bar"]' # TODO patterns
+      '[foo$="bar"]' # TODO patterns
+      '[foo*="bar"]' # TODO patterns
+      ':root'
+      ':nth-child'
+      ':nth-last-child'
+      'nth-of-type'
+      'nth-last-of-type'
+      ':last-child'
+      ':first-of-type'
+      ':last-of-type'
+      ':only-child'
+      ':only-of-type'
+      ':empty'
+      ':target'
+      ':enabled'
+      ':disabled'
+      ':checked'
+      ':not'
+      '~' ]
 
   # CSS3 Text-shadow
-  'css-textshadow':{}
+  'css-textshadow':
+    properties: ['text-shadow']
 
   # CSS3 Colors
-  'css3-colors':{}
+  'css3-colors':
+    properties: ['']
+    values: [
+      'rgba'
+      'hsl'
+      'hsla'
+    ]
 
   # CSS3 Media Queries
-  'css-mediaqueries':{}
+  'css-mediaqueries':
+    atrules: ['@media']
 
   # CSS Canvas Drawings
   'css-canvas':{}
 
   # CSS Reflections
-  'css-reflections':{}
+  'css-reflections':
+    properties: ['box-reflect']
 
   # SVG in CSS backgrounds
   'svg-css':{}
@@ -266,19 +320,29 @@ module.exports=
   'object-fit':{}
 
   # CSS min/max-width/height
-  'minmaxwh':{}
+  'minmaxwh':
+    properties: [
+      'min-width'
+      'max-width'
+      'min-height'
+      'max-height'
+    ]
 
   # CSS text-stroke
   'text-stroke':{}
 
   # CSS inline-block
-  'inline-block':{}
+  'inline-block':
+    properties: ['display']
+    values: ['inline-block']
 
   # CSS Grid Layout
   'css-grid':{}
 
   # rem (root em) units
-  'rem':{}
+  'rem':
+    properties: ['']
+    values: ['rem']
 
   # TTF/OTF - TrueType and OpenType font support
   'ttf':{}
