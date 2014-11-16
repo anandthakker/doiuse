@@ -1,4 +1,4 @@
-var matchInSelector, pats;
+var matchOutsideOfBrackets, pats;
 
 pats = {
   attrcc: '[^\\~|^$*\\]]*',
@@ -6,7 +6,7 @@ pats = {
   nobrackets: /[^\[\]\(\)]/.source
 };
 
-matchInSelector = function(pat) {
+matchOutsideOfBrackets = function(pat) {
   if (pat instanceof RegExp) {
     pat = pat.source;
   }
@@ -110,7 +110,10 @@ module.exports = {
   'fontface': {
     atrules: ['@font-face']
   },
-  'multibackgrounds': {},
+  'multibackgrounds': {
+    properties: ['background', 'background-image'],
+    values: [matchOutsideOfBrackets(/,/)]
+  },
   'css-table': {
     properties: ['display'],
     values: ['table', 'table-cell', 'table-row', 'table-layout']
@@ -123,7 +126,7 @@ module.exports = {
     values: ['fixed']
   },
   'css-sel2': {
-    selectors: [matchInSelector(/\*/), matchInSelector(/\>/), matchInSelector(/\+/), matchInSelector(/\./), matchInSelector(/#/), ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', new RegExp("\\[" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\~=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\|=" + pats.attrcc + "\\]")]
+    selectors: [matchOutsideOfBrackets(/\*/), matchOutsideOfBrackets(/\>/), matchOutsideOfBrackets(/\+/), matchOutsideOfBrackets(/\./), matchOutsideOfBrackets(/#/), ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', new RegExp("\\[" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\~=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\|=" + pats.attrcc + "\\]")]
   },
   'css-sel3': {
     selectors: [new RegExp("\\[" + pats.attrcc + "\\^=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\$=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\*=" + pats.attrcc + "\\]"), ':root', ':nth-child', ':nth-last-child', 'nth-of-type', 'nth-last-of-type', ':last-child', ':first-of-type', ':last-of-type', ':only-child', ':only-of-type', ':empty', ':target', ':enabled', ':disabled', ':checked', ':not', /^[^\[]*~/]

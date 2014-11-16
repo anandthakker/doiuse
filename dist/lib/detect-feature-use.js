@@ -12,6 +12,7 @@ searchfor: string or pattern to search for.
 
 isFoundIn = function(str) {
   return function(searchfor) {
+    console.log(str, searchfor);
     if (searchfor instanceof RegExp) {
       return searchfor.test(str);
     } else {
