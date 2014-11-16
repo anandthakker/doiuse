@@ -1,3 +1,7 @@
+
+cc=
+  attr: '[^\\~|^$*\\]]*'
+
 module.exports=
   # Border Radius
   'border-radius':
@@ -245,20 +249,21 @@ module.exports=
       ':focus'
       ':lang'
       '+'
-      '[attr]' # TODO - allow patterns...
-      '[attr="val"]'
-      '[attr~="val"]'
-      '[attr|="bar"]'
-      '.foo'
-      '#foo' ]
+      new RegExp("\\[#{cc.attr}\\]")
+      new RegExp("\\[#{cc.attr}=#{cc.attr}\\]")
+      new RegExp("\\[#{cc.attr}~=#{cc.attr}\\]")
+      new RegExp("\\[#{cc.attr}|=#{cc.attr}\\]")
+      /^\s*\..*/
+      new RegExp("#.*")
+    ]
 
 
   # CSS3 selectors
   'css-sel3':
     selectors: [
-      '[foo^="bar"]' # TODO patterns
-      '[foo$="bar"]' # TODO patterns
-      '[foo*="bar"]' # TODO patterns
+      new RegExp("\\[#{cc.attr}\\^=#{cc.attr}\\]")
+      new RegExp("\\[#{cc.attr}\\$=#{cc.attr}\\]")
+      new RegExp("\\[#{cc.attr}\\*=#{cc.attr}\\]")
       ':root'
       ':nth-child'
       ':nth-last-child'
@@ -275,7 +280,7 @@ module.exports=
       ':disabled'
       ':checked'
       ':not'
-      '~' ]
+      /^[^\[]*~/ ]
 
   # CSS3 Text-shadow
   'css-textshadow':

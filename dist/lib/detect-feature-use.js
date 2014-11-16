@@ -1,12 +1,22 @@
-var Detector, features, matches, _;
+var Detector, features, isFoundIn, _;
 
 _ = require('lodash');
 
 features = require('../data/features');
 
-matches = function(str) {
-  return function(test) {
-    return str.indexOf(test) >= 0;
+
+/*
+str: string to search in.
+searchfor: string or pattern to search for.
+ */
+
+isFoundIn = function(str) {
+  return function(searchfor) {
+    if (searchfor instanceof RegExp) {
+      return searchfor.test(str);
+    } else {
+      return (str != null ? str.indexOf(searchfor) : void 0) >= 0;
+    }
   };
 };
 
@@ -43,11 +53,11 @@ Detector = (function() {
       data = _ref[feat];
       _results.push((function() {
         var _i, _len, _ref1, _ref2, _results1;
-        _ref2 = ((_ref1 = data.properties) != null ? _ref1 : []).filter(matches(decl.prop));
+        _ref2 = ((_ref1 = data.properties) != null ? _ref1 : []).filter(isFoundIn(decl.prop));
         _results1 = [];
         for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
           prop = _ref2[_i];
-          if ((data.values == null) || _.find(data.values, matches(decl.value))) {
+          if ((data.values == null) || _.find(data.values, isFoundIn(decl.value))) {
             cb({
               usage: decl,
               feature: feat
@@ -68,7 +78,7 @@ Detector = (function() {
     _ref = this.features;
     for (feat in _ref) {
       data = _ref[feat];
-      if (_.find((_ref1 = data.selectors) != null ? _ref1 : [], matches(rule.selector))) {
+      if (_.find((_ref1 = data.selectors) != null ? _ref1 : [], isFoundIn(rule.selector))) {
         cb({
           usage: rule,
           feature: feat

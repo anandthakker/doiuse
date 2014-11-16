@@ -1,3 +1,9 @@
+var cc;
+
+cc = {
+  attr: '[^\\~|^$*\\]]*'
+};
+
 module.exports = {
   'border-radius': {
     properties: ['border-radius', 'border-top-left-radius', 'border-top-right-radius', 'border-bottom-right-radius', 'border-bottom-left-radius']
@@ -108,10 +114,10 @@ module.exports = {
     values: ['fixed']
   },
   'css-sel2': {
-    selectors: ['*', '>', ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', '+', '[attr]', '[attr="val"]', '[attr~="val"]', '[attr|="bar"]', '.foo', '#foo']
+    selectors: ['*', '>', ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', '+', new RegExp("\\[" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "~=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "|=" + cc.attr + "\\]"), /^\s*\..*/, new RegExp("#.*")]
   },
   'css-sel3': {
-    selectors: ['[foo^="bar"]', '[foo$="bar"]', '[foo*="bar"]', ':root', ':nth-child', ':nth-last-child', 'nth-of-type', 'nth-last-of-type', ':last-child', ':first-of-type', ':last-of-type', ':only-child', ':only-of-type', ':empty', ':target', ':enabled', ':disabled', ':checked', ':not', '~']
+    selectors: [new RegExp("\\[" + cc.attr + "\\^=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "\\$=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "\\*=" + cc.attr + "\\]"), ':root', ':nth-child', ':nth-last-child', 'nth-of-type', 'nth-last-of-type', ':last-child', ':first-of-type', ':last-of-type', ':only-child', ':only-of-type', ':empty', ':target', ':enabled', ':disabled', ':checked', ':not', /^[^\[]*~/]
   },
   'css-textshadow': {
     properties: ['text-shadow']

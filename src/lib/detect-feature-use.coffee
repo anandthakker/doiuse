@@ -1,7 +1,13 @@
 _ = require('lodash')
 features = require('../data/features')
 
-matches = (str) -> (test) -> str.indexOf(test) >= 0
+###
+str: string to search in.
+searchfor: string or pattern to search for.
+###
+isFoundIn = (str) -> (searchfor) ->
+  if searchfor instanceof RegExp then searchfor.test(str)
+  else str?.indexOf(searchfor) >= 0
 
 ###
 postcss the use of any of a given list of CSS features.
@@ -27,14 +33,14 @@ class Detector
 
   decl: (decl, cb)->
     for feat,data of @features
-      for prop in (data.properties ? []).filter matches(decl.prop)
-        if (not data.values?) or _.find(data.values, matches(decl.value))
+      for prop in (data.properties ? []).filter isFoundIn(decl.prop)
+        if (not data.values?) or _.find(data.values, isFoundIn(decl.value))
           cb {usage: decl, feature: feat}
           break
   
   rule: (rule, cb)->
     for feat, data of @features
-      if _.find(data.selectors ? [], matches(rule.selector))
+      if _.find(data.selectors ? [], isFoundIn(rule.selector))
         cb {usage: rule, feature: feat}
     
     @process(rule, cb)
