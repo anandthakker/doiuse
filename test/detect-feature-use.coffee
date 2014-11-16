@@ -4,19 +4,7 @@ postcss = require('postcss')
 
 Detector = require('../dist/lib/detect-feature-use')
 
-spy = ->
-  results = []
-  fn = ({feature,usage}) ->
-    results.push
-      feature: feature
-      location: usage.source.start
-      selector: usage.selector
-      property: usage.property
-      value: usage.value
-      
-  fn.results = results
-  fn
-  
+spy = require('./spec-helper').spy
 
 describe 'feature detection', ->
   it 'background-img-opts', ->
@@ -46,7 +34,7 @@ describe 'feature detection', ->
     detector.process(postcss.parse(css), cb)
     cb.results.should.have.lengthOf(16)
     
-  it.only 'css-sel3', ->
+  it 'css-sel3', ->
     detector = new Detector(['css-sel3'])
     css = fs.readFileSync(require.resolve('./cases/selectors.css'))
     

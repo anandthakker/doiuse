@@ -1,6 +1,12 @@
 
-cc=
-  attr: '[^\\~|^$*\\]]*'
+pats=
+  attrcc: '[^\\~|^$*\\]]*'
+  brackets: /(\[[^\]]*\]|\([^\)]\))/.source
+  nobrackets: /[^\[\]\(\)]/.source
+
+matchInSelector= (pat) ->
+  if pat instanceof RegExp then pat = pat.source
+  new RegExp("^(#{pats.brackets}?#{pats.nobrackets}*)*#{pat}")
 
 module.exports=
   # Border Radius
@@ -239,8 +245,11 @@ module.exports=
   # CSS 2.1 selectors
   'css-sel2':
     selectors: [
-      '*'
-      '>'
+      matchInSelector(/\*/)
+      matchInSelector(/\>/)
+      matchInSelector(/\+/)
+      matchInSelector(/\./)
+      matchInSelector(/#/)
       ':first-child'
       ':link'
       ':visited'
@@ -248,22 +257,19 @@ module.exports=
       ':hover'
       ':focus'
       ':lang'
-      '+'
-      new RegExp("\\[#{cc.attr}\\]")
-      new RegExp("\\[#{cc.attr}=#{cc.attr}\\]")
-      new RegExp("\\[#{cc.attr}~=#{cc.attr}\\]")
-      new RegExp("\\[#{cc.attr}|=#{cc.attr}\\]")
-      /^\s*\..*/
-      new RegExp("#.*")
+      new RegExp("\\[#{pats.attrcc}\\]")
+      new RegExp("\\[#{pats.attrcc}=#{pats.attrcc}\\]")
+      new RegExp("\\[#{pats.attrcc}\\~=#{pats.attrcc}\\]")
+      new RegExp("\\[#{pats.attrcc}\\|=#{pats.attrcc}\\]")
     ]
 
 
   # CSS3 selectors
   'css-sel3':
     selectors: [
-      new RegExp("\\[#{cc.attr}\\^=#{cc.attr}\\]")
-      new RegExp("\\[#{cc.attr}\\$=#{cc.attr}\\]")
-      new RegExp("\\[#{cc.attr}\\*=#{cc.attr}\\]")
+      new RegExp("\\[#{pats.attrcc}\\^=#{pats.attrcc}\\]")
+      new RegExp("\\[#{pats.attrcc}\\$=#{pats.attrcc}\\]")
+      new RegExp("\\[#{pats.attrcc}\\*=#{pats.attrcc}\\]")
       ':root'
       ':nth-child'
       ':nth-last-child'

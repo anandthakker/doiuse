@@ -1,7 +1,16 @@
-var cc;
+var matchInSelector, pats;
 
-cc = {
-  attr: '[^\\~|^$*\\]]*'
+pats = {
+  attrcc: '[^\\~|^$*\\]]*',
+  brackets: /(\[[^\]]*\]|\([^\)]\))/.source,
+  nobrackets: /[^\[\]\(\)]/.source
+};
+
+matchInSelector = function(pat) {
+  if (pat instanceof RegExp) {
+    pat = pat.source;
+  }
+  return new RegExp("^(" + pats.brackets + "?" + pats.nobrackets + "*)*" + pat);
 };
 
 module.exports = {
@@ -114,10 +123,10 @@ module.exports = {
     values: ['fixed']
   },
   'css-sel2': {
-    selectors: ['*', '>', ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', '+', new RegExp("\\[" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "~=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "|=" + cc.attr + "\\]"), /^\s*\..*/, new RegExp("#.*")]
+    selectors: [matchInSelector(/\*/), matchInSelector(/\>/), matchInSelector(/\+/), matchInSelector(/\./), matchInSelector(/#/), ':first-child', ':link', ':visited', ':active', ':hover', ':focus', ':lang', new RegExp("\\[" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\~=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\|=" + pats.attrcc + "\\]")]
   },
   'css-sel3': {
-    selectors: [new RegExp("\\[" + cc.attr + "\\^=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "\\$=" + cc.attr + "\\]"), new RegExp("\\[" + cc.attr + "\\*=" + cc.attr + "\\]"), ':root', ':nth-child', ':nth-last-child', 'nth-of-type', 'nth-last-of-type', ':last-child', ':first-of-type', ':last-of-type', ':only-child', ':only-of-type', ':empty', ':target', ':enabled', ':disabled', ':checked', ':not', /^[^\[]*~/]
+    selectors: [new RegExp("\\[" + pats.attrcc + "\\^=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\$=" + pats.attrcc + "\\]"), new RegExp("\\[" + pats.attrcc + "\\*=" + pats.attrcc + "\\]"), ':root', ':nth-child', ':nth-last-child', 'nth-of-type', 'nth-last-of-type', ':last-child', ':first-of-type', ':last-of-type', ':only-child', ':only-of-type', ':empty', ':target', ':enabled', ':disabled', ':checked', ':not', /^[^\[]*~/]
   },
   'css-textshadow': {
     properties: ['text-shadow']
