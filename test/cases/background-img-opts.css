@@ -1,0 +1,10 @@
+/*
+expect:
+background-img-opts: 3
+*/
+
+a {
+    background-size: cover;
+    background-origin: padding-box;
+    background-clip: padding-box;
+}

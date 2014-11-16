@@ -1,3 +1,8 @@
+/*
+expect:
+css-gradients: 11
+*/
+
 a {
     background: linear-gradient(350.5deg, white, black), linear-gradient(-130deg, black, white), linear-gradient(45deg, black, white);
 }

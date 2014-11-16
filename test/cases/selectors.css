@@ -1,6 +1,11 @@
+/*
+expect:
+css-sel2: 16
+css-sel3: 20
+*/
+
 
 /* level 2 */
-
 * { color: #000000; }
 div > div { color: #000000; }
 div:first-child { color: #000000; }
