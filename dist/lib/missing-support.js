@@ -1,4 +1,4 @@
-var BrowserSelection, features, filterStats, fs, missing, _;
+var BrowserSelection, features, filterStats, formatBrowserName, fs, missing, _;
 
 features = require('../data/features');
 
@@ -7,6 +7,8 @@ BrowserSelection = require('./browsers');
 _ = require('lodash');
 
 fs = require('fs');
+
+formatBrowserName = require('./util').formatBrowserName;
 
 filterStats = function(browsers, stats) {
   return _.transform(stats, function(resultStats, versionData, browser) {
@@ -48,15 +50,21 @@ Returns:
  */
 
 missing = function(browserRequest) {
-  var browsers, data, feature, featureData, json, result;
+  var browsers, data, feature, featureData, json, missingData, result;
   browsers = new BrowserSelection(browserRequest);
   result = {};
   for (feature in features) {
     data = features[feature];
     json = fs.readFileSync(require.resolve('caniuse-db/features-json/' + feature));
     featureData = JSON.parse(json);
+    missingData = filterStats(browsers, featureData.stats);
+    missing = _.reduce(missingData, function(res, versions, browser) {
+      res.push(formatBrowserName(browser, _.keys(versions)));
+      return res;
+    }, []);
     result[feature] = {
-      missing: filterStats(browsers, featureData.stats),
+      missing: missing,
+      missingData: missingData,
       caniuseData: featureData
     };
   }

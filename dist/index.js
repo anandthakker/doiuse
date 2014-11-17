@@ -1,4 +1,4 @@
-var Detector, agents, doiuse, featureData, missingSupport, _;
+var Detector, doiuse, featureData, missingSupport, _;
 
 _ = require('lodash');
 
@@ -7,8 +7,6 @@ missingSupport = require('./lib/missing-support');
 Detector = require('./lib/detect-feature-use');
 
 featureData = require('./data/features');
-
-agents = require('caniuse-db/data').agents;
 
 
 /*
@@ -22,14 +20,15 @@ Usage: `postcss(doiuse(opts))`.
     {
       feature: 'css-gradients', //slug identifying a caniuse-db feature
       featureData:{
-        missing: {
-          // subset of selected browsers that are missing support for this
-          // particular feature, mapped to the version and (lack of)support code
+        missing: [] // list of browsers missing support for this feature.
+        missingData: {
+          // map of browser -> version -> (lack of)support code
           ie: { '8': 'n' }
         },
         caniuseData: { // data from caniuse-db/features-json/[feature].json }
       },
-      usage: //the postcss node where that feature is being used.
+      usage: {}//the postcss node where that feature is being used.
+      message: ''// human-readable summary message
     }
     Called once for each usage of each css feature not supported by the selected
     browsers.
@@ -48,23 +47,15 @@ doiuse = function(_arg) {
     info: function() {
       return {
         browsers: browsers,
-        features: _.keys(features).map(function(f) {
-          return featureData[f];
-        })
+        features: features
       };
     },
     postcss: function(css) {
       return detector.process(css, function(_arg1) {
         var feature, loc, message, usage, _ref1;
         feature = _arg1.feature, usage = _arg1.usage;
-        browsers = _.reduce(features[feature].missing, function(res, versions, browser) {
-          var browserName, _ref1;
-          browserName = (_ref1 = agents[browser]) != null ? _ref1.browser : void 0;
-          res.push(browserName + ' (' + _.keys(versions).join(',') + ')');
-          return res;
-        }, []).join(',');
         loc = usage.source;
-        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + ' line ' + loc.start.line + ', col ' + loc.start.column + " - " + features[feature].caniuseData.title + ' not supported by: ' + browsers;
+        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + ' line ' + loc.start.line + ', col ' + loc.start.column + " - " + features[feature].caniuseData.title + ' not supported by: ' + features[feature].missing.join(', ');
         return cb({
           feature: feature,
           featureData: features[feature],

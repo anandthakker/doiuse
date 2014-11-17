@@ -2,6 +2,8 @@ features = require('../data/features')
 BrowserSelection = require('./browsers')
 _ = require('lodash')
 fs = require('fs')
+formatBrowserName = require('./util').formatBrowserName
+
 
 filterStats = (browsers, stats)->
   _.transform stats, (resultStats, versionData, browser)->
@@ -46,8 +48,15 @@ missing = (browserRequest) ->
   for feature, data of features
     json = fs.readFileSync(require.resolve('caniuse-db/features-json/'+feature))
     featureData = JSON.parse(json)
+    missingData = filterStats(browsers, featureData.stats)
+    missing = _.reduce(missingData, (res, versions, browser)->
+      res.push(formatBrowserName(browser, _.keys(versions)))
+      res
+    , [])
+    
     result[feature] =
-      missing: filterStats(browsers, featureData.stats)
+      missing: missing
+      missingData: missingData
       caniuseData: featureData
       
   browsers: browsers.list()
