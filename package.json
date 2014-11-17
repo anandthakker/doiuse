@@ -6,6 +6,7 @@
   "scripts": {
     "test": "gulp test"
   },
+  "bin": "./cli.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/anandthakker/doiuse.git"
@@ -27,6 +28,7 @@
     "caniuse-db": "^1.0.30000023",
     "concat-stream": "^1.4.6",
     "lodash": "^2.4.1",
+    "postcss": "^3.0.2",
     "yargs": "^1.3.3"
   },
   "devDependencies": {
