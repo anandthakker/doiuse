@@ -5,6 +5,8 @@ missingSupport = require('./lib/missing-support')
 Detector = require('./lib/detect-feature-use')
 featureData = require('./data/features')
 
+agents = require('caniuse-db/data').agents
+
 ###
 Usage: `postcss(doiuse(opts))`.
 
@@ -37,16 +39,18 @@ doiuse = ({browserSelection, onUnsupportedFeatureUse}) ->
   info: ->
     browsers: browsers,
     features: _.keys(features).map (f)->featureData[f]
+
   postcss: (css) -> detector.process css, ({feature, usage})->
-    versions = features[feature].missing
-    browsers = []
-    for browser in versions
-      browsers.push(
-        browser + ' (' + _.keys(versions[browser]).join(',') + ')'
-      );
+    browsers = _.reduce(features[feature].missing, (res, versions, browser)->
+      browserName = agents[browser]?.browser
+      res.push(browserName + ' (' + _.keys(versions).join(',') + ')')
+      res
+    , []).join(',')
     loc = usage.source
-    message= loc.id + ' line ' + loc.start.line + " : " +
-      feature + ' not supported by ' + browsers.join(',')
+    message= (loc.file ? loc.id) + ':' +
+      ' line ' + loc.start.line + ', col ' + loc.start.column +
+      " - " + features[feature].caniuseData.title + ' not supported by: ' +
+      browsers
 
     cb
       feature: feature

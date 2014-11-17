@@ -1,4 +1,4 @@
-var Detector, doiuse, featureData, missingSupport, _;
+var Detector, agents, doiuse, featureData, missingSupport, _;
 
 _ = require('lodash');
 
@@ -7,6 +7,8 @@ missingSupport = require('./lib/missing-support');
 Detector = require('./lib/detect-feature-use');
 
 featureData = require('./data/features');
+
+agents = require('caniuse-db/data').agents;
 
 
 /*
@@ -53,16 +55,16 @@ doiuse = function(_arg) {
     },
     postcss: function(css) {
       return detector.process(css, function(_arg1) {
-        var browser, feature, loc, message, usage, versions, _i, _len;
+        var feature, loc, message, usage, _ref1;
         feature = _arg1.feature, usage = _arg1.usage;
-        versions = features[feature].missing;
-        browsers = [];
-        for (_i = 0, _len = versions.length; _i < _len; _i++) {
-          browser = versions[_i];
-          browsers.push(browser + ' (' + _.keys(versions[browser]).join(',') + ')');
-        }
+        browsers = _.reduce(features[feature].missing, function(res, versions, browser) {
+          var browserName, _ref1;
+          browserName = (_ref1 = agents[browser]) != null ? _ref1.browser : void 0;
+          res.push(browserName + ' (' + _.keys(versions).join(',') + ')');
+          return res;
+        }, []).join(',');
         loc = usage.source;
-        message = loc.id + ' line ' + loc.start.line + " : " + feature + ' not supported by ' + browsers.join(',');
+        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + ' line ' + loc.start.line + ', col ' + loc.start.column + " - " + features[feature].caniuseData.title + ' not supported by: ' + browsers;
         return cb({
           feature: feature,
           featureData: features[feature],
