@@ -2,7 +2,7 @@ var matchOutsideOfBrackets, pats;
 
 pats = {
   attrcc: '[^\\~|^$*\\]]*',
-  brackets: /(\[[^\]]*\]|\([^\)]\))/.source,
+  brackets: /(\[[^\]]*\]|\([^\)]*\))/.source,
   nobrackets: /[^\[\]\(\)]/.source
 };
 
@@ -111,8 +111,7 @@ module.exports = {
     atrules: ['@font-face']
   },
   'multibackgrounds': {
-    properties: ['background', 'background-image'],
-    values: [matchOutsideOfBrackets(/,/)]
+    unimplemented: true
   },
   'css-table': {
     properties: ['display'],
@@ -141,56 +140,132 @@ module.exports = {
   'css-mediaqueries': {
     atrules: ['@media']
   },
-  'css-canvas': {},
+  'css-canvas': {
+    unimplemented: true
+  },
   'css-reflections': {
     properties: ['box-reflect']
   },
-  'svg-css': {},
-  'css-featurequeries': {},
-  'css-opacity': {},
-  'text-overflow': {},
-  'wordwrap': {},
-  'object-fit': {},
+  'svg-css': {
+    unimplemented: true
+  },
+  'css-featurequeries': {
+    unimplemented: true
+  },
+  'css-opacity': {
+    unimplemented: true
+  },
+  'text-overflow': {
+    unimplemented: true
+  },
+  'wordwrap': {
+    unimplemented: true
+  },
+  'object-fit': {
+    unimplemented: true
+  },
   'minmaxwh': {
     properties: ['min-width', 'max-width', 'min-height', 'max-height']
   },
-  'text-stroke': {},
+  'text-stroke': {
+    unimplemented: true
+  },
   'inline-block': {
     properties: ['display'],
     values: ['inline-block']
   },
-  'css-grid': {},
+  'css-grid': {
+    unimplemented: true
+  },
   'rem': {
     properties: [''],
     values: ['rem']
   },
-  'ttf': {},
-  'pointer-events': {},
-  'css-regions': {},
-  'css-counters': {},
-  'css-resize': {},
-  'css-repeating-gradients': {},
-  'getcomputedstyle': {},
-  'word-break': {},
-  'viewport-units': {},
-  'style-scoped': {},
-  'outline': {},
-  'css3-cursors': {},
-  'css-variables': {},
-  'css-backgroundblendmode': {},
-  'css-mixblendmode': {},
-  'will-change': {},
-  'css-shapes': {},
-  'kerning-pairs-ligatures': {},
-  'css-image-orientation': {},
-  'css-appearance': {},
-  'css-background-offsets': {},
-  'css-touch-action': {},
-  'css-clip-path': {},
-  'font-loading': {},
-  'font-unicode-range': {},
-  'css-font-stretch': {},
-  'font-size-adjust': {},
-  'css-media-resolution': {},
-  'css-image-set': {}
+  'ttf': {
+    unimplemented: true
+  },
+  'pointer-events': {
+    unimplemented: true
+  },
+  'css-regions': {
+    unimplemented: true
+  },
+  'css-counters': {
+    unimplemented: true
+  },
+  'css-resize': {
+    unimplemented: true
+  },
+  'css-repeating-gradients': {
+    unimplemented: true
+  },
+  'getcomputedstyle': {
+    unimplemented: true
+  },
+  'word-break': {
+    unimplemented: true
+  },
+  'viewport-units': {
+    unimplemented: true
+  },
+  'style-scoped': {
+    unimplemented: true
+  },
+  'outline': {
+    unimplemented: true
+  },
+  'css3-cursors': {
+    unimplemented: true
+  },
+  'css-variables': {
+    unimplemented: true
+  },
+  'css-backgroundblendmode': {
+    unimplemented: true
+  },
+  'css-mixblendmode': {
+    unimplemented: true
+  },
+  'will-change': {
+    unimplemented: true
+  },
+  'css-shapes': {
+    unimplemented: true
+  },
+  'kerning-pairs-ligatures': {
+    unimplemented: true
+  },
+  'css-image-orientation': {
+    unimplemented: true
+  },
+  'css-appearance': {
+    unimplemented: true
+  },
+  'css-background-offsets': {
+    unimplemented: true
+  },
+  'css-touch-action': {
+    unimplemented: true
+  },
+  'css-clip-path': {
+    unimplemented: true
+  },
+  'font-loading': {
+    unimplemented: true
+  },
+  'font-unicode-range': {
+    unimplemented: true
+  },
+  'css-font-stretch': {
+    unimplemented: true
+  },
+  'font-size-adjust': {
+    unimplemented: true
+  },
+  'css-media-resolution': {
+    unimplemented: true
+  },
+  'css-image-set': {
+    unimplemented: true
+  }
 };

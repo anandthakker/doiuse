@@ -1,10 +1,10 @@
 
 pats=
   attrcc: '[^\\~|^$*\\]]*'
-  brackets: /(\[[^\]]*\]|\([^\)]\))/.source
+  brackets: /(\[[^\]]*\]|\([^\)]*\))/.source
   nobrackets: /[^\[\]\(\)]/.source
 
-matchInSelector= (pat) ->
+matchOutsideOfBrackets= (pat) ->
   if pat instanceof RegExp then pat = pat.source
   new RegExp("^(#{pats.brackets}?#{pats.nobrackets}*)*#{pat}")
 
@@ -226,7 +226,7 @@ module.exports=
     atrules: ['@font-face']
 
   # CSS3 Multiple backgrounds
-  'multibackgrounds':{}
+  'multibackgrounds': { unimplemented: true }
 
   # CSS Table display
   'css-table':
@@ -245,11 +245,11 @@ module.exports=
   # CSS 2.1 selectors
   'css-sel2':
     selectors: [
-      matchInSelector(/\*/)
-      matchInSelector(/\>/)
-      matchInSelector(/\+/)
-      matchInSelector(/\./)
-      matchInSelector(/#/)
+      matchOutsideOfBrackets(/\*/)
+      matchOutsideOfBrackets(/\>/)
+      matchOutsideOfBrackets(/\+/)
+      matchOutsideOfBrackets(/\./)
+      matchOutsideOfBrackets(/#/)
       ':first-child'
       ':link'
       ':visited'
@@ -306,29 +306,29 @@ module.exports=
     atrules: ['@media']
 
   # CSS Canvas Drawings
-  'css-canvas':{}
+  'css-canvas':{ unimplemented: true }
 
   # CSS Reflections
   'css-reflections':
     properties: ['box-reflect']
 
   # SVG in CSS backgrounds
-  'svg-css':{}
+  'svg-css':{ unimplemented: true }
 
   # CSS Feature Queries
-  'css-featurequeries':{}
+  'css-featurequeries':{ unimplemented: true }
 
   # CSS3 Opacity
-  'css-opacity':{}
+  'css-opacity':{ unimplemented: true }
 
   # CSS3 Text-overflow
-  'text-overflow':{}
+  'text-overflow':{ unimplemented: true }
 
   # CSS3 Overflow-wrap
-  'wordwrap':{}
+  'wordwrap':{ unimplemented: true }
 
   # CSS3 object-fit/object-position
-  'object-fit':{}
+  'object-fit':{ unimplemented: true }
 
   # CSS min/max-width/height
   'minmaxwh':
@@ -340,7 +340,7 @@ module.exports=
     ]
 
   # CSS text-stroke
-  'text-stroke':{}
+  'text-stroke':{ unimplemented: true }
 
   # CSS inline-block
   'inline-block':
@@ -348,7 +348,7 @@ module.exports=
     values: ['inline-block']
 
   # CSS Grid Layout
-  'css-grid':{}
+  'css-grid':{ unimplemented: true }
 
   # rem (root em) units
   'rem':
@@ -356,88 +356,88 @@ module.exports=
     values: ['rem']
 
   # TTF/OTF - TrueType and OpenType font support
-  'ttf':{}
+  'ttf':{ unimplemented: true }
 
   # CSS pointer-events (for HTML)
-  'pointer-events':{}
+  'pointer-events':{ unimplemented: true }
 
   # CSS Regions
-  'css-regions':{}
+  'css-regions':{ unimplemented: true }
 
   # CSS Counters
-  'css-counters':{}
+  'css-counters':{ unimplemented: true }
 
   # CSS resize property
-  'css-resize':{}
+  'css-resize':{ unimplemented: true }
 
   # CSS Repeating Gradients
-  'css-repeating-gradients':{}
+  'css-repeating-gradients':{ unimplemented: true }
 
   # getComputedStyle
-  'getcomputedstyle':{}
+  'getcomputedstyle':{ unimplemented: true }
 
   # CSS3 word-break
-  'word-break':{}
+  'word-break':{ unimplemented: true }
 
   # Viewport units: vw, vh, vmin, vmax
-  'viewport-units':{}
+  'viewport-units':{ unimplemented: true }
 
   # Scoped CSS
-  'style-scoped':{}
+  'style-scoped':{ unimplemented: true }
 
   # CSS outline
-  'outline':{}
+  'outline':{ unimplemented: true }
 
   # CSS3 Cursors (original values)
-  'css3-cursors':{}
+  'css3-cursors':{ unimplemented: true }
 
   # CSS Variables
-  'css-variables':{}
+  'css-variables':{ unimplemented: true }
 
   # CSS background-blend-mode
-  'css-backgroundblendmode':{}
+  'css-backgroundblendmode':{ unimplemented: true }
 
   # Blending of HTML/SVG elements
-  'css-mixblendmode':{}
+  'css-mixblendmode':{ unimplemented: true }
 
   # CSS will-change property
-  'will-change':{}
+  'will-change':{ unimplemented: true }
 
   # CSS Shapes Level 1
-  'css-shapes':{}
+  'css-shapes':{ unimplemented: true }
 
   # Improved kerning pairs & ligatures
-  'kerning-pairs-ligatures':{}
+  'kerning-pairs-ligatures':{ unimplemented: true }
 
   # CSS3 image-orientation
-  'css-image-orientation':{}
+  'css-image-orientation':{ unimplemented: true }
 
   # CSS Appearance
-  'css-appearance':{}
+  'css-appearance':{ unimplemented: true }
 
   # CSS background-position edge offsets
-  'css-background-offsets':{}
+  'css-background-offsets':{ unimplemented: true }
 
   # CSS touch-action property
-  'css-touch-action':{}
+  'css-touch-action':{ unimplemented: true }
 
   # CSS clip-path property
-  'css-clip-path':{}
+  'css-clip-path':{ unimplemented: true }
 
   # CSS Font Loading
-  'font-loading':{}
+  'font-loading':{ unimplemented: true }
 
   # Font unicode-range subsetting
-  'font-unicode-range':{}
+  'font-unicode-range':{ unimplemented: true }
 
   # CSS font-stretch
-  'css-font-stretch':{}
+  'css-font-stretch':{ unimplemented: true }
 
   # CSS font-size-adjust
-  'font-size-adjust':{}
+  'font-size-adjust':{ unimplemented: true }
 
   # Media Queries: resolution feature
-  'css-media-resolution':{}
+  'css-media-resolution':{ unimplemented: true }
 
   # CSS image-set
-  'css-image-set':{}
+  'css-image-set':{ unimplemented: true }
