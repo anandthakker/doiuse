@@ -19,6 +19,6 @@ describe 'postcss plugin', ->
     postcss(doiuse(
       browsers: ['ie 8']
       onUnsupportedFeatureUse: (usageInfo)->
-        usageInfo.should.have.keys('feature', 'featureData', 'usage')
+        usageInfo.should.have.keys('feature', 'featureData', 'usage', 'message')
         usageInfo.featureData.should.have.keys('missing', 'caniuseData')
     )).process(css)

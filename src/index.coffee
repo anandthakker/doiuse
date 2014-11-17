@@ -35,7 +35,18 @@ module.exports = ({browsers, onUnsupportedFeatureUse}) ->
   detector = new Detector(_.keys(features))
   
   postcss: (css) -> detector.process css, ({feature, usage})->
+    versions = features[feature].missing
+    browsers = []
+    for browser in versions
+      browsers.push(
+        browser + ' (' + _.keys(versions[browser]).join(',') + ')'
+      );
+    loc = usage.source
+    message= loc.id + ' line ' + loc.start.line + " : " +
+      feature + ' not supported by ' + browsers.join(',')
+
     cb
       feature: feature
       featureData: features[feature]
       usage: usage
+      message: message

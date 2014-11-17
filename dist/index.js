@@ -45,12 +45,21 @@ module.exports = function(_arg) {
   return {
     postcss: function(css) {
       return detector.process(css, function(_arg1) {
-        var feature, usage;
+        var browser, feature, loc, message, usage, versions, _i, _len;
         feature = _arg1.feature, usage = _arg1.usage;
+        versions = features[feature].missing;
+        browsers = [];
+        for (_i = 0, _len = versions.length; _i < _len; _i++) {
+          browser = versions[_i];
+          browsers.push(browser + ' (' + _.keys(versions[browser]).join(',') + ')');
+        }
+        loc = usage.source;
+        message = loc.id + ' line ' + loc.start.line + " : " + feature + ' not supported by ' + browsers.join(',');
         return cb({
           feature: feature,
           featureData: features[feature],
-          usage: usage
+          usage: usage,
+          message: message
         });
       });
     }

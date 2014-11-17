@@ -14,24 +14,7 @@ var doiuse = require('doiuse');
 postcss(doiuse({
   browsers:['ie >= 6', '> 1%'],
   onUnsupportedFeatureUse: function(usageInfo) {
-    
-    // get human-readable list of browsers (from among those WE selected) that
-    // don't support the given feature.
-    var versions = usageInfo.featureData.missing;
-    var browsers = [];
-    for(browser in versions) {
-      browsers.push(
-        browser + ' (' + Object.keys(versions[browser]).join(',') + ')'
-      );
-    }
-    
-    // the location in the CSS file that triggered this callback
-    var loc = usageInfo.usage.source;
-    
-    console.log(
-      loc.id + ' line ' + loc.start.line + " : " + 
-      usageInfo.feature + ' not supported by ' + browsers.join(',')
-    );
+    console.log(usageInfo.message);
   }
 })).process("a { background-size: cover; }")
 ```
