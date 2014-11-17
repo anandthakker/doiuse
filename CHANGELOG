@@ -1,3 +1,8 @@
+2014-11-17 - 0.0.5 (8867b0f)
+8867b0f (HEAD, master) Add readable message to callback parameter
+0d8833a (tag: v0.0.4, origin/master, origin/HEAD) 0.0.4
+
+
 2014-11-17 - 0.0.4 (a31c1aa)
 a31c1aa (HEAD, master) tweak regexp; add background-img-opts test
 59065cd convenience 'only' flag in test cases
