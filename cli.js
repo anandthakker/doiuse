@@ -36,7 +36,7 @@ var argv = yargs.argv;
 
 var report = console.log.bind(console);
 var linter = doiuse({
-  browsers: argv.b.split(',').map(function(s){return s.trim();}),
+  browserSelection: argv.b.split(',').map(function(s){return s.trim();}),
   onUnsupportedFeatureUse: function(usageInfo) {
     report(usageInfo.message);
   }
