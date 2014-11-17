@@ -60,7 +60,10 @@ missing = function(browserRequest) {
       caniuseData: featureData
     };
   }
-  return result;
+  return {
+    browsers: browsers.list(),
+    features: result
+  };
 };
 
 module.exports = missing;

@@ -16,9 +16,12 @@ describe 'postcss plugin', ->
     
   it 'calls back for unsupported feature usages', ->
     css = fs.readFileSync(require.resolve('./cases/gradient.css'))
+    count = 0
     postcss(doiuse(
       browsers: ['ie 8']
       onUnsupportedFeatureUse: (usageInfo)->
+        count++
         usageInfo.should.have.keys('feature', 'featureData', 'usage', 'message')
         usageInfo.featureData.should.have.keys('missing', 'caniuseData')
     )).process(css)
+    count.should.equal(22)

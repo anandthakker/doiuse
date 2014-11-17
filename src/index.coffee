@@ -28,12 +28,15 @@ Usage: `postcss(doiuse(opts))`.
     Called once for each usage of each css feature not supported by the selected
     browsers.
 ###
-module.exports = ({browsers, onUnsupportedFeatureUse}) ->
-  browsers ?= []
+doiuse = ({browserSelection, onUnsupportedFeatureUse}) ->
+  browserSelection ?= doiuse.default.slice()
   cb = onUnsupportedFeatureUse ? ->
-  features = missingSupport(browsers)
+  {browsers, features} = missingSupport(browserSelection)
   detector = new Detector(_.keys(features))
-  
+
+  info: ->
+    browsers: browsers,
+    features: _.keys(features).map (f)->featureData[f]
   postcss: (css) -> detector.process css, ({feature, usage})->
     versions = features[feature].missing
     browsers = []
@@ -50,3 +53,6 @@ module.exports = ({browsers, onUnsupportedFeatureUse}) ->
       featureData: features[feature]
       usage: usage
       message: message
+
+doiuse.default = ['> 1%', 'last 2 versions', 'Firefox ESR', 'Opera 12.1']
+module.exports = doiuse

@@ -4,7 +4,7 @@ missingSupport = require('../dist/lib/missing-support')
 describe 'missing-support', ->
   describe 'filtering caniuse-db data by browser selection', ->
     it 'for browser request ie >= 7, safari >= 6, opera >= 10.1',->
-      data = missingSupport(['ie >= 7', 'safari >= 6', 'opera >= 10.1'])
+      data = missingSupport(['ie >= 7', 'safari >= 6', 'opera >= 10.1']).features
       bgimgopts = data['background-img-opts']
       
       bgimgopts.should.have.keys('missing', 'caniuseData')

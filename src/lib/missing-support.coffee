@@ -49,6 +49,8 @@ missing = (browserRequest) ->
     result[feature] =
       missing: filterStats(browsers, featureData.stats)
       caniuseData: featureData
-  result
+      
+  browsers: browsers.list()
+  features: result
 
 module.exports = missing

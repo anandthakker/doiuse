@@ -10,7 +10,7 @@ module.exports = BrowserSelection = (function() {
   function BrowserSelection(browsersRequest) {
     this.browsersRequest = browsersRequest;
     this.browsers = new Browsers(browsersData, this.browsersRequest);
-    this.list = this.browsers.selected.map(function(s) {
+    this._list = this.browsers.selected.map(function(s) {
       return s.split(' ');
     });
   }
@@ -20,11 +20,15 @@ module.exports = BrowserSelection = (function() {
     if (version.length === 1) {
       version.push(version[0]);
     }
-    return _.find(this.list, function(_arg) {
+    return _.find(this._list, function(_arg) {
       var b, v;
       b = _arg[0], v = _arg[1];
       return b === browser && v >= version[0] && v <= version[1];
     });
+  };
+
+  BrowserSelection.prototype.list = function() {
+    return this._list.slice();
   };
 
   return BrowserSelection;
