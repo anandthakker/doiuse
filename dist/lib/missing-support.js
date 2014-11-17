@@ -62,11 +62,13 @@ missing = function(browserRequest) {
       res.push(formatBrowserName(browser, _.keys(versions)));
       return res;
     }, []);
-    result[feature] = {
-      missing: missing,
-      missingData: missingData,
-      caniuseData: featureData
-    };
+    if (missing.length !== 0) {
+      result[feature] = {
+        missing: missing,
+        missingData: missingData,
+        caniuseData: featureData
+      };
+    }
   }
   return {
     browsers: browsers.list(),

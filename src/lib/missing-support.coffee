@@ -54,7 +54,7 @@ missing = (browserRequest) ->
       res
     , [])
     
-    result[feature] =
+    unless missing.length is 0 then result[feature] =
       missing: missing
       missingData: missingData
       caniuseData: featureData
