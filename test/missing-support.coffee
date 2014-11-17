@@ -2,9 +2,20 @@ should = require('should')
 missingSupport = require('../dist/lib/missing-support')
 
 describe 'missing-support', ->
+  it 'provides list of selected browsers', ->
+    data = missingSupport(['ie >= 8'])
+    data.browsers.should.containDeep [
+      ['ie','8']
+      ['ie','9']
+      ['ie', '10']
+      ['ie', '11']
+    ]
+    
   describe 'filtering caniuse-db data by browser selection', ->
     it 'for browser request ie >= 7, safari >= 6, opera >= 10.1',->
-      data = missingSupport(['ie >= 7', 'safari >= 6', 'opera >= 10.1']).features
+      data = missingSupport(['ie >= 7', 'safari >= 6', 'opera >= 10.1'])
+        .features
+        
       bgimgopts = data['background-img-opts']
       
       bgimgopts.should.have.keys('missing', 'missingData', 'caniuseData')
@@ -13,3 +24,8 @@ describe 'missing-support', ->
       missing.should.have.keys('ie', 'safari', 'opera')
       missing['ie'].should.have.keys('7', '8')
       missing['safari'].should.have.keys('6', '6.1')
+      
+    it 'only yields features not supported by selected browser', ->
+      data = missingSupport(['ie 8']).features
+      for f, featureData of data
+        featureData.missingData.should.have.keys('ie')
