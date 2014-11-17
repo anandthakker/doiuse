@@ -1,3 +1,17 @@
+2014-11-17 - 0.0.6 (bfe91df)
+bfe91df (HEAD, master) Update readme
+60fadef add bin to package.json
+84ca39b include title directly in result for convenience
+ce80838 bugfix: was failing to filter only unsupported features
+b5a28f6 bugfix: cli was ignoring parameter
+c65a70f Add failing test for bug
+666a605 Add informational output to cli
+1b649d5 CLI
+9f2dbef Add info() method.
+baa6ed2 build: clean task
+d55fcd1 (tag: v0.0.5, origin/master, origin/HEAD) 0.0.5
+
+
 2014-11-17 - 0.0.5 (8867b0f)
 8867b0f (HEAD, master) Add readable message to callback parameter
 0d8833a (tag: v0.0.4, origin/master, origin/HEAD) 0.0.4
