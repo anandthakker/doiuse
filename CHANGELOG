@@ -1,3 +1,14 @@
+2014-11-17 - 0.0.4 (a31c1aa)
+a31c1aa (HEAD, master) tweak regexp; add background-img-opts test
+59065cd convenience 'only' flag in test cases
+7fef13c generalize feature detection testing
+f25a275 detect-feature-use: smarter regexes
+ed40272 feature: css-sel2 and css-sel3
+e1109a4 add some detection data
+14f250e stubs for features needing detection data
+50d84fa (tag: v0.0.3, origin/master, origin/HEAD) 0.0.3
+
+
 2014-11-14 - 0.0.3 (e2dbe6a)
 e2dbe6a (HEAD, master) more documentation
 e4d0bc8 documentation
