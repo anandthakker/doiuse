@@ -26,8 +26,12 @@ Returns:
 ```
 {
   'feature-name': {
-    missing: {
-      'ie': '8', // etc.
+    title: 'Title of feature'
+    missing: "IE (8), Chrome (31)"
+    missingData: {
+      // map of browser -> version -> (lack of)support code
+      ie: { '8': 'n' },
+      chrome: { '31': 'n' }
     }
     caniuseData: {
       // caniuse-db json data for this feature
@@ -52,9 +56,10 @@ missing = (browserRequest) ->
     missing = _.reduce(missingData, (res, versions, browser)->
       res.push(formatBrowserName(browser, _.keys(versions)))
       res
-    , [])
+    , []).join(', ')
     
     unless missing.length is 0 then result[feature] =
+      title: featureData.title
       missing: missing
       missingData: missingData
       caniuseData: featureData

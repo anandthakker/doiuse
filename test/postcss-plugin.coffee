@@ -22,6 +22,7 @@ describe 'postcss plugin', ->
       onUnsupportedFeatureUse: (usageInfo)->
         count++
         usageInfo.should.have.keys('feature', 'featureData', 'usage', 'message')
-        usageInfo.featureData.should.have.keys('missing', 'missingData', 'caniuseData')
+        usageInfo.featureData.should.have.keys(
+          'title', 'missing','missingData', 'caniuseData')
     )).process(css)
     count.should.equal(14)

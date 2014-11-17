@@ -18,7 +18,7 @@ describe 'missing-support', ->
         
       bgimgopts = data['background-img-opts']
       
-      bgimgopts.should.have.keys('missing', 'missingData', 'caniuseData')
+      bgimgopts.should.have.keys('missing','title','missingData','caniuseData')
       
       missing = bgimgopts.missingData
       missing.should.have.keys('ie', 'safari', 'opera')

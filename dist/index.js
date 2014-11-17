@@ -8,32 +8,6 @@ Detector = require('./lib/detect-feature-use');
 
 featureData = require('./data/features');
 
-
-/*
-Usage: `postcss(doiuse(opts))`.
-
-`opts`:
-  - `browsers`: an autoprefixer-like array of browsers.
-  - `onUnsupportedFeatureUse`: `function(usageInfo)`
-    `usageInfo` looks like this:
-    ```
-    {
-      feature: 'css-gradients', //slug identifying a caniuse-db feature
-      featureData:{
-        missing: [] // list of browsers missing support for this feature.
-        missingData: {
-          // map of browser -> version -> (lack of)support code
-          ie: { '8': 'n' }
-        },
-        caniuseData: { // data from caniuse-db/features-json/[feature].json }
-      },
-      usage: {}//the postcss node where that feature is being used.
-      message: ''// human-readable summary message
-    }
-    Called once for each usage of each css feature not supported by the selected
-    browsers.
- */
-
 doiuse = function(_arg) {
   var browserSelection, browsers, cb, detector, features, onUnsupportedFeatureUse, _ref;
   browserSelection = _arg.browserSelection, onUnsupportedFeatureUse = _arg.onUnsupportedFeatureUse;
@@ -55,7 +29,7 @@ doiuse = function(_arg) {
         var feature, loc, message, usage, _ref1;
         feature = _arg1.feature, usage = _arg1.usage;
         loc = usage.source;
-        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + ' line ' + loc.start.line + ', col ' + loc.start.column + " - " + features[feature].caniuseData.title + ' not supported by: ' + features[feature].missing.join(', ');
+        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + ' line ' + loc.start.line + ', col ' + loc.start.column + " - " + features[feature].title + ' not supported by: ' + features[feature].missing;
         return cb({
           feature: feature,
           featureData: features[feature],
