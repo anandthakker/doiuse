@@ -1,3 +1,4 @@
+list = require('postcss/lib/list')
 
 pats=
   attrcc: '[^\\~|^$*\\]]*'
@@ -226,7 +227,10 @@ module.exports=
     atrules: ['@font-face']
 
   # CSS3 Multiple backgrounds
-  'multibackgrounds': { unimplemented: true }
+  'multibackgrounds': {
+    properties: [ /^background-?/ ]
+    values: [ (value) -> list.comma(value).length > 1 ]
+  }
 
   # CSS Table display
   'css-table':

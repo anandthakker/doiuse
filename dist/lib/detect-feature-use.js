@@ -14,6 +14,8 @@ isFoundIn = function(str) {
   return function(searchfor) {
     if (searchfor instanceof RegExp) {
       return searchfor.test(str);
+    } else if (_.isFunction(searchfor)) {
+      return searchfor(str);
     } else {
       return (str != null ? str.indexOf(searchfor) : void 0) >= 0;
     }

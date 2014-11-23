@@ -7,6 +7,7 @@ searchfor: string or pattern to search for.
 ###
 isFoundIn = (str) -> (searchfor) ->
   if searchfor instanceof RegExp then searchfor.test(str)
+  else if _.isFunction(searchfor) then searchfor(str)
   else str?.indexOf(searchfor) >= 0
 
 ###

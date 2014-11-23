@@ -1,10 +1,15 @@
 /*
 expect:
 background-img-opts: 3
+multibackgrounds: 1
 */
 
 a {
     background-size: cover;
     background-origin: padding-box;
     background-clip: padding-box;
+}
+
+div {
+  background: url(a.gif), url(b.gif);
 }

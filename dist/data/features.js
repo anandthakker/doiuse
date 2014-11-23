@@ -1,4 +1,6 @@
-var matchOutsideOfBrackets, pats;
+var list, matchOutsideOfBrackets, pats;
+
+list = require('postcss/lib/list');
 
 pats = {
   attrcc: '[^\\~|^$*\\]]*',
@@ -111,7 +113,12 @@ module.exports = {
     atrules: ['@font-face']
   },
   'multibackgrounds': {
-    unimplemented: true
+    properties: [/^background-?/],
+    values: [
+      function(value) {
+        return list.comma(value).length > 1;
+      }
+    ]
   },
   'css-table': {
     properties: ['display'],
