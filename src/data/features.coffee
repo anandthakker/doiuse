@@ -327,7 +327,8 @@ module.exports=
   }
 
   # CSS3 Opacity
-  'css-opacity':{ unimplemented: true }
+  'css-opacity':
+    properties: [ 'opacity' ]
 
   # CSS3 Text-overflow
   'text-overflow':{ unimplemented: true }

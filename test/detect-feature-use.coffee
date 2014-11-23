@@ -52,6 +52,7 @@ caseFiles = fs.readdirSync(path.join(__dirname,'/cases'))
 cases = []
 only = null
 for tc in caseFiles
+  continue unless /\.css$/.test(tc)
   cssString = fs.readFileSync(path.join(__dirname, 'cases', tc)).toString()
   if (parsed = parseTestCase(cssString))
     testCase = {name: tc, expected: parsed.expected, cssString}

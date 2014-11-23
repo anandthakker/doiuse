@@ -161,7 +161,7 @@ module.exports = {
     atrules: ['supports']
   },
   'css-opacity': {
-    unimplemented: true
+    properties: ['opacity']
   },
   'text-overflow': {
     unimplemented: true
