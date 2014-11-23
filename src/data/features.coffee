@@ -331,7 +331,8 @@ module.exports=
     properties: [ 'opacity' ]
 
   # CSS3 Text-overflow
-  'text-overflow':{ unimplemented: true }
+  'text-overflow':
+    properties: [ 'text-overflow' ]
 
   # CSS3 Overflow-wrap
   'wordwrap':{ unimplemented: true }

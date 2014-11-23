@@ -164,7 +164,7 @@ module.exports = {
     properties: ['opacity']
   },
   'text-overflow': {
-    unimplemented: true
+    properties: ['text-overflow']
   },
   'wordwrap': {
     unimplemented: true
