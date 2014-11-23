@@ -307,7 +307,7 @@ module.exports=
 
   # CSS3 Media Queries
   'css-mediaqueries':
-    atrules: ['@media']
+    atrules: ['media']
 
   # CSS Canvas Drawings
   'css-canvas':
@@ -322,7 +322,9 @@ module.exports=
   'svg-css':{ unimplemented: true }
 
   # CSS Feature Queries
-  'css-featurequeries':{ unimplemented: true }
+  'css-featurequeries':{
+    atrules: [ 'supports' ]
+  }
 
   # CSS3 Opacity
   'css-opacity':{ unimplemented: true }

@@ -47,7 +47,10 @@ class Detector
     @process(rule, cb)
   
   atrule: (atrule, cb)->
-    console.warn "@-rule unimplemented!"
+    for feat, data of @features
+      if _.find(data.atrules ? [], isFoundIn(atrule.name))
+        cb {usage: atrule, feature: feat}
+
     @process(atrule, cb)
     
   process: (node, cb)->

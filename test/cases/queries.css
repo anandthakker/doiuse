@@ -1,0 +1,13 @@
+/*
+expect:
+css-mediaqueries: 1
+css-featurequeries: 1
+*/
+
+@media only screen {
+  .ui { display: block; }
+}
+
+@supports (transform-origin: 5% 5%) {
+  .ui { trasnform-origin: 5% 5%; }
+}

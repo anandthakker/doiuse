@@ -91,7 +91,17 @@ Detector = (function() {
   };
 
   Detector.prototype.atrule = function(atrule, cb) {
-    console.warn("@-rule unimplemented!");
+    var data, feat, _ref, _ref1;
+    _ref = this.features;
+    for (feat in _ref) {
+      data = _ref[feat];
+      if (_.find((_ref1 = data.atrules) != null ? _ref1 : [], isFoundIn(atrule.name))) {
+        cb({
+          usage: atrule,
+          feature: feat
+        });
+      }
+    }
     return this.process(atrule, cb);
   };
 

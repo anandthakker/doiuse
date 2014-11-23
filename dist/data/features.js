@@ -145,7 +145,7 @@ module.exports = {
     values: ['rgba', 'hsl', 'hsla']
   },
   'css-mediaqueries': {
-    atrules: ['@media']
+    atrules: ['media']
   },
   'css-canvas': {
     properties: [/^background/],
@@ -158,7 +158,7 @@ module.exports = {
     unimplemented: true
   },
   'css-featurequeries': {
-    unimplemented: true
+    atrules: ['supports']
   },
   'css-opacity': {
     unimplemented: true
