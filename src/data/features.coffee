@@ -310,7 +310,9 @@ module.exports=
     atrules: ['@media']
 
   # CSS Canvas Drawings
-  'css-canvas':{ unimplemented: true }
+  'css-canvas':
+    properties: [ /^background/ ]
+    values: [ /^-webkit-canvas/ ]
 
   # CSS Reflections
   'css-reflections':

@@ -148,7 +148,8 @@ module.exports = {
     atrules: ['@media']
   },
   'css-canvas': {
-    unimplemented: true
+    properties: [/^background/],
+    values: [/^-webkit-canvas/]
   },
   'css-reflections': {
     properties: ['box-reflect']
