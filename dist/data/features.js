@@ -167,7 +167,7 @@ module.exports = {
     properties: ['text-overflow']
   },
   'wordwrap': {
-    unimplemented: true
+    properties: ['overflow-wrap']
   },
   'object-fit': {
     unimplemented: true

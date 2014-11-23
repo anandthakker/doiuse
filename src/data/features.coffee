@@ -335,7 +335,8 @@ module.exports=
     properties: [ 'text-overflow' ]
 
   # CSS3 Overflow-wrap
-  'wordwrap':{ unimplemented: true }
+  'wordwrap':
+    properties: [ 'overflow-wrap' ]
 
   # CSS3 object-fit/object-position
   'object-fit':{ unimplemented: true }
