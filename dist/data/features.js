@@ -170,7 +170,7 @@ module.exports = {
     properties: ['overflow-wrap']
   },
   'object-fit': {
-    unimplemented: true
+    properties: ['object-fit']
   },
   'minmaxwh': {
     properties: ['min-width', 'max-width', 'min-height', 'max-height']

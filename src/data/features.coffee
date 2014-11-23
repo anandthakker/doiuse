@@ -339,7 +339,8 @@ module.exports=
     properties: [ 'overflow-wrap' ]
 
   # CSS3 object-fit/object-position
-  'object-fit':{ unimplemented: true }
+  'object-fit':
+    properties: [ 'object-fit' ]
 
   # CSS min/max-width/height
   'minmaxwh':
