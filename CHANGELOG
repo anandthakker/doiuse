@@ -1,3 +1,14 @@
+2014-11-23 - 0.1.1 (ea36001)
+ea36001 (HEAD, master) feature: object-fit
+3aa0686 feature: overflow-wrap
+cec98f8 feature: text-overflow
+5251a71 feature: opacity
+a0803b9 features: media queries and feature queries
+6e2d5e5 feature: css-canvas
+005d337 add feature: multibackgrounds
+6f14c98 (tag: v0.1.0, origin/master, origin/HEAD) 0.1.0
+
+
 2014-11-17 - 0.1.0 (cfd40be)
 cfd40be (HEAD, tag: v0.0.6, master) 0.0.6
 
