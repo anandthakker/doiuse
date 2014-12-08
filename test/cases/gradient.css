@@ -1,19 +1,8 @@
 /*
 expect:
-css-gradients: 11
+css-gradients: 2
+css-repeating-gradients: 2
 */
-
-a {
-    background: linear-gradient(350.5deg, white, black), linear-gradient(-130deg, black, white), linear-gradient(45deg, black, white);
-}
-
-b {
-    background-image: linear-gradient(rgba(0,0,0,1), white), linear-gradient(white, black);
-}
-
-div {
-  background-image: radial-gradient(to left, white black), repeating-linear-gradient(to bottom right, black, white), repeating-radial-gradient(to top, aqua, red);
-}
 
 .radial {
     background: radial-gradient(ellipse farthest-corner, black, white);
@@ -23,26 +12,10 @@ div {
     background: linear-gradient(black, white);
 }
 
-.simple2 {
-    background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0.5)50%, white 100%);
-}
-
-.simple3 {
-    background: linear-gradient(to left, black 50%, white 100%);
-}
-
-.simple4 {
-    background: linear-gradient(to right top, black, white);
-}
-
-.direction {
-    background: linear-gradient(top left, black, rgba(0, 0, 0, 0.5), white);
-}
-
-.radial {
-    background: radial-gradient(farthest-side at 0 50%, white, black);
+.repeating {
+    background: repeating-linear-gradient(180deg,rgb(26,198,204),rgb(26,198,204) 7%, rgb(100,100,100) 10%);
 }
 
 .color {
-    background: red linear-gradient(red, blue);
+    background: red repeating-radial-gradient(ellipse farthest-corner, black, white);
 }

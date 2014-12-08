@@ -36,7 +36,7 @@ module.exports = {
   },
   'css-gradients': {
     properties: ['background', 'background-image', 'border-image'],
-    values: ['linear-gradient', 'repeating-linear-gradient', 'radial-gradient', 'repeating-radial-gradient']
+    values: [/(^|[^-])linear-gradient/, /(^|[^-])radial-gradient/]
   },
   'css3-boxsizing': {
     properties: ['box-sizing']
@@ -205,7 +205,8 @@ module.exports = {
     properties: ['resize']
   },
   'css-repeating-gradients': {
-    unimplemented: true
+    properties: [''],
+    values: ['repeating-linear-gradient', 'repeating-radial-gradient']
   },
   'getcomputedstyle': {
     unimplemented: true

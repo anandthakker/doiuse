@@ -68,10 +68,9 @@ module.exports=
       'border-image']
       
     values: [
-      'linear-gradient'
-      'repeating-linear-gradient'
-      'radial-gradient'
-      'repeating-radial-gradient']
+      /(^|[^-])linear-gradient/
+      /(^|[^-])radial-gradient/
+    ]
 
   # Box sizing
   'css3-boxsizing':
@@ -387,7 +386,9 @@ module.exports=
     properties: ['resize']
 
   # CSS Repeating Gradients
-  'css-repeating-gradients':{ unimplemented: true }
+  'css-repeating-gradients':
+    properties: ['']
+    values: ['repeating-linear-gradient', 'repeating-radial-gradient']
 
   # getComputedStyle
   'getcomputedstyle':{ unimplemented: true }
