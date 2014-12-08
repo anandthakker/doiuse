@@ -1,3 +1,8 @@
+2014-12-08 - 0.1.2 (f41c148)
+f41c148 (HEAD, origin/master, origin/HEAD, master) Switch to GNU message format.
+ec1d982 (tag: v0.1.1) 0.1.1
+
+
 2014-11-23 - 0.1.1 (ea36001)
 ea36001 (HEAD, master) feature: object-fit
 3aa0686 feature: overflow-wrap
