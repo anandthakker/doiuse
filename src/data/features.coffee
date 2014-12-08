@@ -395,7 +395,9 @@ module.exports=
     properties: [ 'word-break' ]
 
   # Viewport units: vw, vh, vmin, vmax
-  'viewport-units':{ unimplemented: true }
+  'viewport-units':
+    properties: ['']
+    values: [ 'vw', 'vh', 'vmin', 'vmax' ]
 
   # Scoped CSS
   'style-scoped':{ unimplemented: true }

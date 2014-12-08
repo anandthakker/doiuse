@@ -212,7 +212,8 @@ module.exports = {
     properties: ['word-break']
   },
   'viewport-units': {
-    unimplemented: true
+    properties: [''],
+    values: ['vw', 'vh', 'vmin', 'vmax']
   },
   'style-scoped': {
     unimplemented: true
