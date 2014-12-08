@@ -1,3 +1,15 @@
+2014-12-08 - 0.1.3 (d05291a)
+d05291a (HEAD, master) feature: css3 cursors
+67afda4 feature: outline
+e19af16 feature: viewport units
+6835199 feature: word-break
+ef9474b feature: css-repeating-gradients
+08e84f4 feature: css-resize
+23aba2c features: rem units, pointer-events, counters
+1356b67 (origin/master, origin/HEAD) add travis
+a92ce3a (tag: v0.1.2) 0.1.2
+
+
 2014-12-08 - 0.1.2 (f41c148)
 f41c148 (HEAD, origin/master, origin/HEAD, master) Switch to GNU message format.
 ec1d982 (tag: v0.1.1) 0.1.1
