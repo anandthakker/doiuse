@@ -371,13 +371,16 @@ module.exports=
   'ttf':{ unimplemented: true }
 
   # CSS pointer-events (for HTML)
-  'pointer-events':{ unimplemented: true }
+  'pointer-events':
+    properties: ['pointer-events']
 
   # CSS Regions
   'css-regions':{ unimplemented: true }
 
   # CSS Counters
-  'css-counters':{ unimplemented: true }
+  'css-counters':
+    properties: ['counter-reset', 'counter-increment']
+    # TODO: property: content, value: counter(...) or counters(...)
 
   # CSS resize property
   'css-resize':{ unimplemented: true }

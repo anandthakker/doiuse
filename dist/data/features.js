@@ -193,13 +193,13 @@ module.exports = {
     unimplemented: true
   },
   'pointer-events': {
-    unimplemented: true
+    properties: ['pointer-events']
   },
   'css-regions': {
     unimplemented: true
   },
   'css-counters': {
-    unimplemented: true
+    properties: ['counter-reset', 'counter-increment']
   },
   'css-resize': {
     unimplemented: true
