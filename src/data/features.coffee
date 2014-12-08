@@ -399,11 +399,14 @@ module.exports=
     properties: ['']
     values: [ 'vw', 'vh', 'vmin', 'vmax' ]
 
-  # Scoped CSS
-  'style-scoped':{ unimplemented: true }
-
   # CSS outline
-  'outline':{ unimplemented: true }
+  'outline':
+    properties: [
+      'outline'
+      'outline-style'
+      'outline-width'
+      'outline-color'
+    ]
 
   # CSS3 Cursors (original values)
   'css3-cursors':{ unimplemented: true }
