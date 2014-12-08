@@ -208,11 +208,8 @@ module.exports = {
     properties: [''],
     values: ['repeating-linear-gradient', 'repeating-radial-gradient']
   },
-  'getcomputedstyle': {
-    unimplemented: true
-  },
   'word-break': {
-    unimplemented: true
+    properties: ['word-break']
   },
   'viewport-units': {
     unimplemented: true

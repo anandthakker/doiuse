@@ -390,11 +390,9 @@ module.exports=
     properties: ['']
     values: ['repeating-linear-gradient', 'repeating-radial-gradient']
 
-  # getComputedStyle
-  'getcomputedstyle':{ unimplemented: true }
-
   # CSS3 word-break
-  'word-break':{ unimplemented: true }
+  'word-break':
+    properties: [ 'word-break' ]
 
   # Viewport units: vw, vh, vmin, vmax
   'viewport-units':{ unimplemented: true }
