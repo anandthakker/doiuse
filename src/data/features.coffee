@@ -383,7 +383,8 @@ module.exports=
     # TODO: property: content, value: counter(...) or counters(...)
 
   # CSS resize property
-  'css-resize':{ unimplemented: true }
+  'css-resize':
+    properties: ['resize']
 
   # CSS Repeating Gradients
   'css-repeating-gradients':{ unimplemented: true }

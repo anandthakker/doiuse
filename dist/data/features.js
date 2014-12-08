@@ -202,7 +202,7 @@ module.exports = {
     properties: ['counter-reset', 'counter-increment']
   },
   'css-resize': {
-    unimplemented: true
+    properties: ['resize']
   },
   'css-repeating-gradients': {
     unimplemented: true
