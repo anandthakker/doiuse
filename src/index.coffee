@@ -18,8 +18,8 @@ doiuse = ({browserSelection, onUnsupportedFeatureUse}) ->
   postcss: (css) -> detector.process css, ({feature, usage})->
     loc = usage.source
     message= (loc.file ? loc.id) + ':' +
-      ' line ' + loc.start.line + ', col ' + loc.start.column +
-      " - " + features[feature].title + ' not supported by: ' +
+      loc.start.line + ':' + loc.start.column + ': ' +
+      features[feature].title + ' not supported by: ' +
       features[feature].missing
 
     cb

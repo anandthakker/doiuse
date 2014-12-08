@@ -29,7 +29,7 @@ doiuse = function(_arg) {
         var feature, loc, message, usage, _ref1;
         feature = _arg1.feature, usage = _arg1.usage;
         loc = usage.source;
-        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + ' line ' + loc.start.line + ', col ' + loc.start.column + " - " + features[feature].title + ' not supported by: ' + features[feature].missing;
+        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + loc.start.line + ':' + loc.start.column + ': ' + features[feature].title + ' not supported by: ' + features[feature].missing;
         return cb({
           feature: feature,
           featureData: features[feature],
