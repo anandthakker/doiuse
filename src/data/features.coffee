@@ -409,7 +409,30 @@ module.exports=
     ]
 
   # CSS3 Cursors (original values)
-  'css3-cursors':{ unimplemented: true }
+  'css3-cursors':
+    properties: ['cursor']
+    values: [
+      'none'
+      'context-menu'
+      'cell'
+      'vertical-text'
+      'alias'
+      'copy'
+      'no-drop'
+      'not-allowed'
+      'nesw-resize'
+      'nwse-resize'
+      'col-resize'
+      'row-resize'
+      'all-scroll'
+    ]
+  
+  'css3-cursors-newer':
+    properties: ['cursor']
+    values: [
+      'zoom-in'
+      'zoom-out'
+    ]
 
   # CSS Variables
   'css-variables':{ unimplemented: true }
