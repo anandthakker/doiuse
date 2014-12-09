@@ -48,7 +48,8 @@ class Detector
   
   atrule: (atrule, cb)->
     for feat, data of @features
-      if _.find(data.atrules ? [], isFoundIn(atrule.name))
+      if _.find(data.atrules ? [], isFoundIn(atrule.name)) and
+      (!data.params or _.find(data.params, isFoundIn(atrule.params)))
         cb {usage: atrule, feature: feat}
 
     @process(atrule, cb)

@@ -223,7 +223,7 @@ module.exports=
    
   # @font-face Web fonts
   'fontface':
-    atrules: ['@font-face']
+    atrules: ['font-face']
 
   # CSS3 Multiple backgrounds
   'multibackgrounds': {
@@ -438,49 +438,64 @@ module.exports=
   'css-variables':{ unimplemented: true }
 
   # CSS background-blend-mode
-  'css-backgroundblendmode':{ unimplemented: true }
+  'css-backgroundblendmode':
+    properties: ['background-blend-mode']
 
   # Blending of HTML/SVG elements
-  'css-mixblendmode':{ unimplemented: true }
+  'css-mixblendmode':
+    properties: ['mix-blend-mode']
 
   # CSS will-change property
-  'will-change':{ unimplemented: true }
+  'will-change':
+    properties: ['will-change']
 
   # CSS Shapes Level 1
-  'css-shapes':{ unimplemented: true }
+  'css-shapes':
+    properties: ['shape-outside', 'shape-image-threshold', 'shape-margin']
 
   # Improved kerning pairs & ligatures
-  'kerning-pairs-ligatures':{ unimplemented: true }
+  'kerning-pairs-ligatures':
+    properties: ['text-rendering']
+    values: ['optimizeLegibility']
 
   # CSS3 image-orientation
-  'css-image-orientation':{ unimplemented: true }
+  'css-image-orientation':
+    properties: ['image-orientation']
 
   # CSS Appearance
-  'css-appearance':{ unimplemented: true }
+  'css-appearance':
+    properties: ['appearance']
 
   # CSS background-position edge offsets
   'css-background-offsets':{ unimplemented: true }
 
   # CSS touch-action property
-  'css-touch-action':{ unimplemented: true }
+  'css-touch-action':
+    properties: ['touch-action']
 
   # CSS clip-path property
-  'css-clip-path':{ unimplemented: true }
-
-  # CSS Font Loading
-  'font-loading':{ unimplemented: true }
+  'css-clip-path':
+    properties: ['clip-path']
 
   # Font unicode-range subsetting
-  'font-unicode-range':{ unimplemented: true }
+  'font-unicode-range':
+    atrules: ['font-face']
+    properties: ['unicode-range']
 
   # CSS font-stretch
-  'css-font-stretch':{ unimplemented: true }
+  'css-font-stretch':
+    properties: ['font-stretch']
 
   # CSS font-size-adjust
-  'font-size-adjust':{ unimplemented: true }
+  'font-size-adjust':
+    properties: ['font-size-adjust']
 
   # Media Queries: resolution feature
-  'css-media-resolution':{ unimplemented: true }
+  'css-media-resolution':
+    atrules: 'media'
+    params: ['min-resolution', 'max-resolution']
 
   # CSS image-set
-  'css-image-set':{ unimplemented: true }
+  'css-image-set':
+    properties: ['']
+    values: ['image-set']

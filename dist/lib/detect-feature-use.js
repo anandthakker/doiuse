@@ -95,7 +95,7 @@ Detector = (function() {
     _ref = this.features;
     for (feat in _ref) {
       data = _ref[feat];
-      if (_.find((_ref1 = data.atrules) != null ? _ref1 : [], isFoundIn(atrule.name))) {
+      if (_.find((_ref1 = data.atrules) != null ? _ref1 : [], isFoundIn(atrule.name)) && (!data.params || _.find(data.params, isFoundIn(atrule.params)))) {
         cb({
           usage: atrule,
           feature: feat

@@ -110,7 +110,7 @@ module.exports = {
     properties: ['clip-path', 'mask', 'mask-clip', 'mask-composite', 'mask-image', 'mask-origin', 'mask-position', 'mask-repeat', 'mask-size']
   },
   'fontface': {
-    atrules: ['@font-face']
+    atrules: ['font-face']
   },
   'multibackgrounds': {
     properties: [/^background-?/],
@@ -230,51 +230,52 @@ module.exports = {
     unimplemented: true
   },
   'css-backgroundblendmode': {
-    unimplemented: true
+    properties: ['background-blend-mode']
   },
   'css-mixblendmode': {
-    unimplemented: true
+    properties: ['mix-blend-mode']
   },
   'will-change': {
-    unimplemented: true
+    properties: ['will-change']
   },
   'css-shapes': {
-    unimplemented: true
+    properties: ['shape-outside', 'shape-image-threshold', 'shape-margin']
   },
   'kerning-pairs-ligatures': {
-    unimplemented: true
+    properties: ['text-rendering'],
+    values: ['optimizeLegibility']
   },
   'css-image-orientation': {
-    unimplemented: true
+    properties: ['image-orientation']
   },
   'css-appearance': {
-    unimplemented: true
+    properties: ['appearance']
   },
   'css-background-offsets': {
     unimplemented: true
   },
   'css-touch-action': {
-    unimplemented: true
+    properties: ['touch-action']
   },
   'css-clip-path': {
-    unimplemented: true
-  },
-  'font-loading': {
-    unimplemented: true
+    properties: ['clip-path']
   },
   'font-unicode-range': {
-    unimplemented: true
+    atrules: ['font-face'],
+    properties: ['unicode-range']
   },
   'css-font-stretch': {
-    unimplemented: true
+    properties: ['font-stretch']
   },
   'font-size-adjust': {
-    unimplemented: true
+    properties: ['font-size-adjust']
   },
   'css-media-resolution': {
-    unimplemented: true
+    atrules: 'media',
+    params: ['min-resolution', 'max-resolution']
   },
   'css-image-set': {
-    unimplemented: true
+    properties: [''],
+    values: ['image-set']
   }
 };
