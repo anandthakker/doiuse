@@ -28,20 +28,30 @@ var yargs = require('yargs')
     description: 'Verbose output. Multiple levels available.'
   })
   .count('verbose')
+  .options('j', {
+    alias: 'json',
+    description: 'Output JSON instead of string linter-like messages.'
+  })
+  .boolean('j')
   .help('h', 'Show help message.')
   .alias('h', 'help');
   
 var argv = yargs.argv;
 
+// Callback to report each unsupported feature usage.
+function report(usageInfo) {
+  console.log(argv.json ? JSON.stringify(usageInfo) : usageInfo.message);
+}
 
-var report = console.log.bind(console);
+
+// Set up the linter instance
 var linter = doiuse({
   browserSelection: argv.b.split(',').map(function(s){return s.trim();}),
-  onUnsupportedFeatureUse: function(usageInfo) {
-    report(usageInfo.message);
-  }
+  onUnsupportedFeatureUse: report
 });
 var processor = postcss(linter);
+
+
 
 // Informational output
 if(argv.l) { argv.v = ++argv.verbose; }
