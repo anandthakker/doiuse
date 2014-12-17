@@ -14,6 +14,7 @@ function stream(browsers, options) {
       browserSelection: browsers,
       onUnsupportedFeatureUse: writeUsage
     })).process(css);
+    out.end();
   });
   var out = through.obj();
   function writeUsage(usageInfo) {
