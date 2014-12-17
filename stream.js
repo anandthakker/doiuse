@@ -11,11 +11,18 @@ module.exports = stream;
 function stream(browsers) {
   var out = through.obj();
   var inp = concat({encoding: 'string'}, function(css) {
-    postcss(doiuse({
-      browserSelection: browsers,
-      onUnsupportedFeatureUse: out.write.bind(out)
-    })).process(css);
-    out.end();
+    try {
+      postcss(doiuse({
+        browserSelection: browsers,
+        onUnsupportedFeatureUse: out.write.bind(out)
+      })).process(css);
+    }
+    catch(e) {
+      out.write({"message": "error parsing CSS", "error": e});
+    }
+    finally {
+      out.end();
+    }
   });
   return duplexer(inp, out);
 }
