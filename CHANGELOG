@@ -1,3 +1,8 @@
+2014-12-17 - 0.1.6 (2c716b0)
+2c716b0 (HEAD, master) add transform stream option
+06203bb (tag: v0.1.5, origin/master, origin/HEAD) 0.1.5
+
+
 2014-12-17 - 0.1.5 (a46c60d)
 a46c60d (HEAD, master) use browserslist module
 f1eba90 Add JSON output option in CLI
