@@ -8,17 +8,14 @@ var postcss = require('postcss'),
 
 module.exports = stream;
 
-function stream(browsers, options) {
+function stream(browsers) {
+  var out = through.obj();
   var inp = concat({encoding: 'string'}, function(css) {
     postcss(doiuse({
       browserSelection: browsers,
-      onUnsupportedFeatureUse: writeUsage
+      onUnsupportedFeatureUse: out.write.bind(out)
     })).process(css);
     out.end();
   });
-  var out = through.obj();
-  function writeUsage(usageInfo) {
-    out.write(options.json ? JSON.stringify(usageInfo) : usageInfo.message);
-  }
   return duplexer(inp, out);
 }

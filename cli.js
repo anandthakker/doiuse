@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
-var fs = require('fs');
+var fs = require('fs'),
+    ldjson = require('ldjson-stream'),
+    jsonfilter = require('jsonfilter'),
+    through = require('through2');
 
 var formatBrowserName = require('./dist/lib/util').formatBrowserName,
     defaultBrowsers = require('./').default,
@@ -68,15 +71,26 @@ if(argv.help || (argv._.length == 0 && process.stdin.isTTY)) {
 }
 
 var browsers = argv.b.split(',').map(function(s){return s.trim();});
-var options = {json: argv.json};
+var options = {messages: !argv.json};
+
+var out;
+if(argv.json) {
+  out = ldjson.serialize();
+}
+if(!argv.json) {
+  out = through.obj(function(usage, enc, next) {
+    next(null, usage.message);
+  });
+}
+out.pipe(process.stdout);
 
 if(argv._.length > 0)
   argv._.forEach(function(file){
     fs.createReadStream()
       .pipe(doiuse(browsers, options))
-      .pipe(process.stdout);
+      .pipe(out);
   });
 else
   process.stdin
     .pipe(doiuse(browsers, options))
-    .pipe(process.stdout);
+    .pipe(out);

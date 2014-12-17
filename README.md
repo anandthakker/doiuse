@@ -76,12 +76,11 @@ TODO:
 var doiuse = require('doiuse/stream');
 
 process.stdin
-  .pipe(doiuse(['ie >= 8', '> 1%'], {json: false}))
+  .pipe(doiuse(['ie >= 8', '> 1%']))
   .pipe(process.stdout);
 ```
 
-Setting `json: true` yields ld-json output.
-
+Yields usage info in objects as described below.
 
 
 ## As a postcss plugin
