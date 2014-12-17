@@ -1,3 +1,8 @@
+2014-12-17 - 0.2.2 (e87a0ca)
+e87a0ca (HEAD, master) handle errors
+6acec72 (tag: v0.2.1, origin/master, origin/HEAD) 0.2.1
+
+
 2014-12-17 - 0.2.1 (9a9947b)
 9a9947b (HEAD, master) fix: cli bugz
 059ad67 (tag: v0.2.0, origin/master, origin/HEAD) 0.2.0
