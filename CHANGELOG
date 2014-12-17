@@ -1,3 +1,13 @@
+2014-12-17 - 0.2.1 (9a9947b)
+9a9947b (HEAD, master) fix: cli bugz
+059ad67 (tag: v0.2.0, origin/master, origin/HEAD) 0.2.0
+76f1b99 (tag: v0.1.8) 0.1.8
+46e4452 change stream api to just do objects
+e25f1f4 (tag: v0.1.7) 0.1.7
+5751768 fix: flush stream
+e7332e6 (tag: v0.1.6) 0.1.6
+
+
 2014-12-17 - 0.1.6 (2c716b0)
 2c716b0 (HEAD, master) add transform stream option
 06203bb (tag: v0.1.5, origin/master, origin/HEAD) 0.1.5
