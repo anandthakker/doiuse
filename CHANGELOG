@@ -1,3 +1,9 @@
+2014-12-17 - 0.1.5 (a46c60d)
+a46c60d (HEAD, master) use browserslist module
+f1eba90 Add JSON output option in CLI
+73aeba4 (tag: v0.1.4, origin/master, origin/HEAD) 0.1.4
+
+
 2014-12-09 - 0.1.4 (0ee27e3)
 0ee27e3 (HEAD, master) Add several features (still pending tests)
 75df578 (origin/master, origin/HEAD) travis badge
