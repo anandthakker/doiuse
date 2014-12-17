@@ -1,16 +1,13 @@
-var BrowserSelection, Browsers, browsersData, _;
+var BrowserSelection, browserslist, _;
 
-Browsers = require('autoprefixer-core/lib/browsers');
-
-browsersData = require('autoprefixer-core/data/browsers');
+browserslist = require('browserslist');
 
 _ = require('lodash');
 
 module.exports = BrowserSelection = (function() {
   function BrowserSelection(browsersRequest) {
     this.browsersRequest = browsersRequest;
-    this.browsers = new Browsers(browsersData, this.browsersRequest);
-    this._list = this.browsers.selected.map(function(s) {
+    this._list = browserslist(this.browsersRequest).map(function(s) {
       return s.split(' ');
     });
   }

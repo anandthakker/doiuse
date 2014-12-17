@@ -1,12 +1,10 @@
-Browsers = require('autoprefixer-core/lib/browsers')
-browsersData = require('autoprefixer-core/data/browsers')
+browserslist = require('browserslist')
 _ = require('lodash')
 
 module.exports =
 class BrowserSelection
   constructor: (@browsersRequest)->
-    @browsers = new Browsers(browsersData, @browsersRequest)
-    @_list = @browsers.selected.map (s)->s.split(' ')
+    @_list = browserslist(@browsersRequest).map (s)->s.split(' ')
   # browser: a browser name ('chrome', 'ie', etc.)
   # version: either a version ('11', '7.1') or a range ('5.0-8.0')
   # return undefined or one matching [b, v] pair from the selected browsers
