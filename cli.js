@@ -1,11 +1,10 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-    concat = require('concat-stream'),
-    postcss = require('postcss');
+var fs = require('fs');
 
 var formatBrowserName = require('./dist/lib/util').formatBrowserName,
-    doiuse = require('./');
+    defaultBrowsers = require('./').default,
+    doiuse = require('./stream');
 
 var yargs = require('yargs')
   .usage('Lint your CSS for browser support.')
@@ -15,7 +14,7 @@ var yargs = require('yargs')
   .options('b', {
     alias: 'browsers',
     description: 'Autoprefixer-like browser criteria.',
-    default: doiuse.default.join(', ')
+    default: defaultBrowsers.join(', ')
   })
   .string('b')
   .options('l', {
@@ -37,21 +36,6 @@ var yargs = require('yargs')
   .alias('h', 'help');
   
 var argv = yargs.argv;
-
-// Callback to report each unsupported feature usage.
-function report(usageInfo) {
-  console.log(argv.json ? JSON.stringify(usageInfo) : usageInfo.message);
-}
-
-
-// Set up the linter instance
-var linter = doiuse({
-  browserSelection: argv.b.split(',').map(function(s){return s.trim();}),
-  onUnsupportedFeatureUse: report
-});
-var processor = postcss(linter);
-
-
 
 // Informational output
 if(argv.l) { argv.v = ++argv.verbose; }
@@ -83,13 +67,16 @@ if(argv.help || (argv._.length == 0 && process.stdin.isTTY)) {
   process.exit();
 }
 
+var browsers = argv.b.split(',').map(function(s){return s.trim();});
+var options = {json: argv.json};
+
 if(argv._.length > 0)
   argv._.forEach(function(file){
-    processor.process(fs.readFileSync(file), {
-      from: file
-    });
+    fs.createReadStream()
+      .pipe(doiuse(browsers, options))
+      .pipe(process.stdout);
   });
 else
-  process.stdin.pipe(concat(function(css) {
-    processor.process(css);
-  }));
+  process.stdin
+    .pipe(doiuse(browsers, options))
+    .pipe(process.stdout);

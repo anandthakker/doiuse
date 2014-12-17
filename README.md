@@ -13,7 +13,11 @@ are quite welcome!
 ## Command Line
 ```bash
 doiuse --browsers "ie >= 9, > 1%, last 2 versions" main.css
+# or
+cat main.css | doiuse --browsers "ie >= 9, > 1%, last 2 versions"
 ```
+
+
 **Sample output:**
 ```
 /projects/website/main.css:5:3: CSS3 Box-sizing not supported by: IE (8,9,10,11), Chrome (36,37,38), Safari (8,7.1), Opera (24,25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10,11)
@@ -66,6 +70,21 @@ TODO:
 
 
 # API Details: 
+
+## As a transform stream
+```javascript
+var doiuse = require('doiuse/stream');
+
+process.stdin
+  .pipe(doiuse(['ie >= 8', '> 1%'], {json: false}))
+  .pipe(process.stdout);
+```
+
+Setting `json: true` yields ld-json output.
+
+
+
+## As a postcss plugin
 `postcss(doiuse(opts)).process(css)`, where `opts` is:
 ```javascript
 {
