@@ -3,7 +3,8 @@
 var fs = require('fs'),
     ldjson = require('ldjson-stream'),
     jsonfilter = require('jsonfilter'),
-    through = require('through2');
+    through = require('through2'),
+    browserslist = require('browserslist');
 
 var formatBrowserName = require('./dist/lib/util').formatBrowserName,
     defaultBrowsers = require('./').default,
@@ -40,11 +41,14 @@ var yargs = require('yargs')
   
 var argv = yargs.argv;
 
+argv.browsers = argv.browsers.split(',').map(function(s){return s.trim();});
+
 // Informational output
 if(argv.l) { argv.v = ++argv.verbose; }
 if(argv.verbose >= 1) {
-  browsers = linter.info().browsers
+  browsers = browserslist(argv.browsers)
   console.log('[doiuse] Browsers: ' + browsers.map(function(b) {
+    b = b.split(' ')
     b[0] = formatBrowserName(b[0])
     return b.join(' ')
   }).join(', '));
@@ -70,7 +74,6 @@ if(argv.help || (argv._.length == 0 && process.stdin.isTTY)) {
   process.exit();
 }
 
-var browsers = argv.b.split(',').map(function(s){return s.trim();});
 var options = {messages: !argv.json};
 
 var out;
@@ -86,11 +89,11 @@ out.pipe(process.stdout);
 
 if(argv._.length > 0)
   argv._.forEach(function(file){
-    fs.createReadStream()
-      .pipe(doiuse(browsers, options))
+    fs.createReadStream(file)
+      .pipe(doiuse(argv.browsers, options))
       .pipe(out);
   });
 else
   process.stdin
-    .pipe(doiuse(browsers, options))
+    .pipe(doiuse(argv.browsers, options))
     .pipe(out);
