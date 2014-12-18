@@ -31,4 +31,4 @@ gulp.task 'build', ['coffee:build'], ->
 
 gulp.task 'test', ['coffee:build'], ->
   gulp.src(paths.test, read:false)
-  .pipe(mocha(reporter: 'nyan'))
+  .pipe(mocha())
