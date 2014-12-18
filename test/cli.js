@@ -31,6 +31,7 @@ describe('the cli', function() {
     path.join(__dirname,'/cases/resize.css')
     ].join(' ')
     exec(cmd,function(error, stdout, stderr) {
+      console.log('CLI output:', stdout);
       JSON.parse(stdout).feature.should.be.equal('css-resize')
     });
   })
