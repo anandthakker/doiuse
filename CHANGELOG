@@ -1,3 +1,8 @@
+2014-12-21 - 0.2.4 (9c7c7c0)
+9c7c7c0 (HEAD, master) don't instance postcss each chunk
+6fd9b9c (tag: v0.2.3, origin/master, origin/HEAD) 0.2.3
+
+
 2014-12-21 - 0.2.3 (e63df6a)
 e63df6a (HEAD, origin/master, origin/HEAD, master) Cut the input CSS into a stream of (parseable) fragments.
 9756c97 logging for travis
