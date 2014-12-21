@@ -1,3 +1,10 @@
+2014-12-21 - 0.2.3 (e63df6a)
+e63df6a (HEAD, origin/master, origin/HEAD, master) Cut the input CSS into a stream of (parseable) fragments.
+9756c97 logging for travis
+14476ff drop nyan reporter
+45c0e61 (tag: v0.2.2) 0.2.2
+
+
 2014-12-17 - 0.2.2 (e87a0ca)
 e87a0ca (HEAD, master) handle errors
 6acec72 (tag: v0.2.1, origin/master, origin/HEAD) 0.2.1
