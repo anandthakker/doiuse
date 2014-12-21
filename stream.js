@@ -19,6 +19,7 @@ function stream(browsers) {
   var out = through.obj(function(rule, enc, next) {
     try {
       processor.process(rule.content);
+      next();
     }
     catch(e) {
       next(e);

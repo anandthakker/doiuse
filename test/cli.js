@@ -11,9 +11,8 @@ describe('the cli', function() {
       '| node', path.join(__dirname, '../cli.js')
     ].join(' ')
     exec(cmd,function(error, stdout, stderr) {
-      var expected = '<input css 1>:2:3: CSS resize property not supported by: IE (8,9,10,11), Opera (12.1), iOS Safari (8,7.1,8.1), Opera Mini (8.0), Android Browser (4.1,4.3,4.4), IE Mobile (10,11), UC Browser for Android (9.9)';
-      
-      (''+stdout).should.be.equal(expected);
+      var expected = '<input css 1>:2:3: CSS resize property not supported by: IE (8,9,10,11), Opera (12.1), iOS Safari (8,7.1,8.1), Opera Mini (8.0), Android Browser (4.1,4.3,4.4), IE Mobile (10,11), UC Browser for Android (9.9)\n';
+      stdout.should.be.equal(expected);
       done()
     });
   })
@@ -24,7 +23,7 @@ describe('the cli', function() {
       path.join(__dirname,'/cases/resize.css')
     ].join(' ')
     exec(cmd,function(error, stdout, stderr) {
-      stdout.should.be.equal('<input css 1>:2:3: CSS resize property not supported by: IE (8,9,10,11), Opera (12.1), iOS Safari (8,7.1,8.1), Opera Mini (8.0), Android Browser (4.1,4.3,4.4), IE Mobile (10,11), UC Browser for Android (9.9)')
+      stdout.should.be.equal('<input css 1>:2:3: CSS resize property not supported by: IE (8,9,10,11), Opera (12.1), iOS Safari (8,7.1,8.1), Opera Mini (8.0), Android Browser (4.1,4.3,4.4), IE Mobile (10,11), UC Browser for Android (9.9)\n')
       done()
     });
   })

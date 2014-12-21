@@ -27,7 +27,7 @@
     "browserslist": "^0.1.0",
     "caniuse-db": "^1.0.30000023",
     "concat-stream": "^1.4.6",
-    "css-rule-stream": "^1.0.0",
+    "css-rule-stream": "^1.0.3",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",

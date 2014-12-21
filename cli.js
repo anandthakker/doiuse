@@ -82,7 +82,7 @@ if(argv.json) {
 }
 if(!argv.json) {
   out = through.obj(function(usage, enc, next) {
-    next(null, usage.message);
+    next(null, usage.message + '\n');
   });
 }
 out.pipe(process.stdout);
@@ -90,10 +90,10 @@ out.pipe(process.stdout);
 if(argv._.length > 0)
   argv._.forEach(function(file){
     fs.createReadStream(file)
-      .pipe(doiuse(argv.browsers, options))
+      .pipe(doiuse(argv.browsers))
       .pipe(out);
   });
 else
   process.stdin
-    .pipe(doiuse(argv.browsers, options))
+    .pipe(doiuse(argv.browsers))
     .pipe(out);
