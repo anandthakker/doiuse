@@ -1,7 +1,7 @@
 
 var through = require('through2'),
     duplexer = require('duplexer2'),
-    concat = require('concat-stream');
+    rules = require('css-rule-stream');
 
 var postcss = require('postcss'),
     doiuse = require('./');
@@ -9,20 +9,19 @@ var postcss = require('postcss'),
 module.exports = stream;
 
 function stream(browsers) {
-  var out = through.obj();
-  var inp = concat({encoding: 'string'}, function(css) {
+  var inp = rules();
+  var out = through.obj(function(rule, enc, next) {
     try {
       postcss(doiuse({
         browserSelection: browsers,
-        onUnsupportedFeatureUse: out.write.bind(out)
-      })).process(css);
+        onUnsupportedFeatureUse: this.push.bind(this)
+      })).process(rule.content);
     }
     catch(e) {
-      out.write({"message": "error parsing CSS", "error": e});
-    }
-    finally {
-      out.end();
+      next(e);
     }
   });
+
+  inp.pipe(out);
   return duplexer(inp, out);
 }
