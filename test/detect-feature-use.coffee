@@ -1,6 +1,6 @@
 fs = require('fs')
 path = require('path')
-should = require('should')
+should = require('chai').should()
 postcss = require('postcss')
 Detector = require('../dist/lib/detect-feature-use')
 

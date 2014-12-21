@@ -1,10 +1,10 @@
-should = require('should')
+should = require('chai').should()
 missingSupport = require('../dist/lib/missing-support')
 
 describe 'missing-support', ->
   it 'provides list of selected browsers', ->
     data = missingSupport(['ie >= 8'])
-    data.browsers.should.containDeep [
+    data.browsers.sort((a,b)->Number(a[1])-Number(b[1])).should.deep.equal [
       ['ie','8']
       ['ie','9']
       ['ie', '10']

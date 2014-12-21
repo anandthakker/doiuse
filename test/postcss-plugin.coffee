@@ -1,5 +1,5 @@
 fs = require('fs')
-should = require('should')
+should = require('chai').should()
 
 doiuse = require('../dist')
 postcss = require('postcss')
