@@ -47,11 +47,16 @@ argv.browsers = argv.browsers.split(',').map(function(s){return s.trim();});
 if(argv.l) { argv.v = ++argv.verbose; }
 if(argv.verbose >= 1) {
   browsers = browserslist(argv.browsers)
-  console.log('[doiuse] Browsers: ' + browsers.map(function(b) {
-    b = b.split(' ')
-    b[0] = formatBrowserName(b[0])
-    return b.join(' ')
-  }).join(', '));
+  .map(function(b) {
+    b = b.split(' ');
+    b[0] = formatBrowserName(b[0]);
+    b[1] = parseInt(b[1]); 
+    return b;
+  })
+  .sort(function(a, b) { return (a[0] !== b[0]) ? a[0] > b[0] : a[1] > b[1] })
+  .map(function(b) { return b.join(' '); } )
+  .join(', ')
+  console.log('[doiuse] Browsers: ' + browsers);
 }
 
 if(argv.verbose >= 2) {
