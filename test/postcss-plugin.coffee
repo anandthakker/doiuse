@@ -19,7 +19,7 @@ describe 'postcss plugin', ->
     count = 0
     postcss(doiuse(
       browsers: ['ie 8']
-      onUnsupportedFeatureUse: (usageInfo)->
+      onFeatureUsage: (usageInfo)->
         count++
         usageInfo.should.have.keys('feature', 'featureData', 'usage', 'message')
         usageInfo.featureData.should.have.keys(

@@ -12,8 +12,8 @@ function stream(browsers) {
   var inp = rules();
 
   var processor = postcss(doiuse({
-    browserSelection: browsers,
-    onUnsupportedFeatureUse: pushUsage
+    browsers: browsers,
+    onFeatureUsage: pushUsage
   }));
 
   var out = through.obj(function(rule, enc, next) {

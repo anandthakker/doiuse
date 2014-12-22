@@ -42,7 +42,7 @@ var doiuse = require('doiuse');
 
 postcss(doiuse({
   browsers:['ie >= 6', '> 1%'],
-  onUnsupportedFeatureUse: function(usageInfo) {
+  onFeatureUsage: function(usageInfo) {
     console.log(usageInfo.message);
   }
 })).process("a { background-size: cover; }")
@@ -88,7 +88,7 @@ Yields usage info in objects as described below.
 ```javascript
 {
   browserSelection: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
-  onUnsupportedFeatureUse: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
+  onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
 }
 ```
 

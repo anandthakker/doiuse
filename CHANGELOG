@@ -1,3 +1,10 @@
+2014-12-22 - 0.2.6 (44d5c3a)
+44d5c3a (HEAD, tag: v0.2.5, origin/master, origin/HEAD, master) 0.2.5
+80b4345 fix missing next()
+66cb3b7 fix tests
+d958dec (tag: v0.2.4) 0.2.4
+
+
 2014-12-21 - 0.2.4 (9c7c7c0)
 9c7c7c0 (HEAD, master) don't instance postcss each chunk
 6fd9b9c (tag: v0.2.3, origin/master, origin/HEAD) 0.2.3

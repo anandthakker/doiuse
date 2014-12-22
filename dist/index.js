@@ -9,13 +9,13 @@ Detector = require('./lib/detect-feature-use');
 featureData = require('./data/features');
 
 doiuse = function(_arg) {
-  var browserSelection, browsers, cb, detector, features, onUnsupportedFeatureUse, _ref;
-  browserSelection = _arg.browserSelection, onUnsupportedFeatureUse = _arg.onUnsupportedFeatureUse;
-  if (browserSelection == null) {
-    browserSelection = doiuse["default"].slice();
+  var browsers, cb, detector, features, onFeatureUsage, _ref;
+  browsers = _arg.browsers, onFeatureUsage = _arg.onFeatureUsage;
+  if (browsers == null) {
+    browsers = doiuse["default"].slice();
   }
-  cb = onUnsupportedFeatureUse != null ? onUnsupportedFeatureUse : function() {};
-  _ref = missingSupport(browserSelection), browsers = _ref.browsers, features = _ref.features;
+  cb = onFeatureUsage != null ? onFeatureUsage : function() {};
+  _ref = missingSupport(browsers), browsers = _ref.browsers, features = _ref.features;
   detector = new Detector(_.keys(features));
   return {
     info: function() {

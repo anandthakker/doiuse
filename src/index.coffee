@@ -5,10 +5,10 @@ missingSupport = require('./lib/missing-support')
 Detector = require('./lib/detect-feature-use')
 featureData = require('./data/features')
 
-doiuse = ({browserSelection, onUnsupportedFeatureUse}) ->
-  browserSelection ?= doiuse.default.slice()
-  cb = onUnsupportedFeatureUse ? ->
-  {browsers, features} = missingSupport(browserSelection)
+doiuse = ({browsers, onFeatureUsage}) ->
+  browsers ?= doiuse.default.slice()
+  cb = onFeatureUsage ? ->
+  {browsers, features} = missingSupport(browsers)
   detector = new Detector(_.keys(features))
   
   info: ->
