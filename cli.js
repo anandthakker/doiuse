@@ -95,7 +95,7 @@ out.pipe(process.stdout);
 if(argv._.length > 0)
   argv._.forEach(function(file){
     fs.createReadStream(file)
-      .pipe(doiuse(argv.browsers))
+      .pipe(doiuse(argv.browsers, file))
       .pipe(out);
   });
 else

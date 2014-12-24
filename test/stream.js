@@ -11,7 +11,7 @@ describe('streaming', function() {
     'background-img-opts'
   ]
   
-  it.only('works', function(done) {
+  it('works', function(done) {
     var s = stream('IE >= 8');
     s.pipe(through.obj(function(usage, enc, next) {
       usage.feature.should.equal(expected.shift());

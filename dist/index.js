@@ -1,4 +1,4 @@
-var Detector, doiuse, featureData, missingSupport, _;
+var Detector, SourceMapConsumer, doiuse, featureData, missingSupport, _;
 
 _ = require('lodash');
 
@@ -7,6 +7,8 @@ missingSupport = require('./lib/missing-support');
 Detector = require('./lib/detect-feature-use');
 
 featureData = require('./data/features');
+
+SourceMapConsumer = require('source-map').SourceMapConsumer;
 
 doiuse = function(_arg) {
   var browsers, cb, detector, features, onFeatureUsage, _ref;
@@ -26,10 +28,17 @@ doiuse = function(_arg) {
     },
     postcss: function(css) {
       return detector.process(css, function(_arg1) {
-        var feature, loc, message, usage, _ref1;
+        var feature, loc, message, usage, _ref1, _ref2;
         feature = _arg1.feature, usage = _arg1.usage;
         loc = usage.source;
-        message = ((_ref1 = loc.file) != null ? _ref1 : loc.id) + ':' + loc.start.line + ':' + loc.start.column + ': ' + features[feature].title + ' not supported by: ' + features[feature].missing;
+        loc.original = css.prevMap != null ? {
+          start: css.prevMap.consumer().originalPositionFor(loc.start),
+          end: css.prevMap.consumer().originalPositionFor(loc.end)
+        } : {
+          start: loc.start,
+          end: loc.end
+        };
+        message = ((_ref1 = (_ref2 = loc.original.start.source) != null ? _ref2 : loc.file) != null ? _ref1 : loc.id) + ':' + loc.original.start.line + ':' + loc.original.start.column + ': ' + features[feature].title + ' not supported by: ' + features[feature].missing;
         return cb({
           feature: feature,
           featureData: features[feature],
