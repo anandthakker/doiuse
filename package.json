@@ -1,6 +1,6 @@
 {
   "name": "doiuse",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Lint CSS for browser support against caniuse database.",
   "main": "dist/index.js",
   "scripts": {
