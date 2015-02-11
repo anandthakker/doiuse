@@ -5,8 +5,8 @@ browserslist = require('browserslist');
 _ = require('lodash');
 
 module.exports = BrowserSelection = (function() {
-  function BrowserSelection(browsersRequest) {
-    this.browsersRequest = browsersRequest;
+  function BrowserSelection(_at_browsersRequest) {
+    this.browsersRequest = _at_browsersRequest;
     this._list = browserslist(this.browsersRequest).map(function(s) {
       return s.split(' ');
     });
