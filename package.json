@@ -24,27 +24,26 @@
   },
   "homepage": "https://github.com/anandthakker/doiuse",
   "dependencies": {
-    "browserslist": "^0.1.0",
-    "caniuse-db": "^1.0.30000023",
-    "concat-stream": "^1.4.6",
+    "browserslist": "^0.3.1",
+    "caniuse-db": "^1.0.30000090",
+    "concat-stream": "^1.4.7",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
-    "lodash": "^2.4.1",
-    "postcss": "^3.0.2",
-    "source-map": "^0.1.41",
+    "lodash": "^3.5.0",
+    "postcss": "^4.0.6",
+    "source-map": "^0.4.2",
     "through2": "^0.6.3",
-    "yargs": "^1.3.3"
+    "yargs": "^3.5.4"
   },
   "devDependencies": {
-    "chai": "^1.10.0",
-    "coffee-script": "^1.8.0",
-    "del": "^0.1.3",
-    "gulp": "^3.8.10",
-    "gulp-coffee": "^2.2.0",
-    "gulp-mocha": "^1.1.1",
-    "gulp-util": "^3.0.1",
-    "postcss": "^3.0.0"
+    "chai": "^2.1.1",
+    "coffee-script": "^1.9.1",
+    "del": "^1.1.1",
+    "gulp": "^3.8.11",
+    "gulp-coffee": "^2.3.1",
+    "gulp-mocha": "^2.0.0",
+    "gulp-util": "^3.0.4"
   }
 }
