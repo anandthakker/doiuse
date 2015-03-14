@@ -1,4 +1,4 @@
-var Detector, features, isFoundIn, _;
+var Detector, _, features, isFoundIn;
 
 _ = require('lodash');
 
@@ -48,17 +48,17 @@ Detector = (function() {
   }
 
   Detector.prototype.decl = function(decl, cb) {
-    var data, feat, prop, _ref, _results;
-    _ref = this.features;
-    _results = [];
-    for (feat in _ref) {
-      data = _ref[feat];
-      _results.push((function() {
-        var _i, _len, _ref1, _ref2, _results1;
-        _ref2 = ((_ref1 = data.properties) != null ? _ref1 : []).filter(isFoundIn(decl.prop));
-        _results1 = [];
-        for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-          prop = _ref2[_i];
+    var data, feat, prop, ref, results;
+    ref = this.features;
+    results = [];
+    for (feat in ref) {
+      data = ref[feat];
+      results.push((function() {
+        var i, len, ref1, ref2, results1;
+        ref2 = ((ref1 = data.properties) != null ? ref1 : []).filter(isFoundIn(decl.prop));
+        results1 = [];
+        for (i = 0, len = ref2.length; i < len; i++) {
+          prop = ref2[i];
           if ((data.values == null) || _.find(data.values, isFoundIn(decl.value))) {
             cb({
               usage: decl,
@@ -66,21 +66,21 @@ Detector = (function() {
             });
             break;
           } else {
-            _results1.push(void 0);
+            results1.push(void 0);
           }
         }
-        return _results1;
+        return results1;
       })());
     }
-    return _results;
+    return results;
   };
 
   Detector.prototype.rule = function(rule, cb) {
-    var data, feat, _ref, _ref1;
-    _ref = this.features;
-    for (feat in _ref) {
-      data = _ref[feat];
-      if (_.find((_ref1 = data.selectors) != null ? _ref1 : [], isFoundIn(rule.selector))) {
+    var data, feat, ref, ref1;
+    ref = this.features;
+    for (feat in ref) {
+      data = ref[feat];
+      if (_.find((ref1 = data.selectors) != null ? ref1 : [], isFoundIn(rule.selector))) {
         cb({
           usage: rule,
           feature: feat
@@ -91,11 +91,11 @@ Detector = (function() {
   };
 
   Detector.prototype.atrule = function(atrule, cb) {
-    var data, feat, _ref, _ref1;
-    _ref = this.features;
-    for (feat in _ref) {
-      data = _ref[feat];
-      if (_.find((_ref1 = data.atrules) != null ? _ref1 : [], isFoundIn(atrule.name)) && (!data.params || _.find(data.params, isFoundIn(atrule.params)))) {
+    var data, feat, ref, ref1;
+    ref = this.features;
+    for (feat in ref) {
+      data = ref[feat];
+      if (_.find((ref1 = data.atrules) != null ? ref1 : [], isFoundIn(atrule.name)) && (!data.params || _.find(data.params, isFoundIn(atrule.params)))) {
         cb({
           usage: atrule,
           feature: feat

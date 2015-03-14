@@ -10,21 +10,21 @@ describe 'missing-support', ->
       ['ie', '10']
       ['ie', '11']
     ]
-    
+
   describe 'filtering caniuse-db data by browser selection', ->
     it 'for browser request ie >= 7, safari >= 6, opera >= 10.1',->
       data = missingSupport(['ie >= 7', 'safari >= 6', 'opera >= 10.1'])
         .features
-        
+
       bgimgopts = data['background-img-opts']
-      
+
       bgimgopts.should.have.keys('missing','title','missingData','caniuseData')
-      
+
       missing = bgimgopts.missingData
-      missing.should.have.keys('ie', 'safari', 'opera')
+      missing.should.have.keys('ie', 'safari')
       missing['ie'].should.have.keys('7', '8')
       missing['safari'].should.have.keys('6', '6.1')
-      
+
     it 'only yields features not supported by selected browser', ->
       data = missingSupport(['ie 8']).features
       for f, featureData of data

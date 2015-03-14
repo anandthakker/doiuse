@@ -1,12 +1,12 @@
-var BrowserSelection, browserslist, _;
+var BrowserSelection, _, browserslist;
 
 browserslist = require('browserslist');
 
 _ = require('lodash');
 
 module.exports = BrowserSelection = (function() {
-  function BrowserSelection(_at_browsersRequest) {
-    this.browsersRequest = _at_browsersRequest;
+  function BrowserSelection(browsersRequest) {
+    this.browsersRequest = browsersRequest;
     this._list = browserslist(this.browsersRequest).map(function(s) {
       return s.split(' ');
     });
@@ -17,9 +17,9 @@ module.exports = BrowserSelection = (function() {
     if (version.length === 1) {
       version.push(version[0]);
     }
-    return _.find(this._list, function(_arg) {
+    return _.find(this._list, function(arg) {
       var b, v;
-      b = _arg[0], v = _arg[1];
+      b = arg[0], v = arg[1];
       return b === browser && v >= version[0] && v <= version[1];
     });
   };

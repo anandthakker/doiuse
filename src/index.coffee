@@ -11,7 +11,7 @@ doiuse = ({browsers, onFeatureUsage}) ->
   cb = onFeatureUsage ? ->
   {browsers, features} = missingSupport(browsers)
   detector = new Detector(_.keys(features))
-  
+
   info: ->
     browsers: browsers,
     features: features
@@ -26,8 +26,8 @@ doiuse = ({browsers, onFeatureUsage}) ->
       else
         start: loc.start
         end: loc.end
-      
-      message= (loc.original.start.source ? loc.file ? loc.id) + ':' +
+
+      message= (loc.original.start.source ? loc.input.file ? loc.input.from) + ':' +
         loc.original.start.line + ':' + loc.original.start.column + ': ' +
         features[feature].title + ' not supported by: ' +
         features[feature].missing
