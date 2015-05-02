@@ -13,7 +13,7 @@ describe 'missing-support', ->
 
   describe 'filtering caniuse-db data by browser selection', ->
     it 'for browser request ie >= 7, safari >= 6, opera >= 10.1',->
-      data = missingSupport(['ie >= 7', 'safari >= 6', 'opera >= 10.1'])
+      data = missingSupport(['ie >= 7', 'safari >= 6'])
         .features
 
       bgimgopts = data['background-img-opts']
