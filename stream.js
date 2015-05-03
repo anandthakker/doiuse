@@ -17,10 +17,10 @@ function stream(browsers, filename) {
   var inp = rules();
   filename = filename || '<streaming css input>'
 
-  var processor = postcss(doiuse({
+  var processor = postcss([doiuse({
     browsers: browsers,
     onFeatureUsage: pushUsage
-  }));
+  })]);
 
   var out = through.obj(function(rule, enc, next) {
     try {
@@ -43,8 +43,11 @@ function stream(browsers, filename) {
         ocol = 1;
       }
       
-      processor.process(rule.content, {map: {prev: mapper.toString() } });
-      next();
+      processor.process(rule.content, {map: {prev: mapper.toString() } })
+      .then(function (result) {
+        next()
+      })
+      .catch(next)
     }
     catch(e) {
       next(e);

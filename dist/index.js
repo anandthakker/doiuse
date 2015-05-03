@@ -1,4 +1,4 @@
-var Detector, SourceMapConsumer, _, doiuse, featureData, missingSupport;
+var Detector, SourceMapConsumer, doiuse, featureData, missingSupport, _;
 
 _ = require('lodash');
 
@@ -10,14 +10,14 @@ featureData = require('./data/features');
 
 SourceMapConsumer = require('source-map').SourceMapConsumer;
 
-doiuse = function(arg) {
-  var browsers, cb, detector, features, onFeatureUsage, ref;
-  browsers = arg.browsers, onFeatureUsage = arg.onFeatureUsage;
+doiuse = function(_arg) {
+  var browsers, cb, detector, features, onFeatureUsage, _ref;
+  browsers = _arg.browsers, onFeatureUsage = _arg.onFeatureUsage;
   if (browsers == null) {
     browsers = doiuse["default"].slice();
   }
   cb = onFeatureUsage != null ? onFeatureUsage : function() {};
-  ref = missingSupport(browsers), browsers = ref.browsers, features = ref.features;
+  _ref = missingSupport(browsers), browsers = _ref.browsers, features = _ref.features;
   detector = new Detector(_.keys(features));
   return {
     info: function() {
@@ -27,9 +27,9 @@ doiuse = function(arg) {
       };
     },
     postcss: function(css) {
-      return detector.process(css, function(arg1) {
-        var feature, loc, message, ref1, ref2, usage;
-        feature = arg1.feature, usage = arg1.usage;
+      return detector.process(css, function(_arg1) {
+        var feature, loc, message, usage, _ref1, _ref2;
+        feature = _arg1.feature, usage = _arg1.usage;
         loc = usage.source;
         loc.original = css.prevMap != null ? {
           start: css.prevMap.consumer().originalPositionFor(loc.start),
@@ -38,7 +38,7 @@ doiuse = function(arg) {
           start: loc.start,
           end: loc.end
         };
-        message = ((ref1 = (ref2 = loc.original.start.source) != null ? ref2 : loc.input.file) != null ? ref1 : loc.input.from) + ':' + loc.original.start.line + ':' + loc.original.start.column + ': ' + features[feature].title + ' not supported by: ' + features[feature].missing;
+        message = ((_ref1 = (_ref2 = loc.original.start.source) != null ? _ref2 : loc.input.file) != null ? _ref1 : loc.input.from) + ':' + loc.original.start.line + ':' + loc.original.start.column + ': ' + features[feature].title + ' not supported by: ' + features[feature].missing;
         return cb({
           feature: feature,
           featureData: features[feature],

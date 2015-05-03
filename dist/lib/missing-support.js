@@ -1,4 +1,4 @@
-var BrowserSelection, _, features, filterStats, formatBrowserName, fs, missing;
+var BrowserSelection, features, filterStats, formatBrowserName, fs, missing, _;
 
 features = require('../data/features');
 

@@ -25,4 +25,4 @@ describe 'postcss plugin', ->
         usageInfo.featureData.should.have.keys(
           'title', 'missing','missingData', 'caniuseData')
     )).process(css)
-    count.should.equal(4)
+      .then( -> count.should.equal(4) )

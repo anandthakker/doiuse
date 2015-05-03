@@ -4,8 +4,8 @@ agents = require('caniuse-db/data').agents;
 
 module.exports = {
   formatBrowserName: function(browserKey, versions) {
-    var browserName, ref;
-    browserName = (ref = agents[browserKey]) != null ? ref.browser : void 0;
+    var browserName, _ref;
+    browserName = (_ref = agents[browserKey]) != null ? _ref.browser : void 0;
     if (!versions) {
       return browserName;
     }
