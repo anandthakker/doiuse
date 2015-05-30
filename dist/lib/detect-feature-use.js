@@ -1,127 +1,110 @@
-var Detector, features, isFoundIn, _;
+'use strict';
 
-_ = require('lodash');
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-features = require('../data/features');
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+var _ = require('lodash');
+var features = require('../data/features');
 
 /*
-str: string to search in.
-searchfor: string or pattern to search for.
+ * str: string to search in.
+ * searchfor: string or pattern to search for.
  */
-
-isFoundIn = function(str) {
-  return function(searchfor) {
-    if (searchfor instanceof RegExp) {
-      return searchfor.test(str);
-    } else if (_.isFunction(searchfor)) {
-      return searchfor(str);
-    } else {
-      return (str != null ? str.indexOf(searchfor) : void 0) >= 0;
-    }
+function isFoundIn(str) {
+  return function find(searchfor) {
+    if (searchfor instanceof RegExp) return searchfor.test(str);else if (_.isFunction(searchfor)) return searchfor(str);else return str && str.indexOf(searchfor) >= 0;
   };
-};
-
+}
 
 /*
-postcss the use of any of a given list of CSS features.
-
-```
-var detector = new Detector(featureList)
-detector.process(css, cb)
-```
-
-`featureList`: an array of feature slugs (see caniuse-db)
-`cb`: a callback that gets called for each usage of one of the given features,
-called with an argument like:
-```
-{
-  usage: {} // postcss node where usage was found
-  feature: {} // caniuse-db feature slug
-}
-```
+ * postcss the use of any of a given list of CSS features.
+ * ```
+ * var detector = new Detector(featureList)
+ * detector.process(css, cb)
+ * ```
+ *
+ * `featureList`: an array of feature slugs (see caniuse-db)
+ * `cb`: a callback that gets called for each usage of one of the given features,
+ * called with an argument like:
+ * ```
+ * {
+ *   usage: {} // postcss node where usage was found
+ *   feature: {} // caniuse-db feature slug
+ * }
+ * ```
  */
 
-Detector = (function() {
+module.exports = (function () {
   function Detector(featureList) {
+    _classCallCheck(this, Detector);
+
     this.features = _.pick(features, featureList);
   }
 
-  Detector.prototype.decl = function(decl, cb) {
-    var data, feat, prop, _ref, _results;
-    _ref = this.features;
-    _results = [];
-    for (feat in _ref) {
-      data = _ref[feat];
-      _results.push((function() {
-        var _i, _len, _ref1, _ref2, _results1;
-        _ref2 = ((_ref1 = data.properties) != null ? _ref1 : []).filter(isFoundIn(decl.prop));
-        _results1 = [];
-        for (_i = 0, _len = _ref2.length; _i < _len; _i++) {
-          prop = _ref2[_i];
-          if ((data.values == null) || _.find(data.values, isFoundIn(decl.value))) {
-            cb({
-              usage: decl,
-              feature: feat
-            });
-            break;
-          } else {
-            _results1.push(void 0);
+  _createClass(Detector, [{
+    key: 'decl',
+    value: function decl(decl, cb) {
+      for (var feat in this.features) {
+        var properties = this.features[feat].properties || [];
+        var values = this.features[feat].values;
+        if (properties.filter(isFoundIn(decl.prop)).length > 0) {
+          if (!values || values.filter(isFoundIn(decl.value)).length > 0) {
+            cb({ usage: decl, feature: feat });
           }
         }
-        return _results1;
-      })());
-    }
-    return _results;
-  };
-
-  Detector.prototype.rule = function(rule, cb) {
-    var data, feat, _ref, _ref1;
-    _ref = this.features;
-    for (feat in _ref) {
-      data = _ref[feat];
-      if (_.find((_ref1 = data.selectors) != null ? _ref1 : [], isFoundIn(rule.selector))) {
-        cb({
-          usage: rule,
-          feature: feat
-        });
       }
     }
-    return this.process(rule, cb);
-  };
-
-  Detector.prototype.atrule = function(atrule, cb) {
-    var data, feat, _ref, _ref1;
-    _ref = this.features;
-    for (feat in _ref) {
-      data = _ref[feat];
-      if (_.find((_ref1 = data.atrules) != null ? _ref1 : [], isFoundIn(atrule.name)) && (!data.params || _.find(data.params, isFoundIn(atrule.params)))) {
-        cb({
-          usage: atrule,
-          feature: feat
-        });
+  }, {
+    key: 'rule',
+    value: function rule(rule, cb) {
+      for (var feat in this.features) {
+        var selectors = this.features[feat].selectors || [];
+        if (selectors.filter(isFoundIn(rule.selector)).length > 0) {
+          cb({ usage: rule, feature: feat });
+        }
       }
-    }
-    return this.process(atrule, cb);
-  };
 
-  Detector.prototype.process = function(node, cb) {
-    return node.each((function(_this) {
-      return function(child) {
+      this.process(rule, cb);
+    }
+  }, {
+    key: 'atrule',
+    value: function atrule(atrule, cb) {
+      for (var feat in this.features) {
+        var atrules = this.features[feat].atrules || [];
+        var params = this.features[feat].params;
+        if (atrules.filter(isFoundIn(atrule.name)).length > 0) {
+          if (!params || params.filter(isFoundIn(atrule.params)).length > 0) {
+            cb({ usage: atrule, feature: feat });
+          }
+        }
+      }
+
+      this.process(atrule, cb);
+    }
+  }, {
+    key: 'process',
+    value: function process(node, cb) {
+      var self = this;
+      node.each(function (child) {
         switch (child.type) {
           case 'rule':
-            return _this.rule(child, cb);
+            self.rule(child, cb);
+            break;
           case 'decl':
-            return _this.decl(child, cb);
+            self.decl(child, cb);
+            break;
           case 'atrule':
-            return _this.atrule(child, cb);
+            self.atrule(child, cb);
+            break;
+          case 'comment':
+            break;
+          default:
+            throw new Error('Unkonwn node type ' + child.type);
         }
-      };
-    })(this));
-  };
+      });
+    }
+  }]);
 
   return Detector;
-
 })();
-
-module.exports = Detector;

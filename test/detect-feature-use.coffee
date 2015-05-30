@@ -60,6 +60,7 @@ for tc in caseFiles
     else cases.push testCase
 
 cases = only ? cases
-for {name, cssString, expected} in cases
-  console.log "Running case",name
-  test(name, cssString, expected, cases.length is 1)
+
+describe "detect feature usage", ->
+  for {name, cssString, expected} in cases
+    test(name, cssString, expected, cases.length is 1)

@@ -27,10 +27,7 @@ doiuse = ({browsers, onFeatureUsage}) ->
         start: loc.start
         end: loc.end
 
-      message= (loc.original.start.source ? loc.input.file ? loc.input.from) + ':' +
-        loc.original.start.line + ':' + loc.original.start.column + ': ' +
-        features[feature].title + ' not supported by: ' +
-        features[feature].missing
+      message= (loc.original.start.source ? loc.input.file ? loc.input.from) + ':' + loc.original.start.line + ':' + loc.original.start.column + ': ' + features[feature].title + ' not supported by: ' + features[feature].missing
 
       cb
         feature: feature

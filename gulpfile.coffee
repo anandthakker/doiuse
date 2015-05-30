@@ -2,6 +2,7 @@ gulp = require('gulp')
 del = require('del')
 gutil = require('gulp-util')
 coffee = require('gulp-coffee')
+babel = require('gulp-babel')
 mocha = require('gulp-mocha')
 
 paths=
@@ -17,6 +18,11 @@ buildCoffee = (failOnErrors=true) -> ->
   coffeeStream.on('error', (args...)->
     gutil.log(args...)
     this.emit 'end')  unless failOnErrors
+
+  gulp.src('src/**/*.js')
+  .pipe(babel())
+  .pipe(gulp.dest('dist'))
+
   gulp.src(paths.coffee)
   .pipe coffeeStream
   .pipe gulp.dest('dist')
@@ -25,7 +31,7 @@ gulp.task 'coffee:dev', [], buildCoffee(false)
 gulp.task 'coffee:build', ['clean'], buildCoffee(true)
 
 gulp.task 'watch', ['coffee:build'], ->
-  gulp.watch paths.coffee, ['coffee:dev']
+  gulp.watch [paths.coffee, 'src/**/*.js'], ['coffee:dev']
 
 gulp.task 'build', ['coffee:build'], ->
 
