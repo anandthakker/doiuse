@@ -1,27 +1,27 @@
-'use strict';
+'use strict'
 
-var features = require('../data/features');
-var BrowserSelection = require('./browsers');
-var _ = require('lodash');
-var fs = require('fs');
-var formatBrowserName = require('./util').formatBrowserName;
+var features = require('../data/features')
+var BrowserSelection = require('./browsers')
+var _ = require('lodash')
+var fs = require('fs')
+var formatBrowserName = require('./util').formatBrowserName
 
-function filterStats(browsers, stats) {
+function filterStats (browsers, stats) {
   return _.transform(stats, function (resultStats, versionData, browser) {
     // filter only versions of selected browsers that don't support this
     // feature (i.e., don't have 'y' in their stats)
     var versWithoutSupport = _.transform(versionData, function (result, support, ver) {
-      var selected = browsers.test(browser, ver);
+      var selected = browsers.test(browser, ver)
       if (selected && !/(^|\s)y($|\s)/.test(support)) {
-        result[selected[1]] = support;
+        result[selected[1]] = support
       }
-    });
+    })
     // filter out browsers for which there are *no* (selected) versions lacking
     // support.
     if (_.keys(versWithoutSupport).length !== 0) {
-      resultStats[browser] = versWithoutSupport;
+      resultStats[browser] = versWithoutSupport
     }
-  });
+  })
 }
 
 /**
@@ -49,21 +49,21 @@ function filterStats(browsers, stats) {
  *
  * `feature-name` is a caniuse-db slug.
  */
-function missing(browserRequest) {
-  var browsers = new BrowserSelection(browserRequest);
+function missing (browserRequest) {
+  var browsers = new BrowserSelection(browserRequest)
 
-  var result = {};
+  var result = {}
 
   Object.keys(features).forEach(function (feature) {
-    var json = fs.readFileSync(require.resolve('caniuse-db/features-json/' + feature));
-    var featureData = JSON.parse(json);
-    var missingData = filterStats(browsers, featureData.stats);
+    var json = fs.readFileSync(require.resolve('caniuse-db/features-json/' + feature))
+    var featureData = JSON.parse(json)
+    var missingData = filterStats(browsers, featureData.stats)
 
     // browsers missing support for this feature
     var missing = _.reduce(missingData, function (res, versions, browser) {
-      res.push(formatBrowserName(browser, _.keys(versions)));
-      return res;
-    }, []).join(', ');
+      res.push(formatBrowserName(browser, _.keys(versions)))
+      return res
+    }, []).join(', ')
 
     if (missing.length > 0) {
       result[feature] = {
@@ -71,14 +71,14 @@ function missing(browserRequest) {
         missing: missing,
         missingData: missingData,
         caniuseData: featureData
-      };
+      }
     }
-  });
+  })
 
   return {
     browsers: browsers.list(),
     features: result
-  };
+  }
 }
 
-module.exports = missing;
+module.exports = missing

@@ -1,14 +1,13 @@
-var agents;
+'use strict'
 
-agents = require('caniuse-db/data').agents;
+var agents = require('caniuse-db/data').agents
 
 module.exports = {
-  formatBrowserName: function(browserKey, versions) {
-    var browserName, _ref;
-    browserName = (_ref = agents[browserKey]) != null ? _ref.browser : void 0;
+  formatBrowserName: function formatBrowserName (browserKey, versions) {
+    var browserName = (agents[browserKey] || {}).browser
     if (!versions) {
-      return browserName;
+      return browserName
     }
-    return browserName + ' (' + versions.join(',') + ')';
+    return browserName + ' (' + versions.join(',') + ')'
   }
-};
+}

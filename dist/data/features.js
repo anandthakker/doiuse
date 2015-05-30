@@ -1,16 +1,16 @@
-'use strict';
+'use strict'
 
-var list = require('postcss/lib/list');
+var list = require('postcss/lib/list')
 var pats = {
   attrcc: '[^\\~|^$*\\]]*',
   brackets: /(\[[^\]]*\]|\([^\)]*\))/.source,
   nobrackets: /[^\[\]\(\)]/.source
-};
-function matchOutsideOfBrackets(pat) {
+}
+function matchOutsideOfBrackets (pat) {
   if (pat instanceof RegExp) {
-    pat = pat.source;
+    pat = pat.source
   }
-  return new RegExp('^(' + pats.brackets + '?' + pats.nobrackets + '*)*' + pat);
+  return new RegExp('^(' + pats.brackets + '?' + pats.nobrackets + '*)*' + pat)
 }
 
 module.exports = {
@@ -93,7 +93,7 @@ module.exports = {
   multibackgrounds: {
     properties: [/^background-?/],
     values: [function (value) {
-      return list.comma(value).length > 1;
+      return list.comma(value).length > 1
     }]
   },
   'css-table': {
@@ -196,4 +196,4 @@ module.exports = {
     properties: [''],
     values: ['image-set']
   }
-};
+}

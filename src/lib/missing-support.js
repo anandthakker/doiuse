@@ -63,7 +63,7 @@ function missing (browserRequest) {
       res.push(formatBrowserName(browser, _.keys(versions)))
       return res
     }, [])
-    .join(', ')
+      .join(', ')
 
     if (missing.length > 0) {
       result[feature] = {

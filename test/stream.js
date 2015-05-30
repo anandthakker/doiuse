@@ -1,28 +1,23 @@
-
 var stream = require('../stream'),
-  through = require('through2');
+  through = require('through2')
 
-require('chai').should();
+var test = require('tape')
 
-describe('streaming', function() {
-  
-  var expected = [
-    'css-sel3',
-    'background-img-opts'
-  ]
-  
-  it('works', function(done) {
-    var s = stream('IE >= 8');
-    s.pipe(through.obj(function(usage, enc, next) {
-      usage.feature.should.equal(expected.shift());
-      next();
-    }, function(next) {
-      next();
-      expected.should.be.empty;
-      done();
-    }))
-    
-    s.end('div:nth-child(2n-1) { background-size: cover; }');
-  })
-  
+var expected = [
+  'css-sel3',
+  'background-img-opts'
+]
+
+test('streaming works', function (t) {
+  var s = stream('IE >= 8')
+  s.pipe(through.obj(function (usage, enc, next) {
+    t.equal(usage.feature, expected.shift())
+    next()
+  }, function (next) {
+    next()
+    t.equal(expected.length, 0)
+    t.end()
+  }))
+
+  s.end('div:nth-child(2n-1) { background-size: cover; }')
 })

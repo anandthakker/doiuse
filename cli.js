@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 var fs = require('fs'),
-    ldjson = require('ldjson-stream'),
-    jsonfilter = require('jsonfilter'),
-    through = require('through2'),
-    browserslist = require('browserslist');
+  ldjson = require('ldjson-stream'),
+  jsonfilter = require('jsonfilter'),
+  through = require('through2'),
+  browserslist = require('browserslist')
 
 var formatBrowserName = require('./dist/lib/util').formatBrowserName,
-    defaultBrowsers = require('./').default,
-    doiuse = require('./stream');
+  defaultBrowsers = require('./').default,
+  doiuse = require('./stream')
 
 var yargs = require('yargs')
   .usage('Lint your CSS for browser support.')
@@ -37,68 +37,67 @@ var yargs = require('yargs')
   })
   .boolean('j')
   .help('h', 'Show help message.')
-  .alias('h', 'help');
-  
-var argv = yargs.argv;
+  .alias('h', 'help')
 
-argv.browsers = argv.browsers.split(',').map(function(s){return s.trim();});
+var argv = yargs.argv
+
+argv.browsers = argv.browsers.split(',').map(function (s) {return s.trim();})
 
 // Informational output
 if(argv.l) { argv.v = ++argv.verbose; }
 if(argv.verbose >= 1) {
   browsers = browserslist(argv.browsers)
-  .map(function(b) {
-    b = b.split(' ');
-    b[0] = formatBrowserName(b[0]);
-    b[1] = parseInt(b[1]); 
-    return b;
-  })
-  .sort(function(a, b) { return (a[0] !== b[0]) ? a[0] > b[0] : a[1] > b[1] })
-  .map(function(b) { return b.join(' '); } )
-  .join(', ')
-  console.log('[doiuse] Browsers: ' + browsers);
+    .map(function (b) {
+      b = b.split(' ')
+      b[0] = formatBrowserName(b[0])
+      b[1] = parseInt(b[1])
+      return b
+    })
+    .sort(function (a, b) { return (a[0] !== b[0]) ? a[0] > b[0] : a[1] > b[1] })
+    .map(function (b) { return b.join(' '); })
+    .join(', ')
+  console.log('[doiuse] Browsers: ' + browsers)
 }
 
 if(argv.verbose >= 2) {
-  features = linter.info().features;
-  console.log('\n[doiuse] Unsupported features:');
-  for(feat in features) {
-    var out = [features[feat].caniuseData.title];
+  features = linter.info().features
+  console.log('\n[doiuse] Unsupported features:')
+  for (feat in features) {
+    var out = [features[feat].caniuseData.title]
     if(argv.verbose >= 3) {
-      out.push('\n', features[feat].missing.join(', '), '\n');
+      out.push('\n', features[feat].missing.join(', '), '\n')
     }
     console.log(out.join(''))
   }
 }
 if(argv.l) { process.exit(); }
 
-
 // Process the CSS
 if(argv.help || (argv._.length == 0 && process.stdin.isTTY)) {
-  yargs.showHelp();
-  process.exit();
+  yargs.showHelp()
+  process.exit()
 }
 
-var options = {messages: !argv.json};
+var options = {messages: !argv.json}
 
-var out;
+var out
 if(argv.json) {
-  out = ldjson.serialize();
+  out = ldjson.serialize()
 }
 if(!argv.json) {
-  out = through.obj(function(usage, enc, next) {
-    next(null, usage.message + '\n');
-  });
+  out = through.obj(function (usage, enc, next) {
+    next(null, usage.message + '\n')
+  })
 }
-out.pipe(process.stdout);
+out.pipe(process.stdout)
 
 if(argv._.length > 0)
-  argv._.forEach(function(file){
+  argv._.forEach(function (file) {
     fs.createReadStream(file)
       .pipe(doiuse(argv.browsers, file))
-      .pipe(out);
-  });
+      .pipe(out)
+  })
 else
   process.stdin
     .pipe(doiuse(argv.browsers))
-    .pipe(out);
+    .pipe(out)
