@@ -8,7 +8,24 @@ Lint CSS for browser support against caniuse database.
 **NOTE:** This is a very, very initial release.  Feedback or contributions
 are quite welcome!
 
-# TL;DR
+# Install
+
+```sh
+npm install -g doiuse
+```
+
+# Developing
+```sh
+git clone git@github.com:anandthakker/doiuse.git
+cd doiuse
+npm install
+npm run babel
+```
+
+That last step transpiles the ES6 from src/ to ES5 in lib/. Already happens as a `pretest` step for `npm test`.
+
+
+# Usage
 
 ## Command Line
 ```bash
@@ -113,6 +130,11 @@ And `usageInfo` looks like this:
     Called once for each usage of each css feature not supported by the selected
     browsers.
 
+# [Contributing](CONTRIBUTING.md)
+
+doiuse is an OPEN Open Source Project. This means that:
+
+Individuals making significant and valuable contributions are given commit-access to the project to contribute as they see fit. This project is more like an open wiki than a standard guarded open source project.
 
 # License
 
