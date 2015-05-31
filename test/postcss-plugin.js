@@ -1,7 +1,7 @@
 var fs = require('fs')
 var test = require('tape')
-var doiuse = require('../dist')
 var postcss = require('postcss')
+var doiuse = require('../')
 var hasKeys = require('./has-keys')
 
 test('leaves css alone by default', function (t) {

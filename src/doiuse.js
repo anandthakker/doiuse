@@ -1,6 +1,6 @@
 let _ = require('lodash')
-let missingSupport = require('./lib/missing-support')
-let Detector = require('./lib/detect-feature-use')
+let missingSupport = require('./missing-support')
+let Detector = require('./detect-feature-use')
 
 function doiuse (options) {
   let browserQuery = options.browsers

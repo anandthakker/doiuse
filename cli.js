@@ -6,7 +6,7 @@ var fs = require('fs'),
   through = require('through2'),
   browserslist = require('browserslist')
 
-var formatBrowserName = require('./dist/lib/util').formatBrowserName,
+var formatBrowserName = require('./lib/util').formatBrowserName,
   defaultBrowsers = require('./').default,
   doiuse = require('./stream')
 

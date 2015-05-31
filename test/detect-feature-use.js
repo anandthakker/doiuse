@@ -2,7 +2,7 @@ var fs = require('fs')
 var path = require('path')
 var test = require('tape')
 var postcss = require('postcss')
-var Detector = require('../dist/lib/detect-feature-use')
+var Detector = require('../lib/detect-feature-use')
 
 /*
  * Parse the feature-key: count lines in the leading comment of
