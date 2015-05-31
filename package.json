@@ -2,9 +2,12 @@
   "name": "doiuse",
   "version": "0.3.3",
   "description": "Lint CSS for browser support against caniuse database.",
-  "main": "dist/index.js",
+  "main": "lib/doiuse.js",
   "scripts": {
-    "test": "gulp test"
+    "test": "tape test/*.js",
+    "babel": "babel -d lib/ src/",
+    "pretest": "npm run babel",
+    "prepublish": "npm run babel"
   },
   "bin": "./cli.js",
   "repository": {
@@ -26,7 +29,6 @@
   "dependencies": {
     "browserslist": "^0.3.1",
     "caniuse-db": "^1.0.30000090",
-    "concat-stream": "^1.4.7",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
@@ -38,12 +40,7 @@
     "yargs": "^3.5.4"
   },
   "devDependencies": {
-    "chai": "^2.1.1",
-    "coffee-script": "^1.9.1",
-    "del": "^1.1.1",
-    "gulp": "^3.8.11",
-    "gulp-coffee": "^2.3.1",
-    "gulp-mocha": "^2.0.0",
-    "gulp-util": "^3.0.4"
+    "babel": "^5.2.13",
+    "tape": "^4.0.0"
   }
 }
