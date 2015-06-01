@@ -94,17 +94,19 @@ var doiuse = require('doiuse/stream');
 
 process.stdin
   .pipe(doiuse(['ie >= 8', '> 1%']))
-  .pipe(process.stdout);
+  .on('data', function (usageInfo) {
+    console.log(JSON.stringify(usageInfo))
+  })
 ```
 
-Yields usage info in objects as described below.
+Yields `UsageInfo` objects as described below.
 
 
 ## As a postcss plugin
 `postcss(doiuse(opts)).process(css)`, where `opts` is:
 ```javascript
 {
-  browserSelection: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
+  browsers: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
   onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
 }
 ```
