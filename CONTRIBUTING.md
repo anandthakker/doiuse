@@ -1,4 +1,4 @@
-## `doiuse` is an **OPEN Open Source Project**
+## `doiuse` is an **[OPEN Open Source Project](http://openopensource.org/)**
 -----------------------------------------
 
 ## What?
