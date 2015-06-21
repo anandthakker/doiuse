@@ -75,10 +75,13 @@ var runTest = function (tc, cssString, expected, only) {
     detector.process(postcss.parse(cssString), cb)
 
     var res = Object.keys(cb.results).sort()
-    t.deepEqual(res, features)
-
     for (var feature in expected) {
-      t.equal(cb.results[feature].length, expected[feature], 'count of ' + feature)
+      if (expected[feature] === 0) {
+        t.notOk(cb.results[feature])
+      } else {
+        t.deepEqual(res, features)
+        t.equal(cb.results[feature].length, expected[feature], 'count of ' + feature)
+      }
     }
 
     t.end()

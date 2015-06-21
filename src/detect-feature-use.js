@@ -6,6 +6,7 @@ var features = require('../data/features')
  * searchfor: string or pattern to search for.
  */
 function isFoundIn (str) {
+  str = stripUrls(str)
   return function find (searchfor) {
     if (searchfor instanceof RegExp) return searchfor.test(str)
     else if (_.isFunction(searchfor)) return searchfor(str)
@@ -14,7 +15,15 @@ function isFoundIn (str) {
 }
 
 /*
- * postcss the use of any of a given list of CSS features.
+ * Strip the contents of url literals so they aren't matched
+ * by our naive substring matching.
+ */
+function stripUrls (str) {
+  return str.replace(/url\([^\)]*\)/g, 'url()')
+}
+
+/**
+ * Detect the use of any of a given list of CSS features.
  * ```
  * var detector = new Detector(featureList)
  * detector.process(css, cb)
@@ -30,7 +39,6 @@ function isFoundIn (str) {
  * }
  * ```
  */
-
 module.exports = class Detector {
 constructor (featureList) {
   this.features = _.pick(features, featureList)
