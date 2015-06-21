@@ -53,8 +53,8 @@ function missing (browserRequest) {
   let result = {}
 
   Object.keys(features).forEach((feature) => {
-    let json = fs.readFileSync(require.resolve('caniuse-db/features-json/'
-      + feature))
+    let json = fs.readFileSync(require.resolve('caniuse-db/features-json/' +
+      feature))
     let featureData = JSON.parse(json)
     let missingData = filterStats(browsers, featureData.stats)
 

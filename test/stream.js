@@ -1,5 +1,5 @@
-var stream = require('../stream'),
-  through = require('through2')
+var stream = require('../stream')
+var through = require('through2')
 
 var test = require('tape')
 

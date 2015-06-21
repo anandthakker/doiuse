@@ -15,15 +15,15 @@ var parseTestCase = function (cssString) {
 
   var features = {}
   matches[2].split('\n')
-  .filter(function (s) {
-    return s.trim().length > 0
-  })
-  .forEach(function (s) {
-    var line = s.replace(/\s*/, '').split(':')
-    var feat = line[0]
-    var count = +line[1]
-    features[feat] = count
-  })
+    .filter(function (s) {
+      return s.trim().length > 0
+    })
+    .forEach(function (s) {
+      var line = s.replace(/\s*/, '').split(':')
+      var feat = line[0]
+      var count = +line[1]
+      features[feat] = count
+    })
 
   if (Object.keys(features).length > 0) {
     return {
@@ -107,4 +107,3 @@ for (var i = 0; i < caseFiles.length; ++i) {
 cases.forEach(function (testCase) {
   runTest(testCase.name, testCase.cssString, testCase.expected, cases.length === 1)
 })
-

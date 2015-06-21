@@ -30,7 +30,7 @@ test('calls back for unsupported feature usages', function (t) {
       hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData'])
     }
   }))
-  .process(css).then(function () {
+    .process(css).then(function () {
     t.equal(count, 4)
     t.end()
   })

@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 
-var fs = require('fs'),
-  ldjson = require('ldjson-stream'),
-  jsonfilter = require('jsonfilter'),
-  through = require('through2'),
-  browserslist = require('browserslist')
+var fs = require('fs')
+var ldjson = require('ldjson-stream')
+var through = require('through2')
+var browserslist = require('browserslist')
 
-var formatBrowserName = require('./lib/util').formatBrowserName,
-  defaultBrowsers = require('./').default,
-  doiuse = require('./stream')
+var formatBrowserName = require('./lib/util').formatBrowserName
+var defaultBrowsers = require('./').default
+var doiuse = require('./stream')
 
 var yargs = require('yargs')
   .usage('Lint your CSS for browser support.')
@@ -41,63 +40,62 @@ var yargs = require('yargs')
 
 var argv = yargs.argv
 
-argv.browsers = argv.browsers.split(',').map(function (s) {return s.trim();})
+argv.browsers = argv.browsers.split(',').map(function (s) {return s.trim()})
 
 // Informational output
-if(argv.l) { argv.v = ++argv.verbose; }
-if(argv.verbose >= 1) {
-  browsers = browserslist(argv.browsers)
+if (argv.l) { argv.v = ++argv.verbose }
+if (argv.verbose >= 1) {
+  var browsers = browserslist(argv.browsers)
     .map(function (b) {
       b = b.split(' ')
       b[0] = formatBrowserName(b[0])
-      b[1] = parseInt(b[1])
+      b[1] = parseInt(b[1], 10)
       return b
     })
     .sort(function (a, b) { return (a[0] !== b[0]) ? a[0] > b[0] : a[1] > b[1] })
-    .map(function (b) { return b.join(' '); })
+    .map(function (b) { return b.join(' ') })
     .join(', ')
   console.log('[doiuse] Browsers: ' + browsers)
 }
 
-if(argv.verbose >= 2) {
-  features = linter.info().features
+if (argv.verbose >= 2) {
+  var features = require('./')(argv.browsers).info().features
   console.log('\n[doiuse] Unsupported features:')
-  for (feat in features) {
+  for (var feat in features) {
     var out = [features[feat].caniuseData.title]
-    if(argv.verbose >= 3) {
+    if (argv.verbose >= 3) {
       out.push('\n', features[feat].missing.join(', '), '\n')
     }
     console.log(out.join(''))
   }
 }
-if(argv.l) { process.exit(); }
+if (argv.l) { process.exit() }
 
 // Process the CSS
-if(argv.help || (argv._.length == 0 && process.stdin.isTTY)) {
+if (argv.help || (argv._.length === 0 && process.stdin.isTTY)) {
   yargs.showHelp()
   process.exit()
 }
 
-var options = {messages: !argv.json}
-
 var out
-if(argv.json) {
+if (argv.json) {
   out = ldjson.serialize()
 }
-if(!argv.json) {
+if (!argv.json) {
   out = through.obj(function (usage, enc, next) {
     next(null, usage.message + '\n')
   })
 }
 out.pipe(process.stdout)
 
-if(argv._.length > 0)
+if (argv._.length > 0) {
   argv._.forEach(function (file) {
     fs.createReadStream(file)
-      .pipe(doiuse(argv.browsers, file))
-      .pipe(out)
+    .pipe(doiuse(argv.browsers, file))
+    .pipe(out)
   })
-else
+} else {
   process.stdin
     .pipe(doiuse(argv.browsers))
     .pipe(out)
+}

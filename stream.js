@@ -1,16 +1,16 @@
-var through = require('through2'),
-  duplexer = require('duplexer2'),
-  rules = require('css-rule-stream'),
-  sourcemap = require('source-map')
+var through = require('through2')
+var duplexer = require('duplexer2')
+var rules = require('css-rule-stream')
+var sourcemap = require('source-map')
 
-var postcss = require('postcss'),
-  doiuse = require('./')
+var postcss = require('postcss')
+var doiuse = require('./')
 
 module.exports = stream
 
 /**
  * @param {Array<string>} browsers  the browserslist browser selection
- * @param {string} [filename]  Filename for outputting source code locations. 
+ * @param {string} [filename]  Filename for outputting source code locations.
  */
 function stream (browsers, filename) {
   var inp = rules()
@@ -26,7 +26,8 @@ function stream (browsers, filename) {
       var mapper = new sourcemap.SourceMapGenerator()
 
       var lines = rule.content.split('\n')
-      var oline = rule.line, ocol = rule.column
+      var oline = rule.line
+      var ocol = rule.column
       for (var line = 0; line < lines.length; line++) {
         mapper.addMapping({
           generated: { line: line + 1, column: 1 },

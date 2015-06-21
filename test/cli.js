@@ -1,5 +1,5 @@
-var cp_exec = require('child_process').exec,
-  path = require('path')
+var cp_exec = require('child_process').exec
+var path = require('path')
 
 var test = require('tape')
 

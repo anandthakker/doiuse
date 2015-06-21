@@ -4,7 +4,7 @@
   "description": "Lint CSS for browser support against caniuse database.",
   "main": "lib/doiuse.js",
   "scripts": {
-    "test": "tape test/*.js",
+    "test": "standard && tape test/*.js",
     "babel": "babel -d lib/ src/",
     "pretest": "npm run babel",
     "prepublish": "npm run babel"
@@ -41,6 +41,7 @@
   },
   "devDependencies": {
     "babel": "^5.2.13",
+    "standard": "^4.3.1",
     "tape": "^4.0.0"
   }
 }
