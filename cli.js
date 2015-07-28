@@ -58,11 +58,12 @@ if (argv.verbose >= 1) {
   console.log('[doiuse] Browsers: ' + browsers)
 }
 
+var out
 if (argv.verbose >= 2) {
   var features = require('./')(argv.browsers).info().features
   console.log('\n[doiuse] Unsupported features:')
   for (var feat in features) {
-    var out = [features[feat].caniuseData.title]
+    out = [features[feat].caniuseData.title]
     if (argv.verbose >= 3) {
       out.push('\n', features[feat].missing.join(', '), '\n')
     }
@@ -77,7 +78,6 @@ if (argv.help || (argv._.length === 0 && process.stdin.isTTY)) {
   process.exit()
 }
 
-var out
 if (argv.json) {
   out = ldjson.serialize()
 }
