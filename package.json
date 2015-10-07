@@ -34,7 +34,7 @@
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
     "lodash": "^3.5.0",
-    "postcss": "^4.1.8",
+    "postcss": "^5.0.8",
     "source-map": "^0.4.2",
     "through2": "^0.6.3",
     "yargs": "^3.5.4"

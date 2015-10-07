@@ -24,9 +24,9 @@ function doiuse (options) {
     postcss (css) {
       return detector.process(css, function ({feature, usage}) {
         let loc = usage.source
-        loc.original = css.prevMap ? {
-          start: css.prevMap.consumer().originalPositionFor(loc.start),
-          end: css.prevMap.consumer().originalPositionFor(loc.end)
+        loc.original = css.source.input.map ? {
+          start: css.source.input.map.consumer().originalPositionFor(loc.start),
+          end: css.source.input.map.consumer().originalPositionFor(loc.end)
         } : {
           start: loc.start,
           end: loc.end
