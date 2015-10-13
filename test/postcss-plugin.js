@@ -35,3 +35,24 @@ test('calls back for unsupported feature usages', function (t) {
     t.end()
   })
 })
+
+test('ignores specified features and calls back for the others', function (t) {
+  var count, css
+  css = fs.readFileSync(require.resolve('./cases/gradient.css'))
+  count = 0
+  postcss(doiuse({
+    browsers: ['ie 8'],
+    ignore: [
+      'css-gradients'
+    ],
+    onFeatureUsage: function (usageInfo) {
+      count++
+      hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message'])
+      hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData'])
+    }
+  }))
+    .process(css).then(function () {
+    t.equal(count, 2)
+    t.end()
+  })
+})

@@ -59,6 +59,7 @@ var doiuse = require('doiuse');
 
 postcss(doiuse({
   browsers:['ie >= 6', '> 1%'],
+  ignore: ['rem'],
   onFeatureUsage: function(usageInfo) {
     console.log(usageInfo.message);
   }
@@ -74,7 +75,7 @@ Refer to the data in /src/data/features.coffee.
   properties for regex/substring matches against the properties used in the input CSS.
 - If a feature also specifies `values`, then we also require that the associated
   value matches one of those values.
-  
+
 TODO:
 - [x] Support @-rules
 - [ ] Allow each feature to have multiple instances of the match criteria laid
@@ -86,7 +87,7 @@ TODO:
   given feature.  (This is low priority: just use autoprefixer.)
 
 
-# API Details: 
+# API Details:
 
 ## As a transform stream
 ```javascript
@@ -107,6 +108,7 @@ Yields `UsageInfo` objects as described below.
 ```javascript
 {
   browsers: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
+  ignore: ['rem'], // an optional array of features to ignore
   onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
 }
 ```
