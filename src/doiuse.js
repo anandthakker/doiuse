@@ -5,11 +5,19 @@ let Detector = require('./detect-feature-use')
 function doiuse (options) {
   let browserQuery = options.browsers
   let onFeatureUsage = options.onFeatureUsage
+  let ignore = options.ignore
 
   if (!browserQuery) {
     browserQuery = doiuse['default'].slice()
   }
-  let cb = onFeatureUsage ? onFeatureUsage : function () {}
+  let cb = function (usageInfo) {
+    if (ignore && ignore.indexOf(usageInfo.feature) !== -1) {
+      return
+    }
+    if (onFeatureUsage) {
+      onFeatureUsage(usageInfo)
+    }
+  }
   let {browsers, features} = missingSupport(browserQuery)
   let detector = new Detector(_.keys(features))
 

@@ -56,6 +56,7 @@ var doiuse = require('doiuse');
 
 postcss(doiuse({
   browsers:['ie >= 6', '> 1%'],
+  ignore: ['rem'],
   onFeatureUsage: function(usageInfo) {
     console.log(usageInfo.message);
   }
@@ -114,6 +115,7 @@ Yields `UsageInfo` objects as described below.
 ```javascript
 {
   browsers: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
+  ignore: ['rem'], // an optional array of features to ignore
   onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
 }
 ```
