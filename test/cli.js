@@ -4,6 +4,7 @@ var path = require('path')
 var test = require('tape')
 
 var cssFile = path.join(__dirname, '/cases/gradient.css')
+
 var expected = '<streaming css input>:8:1: CSS Gradients not supported by: IE (8,9)\n' +
   '<streaming css input>:12:1: CSS Gradients not supported by: IE (8,9)\n' +
   '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9)\n' +
@@ -12,6 +13,14 @@ var expected = '<streaming css input>:8:1: CSS Gradients not supported by: IE (8
 var commands = {
   cat: ' cat ' + cssFile + ' | tee /dev/tty ',
   doiuse: ' node ' + path.join(__dirname, '../cli.js') + ' --browsers="IE >= 8" '
+}
+
+var expected_with_ignore = '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9)\n' +
+  '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8,9)\n'
+
+var commands_with_ignore = {
+  cat: ' cat ' + cssFile + ' | tee /dev/tty ',
+  doiuse: ' node ' + path.join(__dirname, '../cli.js') + ' --browsers="IE >= 8" --ignore="css-gradients" '
 }
 
 var exec = function (cmd, cb) {
@@ -29,6 +38,20 @@ test('cli command: piped input', function (t) {
 test('should take filename as input', function (t) {
   exec(commands.doiuse + cssFile, function (error, stdout, stderr) {
     t.equal(stdout, expected.replace(/<streaming css input>/g, cssFile))
+    t.end(error)
+  })
+})
+
+test('cli command with ignore: piped input', function (t) {
+  exec(commands_with_ignore.cat + ' | ' + commands_with_ignore.doiuse, function (error, stdout, stderr) {
+    t.equal(stdout, expected_with_ignore)
+    t.end(error)
+  })
+})
+
+test('should take filename as input with ignore', function (t) {
+  exec(commands_with_ignore.doiuse + cssFile, function (error, stdout, stderr) {
+    t.equal(stdout, expected_with_ignore.replace(/<streaming css input>/g, cssFile))
     t.end(error)
   })
 })
