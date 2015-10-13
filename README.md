@@ -5,9 +5,6 @@ doiuse
 
 Lint CSS for browser support against caniuse database.
 
-**NOTE:** This is a very, very initial release.  Feedback or contributions
-are quite welcome!
-
 # Install
 
 ```sh
@@ -25,7 +22,7 @@ npm run babel
 That last step transpiles the ES6 from src/ to ES5 in lib/. Already happens as a `pretest` step for `npm test`.
 
 
-# Usage
+# Usage Examples
 
 ## Command Line
 ```bash
@@ -65,28 +62,38 @@ postcss(doiuse({
 })).process("a { background-size: cover; }")
 ```
 
+## Gulp
+
+```javascript
+var gulp = require('gulp')
+var postcss = require('postcss')
+var doiuse = require('doiuse')
+
+gulp.src(src, { cwd: process.cwd() })
+.pipe(gulp.postcss([
+  doiuse({
+    browsers: [
+      'ie >= 8',
+      '> 1%'
+    ],
+    onFeatureUsage: function (usageInfo) {
+      console.log(usageInfo.message)
+    }
+  })
+]))
+```
+
 # How it works
 In particular, the approach to detecting features usage is currently quite naive.
 
-Refer to the data in /src/data/features.coffee.
+Refer to the data in /src/data/features.js.
 
 - If a feature in that dataset only specifies `properties`, we just use those
   properties for regex/substring matches against the properties used in the input CSS.
 - If a feature also specifies `values`, then we also require that the associated
   value matches one of those values.
-  
-TODO:
-- [x] Support @-rules
-- [ ] Allow each feature to have multiple instances of the match criteria laid
-  out above, so that different, disjoint (property, value) combinations can
-  be used to detect a feature.
-- [ ] Subfeatures, in to allow a slightly looser coupling with caniuse-db's
-  structure (for handling, e.g., partial support, the different flexbox versions, etc.)
-- [ ] Prefix-aware testing: i.e., pass along a list of prefixes used with a
-  given feature.  (This is low priority: just use autoprefixer.)
 
-
-# API Details: 
+# API Details:
 
 ## As a transform stream
 ```javascript
