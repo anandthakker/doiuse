@@ -56,6 +56,7 @@ var doiuse = require('doiuse');
 
 postcss(doiuse({
   browsers:['ie >= 6', '> 1%'],
+  ignore: ['rem'], // an optional array of features to ignore
   onFeatureUsage: function(usageInfo) {
     console.log(usageInfo.message);
   }
@@ -76,6 +77,7 @@ gulp.src(src, { cwd: process.cwd() })
       'ie >= 8',
       '> 1%'
     ],
+    ignore: ['rem'], // an optional array of features to ignore
     onFeatureUsage: function (usageInfo) {
       console.log(usageInfo.message)
     }
@@ -100,7 +102,7 @@ Refer to the data in /src/data/features.js.
 var doiuse = require('doiuse/stream');
 
 process.stdin
-  .pipe(doiuse(['ie >= 8', '> 1%']))
+  .pipe(doiuse({ browsers: ['ie >= 8', '> 1%'], ignore: ['rem'] }))
   .on('data', function (usageInfo) {
     console.log(JSON.stringify(usageInfo))
   })
@@ -114,6 +116,7 @@ Yields `UsageInfo` objects as described below.
 ```javascript
 {
   browsers: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
+  ignore: ['rem'], // an optional array of features to ignore
   onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
 }
 ```

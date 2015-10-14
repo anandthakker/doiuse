@@ -20,10 +20,16 @@ var yargs = require('yargs')
     default: defaultBrowsers.join(', ')
   })
   .string('b')
+  .options('i', {
+    alias: 'ignore',
+    description: 'List of features to ignore.',
+    default: ''
+  })
+  .string('i')
   .options('l', {
     alias: 'list-only',
     description: 'Just show the browsers and features that would be tested by' +
-      'the specified browser crtieria, without actually processing any CSS.'
+      'the specified browser criteria, without actually processing any CSS.'
   })
   .options('v', {
     alias: 'verbose',
@@ -41,6 +47,7 @@ var yargs = require('yargs')
 var argv = yargs.argv
 
 argv.browsers = argv.browsers.split(',').map(function (s) {return s.trim()})
+argv.ignore = argv.ignore.split(',').map(function (s) {return s.trim()})
 
 // Informational output
 if (argv.l) { argv.v = ++argv.verbose }
@@ -91,11 +98,11 @@ out.pipe(process.stdout)
 if (argv._.length > 0) {
   argv._.forEach(function (file) {
     fs.createReadStream(file)
-    .pipe(doiuse(argv.browsers, file))
+    .pipe(doiuse({ browsers: argv.browsers, ignore: argv.ignore }, file))
     .pipe(out)
   })
 } else {
   process.stdin
-    .pipe(doiuse(argv.browsers))
+    .pipe(doiuse({ browsers: argv.browsers, ignore: argv.ignore }))
     .pipe(out)
 }

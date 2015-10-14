@@ -9,15 +9,16 @@ var doiuse = require('./')
 module.exports = stream
 
 /**
- * @param {Array<string>} browsers  the browserslist browser selection
+ * @param {Object} options (browsers, ignore, etc.)
  * @param {string} [filename]  Filename for outputting source code locations.
  */
-function stream (browsers, filename) {
+function stream (options, filename) {
   var inp = rules()
   filename = filename || '<streaming css input>'
 
   var processor = postcss([doiuse({
-    browsers: browsers,
+    browsers: options.browsers,
+    ignore: options.ignore,
     onFeatureUsage: pushUsage
   })])
 
