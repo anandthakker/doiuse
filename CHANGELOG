@@ -1,6 +1,44 @@
+2015-10-13 - 2.0.1 (c9297b9)
+c9297b9 (Breaking) Add option to ignore rules
+9207085 Clean up README, add Gulp example
+57b7303 Update node versions on travis
+
+1.0.4
+9aa6664 Update PostCSS to 5.x
+
+1.0.3
+Update browserlist dep
+
+1.0.2
+6dc4b8e Strip URLs out of values before testing them.
+6014672 Add standard code style, fix lint errors
+1c8ee14 Fix lint errors
+d33f0d6 Add failing test for #17
+ba8732d link to openopensource.org
+
+1.0.1
+295ca5f update caniuse-db
+fd438d3 Update / fix README examples.
+
+0.4.0
+dc022dc Update README and CONTRIBUTING
+73efc82 Merge pull request #14 from anandthakker/decaffeinate
+
+0.3.3
+1f28109 update postcss version
+af9ad0a fix test
+c20d5a4 Merge pull request #9 from deiwin/fix/input-file-name
+
+0.3.2
+d0b5e5b Add missing through2 dependency (closes #6)
+
+0.3.1
+c8ecd75 fix regression: correct source location in output
+250a03f add test for streaming mode, mostly to see wtf is happening on travis
+7ba2403 fix some cli tests
+
 2014-12-22 - 0.3.0 (76f5287)
 76f5287 (HEAD, tag: v0.2.6, master) 0.2.6
-
 
 2014-12-22 - 0.2.6 (44d5c3a)
 44d5c3a (HEAD, tag: v0.2.5, origin/master, origin/HEAD, master) 0.2.5
