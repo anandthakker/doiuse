@@ -4,23 +4,23 @@ var path = require('path')
 var test = require('tape')
 
 var cssFile = path.join(__dirname, '/cases/gradient.css')
+var pathToCli = ' node ' + path.join(__dirname, '../cli.js')
+var catCss = ' cat ' + cssFile + ' | tee /dev/tty '
 
-var expected = '<streaming css input>:8:1: CSS Gradients not supported by: IE (8,9)\n' +
-  '<streaming css input>:12:1: CSS Gradients not supported by: IE (8,9)\n' +
-  '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9)\n' +
-  '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8,9)\n'
-
+var expected_css_gradients = '<streaming css input>:8:1: CSS Gradients not supported by: IE (8,9) (css-gradients)\n' +
+  '<streaming css input>:12:1: CSS Gradients not supported by: IE (8,9) (css-gradients)\n'
+var expected_css_repeating_gradients = '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9) (css-repeating-gradients)\n' +
+  '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8,9) (css-repeating-gradients)\n'
+var expected = expected_css_gradients + expected_css_repeating_gradients
 var commands = {
-  cat: ' cat ' + cssFile + ' | tee /dev/tty ',
-  doiuse: ' node ' + path.join(__dirname, '../cli.js') + ' --browsers="IE >= 8" '
+  cat: catCss,
+  doiuse: pathToCli + ' --browsers="IE >= 8" '
 }
 
-var expected_with_ignore = '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9)\n' +
-  '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8,9)\n'
-
+var expected_with_ignore = expected_css_repeating_gradients
 var commands_with_ignore = {
-  cat: ' cat ' + cssFile + ' | tee /dev/tty ',
-  doiuse: ' node ' + path.join(__dirname, '../cli.js') + ' --browsers="IE >= 8" --ignore="css-gradients" '
+  cat: catCss,
+  doiuse: pathToCli + ' --browsers="IE >= 8" --ignore="css-gradients" '
 }
 
 var exec = function (cmd, cb) {
