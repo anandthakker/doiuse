@@ -1,9 +1,10 @@
 let _ = require('lodash')
 let missingSupport = require('./missing-support')
 let Detector = require('./detect-feature-use')
+let Multimatch = require('multimatch')
 
 function doiuse (options) {
-  let {browsers: browserQuery, onFeatureUsage, ignore} = options
+  let {browsers: browserQuery, onFeatureUsage, ignore, ignoreFiles} = options
 
   if (!browserQuery) {
     browserQuery = doiuse['default'].slice()
@@ -22,6 +23,10 @@ function doiuse (options) {
     postcss (css, result) {
       return detector.process(css, function ({feature, usage}) {
         if (ignore && ignore.indexOf(feature) !== -1) {
+          return
+        }
+
+        if (ignoreFiles && Multimatch(usage.source.input.from, ignoreFiles).length > 0) {
           return
         }
 

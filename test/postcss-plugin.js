@@ -56,3 +56,32 @@ test('ignores specified features and calls back for the others', function (t) {
     t.end()
   })
 })
+
+test('ignores specified files and calls back for others', function (t) {
+  var run, ignoreCss, processCss, pcss
+  ignoreCss = fs.readFileSync(require.resolve('./cases/ignore-file.css'))
+  processCss = fs.readFileSync(require.resolve('./cases/gradient.css'))
+  run = false
+
+  pcss = function () {
+    return postcss(doiuse({
+        browsers: ['ie 6'],
+        ignoreFiles: ['**/ignore-file.css'],
+        onFeatureUsage: function (usageInfo) {
+          run = true
+        }
+      }))
+  }
+
+  pcss().process(ignoreCss, {from: './cases/ignore-file.css'})
+        .then(function () {
+          t.false(run, 'should be false')
+        })
+        .then(function () {
+          return pcss().process(processCss, {from: './cases/gradient.css'})
+        })
+        .then(function () {
+          t.true(run, 'should be true')
+          t.end()
+        })
+})
