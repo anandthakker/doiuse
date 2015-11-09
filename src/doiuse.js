@@ -3,9 +3,7 @@ let missingSupport = require('./missing-support')
 let Detector = require('./detect-feature-use')
 
 function doiuse (options) {
-  let browserQuery = options.browsers
-  let onFeatureUsage = options.onFeatureUsage
-  let ignore = options.ignore
+  let {browsers: browserQuery, onFeatureUsage, ignore} = options
 
   if (!browserQuery) {
     browserQuery = doiuse['default'].slice()
