@@ -37,20 +37,28 @@ function stream (options, filename) {
         })
         mapper.addMapping({
           generated: { line: line + 1, column: lines[line].length },
-          original: {line: oline, column: ocol + lines[line].length },
+          original: { line: oline, column: ocol + lines[line].length },
           source: filename
         })
         oline++
         ocol = 1
       }
 
-      processor.process(rule.content, {map: {prev: mapper.toString() } })
+      processor.process(rule.content, { map: { prev: mapper.toString() } })
         .then(function (result) {
           next()
         })
-        .catch(next)
-    } catch(e) {
-      next(e)
+        .catch(handleError)
+    } catch (e) {
+      handleError(e)
+    }
+
+    function handleError (error) {
+      if (options.skipErrors) {
+        out.emit('warning', error)
+      } else {
+        next(error)
+      }
     }
   })
 
