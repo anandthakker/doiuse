@@ -58,7 +58,6 @@ function stream (options, filename) {
     function handleError (error) {
       if (options.skipErrors) {
         duplex.emit('warning', error)
-        console.log('calling next')
         next()
       } else {
         next(error)
