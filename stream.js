@@ -27,7 +27,6 @@ function stream (options, filename) {
 
   function write (rule, enc, next) {
     try {
-      console.log('rule')
       var mapper = new sourcemap.SourceMapGenerator()
 
       var lines = rule.content.split('\n')
