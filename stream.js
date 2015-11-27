@@ -22,8 +22,12 @@ function stream (options, filename) {
     onFeatureUsage: pushUsage
   })])
 
-  var out = through.obj(function (rule, enc, next) {
+  var out = through.obj(write)
+  var duplex = duplexer(inp, out)
+
+  function write (rule, enc, next) {
     try {
+      console.log('rule')
       var mapper = new sourcemap.SourceMapGenerator()
 
       var lines = rule.content.split('\n')
@@ -45,9 +49,7 @@ function stream (options, filename) {
       }
 
       processor.process(rule.content, { map: { prev: mapper.toString() } })
-        .then(function (result) {
-          next()
-        })
+        .then(function (result) { next() })
         .catch(handleError)
     } catch (e) {
       handleError(e)
@@ -55,17 +57,19 @@ function stream (options, filename) {
 
     function handleError (error) {
       if (options.skipErrors) {
-        out.emit('warning', error)
+        duplex.emit('warning', error)
+        console.log('calling next')
+        next()
       } else {
         next(error)
       }
     }
-  })
+  }
 
   function pushUsage (usage) {
     out.push(usage)
   }
 
   inp.pipe(out)
-  return duplexer(inp, out)
+  return duplex
 }
