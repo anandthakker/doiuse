@@ -57,6 +57,7 @@ var doiuse = require('doiuse');
 postcss(doiuse({
   browsers:['ie >= 6', '> 1%'],
   ignore: ['rem'], // an optional array of features to ignore
+  ignoreFiles: ['**/normalize.css'], // an optional array of file globs to match against original source file path, to ignore
   onFeatureUsage: function(usageInfo) {
     console.log(usageInfo.message);
   }
@@ -78,6 +79,7 @@ gulp.src(src, { cwd: process.cwd() })
       '> 1%'
     ],
     ignore: ['rem'], // an optional array of features to ignore
+    ignoreFiles: ['**/normalize.css'], // an optional array of file globs to match against original source file path, to ignore
     onFeatureUsage: function (usageInfo) {
       console.log(usageInfo.message)
     }
@@ -117,6 +119,7 @@ Yields `UsageInfo` objects as described below.
 {
   browsers: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
   ignore: ['rem'], // an optional array of features to ignore
+  ignoreFiles: ['**/normalize.css'], // an optional array of file globs to match against original source file path, to ignore
   onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
 }
 ```
