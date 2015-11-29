@@ -2,6 +2,7 @@ var fs = require('fs')
 var test = require('tape')
 var postcss = require('postcss')
 var doiuse = require('../')
+var atImport = require('postcss-import')
 var hasKeys = require('./has-keys')
 
 test('leaves css alone by default', function (t) {
@@ -84,4 +85,25 @@ test('ignores specified files and calls back for others', function (t) {
           t.true(run, 'should be true')
           t.end()
         })
+})
+
+test('ignores rules from some imported files, and not others', function (t) {
+  var count, css, cssPath
+  cssPath = require.resolve('./cases/ignore-import.css')
+  css = fs.readFileSync(cssPath)
+  count = 0
+
+  postcss([atImport(),
+           doiuse({
+             browsers: ['ie 6'],
+             ignoreFiles: ['**/ignore-file.css'],
+             onFeatureUsage: function (usageInfo) {
+               count++
+             }
+          })])
+          .process(css, {from: cssPath})
+          .then(function () {
+            t.equal(count, 2)
+            t.end()
+          })
 })
