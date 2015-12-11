@@ -16,14 +16,24 @@ function stream (options, filename) {
   var inp = rules()
   filename = filename || '<streaming css input>'
 
-  var processor = postcss([doiuse({
-    browsers: options.browsers,
-    ignore: options.ignore,
-    onFeatureUsage: pushUsage
-  })])
+  var processor
 
   var out = through.obj(write)
   var duplex = duplexer(inp, out)
+
+  try {
+    processor = postcss([doiuse({
+      browsers: options.browsers,
+      ignore: options.ignore,
+      onFeatureUsage: pushUsage
+    })])
+
+    inp.pipe(out)
+  } catch (e) {
+    setImmediate(function () { duplex.emit('error', e) })
+  }
+
+  return duplex
 
   function write (rule, enc, next) {
     try {
@@ -67,7 +77,4 @@ function stream (options, filename) {
   function pushUsage (usage) {
     out.push(usage)
   }
-
-  inp.pipe(out)
-  return duplex
 }

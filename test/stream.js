@@ -39,3 +39,11 @@ test('streaming works with ignore option', function (t) {
 
   s.end('div:nth-child(2n-1) { background-size: cover; }')
 })
+
+test('gracefully emit error on bad browsers list', function (t) {
+  t.plan(1)
+  stream({ browsers: 'Blargh!' })
+  .on('error', function (e) {
+    t.ok(e)
+  })
+})
