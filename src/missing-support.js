@@ -1,7 +1,6 @@
 let features = require('../data/features')
 let BrowserSelection = require('./browsers')
 let _ = require('lodash')
-let fs = require('fs')
 let formatBrowserName = require('./util').formatBrowserName
 
 function filterStats (browsers, stats) {
@@ -53,9 +52,7 @@ function missing (browserRequest) {
   let result = {}
 
   Object.keys(features).forEach((feature) => {
-    let json = fs.readFileSync(require.resolve('caniuse-db/features-json/' +
-      feature))
-    let featureData = JSON.parse(json)
+    let featureData = require('caniuse-db/features-json/' + feature)
     let missingData = filterStats(browsers, featureData.stats)
 
     // browsers missing support for this feature
