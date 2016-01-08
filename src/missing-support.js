@@ -3,6 +3,8 @@ let BrowserSelection = require('./browsers')
 let _ = require('lodash')
 let formatBrowserName = require('./util').formatBrowserName
 
+let caniuse = require('caniuse-db/fulldata-json/data-1.0')
+
 function filterStats (browsers, stats) {
   return _.transform(stats, (resultStats, versionData, browser) => {
     // filter only versions of selected browsers that don't support this
@@ -52,7 +54,7 @@ function missing (browserRequest) {
   let result = {}
 
   Object.keys(features).forEach((feature) => {
-    let featureData = require('caniuse-db/features-json/' + feature)
+    let featureData = caniuse.data[feature]
     let missingData = filterStats(browsers, featureData.stats)
 
     // browsers missing support for this feature
