@@ -90,7 +90,7 @@ gulp.src(src, { cwd: process.cwd() })
 # How it works
 In particular, the approach to detecting features usage is currently quite naive.
 
-Refer to the data in /src/data/features.js.
+<a name="features-list"></a>Refer to the data in [/data/features.js](data/features.js).
 
 - If a feature in that dataset only specifies `properties`, we just use those
   properties for regex/substring matches against the properties used in the input CSS.
@@ -144,6 +144,18 @@ And `usageInfo` looks like this:
 ```
     Called once for each usage of each css feature not supported by the selected
     browsers.
+
+## Ignoring file-specific rules: 
+For disabling some checks you can use just-in-place comments
+##### `/* doiuse-disable */`
+Disables checks of _all [features](#features-list)_
+##### `/* doiuse-disable feature */`
+Disables checks of _specified [feature(s)](#features-list)_ (can be comma separated list)
+##### `/* doiuse-enable */`
+Re-enables checks of _all [features](#features-list)_
+##### `/* doiuse-enable feature */`
+Enables checks of _specified [feature(s)](#features-list)_  (can be comma separated list)
+ - for following lines in file
 
 # [Contributing](CONTRIBUTING.md)
 
