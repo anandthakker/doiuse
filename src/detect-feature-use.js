@@ -1,6 +1,10 @@
 var _ = require('lodash')
 var features = require('../data/features')
 
+const PLUGIN_OPTION_COMMENT = 'doiuse-'
+const DISABLE_FEATURE_COMMENT = PLUGIN_OPTION_COMMENT + 'disable'
+const ENABLE_FEATURE_COMMENT = PLUGIN_OPTION_COMMENT + 'enable'
+
 /*
  * str: string to search in.
  * searchfor: string or pattern to search for.
@@ -36,12 +40,14 @@ function stripUrls (str) {
  * {
  *   usage: {} // postcss node where usage was found
  *   feature: {} // caniuse-db feature slug
+ *   ignore: {} // caniuse-db feature to ignore in current file
  * }
  * ```
  */
 module.exports = class Detector {
 constructor (featureList) {
   this.features = _.pick(features, featureList)
+  this.ignore = []
 }
 
 decl (decl, cb) {
@@ -50,7 +56,7 @@ decl (decl, cb) {
     const values = this.features[feat].values
     if (properties.filter(isFoundIn(decl.prop)).length > 0) {
       if (!values || values.filter(isFoundIn(decl.value)).length > 0) {
-        cb({usage: decl, feature: feat})
+        cb({usage: decl, feature: feat, ignore: this.ignore})
       }
     }
   }
@@ -60,11 +66,11 @@ rule (rule, cb) {
   for (let feat in this.features) {
     const selectors = this.features[feat].selectors || []
     if (selectors.filter(isFoundIn(rule.selector)).length > 0) {
-      cb({usage: rule, feature: feat})
+      cb({usage: rule, feature: feat, ignore: this.ignore})
     }
   }
 
-  this.process(rule, cb)
+  this.node(rule, cb)
 }
 
 atrule (atrule, cb) {
@@ -73,32 +79,67 @@ atrule (atrule, cb) {
     const params = this.features[feat].params
     if (atrules.filter(isFoundIn(atrule.name)).length > 0) {
       if (!params || params.filter(isFoundIn(atrule.params)).length > 0) {
-        cb({usage: atrule, feature: feat})
+        cb({usage: atrule, feature: feat, ignore: this.ignore})
       }
     }
   }
 
-  this.process(atrule, cb)
+  this.node(atrule, cb)
 }
 
-process (node, cb) {
-  const self = this
+comment (comment, cb) {
+  const text = comment.text.toLowerCase()
+
+  if (_.startsWith(text, PLUGIN_OPTION_COMMENT)) {
+
+    const option = text.split(' ', 1)[0]
+    const value = text.replace(option, '').trim()
+
+    switch (option) {
+      case DISABLE_FEATURE_COMMENT:
+        if (value === '') {
+          this.ignore = _.keysIn(this.features)
+        } else {
+          this.ignore = _.uniq([...this.ignore, ...value.split(',').map((feat) => feat.trim())])
+        }
+        break
+      case ENABLE_FEATURE_COMMENT:
+        if (value === '') {
+          this.ignore = []
+        } else {
+          this.ignore = _.without(this.ignore, ...value.split(',').map((feat) => feat.trim()))
+        }
+        break
+    }
+  }
+}
+
+node (node, cb) {
   node.each((child) => {
     switch (child.type) {
       case 'rule':
-        self.rule(child, cb)
+        this.rule(child, cb)
         break
       case 'decl':
-        self.decl(child, cb)
+        this.decl(child, cb)
         break
       case 'atrule':
-        self.atrule(child, cb)
+        this.atrule(child, cb)
         break
       case 'comment':
+        this.comment(child, cb)
         break
       default:
         throw new Error('Unkonwn node type ' + child.type)
     }
   })
+}
+
+process (node, cb) {
+//  Reset ignoring rules specified by inline comments per each file
+  this.ignore = []
+
+//  Recursively walk nodes in file
+  this.node(node, cb)
 }
 }

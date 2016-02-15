@@ -107,3 +107,33 @@ test('ignores rules from some imported files, and not others', function (t) {
             t.end()
           })
 })
+
+test('ignores rules specified in comments', function (t) {
+  var count, ignoreCss, ignoreCssPath, processCss, processCssPath
+  ignoreCssPath = require.resolve('./cases/ignore-comment.css')
+  ignoreCss = fs.readFileSync(ignoreCssPath)
+
+  processCssPath = require.resolve('./cases/ignore-file.css')
+  processCss = fs.readFileSync(processCssPath)
+
+  count = 0
+
+  var processor = postcss([atImport(),
+           doiuse({
+             browsers: ['ie 6'],
+             onFeatureUsage: function (usageInfo) {
+               count++
+             }
+          })])
+
+  processor.process(ignoreCss, {from: ignoreCssPath})
+    .then(function () {
+      t.equal(count, 2)
+    }).then(function () {
+      processor.process(processCss, {from: processCssPath})
+        .then(function () {
+          t.equal(count, 3, 'inline css disabing rules must apply only to current file')
+          t.end()
+        })
+    })
+})
