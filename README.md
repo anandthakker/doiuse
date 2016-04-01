@@ -117,7 +117,7 @@ Yields `UsageInfo` objects as described below.
 `postcss(doiuse(opts)).process(css)`, where `opts` is:
 ```javascript
 {
-  browsers: ['ie >= 8', '> 1%'] // an autoprefixer-like array of browsers.
+  browsers: ['ie >= 8', '> 1%'], // an autoprefixer-like array of browsers.
   ignore: ['rem'], // an optional array of features to ignore
   ignoreFiles: ['**/normalize.css'], // an optional array of file globs to match against original source file path, to ignore
   onFeatureUsage: function(usageInfo) { } // a callback for usages of features not supported by the selected browsers
