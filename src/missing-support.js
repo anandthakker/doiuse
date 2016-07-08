@@ -58,18 +58,25 @@ function missing (browserRequest) {
     let missingData = filterStats(browsers, featureData.stats)
 
     // browsers missing support for this feature
-    let missing = _.reduce(missingData, (res, versions, browser) => {
-      res.push(formatBrowserName(browser, _.keys(versions)))
-      return res
-    }, [])
-      .join(', ')
+    let lackOfSupport = _.reduce(missingData, function (res, versions, browser) {
+      const support = versions[_.keys(versions)[0]];
+      const browserName = formatBrowserName(browser, _.keys(versions));
+      const partial = /(^|\s)a($|\s)/.test(support);
+      res[partial ? 'partial' : 'missing'].push(browserName);
+      return res;
+    }, {missing: [], partial: []});
 
-    if (missing.length > 0) {
+    if (lackOfSupport.missing.length > 0 || lackOfSupport.partial.length > 0) {
       result[feature] = {
         title: featureData.title,
-        missing,
-        missingData,
+        missingData: missingData,
         caniuseData: featureData
+      };
+      if (lackOfSupport.missing.length > 0) {
+        result[feature].missing = lackOfSupport.missing.join(", ");
+      }
+      if (lackOfSupport.partial.length > 0) {
+        result[feature].partial = lackOfSupport.partial.join(", ");
       }
     }
   })
