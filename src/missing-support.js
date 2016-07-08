@@ -31,13 +31,14 @@ function filterStats (browsers, stats) {
  * ```
  * {
  *   'feature-name': {
- *     title: 'Title of feature'
- *     missing: "IE (8), Chrome (31)"
+ *     title: 'Title of feature',
+ *     missing: "IE (8), Chrome (31)",
+ *     partial: "IE (7), Firefox (29)",
  *     missingData: {
  *       // map of browser -> version -> (lack of)support code
  *       ie: { '8': 'n' },
  *       chrome: { '31': 'n' }
- *     }
+ *     },
  *     caniuseData: {
  *       // caniuse-db json data for this feature
  *     }
