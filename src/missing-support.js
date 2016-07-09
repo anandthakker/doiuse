@@ -5,22 +5,38 @@ let formatBrowserName = require('./util').formatBrowserName
 
 let caniuse = require('caniuse-db/fulldata-json/data-1.0')
 
-function filterStats (browsers, stats) {
-  return _.transform(stats, (resultStats, versionData, browser) => {
+function filterStats(browsers, stats) {
+  return _.reduce(stats, function (resultStats, versionData, browser) {
     // filter only versions of selected browsers that don't support this
     // feature (i.e., don't have 'y' in their stats)
-    let versWithoutSupport = _.transform(versionData, (result, support, ver) => {
-      let selected = browsers.test(browser, ver)
-      if (selected && (!/(^|\s)y($|\s)/.test(support))) {
-        result[selected[1]] = support
+    const feature = _.reduce(versionData, function (result, support, ver) {
+      const selected = browsers.test(browser, ver);
+      if (selected) {
+          if(!(/(^|\s)y($|\s)/.test(support))) {
+            const testprop = (/(^|\s)a($|\s)/.test(support) ? 'partial' : 'missing');
+            if(!result[testprop][browser]) {
+              result[testprop][browser] = {};
+            }
+            result[testprop][browser][selected[1]] = support;
+          }
       }
-    })
-    // filter out browsers for which there are *no* (selected) versions lacking
-    // support.
-    if (_.keys(versWithoutSupport).length !== 0) {
-      resultStats[browser] = versWithoutSupport
+      return result;
+    }, { missing: {}, partial: {}});
+
+    if (_.keys(feature.missing).length !== 0) {
+      resultStats.missing = feature.missing;
     }
-  })
+    if (_.keys(feature.partial).length !== 0) {
+      resultStats.partial = feature.partial;
+    }
+    return resultStats;
+  }, { missing: {}, partial: {}});
+}
+function lackingBrowsers(browserStats) {
+  return _.reduce(browserStats, function (res, versions, browser) {
+    res.push(formatBrowserName(browser, _.keys(versions)))
+    return res;
+  }, []).join(", ");
 }
 
 /**
@@ -31,14 +47,18 @@ function filterStats (browsers, stats) {
  * ```
  * {
  *   'feature-name': {
- *     title: 'Title of feature',
- *     missing: "IE (8), Chrome (31)",
- *     partial: "IE (7), Firefox (29)",
+ *     title: 'Title of feature'
+ *     missing: "IE (8), Chrome (31)"
  *     missingData: {
  *       // map of browser -> version -> (lack of)support code
  *       ie: { '8': 'n' },
  *       chrome: { '31': 'n' }
- *     },
+ *     }
+ *     partialData: {
+ *       // map of browser -> version -> (partial)support code
+ *       ie: { '7': 'a' },
+ *       ff: { '29': 'a #1' }
+ *     }
  *     caniuseData: {
  *       // caniuse-db json data for this feature
  *     }
@@ -49,43 +69,39 @@ function filterStats (browsers, stats) {
  *
  * `feature-name` is a caniuse-db slug.
  */
-function missing (browserRequest) {
-  let browsers = new BrowserSelection(browserRequest)
+function missing(browserRequest) {
+  const browsers = new BrowserSelection(browserRequest);
+  let result = {};
 
-  let result = {}
+  Object.keys(features).forEach(function (feature) {
+    const featureData = caniuse.data[feature];
+    const lackData = filterStats(browsers, featureData.stats);
+    const missingData = lackData.missing;
+    const partialData = lackData.partial;
+    // browsers with missing or partial support for this feature
+    const missing = lackingBrowsers(missingData);
+    const partial = lackingBrowsers(partialData);
 
-  Object.keys(features).forEach((feature) => {
-    let featureData = caniuse.data[feature]
-    let missingData = filterStats(browsers, featureData.stats)
-
-    // browsers missing support for this feature
-    let lackOfSupport = _.reduce(missingData, function (res, versions, browser) {
-      const support = versions[_.keys(versions)[0]];
-      const browserName = formatBrowserName(browser, _.keys(versions));
-      const partial = /(^|\s)a($|\s)/.test(support);
-      res[partial ? 'partial' : 'missing'].push(browserName);
-      return res;
-    }, {missing: [], partial: []});
-
-    if (lackOfSupport.missing.length > 0 || lackOfSupport.partial.length > 0) {
+    if (missing.length > 0 || partial.length > 0) {
       result[feature] = {
         title: featureData.title,
-        missingData: missingData,
         caniuseData: featureData
       };
-      if (lackOfSupport.missing.length > 0) {
-        result[feature].missing = lackOfSupport.missing.join(", ");
+      if (missing.length > 0) {
+        result[feature].missingData = missingData;
+        result[feature].missing = missing;
       }
-      if (lackOfSupport.partial.length > 0) {
-        result[feature].partial = lackOfSupport.partial.join(", ");
+      if (partial.length > 0) {
+        result[feature].partialData = partialData;
+        result[feature].partial = partial;
       }
     }
-  })
+  });
 
   return {
     browsers: browsers.list(),
     features: result
-  }
+  };
 }
 
 module.exports = missing
