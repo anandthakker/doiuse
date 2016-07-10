@@ -7,12 +7,13 @@ let caniuse = require('caniuse-db/fulldata-json/data-1.0')
 
 function filterStats (browsers, stats) {
   return _.reduce(stats, function (resultStats, versionData, browser) {
-    // filter only versions of selected browsers that don't support this
-    // feature (i.e., don't have 'y' in their stats)
+    // filter only versions of selected browsers that don't fully support this feature
     const feature = _.reduce(versionData, function (result, support, ver) {
       const selected = browsers.test(browser, ver)
       if (selected) {
+        // check if browser is NOT fully (i.e., don't have 'y' in their stats) supported
         if (!(/(^|\s)y($|\s)/.test(support))) {
+          // when it's not partially supported ('a'), it's missing
           const testprop = (/(^|\s)a($|\s)/.test(support) ? 'partial' : 'missing')
           if (!result[testprop]) {
             result[testprop] = {}
