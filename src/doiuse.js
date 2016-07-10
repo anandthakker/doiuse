@@ -33,15 +33,15 @@ function doiuse (options) {
           return
         }
 
-        let messages = [];
-        if(features[feature].missing) {
-          messages.push(' not supported by: ' +  features[feature].missing);
+        let messages = []
+        if (features[feature].missing) {
+          messages.push(' not supported by: ' + features[feature].missing)
         }
-        if(features[feature].partial) {
-          messages.push(' only partially supported by: ' +  features[feature].partial);
-        } 
+        if (features[feature].partial) {
+          messages.push(' only partially supported by: ' + features[feature].partial)
+        }
 
-        let message = features[feature].title + messages[0] + (messages[1] ? (' and ' + messages[1]) : '') + ' ('  + feature + ')';
+        let message = features[feature].title + messages[0] + (messages[1] ? (' and ' + messages[1]) : '') + ' (' + feature + ')'
 
         result.warn(message, { node: usage, plugin: 'doiuse' })
 
