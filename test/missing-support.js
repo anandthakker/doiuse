@@ -50,7 +50,7 @@ test('for browser request ie >= 7, safari >= 6, opera >= 10.1', function (t) {
   t.end()
 })
 
-test('only yields features partially supported by selected browser', function (t) {
+test('partialData only yields features partially supported by selected browser', function (t) {
   var data, f, featureData, p
   data = missingSupport(['ie 8']).features
   var partial = []
@@ -66,7 +66,7 @@ test('only yields features partially supported by selected browser', function (t
   t.end()
 })
 
-test('only yields features not supported by selected browser', function (t) {
+test('missingData only yields features not supported by selected browser', function (t) {
   var data, f, featureData, m
   data = missingSupport(['ie 8']).features
   var missing = []
