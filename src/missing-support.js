@@ -6,21 +6,38 @@ let formatBrowserName = require('./util').formatBrowserName
 let caniuse = require('caniuse-db/fulldata-json/data-1.0')
 
 function filterStats (browsers, stats) {
-  return _.transform(stats, (resultStats, versionData, browser) => {
-    // filter only versions of selected browsers that don't support this
-    // feature (i.e., don't have 'y' in their stats)
-    let versWithoutSupport = _.transform(versionData, (result, support, ver) => {
-      let selected = browsers.test(browser, ver)
-      if (selected && (!/(^|\s)y($|\s)/.test(support))) {
-        result[selected[1]] = support
+  return _.reduce(stats, function (resultStats, versionData, browser) {
+    // filter only versions of selected browsers that don't fully support this feature
+    const feature = _.reduce(versionData, function (result, support, ver) {
+      const selected = browsers.test(browser, ver)
+      if (selected) {
+        // check if browser is NOT fully (i.e., don't have 'y' in their stats) supported
+        if (!(/(^|\s)y($|\s)/.test(support))) {
+          // when it's not partially supported ('a'), it's missing
+          const testprop = (/(^|\s)a($|\s)/.test(support) ? 'partial' : 'missing')
+          if (!result[testprop]) {
+            result[testprop] = {}
+          }
+          result[testprop][selected[1]] = support
+        }
       }
-    })
-    // filter out browsers for which there are *no* (selected) versions lacking
-    // support.
-    if (_.keys(versWithoutSupport).length !== 0) {
-      resultStats[browser] = versWithoutSupport
+      return result
+    }, { missing: {}, partial: {}})
+
+    if (_.keys(feature.missing).length !== 0) {
+      resultStats.missing[browser] = feature.missing
     }
-  })
+    if (_.keys(feature.partial).length !== 0) {
+      resultStats.partial[browser] = feature.partial
+    }
+    return resultStats
+  }, { missing: {}, partial: {}})
+}
+function lackingBrowsers (browserStats) {
+  return _.reduce(browserStats, function (res, versions, browser) {
+    res.push(formatBrowserName(browser, _.keys(versions)))
+    return res
+  }, []).join(', ')
 }
 
 /**
@@ -38,6 +55,11 @@ function filterStats (browsers, stats) {
  *       ie: { '8': 'n' },
  *       chrome: { '31': 'n' }
  *     }
+ *     partialData: {
+ *       // map of browser -> version -> (partial)support code
+ *       ie: { '7': 'a' },
+ *       ff: { '29': 'a #1' }
+ *     }
  *     caniuseData: {
  *       // caniuse-db json data for this feature
  *     }
@@ -49,27 +71,30 @@ function filterStats (browsers, stats) {
  * `feature-name` is a caniuse-db slug.
  */
 function missing (browserRequest) {
-  let browsers = new BrowserSelection(browserRequest)
-
+  const browsers = new BrowserSelection(browserRequest)
   let result = {}
 
-  Object.keys(features).forEach((feature) => {
-    let featureData = caniuse.data[feature]
-    let missingData = filterStats(browsers, featureData.stats)
+  Object.keys(features).forEach(function (feature) {
+    const featureData = caniuse.data[feature]
+    const lackData = filterStats(browsers, featureData.stats)
+    const missingData = lackData.missing
+    const partialData = lackData.partial
+    // browsers with missing or partial support for this feature
+    const missing = lackingBrowsers(missingData)
+    const partial = lackingBrowsers(partialData)
 
-    // browsers missing support for this feature
-    let missing = _.reduce(missingData, (res, versions, browser) => {
-      res.push(formatBrowserName(browser, _.keys(versions)))
-      return res
-    }, [])
-      .join(', ')
-
-    if (missing.length > 0) {
+    if (missing.length > 0 || partial.length > 0) {
       result[feature] = {
         title: featureData.title,
-        missing,
-        missingData,
         caniuseData: featureData
+      }
+      if (missing.length > 0) {
+        result[feature].missingData = missingData
+        result[feature].missing = missing
+      }
+      if (partial.length > 0) {
+        result[feature].partialData = partialData
+        result[feature].partial = partial
       }
     }
   })
