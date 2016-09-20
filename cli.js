@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
+var FILE_NOT_FOUND = 'ENOENT'
+
 var fs = require('fs')
 var ldjson = require('ldjson-stream')
 var through = require('through2')
 var browserslist = require('browserslist')
+var path = require('path')
+var _ = require('lodash')
 
 var formatBrowserName = require('./lib/util').formatBrowserName
 var defaultBrowsers = require('./').default
@@ -31,6 +35,11 @@ var yargs = require('yargs')
     description: 'Just show the browsers and features that would be tested by' +
       'the specified browser criteria, without actually processing any CSS.'
   })
+  .options('c', {
+    alias: 'config',
+    description: 'Provide options through config file'
+  })
+  .string('verbose')
   .options('v', {
     alias: 'verbose',
     description: 'Verbose output. Multiple levels available.'
@@ -46,9 +55,29 @@ var yargs = require('yargs')
 
 var argv = yargs.argv
 
+//Config file reading
+if (argv.config) {
+  try {
+    var fileData = fs.readFileSync(path.resolve(argv.config), "utf8")
+    var config = JSON.parse(fileData)
+    _.forEach(_.keys(config), function(key) {
+      var value = config[key]
+      if (key == 'browsers') {
+        if (_.isArray(value)) value = value.join(',')
+      }
+
+      argv[key] = value
+    })
+  } catch (err) {
+    if (err.code === FILE_NOT_FOUND)
+      return console.error('Config file not found', err)
+
+    return console.error(err)
+  }
+}
+
 argv.browsers = argv.browsers.split(',').map(function (s) {return s.trim()})
 argv.ignore = argv.ignore.split(',').map(function (s) {return s.trim()})
-
 // Informational output
 if (argv.l) { argv.v = ++argv.verbose }
 if (argv.verbose >= 1) {
