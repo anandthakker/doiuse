@@ -55,14 +55,14 @@ var yargs = require('yargs')
 
 var argv = yargs.argv
 
-//Config file reading
+//  Config file reading
 if (argv.config) {
   try {
-    var fileData = fs.readFileSync(path.resolve(argv.config), "utf8")
+    var fileData = fs.readFileSync(path.resolve(argv.config), 'utf8')
     var config = JSON.parse(fileData)
-    _.forEach(_.keys(config), function(key) {
+    _.forEach(_.keys(config), function (key) {
       var value = config[key]
-      if (key == 'browsers') {
+      if (key === 'browsers') {
         if (_.isArray(value)) value = value.join(',')
       }
 
