@@ -69,10 +69,8 @@ if (argv.config) {
       argv[key] = value
     })
   } catch (err) {
-    if (err.code === FILE_NOT_FOUND)
-      return console.error('Config file not found', err)
-
-    return console.error(err)
+    if (err.code === FILE_NOT_FOUND) console.error('Config file not found', err)
+    else console.error(err)
   }
 }
 
