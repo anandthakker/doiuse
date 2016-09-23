@@ -12,6 +12,11 @@ var expected_css_gradients = '<streaming css input>:8:1: CSS Gradients not suppo
 var expected_css_repeating_gradients = '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9) (css-repeating-gradients)\n' +
   '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8,9) (css-repeating-gradients)\n'
 var expected = expected_css_gradients + expected_css_repeating_gradients
+
+var configFile = path.join(__dirname, '/cases/doiuse.config.json')
+var overflowWrapCssFile = path.join(__dirname, '/cases/overflow-wrap.css')
+var expectedOverflowWrapConfig = '<streaming css input>:7:1: CSS3 Overflow-wrap only partially supported by: IE (11) (wordwrap)\n'
+
 var commands = {
   cat: catCss,
   doiuse: pathToCli + ' --browsers="IE >= 8" '
@@ -75,6 +80,13 @@ test('--json option should work', function (t) {
 test('--list-only should work', function (t) {
   exec(commands.doiuse + '--list-only', function (error, stdout, stderr) {
     t.equal(stdout.trim(), '[doiuse] Browsers: IE 8, IE 9, IE 10, IE 11')
+    t.end(error)
+  })
+})
+
+test('-c config file should work as input parameters', function (t) {
+  exec(commands.doiuse + '-c ' + configFile + ' ' + overflowWrapCssFile, function (error, stdout, stderr) {
+    t.equal(stdout, expectedOverflowWrapConfig.replace(/<streaming css input>/g, overflowWrapCssFile))
     t.end(error)
   })
 })
