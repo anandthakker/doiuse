@@ -6,8 +6,8 @@ test('provides list of selected browsers', function (t) {
   var data
   data = missingSupport(['ie >= 8'])
     .browsers.sort(function (a, b) {
-    return Number(a[1]) - Number(b[1])
-  })
+      return Number(a[1]) - Number(b[1])
+    })
   t.deepEqual(data, [
     [
       'ie',

@@ -89,7 +89,7 @@ var runTest = function (tc, cssString, expected, only) {
 }
 
 var caseFiles = fs.readdirSync(path.join(__dirname, '/cases'))
-  .filter(function (tc) { return /\.css$/.test(tc)})
+  .filter(function (tc) { return /\.css$/.test(tc) })
 
 var cases = []
 for (var i = 0; i < caseFiles.length; ++i) {

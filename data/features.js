@@ -223,7 +223,7 @@ module.exports = {
   'css-sel2': {
     selectors: [
       matchOutsideOfBrackets(/\*/),
-      matchOutsideOfBrackets(/\>/),
+      matchOutsideOfBrackets(/>/),
       matchOutsideOfBrackets(/\+/),
       matchOutsideOfBrackets(/\./),
       matchOutsideOfBrackets(/#/),

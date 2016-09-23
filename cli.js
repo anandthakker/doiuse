@@ -74,8 +74,8 @@ if (argv.config) {
   }
 }
 
-argv.browsers = argv.browsers.split(',').map(function (s) {return s.trim()})
-argv.ignore = argv.ignore.split(',').map(function (s) {return s.trim()})
+argv.browsers = argv.browsers.split(',').map(function (s) { return s.trim() })
+argv.ignore = argv.ignore.split(',').map(function (s) { return s.trim() })
 // Informational output
 if (argv.l) { argv.v = ++argv.verbose }
 if (argv.verbose >= 1) {

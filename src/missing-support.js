@@ -22,7 +22,7 @@ function filterStats (browsers, stats) {
         }
       }
       return result
-    }, { missing: {}, partial: {}})
+    }, { missing: {}, partial: {} })
 
     if (_.keys(feature.missing).length !== 0) {
       resultStats.missing[browser] = feature.missing
@@ -31,7 +31,7 @@ function filterStats (browsers, stats) {
       resultStats.partial[browser] = feature.partial
     }
     return resultStats
-  }, { missing: {}, partial: {}})
+  }, { missing: {}, partial: {} })
 }
 function lackingBrowsers (browserStats) {
   return _.reduce(browserStats, function (res, versions, browser) {

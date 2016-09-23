@@ -32,9 +32,9 @@ test('calls back for unsupported feature usages', function (t) {
     }
   }))
     .process(css).then(function () {
-    t.equal(count, 4)
-    t.end()
-  })
+      t.equal(count, 4)
+      t.end()
+    })
 })
 
 test('ignores specified features and calls back for the others', function (t) {
@@ -53,9 +53,9 @@ test('ignores specified features and calls back for the others', function (t) {
     }
   }))
     .process(css).then(function () {
-    t.equal(count, 2)
-    t.end()
-  })
+      t.equal(count, 2)
+      t.end()
+    })
 })
 
 test('ignores specified files and calls back for others', function (t) {
@@ -66,12 +66,12 @@ test('ignores specified files and calls back for others', function (t) {
 
   pcss = function () {
     return postcss(doiuse({
-        browsers: ['ie 6'],
-        ignoreFiles: ['**/ignore-file.css'],
-        onFeatureUsage: function (usageInfo) {
-          run = true
-        }
-      }))
+      browsers: ['ie 6'],
+      ignoreFiles: ['**/ignore-file.css'],
+      onFeatureUsage: function (usageInfo) {
+        run = true
+      }
+    }))
   }
 
   pcss().process(ignoreCss, {from: './cases/ignore-file.css'})
@@ -100,7 +100,7 @@ test('ignores rules from some imported files, and not others', function (t) {
              onFeatureUsage: function (usageInfo) {
                count++
              }
-          })])
+           })])
           .process(css, {from: cssPath})
           .then(function () {
             t.equal(count, 2)
@@ -124,7 +124,7 @@ test('ignores rules specified in comments', function (t) {
              onFeatureUsage: function (usageInfo) {
                count++
              }
-          })])
+           })])
 
   processor.process(ignoreCss, {from: ignoreCssPath})
     .then(function () {

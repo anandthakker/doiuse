@@ -8,7 +8,7 @@ var expected = [
   'background-img-opts'
 ]
 
-var expected_with_ignore = [
+var expectedWithIgnore = [
   'background-img-opts'
 ]
 
@@ -29,11 +29,11 @@ test('streaming works', function (t) {
 test('streaming works with ignore option', function (t) {
   var s = stream({ browsers: 'IE >= 8', ignore: ['css-sel3'] })
   s.pipe(through.obj(function (usage, enc, next) {
-    t.equal(usage.feature, expected_with_ignore.shift())
+    t.equal(usage.feature, expectedWithIgnore.shift())
     next()
   }, function (next) {
     next()
-    t.equal(expected_with_ignore.length, 0)
+    t.equal(expectedWithIgnore.length, 0)
     t.end()
   }))
 
