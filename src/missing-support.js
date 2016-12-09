@@ -3,7 +3,7 @@ let BrowserSelection = require('./browsers')
 let _ = require('lodash')
 let formatBrowserName = require('./util').formatBrowserName
 
-let caniuse = require('caniuse-db/fulldata-json/data-1.0')
+let caniuse = require('caniuse-db/fulldata-json/data-1.0.json')
 
 function filterStats (browsers, stats) {
   return _.reduce(stats, function (resultStats, versionData, browser) {
