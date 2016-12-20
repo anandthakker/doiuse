@@ -23,7 +23,7 @@ function isFoundIn (str) {
  * by our naive substring matching.
  */
 function stripUrls (str) {
-  return str.replace(/url\([^\)]*\)/g, 'url()')
+  return str.replace(/url\([^\)]*\)/g, 'url()') // eslint-disable-line no-useless-escape
 }
 
 /**

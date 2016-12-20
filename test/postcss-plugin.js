@@ -94,13 +94,13 @@ test('ignores rules from some imported files, and not others', function (t) {
   count = 0
 
   postcss([atImport(),
-           doiuse({
-             browsers: ['ie 6'],
-             ignoreFiles: ['**/ignore-file.css'],
-             onFeatureUsage: function (usageInfo) {
-               count++
-             }
-           })])
+    doiuse({
+      browsers: ['ie 6'],
+      ignoreFiles: ['**/ignore-file.css'],
+      onFeatureUsage: function (usageInfo) {
+        count++
+      }
+    })])
           .process(css, {from: cssPath})
           .then(function () {
             t.equal(count, 2)
@@ -119,12 +119,12 @@ test('ignores rules specified in comments', function (t) {
   count = 0
 
   var processor = postcss([atImport(),
-           doiuse({
-             browsers: ['ie 6'],
-             onFeatureUsage: function (usageInfo) {
-               count++
-             }
-           })])
+    doiuse({
+      browsers: ['ie 6'],
+      onFeatureUsage: function (usageInfo) {
+        count++
+      }
+    })])
 
   processor.process(ignoreCss, {from: ignoreCssPath})
     .then(function () {
