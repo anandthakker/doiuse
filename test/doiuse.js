@@ -16,3 +16,15 @@ test('info with browserslist file', function (t) {
 
   t.end()
 })
+
+test('info with no browserslist file or browsers config', function (t) {
+  var actual = doiuse({}).info().browsers
+
+  var expected = doiuse({
+    browsers: doiuse['default']
+  }).info().browsers
+
+  t.deepEqual(actual, expected)
+
+  t.end()
+})

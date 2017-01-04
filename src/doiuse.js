@@ -1,5 +1,5 @@
-let fs = require('fs');
-let path = require('path');
+let fs = require('fs')
+let path = require('path')
 let _ = require('lodash')
 let missingSupport = require('./missing-support')
 let Detector = require('./detect-feature-use')
@@ -18,6 +18,8 @@ function browserslist () {
 
       return content.split(/\r?\n/).join(', ')
     }
+
+    dirs = dirs.slice(0, -1)
   }
 }
 
@@ -31,7 +33,6 @@ function doiuse (options) {
       browserQuery = doiuse['default'].slice()
     }
   }
-
 
   let {browsers, features} = missingSupport(browserQuery)
   let detector = new Detector(_.keys(features))
