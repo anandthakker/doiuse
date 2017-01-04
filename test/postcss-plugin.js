@@ -4,6 +4,7 @@ var postcss = require('postcss')
 var doiuse = require('../')
 var atImport = require('postcss-import')
 var hasKeys = require('./has-keys')
+var mock = require('mock-fs')
 
 test('leaves css alone by default', function (t) {
   var css, out
@@ -136,4 +137,31 @@ test('ignores rules specified in comments', function (t) {
           t.end()
         })
     })
+})
+
+test('info with browserslist file', function (t) {
+  mock({
+    'browserslist': 'Safari 8\nIE >= 11'
+  })
+
+  var actual = doiuse({}).info().browsers
+  var expected = [['ie', '11'], ['safari', '8']]
+
+  t.deepEqual(actual, expected)
+
+  mock.restore()
+
+  t.end()
+})
+
+test('info with no browserslist file or browsers config', function (t) {
+  var actual = doiuse({}).info().browsers
+
+  var expected = doiuse({
+    browsers: doiuse['default']
+  }).info().browsers
+
+  t.deepEqual(actual, expected)
+
+  t.end()
 })
