@@ -1,20 +1,50 @@
 var _ = require('lodash')
+var escapeStringRegexp = require('escape-string-regexp')
 var features = require('../data/features')
 
 const PLUGIN_OPTION_COMMENT = 'doiuse-'
 const DISABLE_FEATURE_COMMENT = PLUGIN_OPTION_COMMENT + 'disable'
 const ENABLE_FEATURE_COMMENT = PLUGIN_OPTION_COMMENT + 'enable'
 
+const CSS_FEATURE_BEGIN = '(?:^|[^-_a-z]\\b)'
+const CSS_SELECTOR_BEGIN = '(?:^|[^-_]\\b)'
+const CSS_NUMBER = '(?:[-+]?(?:\\d+|\\d*\\.\\d+?))'
+const CSS_VENDOR_PREFIX = '(?:-[a-z]+-)'
+const CSS_FEATURE_END = '(?:$|\\b[^-_])'
+
 /*
  * str: string to search in.
  * searchfor: string or pattern to search for.
  */
-function isFoundIn (str) {
+function isFoundIn (str, context) {
   str = stripUrls(str)
   return function find (searchfor) {
     if (searchfor instanceof RegExp) return searchfor.test(str)
     else if (_.isFunction(searchfor)) return searchfor(str)
-    else return str && str.indexOf(searchfor) >= 0
+    else if (!str) return false
+
+    var pattern
+    switch (context) {
+      case 'atrule':
+        pattern = `^${CSS_VENDOR_PREFIX}?${escapeStringRegexp(searchfor)}$`
+        break
+      case 'param':
+        pattern = `${CSS_FEATURE_BEGIN}${CSS_VENDOR_PREFIX}?${escapeStringRegexp(searchfor)}${CSS_FEATURE_END}`
+        break
+      case 'selector':
+        var [, prefix, value] = /^([:]*)(.*)$/.exec(searchfor)
+        pattern = `${CSS_SELECTOR_BEGIN}${prefix}${CSS_VENDOR_PREFIX}?${escapeStringRegexp(value)}${CSS_FEATURE_END}`
+        break
+      case 'property':
+        if (!searchfor) return true
+        pattern = `^${CSS_VENDOR_PREFIX}?${escapeStringRegexp(searchfor)}$`
+        break
+      case 'value':
+        pattern = `${CSS_FEATURE_BEGIN}${CSS_NUMBER}?${CSS_VENDOR_PREFIX}?${escapeStringRegexp(searchfor)}${CSS_FEATURE_END}`
+        break
+    }
+
+    return new RegExp(pattern).test(str)
   }
 }
 
@@ -54,8 +84,8 @@ module.exports = class Detector {
     for (let feat in this.features) {
       const properties = this.features[feat].properties || []
       const values = this.features[feat].values
-      if (properties.filter(isFoundIn(decl.prop)).length > 0) {
-        if (!values || values.filter(isFoundIn(decl.value)).length > 0) {
+      if (properties.filter(isFoundIn(decl.prop, 'property')).length > 0) {
+        if (!values || values.filter(isFoundIn(decl.value, 'value')).length > 0) {
           cb({usage: decl, feature: feat, ignore: this.ignore})
         }
       }
@@ -65,7 +95,7 @@ module.exports = class Detector {
   rule (rule, cb) {
     for (let feat in this.features) {
       const selectors = this.features[feat].selectors || []
-      if (selectors.filter(isFoundIn(rule.selector)).length > 0) {
+      if (selectors.filter(isFoundIn(rule.selector, 'selector')).length > 0) {
         cb({usage: rule, feature: feat, ignore: this.ignore})
       }
     }
@@ -77,8 +107,8 @@ module.exports = class Detector {
     for (let feat in this.features) {
       const atrules = this.features[feat].atrules || []
       const params = this.features[feat].params
-      if (atrules.filter(isFoundIn(atrule.name)).length > 0) {
-        if (!params || params.filter(isFoundIn(atrule.params)).length > 0) {
+      if (atrules.filter(isFoundIn(atrule.name, 'atrule')).length > 0) {
+        if (!params || params.filter(isFoundIn(atrule.params, 'param')).length > 0) {
           cb({usage: atrule, feature: feat, ignore: this.ignore})
         }
       }
