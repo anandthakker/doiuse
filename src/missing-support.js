@@ -3,7 +3,7 @@ let BrowserSelection = require('./browsers')
 let _ = require('lodash')
 let formatBrowserName = require('./util').formatBrowserName
 
-let caniuse = require('caniuse-db/fulldata-json/data-1.0.json')
+let caniuse = require('caniuse-lite')
 
 function filterStats (browsers, stats) {
   return _.reduce(stats, function (resultStats, versionData, browser) {
@@ -75,7 +75,7 @@ function missing (browserRequest) {
   let result = {}
 
   Object.keys(features).forEach(function (feature) {
-    const featureData = caniuse.data[feature]
+    const featureData = caniuse.feature(caniuse.features[feature])
     const lackData = filterStats(browsers, featureData.stats)
     const missingData = lackData.missing
     const partialData = lackData.partial
