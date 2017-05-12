@@ -29,6 +29,7 @@
   "dependencies": {
     "browserslist": "^2.1.2",
     "caniuse-db": "^1.0.30000187",
+    "caniuse-lite": "^1.0.30000667",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
