@@ -42,8 +42,9 @@ test('streaming works with ignore option', function (t) {
 
 test('gracefully emit error on bad browsers list', function (t) {
   t.plan(1)
-  stream({ browsers: 'Blargh!' })
-  .on('error', function (e) {
+  var s = stream({ browsers: 'Blargh!' })
+  s.on('error', function (e) {
     t.ok(e)
   })
+  s.end('a{}')
 })

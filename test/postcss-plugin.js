@@ -141,7 +141,7 @@ test('ignores rules specified in comments', function (t) {
 
 test('info with browserslist file', function (t) {
   mock({
-    'browserslist': 'Safari 8\nIE >= 11'
+    'browserslist': '# Comment\nSafari 8\nIE >= 11'
   })
 
   var actual = doiuse({}).info().browsers
