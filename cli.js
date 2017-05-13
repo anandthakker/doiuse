@@ -10,7 +10,6 @@ var path = require('path')
 var _ = require('lodash')
 
 var formatBrowserName = require('./lib/util').formatBrowserName
-var defaultBrowsers = require('./').default
 var doiuse = require('./stream')
 
 var yargs = require('yargs')
@@ -21,7 +20,7 @@ var yargs = require('yargs')
   .options('b', {
     alias: 'browsers',
     description: 'Autoprefixer-like browser criteria.',
-    default: defaultBrowsers.join(', ')
+    default: browserslist.defaults.join(', ')
   })
   .string('b')
   .options('i', {

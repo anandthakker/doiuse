@@ -57,7 +57,7 @@ function stream (options, filename) {
         ocol = 1
       }
 
-      processor.process(rule.content, { map: { prev: mapper.toString() } })
+      processor.process(rule.content, { from: filename, map: { prev: mapper.toString() } })
         .then(function (result) { next() })
         .catch(handleError)
     } catch (e) {

@@ -1,44 +1,14 @@
-let fs = require('fs')
-let path = require('path')
 let _ = require('lodash')
 let missingSupport = require('./missing-support')
 let Detector = require('./detect-feature-use')
 let Multimatch = require('multimatch')
 
-function browserslist () {
-  var dirs = path.resolve('.').split(path.sep)
-  var config
-  var content
-
-  while (dirs.length) {
-    config = dirs.concat(['browserslist']).join(path.sep)
-
-    if (fs.existsSync(config) && fs.statSync(config).isFile()) {
-      content = fs.readFileSync(config, { encoding: 'utf8' })
-
-      return content.split(/\r?\n/).join(', ')
-    }
-
-    dirs = dirs.slice(0, -1)
-  }
-}
-
 function doiuse (options) {
   let {browsers: browserQuery, onFeatureUsage, ignore: ignoreOptions, ignoreFiles} = options
 
-  if (!browserQuery) {
-    browserQuery = browserslist()
-
-    if (!browserQuery) {
-      browserQuery = doiuse['default'].slice()
-    }
-  }
-
-  let {browsers, features} = missingSupport(browserQuery)
-  let detector = new Detector(_.keys(features))
-
   return {
-    info () {
+    info (opts = {}) {
+      let {browsers, features} = missingSupport(browserQuery, opts.from)
       return {
         browsers: browsers,
         features: features
@@ -46,6 +16,12 @@ function doiuse (options) {
     },
 
     postcss (css, result) {
+      let from
+      if (css.source && css.source.input) {
+        from = css.source.input.file
+      }
+      let {features} = missingSupport(browserQuery, from)
+      let detector = new Detector(_.keys(features))
       return detector.process(css, function ({feature, usage, ignore}) {
         if (ignore && ignore.indexOf(feature) !== -1) {
           return
@@ -94,10 +70,5 @@ function doiuse (options) {
     }
   }
 }
-doiuse['default'] = [
-  '> 1%',
-  'last 2 versions',
-  'Firefox ESR',
-  'Opera 12.1'
-]
+
 module.exports = doiuse
