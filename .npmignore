@@ -1,1 +1,6 @@
+.npmignore
+.editorconfig
+.travis.yml
+CONTRIBUTING.md
+test/
 src/
