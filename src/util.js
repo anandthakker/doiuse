@@ -1,4 +1,4 @@
-let agents = require('caniuse-db/data.json').agents
+let agents = require('caniuse-lite').agents
 
 module.exports = {
   formatBrowserName: function (browserKey, versions) {
