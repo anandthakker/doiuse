@@ -1,6 +1,13 @@
+2017-05-15 - 3.0.0
+89625d3 Remove Node.js 0.12 support
+2570ce6 Use PostCSS 6
+2570ce6 Use Browserslist 2
+fef1c04 Use caniuse-lite instead of caniuse-db
+a1bf895 Fix loading Browserslist config
+789788e Clean npm package from development files
+
 2015-10-16 - 2.0.2 (b7fb405)
 b7fb405 Use PostCSS 'warn' API, add feature id in reported results
-
 
 2015-10-13 - 2.0.1 (c9297b9)
 c9297b9 (Breaking) Add option to ignore rules
@@ -181,5 +188,3 @@ d74a304 fix typo
 6d201a1 add data; gulpfile
 7ec5218 DS_Store
 1da0db3 Initial commit
-
-
