@@ -70,8 +70,8 @@ function lackingBrowsers (browserStats) {
  *
  * `feature-name` is a caniuse-db slug.
  */
-function missing (browserRequest) {
-  const browsers = new BrowserSelection(browserRequest)
+function missing (browserRequest, from) {
+  const browsers = new BrowserSelection(browserRequest, from)
   let result = {}
 
   Object.keys(features).forEach(function (feature) {
