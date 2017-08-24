@@ -1,3 +1,6 @@
+2017-08-24 - 3.0.1
+3006517 Fix config not found due to missing parameter
+
 2017-05-15 - 3.0.0
 89625d3 Remove Node.js 0.12 support
 2570ce6 Use PostCSS 6
