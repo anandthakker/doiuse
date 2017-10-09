@@ -1,3 +1,6 @@
+2017-10-09 - 4.0.0
+09db5fc (Breaking) No longer throws an error for unrecognised node types (see #75)
+
 2017-08-24 - 3.0.1
 3006517 Fix config not found due to missing parameter
 
