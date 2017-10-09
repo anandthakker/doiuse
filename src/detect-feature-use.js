@@ -127,9 +127,6 @@ module.exports = class Detector {
           break
         case 'comment':
           this.comment(child, cb)
-          break
-        default:
-          throw new Error('Unkonwn node type ' + child.type)
       }
     })
   }
