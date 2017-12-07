@@ -1,0 +1,10 @@
+/*
+expect:
+fontface: 1
+*/
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("assets/fonts/OpenSans-Semibold.woff") format("woff");
+  font-weight: 500;
+}
