@@ -27,8 +27,8 @@
   },
   "homepage": "https://github.com/anandthakker/doiuse",
   "dependencies": {
-    "browserslist": "^2.1.2",
-    "caniuse-lite": "^1.0.30000669",
+    "browserslist": "^3.0.0",
+    "caniuse-lite": "^1.0.30000808",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
