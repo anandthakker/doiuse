@@ -32,3 +32,6 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+# Ignore package-lock-json, lockfile is ignored for libraries
+package-lock.json
