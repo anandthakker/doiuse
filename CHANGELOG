@@ -1,3 +1,6 @@
+Unreleased
+Upgrade browserslist (3.1.1) and caniuse-lite (1.0.30000810) (#85)
+
 2017-10-09 - 4.0.0
 09db5fc (Breaking) No longer throws an error for unrecognised node types (see #75)
 
