@@ -1,6 +1,6 @@
 {
   "name": "doiuse",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Lint CSS for browser support against caniuse database",
   "main": "lib/doiuse.js",
   "bin": "./cli.js",
@@ -52,8 +52,8 @@
   },
   "scripts": {
     "test": "standard && tape test/*.js",
-    "babel": "babel -d lib/ src/",
-    "pretest": "npm run babel",
-    "prepare": "npm run babel"
+    "build": "babel -d lib/ src/",
+    "pretest": "npm run build",
+    "prepare": "npm run build"
   }
 }

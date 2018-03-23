@@ -1,21 +1,29 @@
 # Changelog
 
 ## Unreleased
+
+## 4.1.0
+2018-03-23
+
 * Upgrade browserslist (3.1.1) and caniuse-lite (1.0.30000810) [\#85](https://github.com/anandthakker/doiuse/pull/85)
 * Update font-unicode-range [\#80](https://github.com/anandthakker/doiuse/pull/80)
 * Conform to browserslist API [\#81](https://github.com/anandthakker/doiuse/pull/81)
 * Upgrade browserslist (3.2.1) and caniuse-lite (1.0.30000819)
+* Drop node 4 support
 
 ## 4.0.0
 2017-10-09
+
 * **Breaking:** No longer throws an error for unrecognised node types [\#75](https://github.com/anandthakker/doiuse/pull/75)
 
 ## 3.0.1
 2017-08-24
+
 * Fix config not found due to missing parameter
 
 ## 3.0.0
 2017-05-15
+
 * Remove Node.js 0.12 support
 * Use PostCSS 6
 * Use Browserslist 2
@@ -25,10 +33,12 @@
 
 ## 2.0.2
 2015-10-16
+
 * Use PostCSS 'warn' API, add feature id in reported results
 
 ## 2.0.1
 2015-10-13
+
 * **Breaking:** Add option to ignore rules
 * clean up README, add Gulp example
 * update node versions on travis
