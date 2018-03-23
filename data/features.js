@@ -377,7 +377,6 @@ module.exports = {
   'css-touch-action': { properties: ['touch-action'] },
   'css-clip-path': { properties: ['clip-path'] },
   'font-unicode-range': {
-    atrules: ['font-face'],
     properties: ['unicode-range']
   },
   'css-font-stretch': { properties: ['font-stretch'] },
