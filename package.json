@@ -3,6 +3,9 @@
   "version": "4.0.0",
   "description": "Lint CSS for browser support against caniuse database.",
   "main": "lib/doiuse.js",
+  "engines": {
+    "node": ">=0.12"
+  },
   "scripts": {
     "test": "standard && tape test/*.js",
     "babel": "babel -d lib/ src/",
