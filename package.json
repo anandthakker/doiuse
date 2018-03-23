@@ -15,6 +15,9 @@
     "support"
   ],
   "author": "Anand Thakker",
+  "contributors": [
+    "Piotr Kuczynski <piotr.kuczynski@gmail.com> (https://github.com/pkuczynski)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/anandthakker/doiuse/issues"
