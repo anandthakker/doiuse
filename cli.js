@@ -20,7 +20,7 @@ var yargs = require('yargs')
   .options('b', {
     alias: 'browsers',
     description: 'Autoprefixer-like browser criteria.',
-    default: browserslist.defaults.join(', ')
+    default: null
   })
   .string('b')
   .options('i', {
@@ -73,7 +73,7 @@ if (argv.config) {
   }
 }
 
-argv.browsers = argv.browsers.split(',').map(function (s) { return s.trim() })
+argv.browsers && (argv.browsers = argv.browsers.split(',').map(function (s) { return s.trim() }))
 argv.ignore = argv.ignore.split(',').map(function (s) { return s.trim() })
 // Informational output
 if (argv.l) { argv.v = ++argv.verbose }

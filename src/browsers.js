@@ -4,7 +4,7 @@ var _ = require('lodash')
 module.exports = class BrowserSelection {
   constructor (query, from) {
     this.browsersRequest = query
-    this._list = browserslist(this.browsersRequest, { from })
+    this._list = browserslist(this.browsersRequest, from ? { path: from } : {})
       .map((s) => s.split(' '))
   }
 
