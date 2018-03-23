@@ -1,5 +1,6 @@
-.npmignore
 .editorconfig
+.gitignore
+.npmignore
 .travis.yml
 CONTRIBUTING.md
 test/
