@@ -20,7 +20,7 @@ var yargs = require('yargs')
   .options('b', {
     alias: 'browsers',
     description: 'Autoprefixer-like browser criteria.',
-    default: null // browserslist.defaults.join(', ')
+    default: null
   })
   .string('b')
   .options('i', {
