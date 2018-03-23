@@ -38,7 +38,7 @@
     "yargs": "^8.0.1"
   },
   "devDependencies": {
-    "babel": "^5.2.13",
+    "babel-cli": "^6.26.0",
     "eslint": "^4.19.1",
     "mock-fs": "^4.3.0",
     "postcss-import": "^10.0.0",
