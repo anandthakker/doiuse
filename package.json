@@ -44,7 +44,7 @@
     "babel": "^5.2.13",
     "mock-fs": "^4.3.0",
     "postcss-import": "^10.0.0",
-    "standard": "^8.1.0",
+    "standard": "^11.0.1",
     "tape": "^4.0.0"
   },
   "standard": {

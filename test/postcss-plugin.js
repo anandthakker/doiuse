@@ -76,16 +76,16 @@ test('ignores specified files and calls back for others', function (t) {
   }
 
   pcss().process(ignoreCss, {from: './cases/ignore-file.css'})
-        .then(function () {
-          t.false(run, 'should be false')
-        })
-        .then(function () {
-          return pcss().process(processCss, {from: './cases/gradient.css'})
-        })
-        .then(function () {
-          t.true(run, 'should be true')
-          t.end()
-        })
+    .then(function () {
+      t.false(run, 'should be false')
+    })
+    .then(function () {
+      return pcss().process(processCss, {from: './cases/gradient.css'})
+    })
+    .then(function () {
+      t.true(run, 'should be true')
+      t.end()
+    })
 })
 
 test('ignores rules from some imported files, and not others', function (t) {
@@ -102,11 +102,11 @@ test('ignores rules from some imported files, and not others', function (t) {
         count++
       }
     })])
-          .process(css, {from: cssPath})
-          .then(function () {
-            t.equal(count, 2)
-            t.end()
-          })
+    .process(css, {from: cssPath})
+    .then(function () {
+      t.equal(count, 2)
+      t.end()
+    })
 })
 
 test('ignores rules specified in comments', function (t) {

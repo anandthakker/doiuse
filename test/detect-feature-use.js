@@ -53,9 +53,7 @@ var spy = function () {
       value: usage.value
     }
 
-    if (results[feature]) {
-      results[feature]
-    } else {
+    if (!results[feature]) {
       results[feature] = []
     }
 

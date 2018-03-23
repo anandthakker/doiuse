@@ -124,9 +124,9 @@ out.pipe(process.stdout)
 if (argv._.length > 0) {
   argv._.forEach(function (file) {
     fs.createReadStream(file)
-    .pipe(doiuse({ browsers: argv.browsers, ignore: argv.ignore }, file))
-    .on('error', function (err) { console.error(err) })
-    .pipe(out)
+      .pipe(doiuse({ browsers: argv.browsers, ignore: argv.ignore }, file))
+      .on('error', function (err) { console.error(err) })
+      .pipe(out)
   })
 } else {
   process.stdin
