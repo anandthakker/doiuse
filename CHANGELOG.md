@@ -4,6 +4,7 @@
 * Upgrade browserslist (3.1.1) and caniuse-lite (1.0.30000810) [\#85](https://github.com/anandthakker/doiuse/pull/85)
 * Update font-unicode-range [\#80](https://github.com/anandthakker/doiuse/pull/80)
 * Conform to browserslist API [\#81](https://github.com/anandthakker/doiuse/pull/81)
+* Upgrade browserslist (3.2.1) and caniuse-lite (1.0.30000819)
 
 ## 4.0.0
 2017-10-09
