@@ -1,14 +1,8 @@
 {
   "name": "doiuse",
   "version": "4.0.0",
-  "description": "Lint CSS for browser support against caniuse database.",
+  "description": "Lint CSS for browser support against caniuse database",
   "main": "lib/doiuse.js",
-  "scripts": {
-    "test": "standard && tape test/*.js",
-    "babel": "babel -d lib/ src/",
-    "pretest": "npm run babel",
-    "prepublish": "npm run babel"
-  },
   "bin": "./cli.js",
   "repository": {
     "type": "git",
@@ -51,5 +45,11 @@
     "ignore": [
       "data/*.js"
     ]
+  },
+  "scripts": {
+    "test": "standard && tape test/*.js",
+    "babel": "babel -d lib/ src/",
+    "pretest": "npm run babel",
+    "prepare": "npm run babel"
   }
 }
