@@ -1,0 +1,18 @@
+/*
+expect:
+css-initial-value: 1
+css-unset-value: 1
+css-revert-value: 1
+*/
+
+.initial-value {
+    color: initial;
+}
+
+.unset-value {
+    color: unset;
+}
+
+.revert-value {
+    color: revert;
+}

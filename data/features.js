@@ -391,5 +391,17 @@ module.exports = {
   'css-image-set': {
     properties: [''],
     values: ['image-set']
+  },
+  'css-initial-value': {
+    properties: [''],
+    values: ['initial']
+  },
+  'css-unset-value': {
+    properties: [''],
+    values: ['unset']
+  },
+  'css-revert-value': {
+    properties: [''],
+    values: ['revert']
   }
 }
