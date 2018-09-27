@@ -1,5 +1,4 @@
-var _ = require('lodash')
-var features = require('../data/features')
+const features = require('../data/features')
 
 const PLUGIN_OPTION_COMMENT = 'doiuse-'
 const DISABLE_FEATURE_COMMENT = PLUGIN_OPTION_COMMENT + 'disable'
@@ -13,7 +12,7 @@ function isFoundIn (str) {
   str = stripUrls(str)
   return function find (searchfor) {
     if (searchfor instanceof RegExp) return searchfor.test(str)
-    else if (_.isFunction(searchfor)) return searchfor(str)
+    else if (typeof searchfor === 'function') return searchfor(str)
     else return str && str.indexOf(searchfor) >= 0
   }
 }
@@ -46,7 +45,14 @@ function stripUrls (str) {
  */
 module.exports = class Detector {
   constructor (featureList) {
-    this.features = _.pick(features, featureList)
+    this.features = featureList.reduce((result, feature) => {
+      if (features[feature]) {
+        result[feature] = features[feature]
+      }
+
+      return result
+    }, {})
+
     this.ignore = []
   }
 
@@ -93,23 +99,28 @@ module.exports = class Detector {
   comment (comment, cb) {
     const text = comment.text.toLowerCase()
 
-    if (_.startsWith(text, PLUGIN_OPTION_COMMENT)) {
+    if (text.startsWith(PLUGIN_OPTION_COMMENT)) {
       const option = text.split(' ', 1)[0]
       const value = text.replace(option, '').trim()
 
       switch (option) {
         case DISABLE_FEATURE_COMMENT:
           if (value === '') {
-            this.ignore = _.keysIn(this.features)
+            this.ignore = Object.keys(this.features)
           } else {
-            this.ignore = _.uniq([...this.ignore, ...value.split(',').map((feat) => feat.trim())])
+            value.split(',').map(feat => feat.trim()).forEach(feat => {
+              if (this.ignore.indexOf(feat) < 0) {
+                this.ignore.push(feat)
+              }
+            })
           }
           break
         case ENABLE_FEATURE_COMMENT:
           if (value === '') {
             this.ignore = []
           } else {
-            this.ignore = _.without(this.ignore, ...value.split(',').map((feat) => feat.trim()))
+            const without = value.split(',').map(feat => feat.trim())
+            this.ignore = this.ignore.filter(i => without.indexOf(i) < 0)
           }
           break
       }

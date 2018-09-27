@@ -1,18 +1,17 @@
 #!/usr/bin/env node
 
-var FILE_NOT_FOUND = 'ENOENT'
+const FILE_NOT_FOUND = 'ENOENT'
 
-var fs = require('fs')
-var ldjson = require('ldjson-stream')
-var through = require('through2')
-var browserslist = require('browserslist')
-var path = require('path')
-var _ = require('lodash')
+const fs = require('fs')
+const ldjson = require('ldjson-stream')
+const through = require('through2')
+const browserslist = require('browserslist')
+const path = require('path')
 
-var formatBrowserName = require('./lib/util').formatBrowserName
-var doiuse = require('./stream')
+const formatBrowserName = require('./lib/util').formatBrowserName
+const doiuse = require('./stream')
 
-var yargs = require('yargs')
+const yargs = require('yargs')
   .usage('Lint your CSS for browser support.')
   .example('cat FILE | $0 -b "ios >= 6"', '')
   .example('$0 --browsers "ie >= 9, > 1%, last 3 versions" [FILE] [FILE] ...', '')
@@ -54,15 +53,17 @@ var yargs = require('yargs')
 
 var argv = yargs.argv
 
-//  Config file reading
+// Config file reading
 if (argv.config) {
   try {
-    var fileData = fs.readFileSync(path.resolve(argv.config), 'utf8')
-    var config = JSON.parse(fileData)
-    _.forEach(_.keys(config), function (key) {
+    const fileData = fs.readFileSync(path.resolve(argv.config), 'utf8')
+    const config = JSON.parse(fileData)
+
+    Object.keys(config).forEach(key => {
       var value = config[key]
+
       if (key === 'browsers') {
-        if (_.isArray(value)) value = value.join(',')
+        if (value instanceof Array) value = value.join(',')
       }
 
       argv[key] = value
@@ -75,6 +76,7 @@ if (argv.config) {
 
 argv.browsers && (argv.browsers = argv.browsers.split(',').map(function (s) { return s.trim() }))
 argv.ignore = argv.ignore.split(',').map(function (s) { return s.trim() })
+
 // Informational output
 if (argv.l) { argv.v = ++argv.verbose }
 if (argv.verbose >= 1) {

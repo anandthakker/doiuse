@@ -1,7 +1,6 @@
-let _ = require('lodash')
-let missingSupport = require('./missing-support')
-let Detector = require('./detect-feature-use')
-let Multimatch = require('multimatch')
+const missingSupport = require('./missing-support')
+const Detector = require('./detect-feature-use')
+const Multimatch = require('multimatch')
 
 function doiuse (options) {
   let { browsers: browserQuery, onFeatureUsage, ignore: ignoreOptions, ignoreFiles } = options
@@ -21,7 +20,7 @@ function doiuse (options) {
         from = css.source.input.file
       }
       let { features } = missingSupport(browserQuery, from)
-      let detector = new Detector(_.keys(features))
+      let detector = new Detector(Object.keys(features))
       return detector.process(css, function ({ feature, usage, ignore }) {
         if (ignore && ignore.indexOf(feature) !== -1) {
           return
