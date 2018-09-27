@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+* Detect use of 'initial', 'unset', and 'revert' keywords [\#93](https://github.com/anandthakker/doiuse/pull/93)
+
 ## 4.1.0
 2018-03-23
 
