@@ -56,7 +56,7 @@ module.exports = class Detector {
       const values = this.features[feat].values
       if (properties.filter(isFoundIn(decl.prop)).length > 0) {
         if (!values || values.filter(isFoundIn(decl.value)).length > 0) {
-          const result = {usage: decl, feature: feat, ignore: this.ignore}
+          const result = { usage: decl, feature: feat, ignore: this.ignore }
           cb(result)
         }
       }
@@ -67,7 +67,7 @@ module.exports = class Detector {
     for (let feat in this.features) {
       const selectors = this.features[feat].selectors || []
       if (selectors.filter(isFoundIn(rule.selector)).length > 0) {
-        const result = {usage: rule, feature: feat, ignore: this.ignore}
+        const result = { usage: rule, feature: feat, ignore: this.ignore }
         cb(result)
       }
     }
@@ -81,7 +81,7 @@ module.exports = class Detector {
       const params = this.features[feat].params
       if (atrules.filter(isFoundIn(atrule.name)).length > 0) {
         if (!params || params.filter(isFoundIn(atrule.params)).length > 0) {
-          const result = {usage: atrule, feature: feat, ignore: this.ignore}
+          const result = { usage: atrule, feature: feat, ignore: this.ignore }
           cb(result)
         }
       }

@@ -75,12 +75,12 @@ test('ignores specified files and calls back for others', function (t) {
     }))
   }
 
-  pcss().process(ignoreCss, {from: './cases/ignore-file.css'})
+  pcss().process(ignoreCss, { from: './cases/ignore-file.css' })
     .then(function () {
       t.false(run, 'should be false')
     })
     .then(function () {
-      return pcss().process(processCss, {from: './cases/gradient.css'})
+      return pcss().process(processCss, { from: './cases/gradient.css' })
     })
     .then(function () {
       t.true(run, 'should be true')
@@ -102,7 +102,7 @@ test('ignores rules from some imported files, and not others', function (t) {
         count++
       }
     })])
-    .process(css, {from: cssPath})
+    .process(css, { from: cssPath })
     .then(function () {
       t.equal(count, 2)
       t.end()
@@ -127,11 +127,11 @@ test('ignores rules specified in comments', function (t) {
       }
     })])
 
-  processor.process(ignoreCss, {from: ignoreCssPath})
+  processor.process(ignoreCss, { from: ignoreCssPath })
     .then(function () {
       t.equal(count, 2)
     }).then(function () {
-      processor.process(processCss, {from: processCssPath})
+      processor.process(processCss, { from: processCssPath })
         .then(function () {
           t.equal(count, 3, 'inline css disabing rules must apply only to current file')
           t.end()

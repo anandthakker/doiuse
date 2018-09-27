@@ -4,11 +4,11 @@ let Detector = require('./detect-feature-use')
 let Multimatch = require('multimatch')
 
 function doiuse (options) {
-  let {browsers: browserQuery, onFeatureUsage, ignore: ignoreOptions, ignoreFiles} = options
+  let { browsers: browserQuery, onFeatureUsage, ignore: ignoreOptions, ignoreFiles } = options
 
   return {
     info (opts = {}) {
-      let {browsers, features} = missingSupport(browserQuery, opts.from)
+      let { browsers, features } = missingSupport(browserQuery, opts.from)
       return {
         browsers: browsers,
         features: features
@@ -20,9 +20,9 @@ function doiuse (options) {
       if (css.source && css.source.input) {
         from = css.source.input.file
       }
-      let {features} = missingSupport(browserQuery, from)
+      let { features } = missingSupport(browserQuery, from)
       let detector = new Detector(_.keys(features))
-      return detector.process(css, function ({feature, usage, ignore}) {
+      return detector.process(css, function ({ feature, usage, ignore }) {
         if (ignore && ignore.indexOf(feature) !== -1) {
           return
         }
