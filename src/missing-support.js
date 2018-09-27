@@ -1,44 +1,47 @@
-let features = require('../data/features')
-let BrowserSelection = require('./browsers')
-let _ = require('lodash')
-let formatBrowserName = require('./util').formatBrowserName
+const caniuse = require('caniuse-lite')
 
-let caniuse = require('caniuse-lite')
+const features = require('../data/features')
+const BrowserSelection = require('./browsers')
+const formatBrowserName = require('./util').formatBrowserName
 
-function filterStats (browsers, stats) {
-  return _.reduce(stats, function (resultStats, versionData, browser) {
-    // filter only versions of selected browsers that don't fully support this feature
-    const feature = _.reduce(versionData, function (result, support, ver) {
-      const selected = browsers.test(browser, ver)
+const filterStats = (browsers, stats) => Object.keys(stats)
+  .reduce((result, browser) => {
+    const versions = stats[browser]
+    const feature = Object.keys(versions).reduce((feat, version) => {
+      const support = versions[version]
+      const selected = browsers.test(browser, version)
+
       if (selected) {
         // check if browser is NOT fully (i.e., don't have 'y' in their stats) supported
         if (!(/(^|\s)y($|\s)/.test(support))) {
           // when it's not partially supported ('a'), it's missing
-          const testprop = (/(^|\s)a($|\s)/.test(support) ? 'partial' : 'missing')
-          if (!result[testprop]) {
-            result[testprop] = {}
+          const type = (/(^|\s)a($|\s)/.test(support) ? 'partial' : 'missing')
+
+          if (!feat[type]) {
+            feat[type] = {}
           }
-          result[testprop][selected[1]] = support
+
+          feat[type][selected[1]] = support
         }
       }
-      return result
+
+      return feat
     }, { missing: {}, partial: {} })
 
-    if (_.keys(feature.missing).length !== 0) {
-      resultStats.missing[browser] = feature.missing
+    if (Object.keys(feature.missing).length !== 0) {
+      result.missing[browser] = feature.missing
     }
-    if (_.keys(feature.partial).length !== 0) {
-      resultStats.partial[browser] = feature.partial
+
+    if (Object.keys(feature.partial).length !== 0) {
+      result.partial[browser] = feature.partial
     }
-    return resultStats
+
+    return result
   }, { missing: {}, partial: {} })
-}
-function lackingBrowsers (browserStats) {
-  return _.reduce(browserStats, function (res, versions, browser) {
-    res.push(formatBrowserName(browser, _.keys(versions)))
-    return res
-  }, []).join(', ')
-}
+
+const lackingBrowsers = browserStats => Object.keys(browserStats)
+  .map(browser => formatBrowserName(browser, Object.keys(browserStats[browser])))
+  .join(', ')
 
 /**
  * Get data on CSS features not supported by the given autoprefixer-like

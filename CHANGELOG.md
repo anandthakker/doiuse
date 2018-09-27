@@ -4,6 +4,7 @@
 
 * Detect use of 'initial', 'unset', and 'revert' keywords [\#93](https://github.com/anandthakker/doiuse/pull/93)
 * Improve css-sel2 detection performance [\#88](https://github.com/anandthakker/doiuse/pull/88)
+* Remove lodash dependency [\#94](https://github.com/anandthakker/doiuse/pull/94)
 * Upgrade browserslist (4.1.1), caniuse-lite (1.0.30000887)
 
 ## 4.1.0
