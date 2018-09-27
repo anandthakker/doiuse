@@ -12,7 +12,9 @@
     "lint",
     "css",
     "browser",
-    "support"
+    "support",
+    "caniuse",
+    "stylelint"
   ],
   "author": "Anand Thakker",
   "contributors": [
