@@ -73,7 +73,7 @@ const lackingBrowsers = browserStats => Object.keys(browserStats)
  *
  * `feature-name` is a caniuse-db slug.
  */
-function missing (browserRequest, from) {
+function missingSupport (browserRequest, from) {
   const browsers = new BrowserSelection(browserRequest, from)
   let result = {}
 
@@ -108,4 +108,4 @@ function missing (browserRequest, from) {
   }
 }
 
-module.exports = missing
+module.exports = missingSupport

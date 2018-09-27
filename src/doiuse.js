@@ -1,16 +1,18 @@
+const multimatch = require('multimatch')
+
 const missingSupport = require('./missing-support')
 const Detector = require('./detect-feature-use')
-const Multimatch = require('multimatch')
 
 function doiuse (options) {
-  let { browsers: browserQuery, onFeatureUsage, ignore: ignoreOptions, ignoreFiles } = options
+  const { browsers: browserQuery, onFeatureUsage, ignore: ignoreOptions, ignoreFiles } = options
 
   return {
     info (opts = {}) {
-      let { browsers, features } = missingSupport(browserQuery, opts.from)
+      const { browsers, features } = missingSupport(browserQuery, opts.from)
+
       return {
-        browsers: browsers,
-        features: features
+        browsers,
+        features
       }
     },
 
@@ -19,17 +21,20 @@ function doiuse (options) {
       if (css.source && css.source.input) {
         from = css.source.input.file
       }
+
       let { features } = missingSupport(browserQuery, from)
       let detector = new Detector(Object.keys(features))
+
       return detector.process(css, function ({ feature, usage, ignore }) {
         if (ignore && ignore.indexOf(feature) !== -1) {
           return
         }
+
         if (ignoreOptions && ignoreOptions.indexOf(feature) !== -1) {
           return
         }
 
-        if (ignoreFiles && Multimatch(usage.source.input.from, ignoreFiles).length > 0) {
+        if (ignoreFiles && multimatch(usage.source.input.from, ignoreFiles).length > 0) {
           return
         }
 

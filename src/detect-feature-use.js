@@ -43,7 +43,7 @@ function stripUrls (str) {
  * }
  * ```
  */
-module.exports = class Detector {
+class Detector {
   constructor (featureList) {
     this.features = featureList.reduce((result, feature) => {
       if (features[feature]) {
@@ -153,3 +153,5 @@ module.exports = class Detector {
     this.node(node, cb)
   }
 }
+
+module.exports = Detector
