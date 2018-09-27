@@ -1,7 +1,17 @@
-## `doiuse` is an **[OPEN Open Source Project](http://openopensource.org/)**
------------------------------------------
+# Contributing
 
-## What?
+## Development
+
+```sh
+git clone git@github.com:anandthakker/doiuse.git
+cd doiuse
+npm install
+npm run babel
+```
+
+That last step transpiles the ES6 from src/ to ES5 in lib/. Already happens as a `pretest` step for `npm test`.
+
+## Contributors
 
 Individuals making significant and valuable contributions are given commit-access to a project to contribute as they see fit. A project is more like an open wiki than a standard guarded open source project.
 
@@ -18,11 +28,3 @@ There are a few basic ground-rules for contributors:
 ## Releases
 
 Declaring formal releases remains the prerogative of the project maintainer(s).
-
-## Changes to this arrangement
-
-This is an experiment and feedback is welcome! This document may also be subject to pull-requests or changes by contributors where you believe you have something valuable to add or change.
-
------------------------------------------
-
-These guidelines were copied directly from those of the [Level community](https://github.com/Level/community/blob/master/CONTRIBUTING.md).
