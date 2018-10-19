@@ -5,11 +5,11 @@
 ```sh
 git clone git@github.com:anandthakker/doiuse.git
 cd doiuse
-npm install
-npm run babel
+yarn
+yarn run babel
 ```
 
-That last step transpiles the ES6 from src/ to ES5 in lib/. Already happens as a `pretest` step for `npm test`.
+That last step transpiles the ES6 from src/ to ES5 in lib/. Already happens as a `pretest` step for `yarn test`.
 
 ## Contributors
 

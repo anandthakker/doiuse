@@ -8,6 +8,7 @@ Lint CSS for browser support against [Can I use](http://caniuse.com) database.
 
 ```sh
 npm install -g doiuse
+yarn global add doiuse
 ```
 
 ## Usage Examples
