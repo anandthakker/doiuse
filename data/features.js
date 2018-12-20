@@ -37,8 +37,10 @@ module.exports = {
       'animation-fill-mode',
       'animation-iteration-count',
       'animation-play-state',
-      'animation-timing-function',
-      '@keyframes'
+      'animation-timing-function'
+    ],
+    atrules: [
+      'keyframes'
     ]
   },
   'css-transitions': {
@@ -71,8 +73,8 @@ module.exports = {
       'border-image'
     ],
     values: [
-      /(^|[^-])linear-gradient/,
-      /(^|[^-])radial-gradient/
+      'linear-gradient',
+      'radial-gradient'
     ]
   },
   'css3-boxsizing': { properties: ['box-sizing'] },

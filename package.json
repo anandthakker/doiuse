@@ -30,6 +30,7 @@
     "caniuse-lite": "^1.0.30000887",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
+    "escape-string-regexp": "^1.0.5",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
     "multimatch": "^2.0.0",
