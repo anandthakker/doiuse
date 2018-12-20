@@ -1,6 +1,9 @@
 /*
 expect:
-rem: 1
+rem: 2
 */
 
-p { font-size: 1rem; }
+p {
+    margin-left: -.5rem;
+    font-size: 1rem;
+}
