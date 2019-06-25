@@ -48,9 +48,9 @@ function doiuse (options) {
 
         let message = features[feature].title + ' ' + messages.join(' and ') + ' (' + feature + ')'
 
-        result.warn(message, { node: usage, plugin: 'doiuse' })
-
-        if (onFeatureUsage) {
+        if (!onFeatureUsage) {
+          result.warn(message, { node: usage, plugin: 'doiuse' })
+        } else {
           let loc = usage.source
           loc.original = css.source.input.map ? {
             start: css.source.input.map.consumer().originalPositionFor(loc.start),
