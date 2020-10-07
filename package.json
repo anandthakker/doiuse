@@ -36,7 +36,7 @@
     "postcss": "^7.0.4",
     "source-map": "^0.7.3",
     "through2": "^2.0.3",
-    "yargs": "13.1.2"
+    "yargs": "^13.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
