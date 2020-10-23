@@ -75,7 +75,7 @@ test('--json option should work', function (t) {
 
 test('--list-only should work', function (t) {
   exec(commands.doiuse + '--list-only', function (error, stdout, stderr) {
-    t.equal(stdout.trim(), '[doiuse] Browsers: IE 8, IE 9, IE 10, IE 11')
+    t.equal(stdout.trim(), '[doiuse] Browsers: IE 11, IE 10, IE 9, IE 8')
     t.end(error)
   })
 })
