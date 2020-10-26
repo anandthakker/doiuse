@@ -87,7 +87,7 @@ if (argv.verbose >= 1) {
       b[1] = parseInt(b[1], 10)
       return b
     })
-    .sort(function (a, b) { return (a[0] !== b[0]) ? a[0] > b[0] : a[1] > b[1] })
+    .sort((a, b) => b[1] - a[1])
     .map(function (b) { return b.join(' ') })
     .join(', ')
   console.log('[doiuse] Browsers: ' + browsers)
