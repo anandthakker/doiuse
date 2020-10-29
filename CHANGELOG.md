@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 4.3.0 (2020-10-30)
 
 **IMPORTANT**: This release drops support for Node older than 10.x
 
