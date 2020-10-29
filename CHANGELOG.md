@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+**IMPORTANT**: This release drops support for Node older than 10.x
+
+* Upgrade dependencies and remove security warnings [\#123](https://github.com/anandthakker/doiuse/pull/123)
 * Extend list of tested Node.js versions [\#122](https://github.com/anandthakker/doiuse/pull/122)
 * Migrate CI to GitHub Actions [\#122](https://github.com/anandthakker/doiuse/pull/122)
 
