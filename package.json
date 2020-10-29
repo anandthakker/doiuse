@@ -52,9 +52,9 @@
     ]
   },
   "scripts": {
-    "test": "standard && tape test/*.js",
     "build": "babel -d lib/ src/",
     "pretest": "npm run build",
+    "test": "standard && tape test/*.js",
     "prepare": "npm run build"
   }
 }
