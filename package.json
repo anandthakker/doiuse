@@ -27,34 +27,28 @@
   "homepage": "https://github.com/anandthakker/doiuse",
   "dependencies": {
     "browserslist": "^4.14.5",
-    "caniuse-lite": "^1.0.30000887",
+    "caniuse-lite": "^1.0.30001154",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
-    "multimatch": "^2.0.0",
-    "postcss": "^7.0.4",
+    "multimatch": "^5.0.0",
+    "postcss": "^8.1.4",
     "source-map": "^0.7.3",
-    "through2": "^2.0.3",
-    "yargs": "^13.1.2"
+    "through2": "^4.0.2",
+    "yargs": "^16.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "eslint": "^5.6.0",
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
     "mock-fs": "^4.13.0",
-    "postcss-import": "^12.0.0",
-    "standard": "^12.0.1",
-    "tape": "^4.9.1"
-  },
-  "standard": {
-    "ignore": [
-      "data/*.js"
-    ]
+    "postcss-import": "^13.0.0",
+    "tape": "^5.0.1"
   },
   "scripts": {
     "build": "babel -d lib/ src/",
     "pretest": "npm run build",
-    "test": "standard && tape test/*.js",
-    "prepare": "npm run build"
+    "test": "tape test/*.js",
+    "prepublish": "npm run build"
   }
 }
