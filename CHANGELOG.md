@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.3.1 (2020-10-30)
+
+* Optimize package size by ignoring .idea and .github folders
+
 ## 4.3.0 (2020-10-30)
 
 **IMPORTANT**: This release drops support for Node older than 10.x
