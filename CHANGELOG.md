@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-...
+* Extend list of tested Node.js versions
 
 ## 4.2.0 (2018-09-27)
 
