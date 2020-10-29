@@ -6,7 +6,7 @@ on:
     branches: [ master ]
 
 jobs:
-  node (6.x):
+  node 6.x:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
