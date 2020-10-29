@@ -6,22 +6,11 @@ on:
     branches: [ master ]
 
 jobs:
-  node-6:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node 6
-        uses: actions/setup-node@v1
-        with:
-          node-version: 6
-      - run: npm install
-      - run: npm test
-
   node:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [ 8.x, 10.x, 12.x, 14.x ]
+        node-version: [ 10.x, 12.x, 14.x ]
     steps:
       - uses: actions/checkout@v2
       - name: Use Node ${{ matrix.node-version }}

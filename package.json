@@ -25,6 +25,9 @@
     "url": "https://github.com/anandthakker/doiuse/issues"
   },
   "homepage": "https://github.com/anandthakker/doiuse",
+  "engines": {
+    "node": ">=10"
+  },
   "dependencies": {
     "browserslist": "^4.14.5",
     "caniuse-lite": "^1.0.30001154",
