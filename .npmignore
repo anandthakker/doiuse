@@ -1,6 +1,8 @@
+.github/
+.idea/
+test/
+src/
 .editorconfig
 .gitignore
 .npmignore
 CONTRIBUTING.md
-test/
-src/
