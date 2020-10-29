@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* Extend list of tested Node.js versions
+* Extend list of tested Node.js versions [\#122](https://github.com/anandthakker/doiuse/pull/122)
 
 ## 4.2.0 (2018-09-27)
 
