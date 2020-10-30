@@ -1,6 +1,6 @@
 {
   "name": "doiuse",
-  "version": "4.2.0",
+  "version": "4.3.1",
   "description": "Lint CSS for browser support against caniuse database",
   "main": "lib/doiuse.js",
   "bin": "./cli.js",
@@ -25,36 +25,34 @@
     "url": "https://github.com/anandthakker/doiuse/issues"
   },
   "homepage": "https://github.com/anandthakker/doiuse",
+  "engines": {
+    "node": ">=10"
+  },
   "dependencies": {
-    "browserslist": "^4.1.1",
-    "caniuse-lite": "^1.0.30000887",
+    "browserslist": "^4.14.5",
+    "caniuse-lite": "^1.0.30001154",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
-    "multimatch": "^2.0.0",
-    "postcss": "^7.0.4",
+    "multimatch": "^5.0.0",
+    "postcss": "^8.1.4",
     "source-map": "^0.7.3",
-    "through2": "^2.0.3",
-    "yargs": "^12.0.2"
+    "through2": "^4.0.2",
+    "yargs": "^16.1.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "eslint": "^5.6.0",
-    "mock-fs": "^4.7.0",
-    "postcss-import": "^12.0.0",
-    "standard": "^12.0.1",
-    "tape": "^4.9.1"
-  },
-  "standard": {
-    "ignore": [
-      "data/*.js"
-    ]
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "mock-fs": "^4.13.0",
+    "postcss-import": "^13.0.0",
+    "tape": "^5.0.1"
   },
   "scripts": {
-    "test": "standard && tape test/*.js",
+    "prebuild": "rm -rf lib",
     "build": "babel -d lib/ src/",
     "pretest": "npm run build",
-    "prepare": "npm run build"
+    "test": "tape test/*.js",
+    "prepublish": "npm run build"
   }
 }

@@ -1,7 +1,8 @@
+.github/
+.idea/
+test/
+src/
 .editorconfig
 .gitignore
 .npmignore
-.travis.yml
 CONTRIBUTING.md
-test/
-src/
