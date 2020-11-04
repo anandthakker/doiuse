@@ -8,12 +8,9 @@ function matchOutsideOfBrackets(pat) {
   if (!(pat instanceof RegExp)) {
     throw new TypeError('matchOutsideOfBrackets expects a RegExp')
   }
-  var fullPat = new RegExp(
-    '^(' + pats.brackets + '?' + pats.nobrackets + '*)*' + pat.source
+  return new RegExp(
+    '^(' + pats.brackets + '?' + pats.nobrackets + '*)*?' + pat.source
   )
-  return function match(str) {
-    return pat.test(str) && fullPat.test(str)
-  }
 }
 
 module.exports = {
