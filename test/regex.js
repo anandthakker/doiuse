@@ -22,5 +22,6 @@ for(var feature of Object.values(features)) {
 for(var regex of regexes) {
 	test('Regex safety check: /' + regex.source + '/', function(t) {
 		t.ok(safe(regex))
+		t.end()
 	})
 }
