@@ -46,6 +46,7 @@
     "@babel/core": "^7.12.3",
     "mock-fs": "^4.13.0",
     "postcss-import": "^13.0.0",
+    "safe-regex": "^2.1.1",
     "tape": "^5.0.1"
   },
   "scripts": {

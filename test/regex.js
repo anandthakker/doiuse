@@ -1,14 +1,26 @@
-var postcss = require('postcss')
+const test = require('tape')
 
-const test = require('tape');
+const safe = require('safe-regex')
 
-const doiuse = require('../lib/doiuse');
+const features = require('../data/features')
 
-test('no runaway regex', {timeout: 1000}, function(t) {
-	t.timeoutAfter(1000);
-	const cb = {warn: function(result) {
-		t.equal(result, "CSS 2.1 selectors not supported by: IE (6) (css-sel2)");
-	}};
-	doiuse({ browsers: ['ie 6'] }).postcss(postcss.parse(".imagelightbox-arrow:focus:hover {}"), cb)
-	t.end();
-})
+regexes = []
+
+for(var feature of Object.values(features)) {
+	for(var property of Object.values(feature)) {
+		if(!property || !(property instanceof Array)){
+			continue;
+		}
+		for(var item of property) {
+		  if(item instanceof RegExp) {
+			  regexes.push(item)
+		  }
+		}
+	}
+}
+
+for(var regex of regexes) {
+	test('Regex safety check: /' + regex.source + '/', function(t) {
+		t.ok(safe(regex))
+	})
+}
