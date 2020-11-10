@@ -29,14 +29,14 @@
     "node": ">=10"
   },
   "dependencies": {
-    "browserslist": "^4.14.5",
-    "caniuse-lite": "^1.0.30001154",
+    "browserslist": "^4.14.7",
+    "caniuse-lite": "^1.0.30001157",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
     "multimatch": "^5.0.0",
-    "postcss": "^8.1.4",
+    "postcss": "^8.1.6",
     "source-map": "^0.7.3",
     "through2": "^4.0.2",
     "yargs": "^16.1.0"
