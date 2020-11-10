@@ -47,8 +47,10 @@
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "mock-fs": "^4.13.0",
     "postcss-import": "^13.0.0",
+    "prettier": "^2.1.2",
     "safe-regex": "^2.1.1",
     "tape": "^5.0.1"
   },
