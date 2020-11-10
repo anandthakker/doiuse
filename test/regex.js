@@ -9,6 +9,7 @@ for (var feature of Object.values(features)) {
 		if (!property || !(property instanceof Array)){
 			continue;
 		}
+
 		for (var item of property) {
 		  if (item instanceof RegExp) {
 			  regexes.push(item)
