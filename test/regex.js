@@ -1,7 +1,5 @@
 const test = require('tape')
-
 const safe = require('safe-regex')
-
 const features = require('../data/features')
 
 regexes = []
