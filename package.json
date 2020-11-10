@@ -32,7 +32,7 @@
     "browserslist": "^4.14.7",
     "caniuse-lite": "^1.0.30001157",
     "css-rule-stream": "^1.1.0",
-    "duplexer2": "0.0.2",
+    "duplexer2": "^0.1.4",
     "jsonfilter": "^1.1.2",
     "ldjson-stream": "^1.2.1",
     "multimatch": "^5.0.0",
