@@ -44,6 +44,9 @@
   "devDependencies": {
     "@babel/cli": "^7.12.1",
     "@babel/core": "^7.12.3",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-node": "^11.1.0",
     "mock-fs": "^4.13.0",
     "postcss-import": "^13.0.0",
     "safe-regex": "^2.1.1",
@@ -54,6 +57,7 @@
     "build": "babel -d lib/ src/",
     "pretest": "npm run build",
     "test": "tape test/*.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "eslint ."
   }
 }
