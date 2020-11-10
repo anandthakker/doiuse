@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-* Fixed possible regular expression catastrophic backtracking [\#105](https://github.com/anandthakker/doiuse/pull/105)
+* Fix possible regular expression catastrophic backtracking [\#105](https://github.com/anandthakker/doiuse/pull/105)
 
 ## 4.3.1 (2020-10-30)
 
