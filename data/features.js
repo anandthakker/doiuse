@@ -8,7 +8,7 @@ function matchOutsideOfBrackets(pat) {
     throw new TypeError('matchOutsideOfBrackets expects a RegExp')
   }
   return function(str) {
-	return pat.test(str.replace(pats.brackets, ''))
+	  return pat.test(str.replace(pats.brackets, ''))
   }
 }
 
