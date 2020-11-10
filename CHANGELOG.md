@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+...
+
+## 4.4.0 (2020-11-10)
+
 * Fix possible regular expression catastrophic backtracking [\#105](https://github.com/anandthakker/doiuse/pull/105)
 * Upgrade browserslist (4.14.7), caniuse-lite (1.0.30001157), postcess (8.1.6) [\#106](https://github.com/anandthakker/doiuse/pull/106)
 
