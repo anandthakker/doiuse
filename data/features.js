@@ -3,10 +3,12 @@ var pats = {
   attrcc: '[^\\~|^$*\\]]*',
   brackets: /\[[^\]]*\]|\([^\)]*\)/g
 }
+
 function matchOutsideOfBrackets(pat) {
   if (!(pat instanceof RegExp)) {
     throw new TypeError('matchOutsideOfBrackets expects a RegExp')
   }
+
   return function(str) {
 	  return pat.test(str.replace(pats.brackets, ''))
   }
