@@ -159,7 +159,8 @@ module.exports = {
       'max-content',
       'min-content',
       'fit-content',
-      'fill-available'
+      'fill-available',
+      'stretch'
     ]
   },
   'css3-cursors-newer': {
