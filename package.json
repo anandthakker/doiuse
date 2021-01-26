@@ -53,6 +53,6 @@
     "build": "babel -d lib/ src/",
     "pretest": "npm run build",
     "test": "tape test/*.js",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   }
 }
