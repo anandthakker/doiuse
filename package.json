@@ -29,24 +29,24 @@
     "node": ">=10"
   },
   "dependencies": {
-    "browserslist": "^4.14.7",
-    "caniuse-lite": "^1.0.30001157",
+    "browserslist": "^4.16.1",
+    "caniuse-lite": "^1.0.30001179",
     "css-rule-stream": "^1.1.0",
     "duplexer2": "0.0.2",
     "ldjson-stream": "^1.2.1",
     "multimatch": "^5.0.0",
-    "postcss": "^8.1.6",
+    "postcss": "^8.2.4",
     "source-map": "^0.7.3",
     "through2": "^4.0.2",
-    "yargs": "^16.1.0"
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.1",
-    "@babel/core": "^7.12.3",
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
     "mock-fs": "^4.13.0",
-    "postcss-import": "^13.0.0",
+    "postcss-import": "^14.0.0",
     "safe-regex": "^2.1.1",
-    "tape": "^5.0.1"
+    "tape": "^5.1.1"
   },
   "scripts": {
     "prebuild": "rm -rf lib",
