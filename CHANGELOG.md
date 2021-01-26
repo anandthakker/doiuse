@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+...
+
+## 4.4.1 (2021-01-26)
+
 * Intrinsic width feature update with "stretch" value [\#132](https://github.com/anandthakker/doiuse/pull/132)
 * Drop unused jsonfilter dependency [\#133](https://github.com/anandthakker/doiuse/pull/133)
 * Upgrade browserslist (4.16.1), caniuse-lite (1.0.30001157), postcess (8.1.6), yargs (16.2.0) [\#134](https://github.com/anandthakker/doiuse/pull/134)
