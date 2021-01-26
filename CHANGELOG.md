@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-...
+* Intrinsic width feature update with "stretch" value [\#132](https://github.com/anandthakker/doiuse/pull/132)
+* Drop unused jsonfilter dependency
 
 ## 4.4.0 (2020-11-10)
 
