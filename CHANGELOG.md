@@ -4,10 +4,16 @@
 
 ...
 
+## 4.4.1 (2021-01-26)
+
+* Intrinsic width feature update with "stretch" value [\#132](https://github.com/anandthakker/doiuse/pull/132)
+* Drop unused jsonfilter dependency [\#133](https://github.com/anandthakker/doiuse/pull/133)
+* Upgrade browserslist (4.16.1), caniuse-lite (1.0.30001157), postcess (8.1.6), yargs (16.2.0) [\#134](https://github.com/anandthakker/doiuse/pull/134)
+
 ## 4.4.0 (2020-11-10)
 
 * Fix possible regular expression catastrophic backtracking [\#105](https://github.com/anandthakker/doiuse/pull/105)
-* Upgrade browserslist (4.14.7), caniuse-lite (1.0.30001157), postcess (8.1.6) [\#106](https://github.com/anandthakker/doiuse/pull/106)
+* Upgrade browserslist (4.14.7), caniuse-lite (1.0.30001179), postcess (8.2.4) [\#106](https://github.com/anandthakker/doiuse/pull/106)
 
 ## 4.3.1 (2020-10-30)
 
