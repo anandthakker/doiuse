@@ -302,7 +302,10 @@ module.exports = {
     properties: ['display'],
     values: ['inline-block']
   },
-  'css-grid': { unimplemented: true },
+  'css-grid': {
+    properties: ['display'],
+    values: ['grid', 'inline-grid']
+  },
   rem: {
     properties: [''],
     values: ['rem']
