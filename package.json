@@ -43,8 +43,13 @@
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.1.4",
     "mock-fs": "^4.13.0",
     "postcss-import": "^14.0.0",
+    "prettier": "^2.1.2",
     "safe-regex": "^2.1.1",
     "tape": "^5.1.1"
   },
@@ -53,6 +58,7 @@
     "build": "babel -d lib/ src/",
     "pretest": "npm run build",
     "test": "tape test/*.js",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "lint": "eslint ."
   }
 }
