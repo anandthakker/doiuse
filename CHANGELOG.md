@@ -4,6 +4,9 @@
 
 ...
 
+## 5.0.1 (2022-03-07)
+* Fixed Node v12 support
+
 ## 5.0.0 (2022-03-07)
 * Rewrite all files to ES Modules
 * Fold `css-rule-stream` into package
