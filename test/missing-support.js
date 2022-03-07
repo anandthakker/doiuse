@@ -1,83 +1,78 @@
-var test = require('tape')
-var missingSupport = require('../lib/missing-support')
-var hasKeys = require('./has-keys')
+import { test } from 'tap';
 
-test('provides list of selected browsers', function (t) {
-  var data
-  data = missingSupport(['ie >= 8'])
-    .browsers.sort(function (a, b) {
-      return Number(a[1]) - Number(b[1])
-    })
-  t.deepEqual(data, [
+import BrowserSelection from '../lib/BrowserSelection.js';
+
+import { hasKeys } from './utils.js';
+
+test('provides list of selected browsers', (t) => {
+  const data = BrowserSelection.missingSupport(['ie >= 8'])
+    .browsers.sort((a, b) => Number(a[1]) - Number(b[1]));
+  t.same(data, [
     [
       'ie',
-      '8'
+      '8',
     ],
     [
       'ie',
-      '9'
+      '9',
     ],
     [
       'ie',
-      '10'
+      '10',
     ],
     [
       'ie',
-      '11'
-    ]
-  ])
+      '11',
+    ],
+  ]);
 
-  t.end()
-})
+  t.end();
+});
 
-test('for browser request ie >= 7, safari >= 6, opera >= 10.1', function (t) {
-  var data = missingSupport([
+test('for browser request ie >= 7, safari >= 6, opera >= 10.1', (t) => {
+  const data = BrowserSelection.missingSupport([
     'ie >= 7',
     'safari >= 6',
-    'opera >= 10.1'
-  ]).features
+    'opera >= 10.1',
+  ]).features;
 
-  var bgimgopts = data['background-img-opts']
-  hasKeys(t, bgimgopts, ['missing', 'partial', 'title', 'missingData', 'partialData', 'caniuseData'])
+  const bgimgopts = data['background-img-opts'];
+  hasKeys(t, bgimgopts, ['missing', 'partial', 'title', 'missingData', 'partialData', 'caniuseData']);
 
-  var missing = bgimgopts.missingData
-  var partial = bgimgopts.partialData
-  hasKeys(t, missing, ['ie'])
-  hasKeys(t, missing.ie, ['7', '8'])
-  hasKeys(t, partial, ['safari', 'opera'])
-  hasKeys(t, partial.safari, ['6', '6.1'])
-  hasKeys(t, partial.opera, ['10.0-10.1'])
-  t.end()
-})
+  const missing = bgimgopts.missingData;
+  const partial = bgimgopts.partialData;
+  hasKeys(t, missing, ['ie']);
+  hasKeys(t, missing.ie, ['7', '8']);
+  hasKeys(t, partial, ['safari', 'opera']);
+  hasKeys(t, partial.safari, ['6', '6.1']);
+  hasKeys(t, partial.opera, ['10.0-10.1']);
+  t.end();
+});
 
-test('partialData only yields features partially supported by selected browser', function (t) {
-  var data, f, featureData, p
-  data = missingSupport(['ie 8']).features
-  var partial = []
-  for (p in data) {
-    if (data[p].partialData) {
-      partial.push(data[p])
+test('partialData only yields features partially supported by selected browser', (t) => {
+  const data = BrowserSelection.missingSupport(['ie 8']).features;
+  const partial = [];
+  for (const value of Object.values(data)) {
+    if (value.partialData) {
+      partial.push(value);
     }
   }
-  for (f in partial) {
-    featureData = partial[f]
-    hasKeys(t, featureData.partialData, ['ie'])
+  for (const featureData of Object.values(partial)) {
+    hasKeys(t, featureData.partialData, ['ie']);
   }
-  t.end()
-})
+  t.end();
+});
 
-test('missingData only yields features not supported by selected browser', function (t) {
-  var data, f, featureData, m
-  data = missingSupport(['ie 8']).features
-  var missing = []
-  for (m in data) {
-    if (data[m].missingData) {
-      missing.push(data[m])
+test('missingData only yields features not supported by selected browser', (t) => {
+  const data = BrowserSelection.missingSupport(['ie 8']).features;
+  const missing = [];
+  for (const value of Object.values(data)) {
+    if (value.missingData) {
+      missing.push(value);
     }
   }
-  for (f in missing) {
-    featureData = missing[f]
-    hasKeys(t, featureData.missingData, ['ie'])
+  for (const featureData of Object.values(missing)) {
+    hasKeys(t, featureData.missingData, ['ie']);
   }
-  t.end()
-})
+  t.end();
+});

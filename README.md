@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/anandthakker/doiuse.svg?branch=master)](https://travis-ci.org/anandthakker/doiuse)
-[![Release Notes](https://release-notes.com/badges/v2.svg)](https://release-notes.com/@open-source-community/anandthakker-doiuse)
+[![Build Status](https://travis-ci.org/clshortfuse/doiuse2.svg?branch=master)](https://travis-ci.org/clshortfuse/doiuse2)
+[![Release Notes](https://release-notes.com/badges/v2.svg)](https://release-notes.com/@open-source-community/clshortfuse-doiuse2)
 
 # doiuse
 
@@ -8,7 +8,7 @@ Lint CSS for browser support against [Can I use](http://caniuse.com) database.
 ## Install
 
 ```sh
-npm install -g doiuse
+npm install -g doiuse2
 ```
 
 ## Usage Examples
@@ -40,20 +40,22 @@ Use `--json` to get output as (newline-delimited) JSON objects.
 ### JS
 
 ```javascript
-var postcss = require('postcss');
-var doiuse = require('doiuse');
+import postcss from 'postcss';
+import DoIUse from 'doiuse/lib/DoIUse.js';
 
-postcss(doiuse({
+postcss(new DoIUse({
   browsers:['ie >= 6', '> 1%'],
   ignore: ['rem'], // an optional array of features to ignore
   ignoreFiles: ['**/normalize.css'], // an optional array of file globs to match against original source file path, to ignore
-  onFeatureUsage: function(usageInfo) {
+  onFeatureUsage: (usageInfo) => {
     console.log(usageInfo.message);
   }
 })).process("a { background-size: cover; }")
 ```
 
-### Gulp
+CommonJS syntax is still supported if using `var doiuse = require('doiuse')`.
+
+### Gulp (CommonJS)
 
 ```javascript
 var gulp = require('gulp')
@@ -105,7 +107,7 @@ Yields `UsageInfo` objects as described below.
 
 ### As a postcss plugin
 
-`postcss(doiuse(opts)).process(css)`, where `opts` is:
+`postcss(new DoIUse(opts)).process(css)`, where `opts` is:
 ```javascript
 {
   browsers: ['ie >= 8', '> 1%'], // an autoprefixer-like array of browsers.

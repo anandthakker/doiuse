@@ -3,10 +3,9 @@
 ## Development
 
 ```sh
-git clone git@github.com:anandthakker/doiuse.git
-cd doiuse
-npm install
-npm run babel
+git clone git@github.com:clshortfuse/doiuse2.git
+cd doiuse2
+npm ci
 ```
 
 That last step transpiles the ES6 from src/ to ES5 in lib/. Already happens as a `pretest` step for `npm test`.

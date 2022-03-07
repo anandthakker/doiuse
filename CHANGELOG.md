@@ -4,6 +4,16 @@
 
 ...
 
+## 5.0.0 (2022-03-07)
+* Rewrite all files to ES Modules
+* Fold `css-rule-stream` into package
+* Drop support for Node v10
+* Drop `tape` for `tap`
+* Drop `through2` for native `Passthrough`
+* Remove `babel`
+* Add coverage (`c8`)
+* Add `eslint` rules
+
 ## 4.4.1 (2021-01-26)
 
 * Intrinsic width feature update with "stretch" value [\#132](https://github.com/anandthakker/doiuse/pull/132)

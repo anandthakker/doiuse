@@ -1,50 +1,59 @@
-var stream = require('../stream')
-var through = require('through2')
+import { PassThrough } from 'stream';
 
-var test = require('tape')
+import { test } from 'tap';
 
-var expected = [
+import CssUsageDuplex from '../lib/stream/CssUsageDuplex.js';
+
+const expected = [
   'css-sel3',
-  'background-img-opts'
-]
+  'background-img-opts',
+];
 
-var expectedWithIgnore = [
-  'background-img-opts'
-]
+const expectedWithIgnore = [
+  'background-img-opts',
+];
 
-test('streaming works', function (t) {
-  var s = stream({ browsers: 'IE >= 8' })
-  s.pipe(through.obj(function (usage, enc, next) {
-    t.equal(usage.feature, expected.shift())
-    next()
-  }, function (next) {
-    next()
-    t.equal(expected.length, 0)
-    t.end()
-  }))
+test('streaming works', (t) => {
+  const s = new CssUsageDuplex({ browsers: 'IE >= 8' });
+  s.pipe(new PassThrough({
+    objectMode: true,
+    transform: (usage, enc, next) => {
+      t.equal(usage.feature, expected.shift());
+      next();
+    },
+    flush: (next) => {
+      next();
+      t.equal(expected.length, 0);
+      t.end();
+    },
+  }));
 
-  s.end('div:nth-child(2n-1) { background-size: cover; }')
-})
+  s.end('div:nth-child(2n-1) { background-size: cover; }');
+});
 
-test('streaming works with ignore option', function (t) {
-  var s = stream({ browsers: 'IE >= 8', ignore: ['css-sel3'] })
-  s.pipe(through.obj(function (usage, enc, next) {
-    t.equal(usage.feature, expectedWithIgnore.shift())
-    next()
-  }, function (next) {
-    next()
-    t.equal(expectedWithIgnore.length, 0)
-    t.end()
-  }))
+test('streaming works with ignore option', (t) => {
+  const s = new CssUsageDuplex({ browsers: 'IE >= 8', ignore: ['css-sel3'] });
+  s.pipe(new PassThrough({
+    objectMode: true,
+    transform: (usage, enc, next) => {
+      t.equal(usage.feature, expectedWithIgnore.shift());
+      next();
+    },
+    flush: (next) => {
+      next();
+      t.equal(expectedWithIgnore.length, 0);
+      t.end();
+    },
+  }));
 
-  s.end('div:nth-child(2n-1) { background-size: cover; }')
-})
+  s.end('div:nth-child(2n-1) { background-size: cover; }');
+});
 
-test('gracefully emit error on bad browsers list', function (t) {
-  t.plan(1)
-  var s = stream({ browsers: 'Blargh!' })
-  s.on('error', function (e) {
-    t.ok(e)
-  })
-  s.end('a{}')
-})
+test('gracefully emit error on bad browsers list', (t) => {
+  t.plan(1);
+  const s = new CssUsageDuplex({ browsers: 'Blargh!' });
+  s.on('error', (e) => {
+    t.ok(e);
+  });
+  s.end('a{}');
+});

@@ -1,26 +1,27 @@
-const test = require('tape')
-const safe = require('safe-regex')
-const features = require('../data/features')
+import safe from 'safe-regex';
+import { test } from 'tap';
 
-regexes = []
+import FEATURES from '../data/Features.js';
 
-for (var feature of Object.values(features)) {
-	for (var property of Object.values(feature)) {
-		if (!property || !(property instanceof Array)){
-			continue;
-		}
+const regexes = [];
 
-		for (var item of property) {
-		  if (item instanceof RegExp) {
-			  regexes.push(item)
-		  }
-		}
-	}
+for (const feature of Object.values(FEATURES)) {
+  for (const property of Object.values(feature)) {
+    if (!property || !(Array.isArray(property))) {
+      continue;
+    }
+
+    for (const item of property) {
+      if (item instanceof RegExp) {
+        regexes.push(item);
+      }
+    }
+  }
 }
 
-for (var regex of regexes) {
-	test('Regex safety check: /' + regex.source + '/', function(t) {
-		t.ok(safe(regex))
-		t.end()
-	})
+for (const regex of regexes) {
+  test(`Regex safety check: /${regex.source}/`, (t) => {
+    t.ok(safe(regex));
+    t.end();
+  });
 }
