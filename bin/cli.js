@@ -74,7 +74,7 @@ if (argv.config) {
       }
     }
   } catch (err) {
-    if (err?.code === FILE_NOT_FOUND) {
+    if (err && err.code === FILE_NOT_FOUND) {
       console.error('Config file not found', err);
     } else {
       console.error(err);

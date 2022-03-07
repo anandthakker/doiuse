@@ -6,7 +6,7 @@
     "noImplicitAny": true,
     "resolveJsonModule": true,
     "strict": true,
-    "target": "es2020",
+    "target": "es2019",
     "allowSyntheticDefaultImports": true,
     "useUnknownInCatchVariables": false
   },

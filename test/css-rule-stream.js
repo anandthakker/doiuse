@@ -4,7 +4,6 @@ import { PassThrough } from 'stream';
 import { fileURLToPath } from 'url';
 
 import Tokenize from 'css-tokenize';
-import Duplexify from 'duplexify';
 import { test } from 'tap';
 
 import SourceMapTransform from '../lib/stream/SourceMapTransform.js';
