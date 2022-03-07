@@ -12,7 +12,7 @@
     "ecmaFeatures": {
       "impliedStrict": true
     },
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2019,
     "sourceType": "module",
     "project": "./jsconfig.json"
   },

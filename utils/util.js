@@ -6,9 +6,10 @@ import { agents } from 'caniuse-lite';
  * @return {string}
  */
 export function formatBrowserName(browserKey, versions) {
-  const browserName = agents[browserKey]?.browser ?? '';
+  const entry = agents[browserKey];
+  const browserName = entry ? entry.browser : null;
   if (!versions) {
-    return browserName;
+    return browserName || '';
   }
   return (`${browserName} (${versions.join(',')})`);
 }
