@@ -1,28 +1,44 @@
-var list = require('postcss/lib/list')
-var pats = {
-  attrcc: '[^\\~|^$*\\]]*',
-  brackets: /\[[^\]]*\]|\([^\)]*\)/g
-}
+import { list } from 'postcss';
 
+const pats = {
+  attrcc: '[^\\~|^$*\\]]*',
+  brackets: /\[[^\]]*]|\([^)]*\)/g,
+};
+
+/**
+ * @param {RegExp} pat
+ * @return {(str:string) => boolean}
+ */
 function matchOutsideOfBrackets(pat) {
   if (!(pat instanceof RegExp)) {
-    throw new TypeError('matchOutsideOfBrackets expects a RegExp')
+    throw new TypeError('matchOutsideOfBrackets expects a RegExp');
   }
-
-  return function(str) {
-	  return pat.test(str.replace(pats.brackets, ''))
-  }
+  return (str) => pat.test(str.replace(pats.brackets, ''));
 }
 
-module.exports = {
+/** @typedef {string|((s:string)=>boolean)|RegExp} FeatureValue */
+
+/**
+ * @typedef Feature
+ * @prop {FeatureValue[]} [properties]
+ * @prop {FeatureValue[]} [values]
+ * @prop {boolean} [selector]
+ * @prop {FeatureValue[]} [atrules]
+ * @prop {FeatureValue[]} [selectors]
+ * @prop {FeatureValue[]} [params]
+ * @prop {boolean} [unimplemented]
+ */
+
+/** @enum {Feature} */
+const FEATURES = {
   'border-radius': {
     properties: [
       'border-radius',
       'border-top-left-radius',
       'border-top-right-radius',
       'border-bottom-right-radius',
-      'border-bottom-left-radius'
-    ]
+      'border-bottom-left-radius',
+    ],
   },
   'css-boxshadow': { properties: ['box-shadow'] },
   'css-animation': {
@@ -36,8 +52,8 @@ module.exports = {
       'animation-iteration-count',
       'animation-play-state',
       'animation-timing-function',
-      '@keyframes'
-    ]
+      '@keyframes',
+    ],
   },
   'css-transitions': {
     properties: [
@@ -45,33 +61,33 @@ module.exports = {
       'transition-property',
       'transition-duration',
       'transition-delay',
-      'transition-timing-function'
-    ]
+      'transition-timing-function',
+    ],
   },
   transforms2d: {
     properties: [
       'transform',
-      'transform-origin'
-    ]
+      'transform-origin',
+    ],
   },
   transforms3d: {
     properties: [
       'perspective',
       'perspective-origin',
       'transform-style',
-      'backface-visibility'
-    ]
+      'backface-visibility',
+    ],
   },
   'css-gradients': {
     properties: [
       'background',
       'background-image',
-      'border-image'
+      'border-image',
     ],
     values: [
       /(^|[^-])linear-gradient/,
-      /(^|[^-])radial-gradient/
-    ]
+      /(^|[^-])radial-gradient/,
+    ],
   },
   'css3-boxsizing': { properties: ['box-sizing'] },
   'css-filters': { properties: ['filter'] },
@@ -89,8 +105,8 @@ module.exports = {
       'column-fill',
       'break-before',
       'break-after',
-      'break-inside'
-    ]
+      'break-inside',
+    ],
   },
   'user-select-none': { properties: ['user-select'] },
   flexbox: {
@@ -109,41 +125,41 @@ module.exports = {
       'order',
       'align-items',
       'align-self',
-      'align-content'
-    ]
+      'align-content',
+    ],
   },
   calc: {
     values: ['calc'],
-    properties: ['']
+    properties: [''],
   },
   'background-img-opts': {
     properties: [
       'background-clip',
       'background-origin',
-      'background-size'
-    ]
+      'background-size',
+    ],
   },
   'font-feature': {
     properties: [
       'font-feature-settings',
       'font-variant-ligatures',
       'font-language-override',
-      'font-kerning'
-    ]
+      'font-kerning',
+    ],
   },
   'border-image': { properties: ['border-image'] },
   'css-selection': {
     properties: ['::selection'],
-    selector: true
+    selector: true,
   },
   'css-placeholder': {
     properties: ['::placeholder'],
-    selector: true
+    selector: true,
   },
   'css-hyphens': { properties: ['hyphens'] },
   fullscreen: {
     properties: [':fullscreen'],
-    selector: true
+    selector: true,
   },
   'css3-tabsize': { properties: ['tab-size'] },
   'intrinsic-width': {
@@ -153,15 +169,15 @@ module.exports = {
       'max-width',
       'height',
       'min-height',
-      'max-height'
+      'max-height',
     ],
     values: [
       'max-content',
       'min-content',
       'fit-content',
       'fill-available',
-      'stretch'
-    ]
+      'stretch',
+    ],
   },
   'css3-cursors-newer': {
     properties: ['cursor'],
@@ -169,20 +185,20 @@ module.exports = {
       'zoom-in',
       'zoom-out',
       'grab',
-      'grabbing'
-    ]
+      'grabbing',
+    ],
   },
   'css-sticky': {
     properties: ['position'],
-    values: ['sticky']
+    values: ['sticky'],
   },
   pointer: { properties: ['touch-action'] },
   'text-decoration': {
     properties: [
       'text-decoration-style',
       'text-decoration-line',
-      'text-decoration-color'
-    ]
+      'text-decoration-color',
+    ],
   },
   'text-size-adjust': { properties: ['text-size-adjust'] },
   'css-masks': {
@@ -195,15 +211,13 @@ module.exports = {
       'mask-origin',
       'mask-position',
       'mask-repeat',
-      'mask-size'
-    ]
+      'mask-size',
+    ],
   },
   fontface: { atrules: ['font-face'] },
   multibackgrounds: {
     properties: [/^background-?/],
-    values: [function (value) {
-      return list.comma(value).length > 1
-    }]
+    values: [(value) => list.comma(value).length > 1],
   },
   'css-table': {
     properties: ['display'],
@@ -211,18 +225,18 @@ module.exports = {
       'table',
       'table-cell',
       'table-row',
-      'table-layout'
-    ]
+      'table-layout',
+    ],
   },
   'css-gencontent': {
     selectors: [
       ':before',
-      ':after'
-    ]
+      ':after',
+    ],
   },
   'css-fixed': {
     properties: ['position'],
-    values: ['fixed']
+    values: ['fixed'],
   },
   'css-sel2': {
     selectors: [
@@ -238,17 +252,17 @@ module.exports = {
       ':hover',
       ':focus',
       ':lang',
-      new RegExp('\\[' + pats.attrcc + '\\]'),
-      new RegExp('\\[' + pats.attrcc + '=' + pats.attrcc + '\\]'),
-      new RegExp('\\[' + pats.attrcc + '\\~=' + pats.attrcc + '\\]'),
-      new RegExp('\\[' + pats.attrcc + '\\|=' + pats.attrcc + '\\]')
-    ]
+      new RegExp(`\\[${pats.attrcc}\\]`),
+      new RegExp(`\\[${pats.attrcc}=${pats.attrcc}\\]`),
+      new RegExp(`\\[${pats.attrcc}\\~=${pats.attrcc}\\]`),
+      new RegExp(`\\[${pats.attrcc}\\|=${pats.attrcc}\\]`),
+    ],
   },
   'css-sel3': {
     selectors: [
-      new RegExp('\\[' + pats.attrcc + '\\^=' + pats.attrcc + '\\]'),
-      new RegExp('\\[' + pats.attrcc + '\\$=' + pats.attrcc + '\\]'),
-      new RegExp('\\[' + pats.attrcc + '\\*=' + pats.attrcc + '\\]'),
+      new RegExp(`\\[${pats.attrcc}\\^=${pats.attrcc}\\]`),
+      new RegExp(`\\[${pats.attrcc}\\$=${pats.attrcc}\\]`),
+      new RegExp(`\\[${pats.attrcc}\\*=${pats.attrcc}\\]`),
       ':root',
       ':nth-child',
       ':nth-last-child',
@@ -265,8 +279,8 @@ module.exports = {
       ':disabled',
       ':checked',
       ':not',
-      /^[^\[]*~/
-    ]
+      /^[^[]*~/,
+    ],
   },
   'css-textshadow': { properties: ['text-shadow'] },
   'css3-colors': {
@@ -274,13 +288,13 @@ module.exports = {
     values: [
       'rgba',
       'hsl',
-      'hsla'
-    ]
+      'hsla',
+    ],
   },
   'css-mediaqueries': { atrules: ['media'] },
   'css-canvas': {
     properties: [/^background/],
-    values: [/^-webkit-canvas/]
+    values: [/^-webkit-canvas/],
   },
   'css-reflections': { properties: ['box-reflect'] },
   'svg-css': { unimplemented: true },
@@ -294,21 +308,21 @@ module.exports = {
       'min-width',
       'max-width',
       'min-height',
-      'max-height'
-    ]
+      'max-height',
+    ],
   },
   'text-stroke': { unimplemented: true },
   'inline-block': {
     properties: ['display'],
-    values: ['inline-block']
+    values: ['inline-block'],
   },
   'css-grid': {
     properties: ['display'],
-    values: ['grid', 'inline-grid']
+    values: ['grid', 'inline-grid'],
   },
   rem: {
     properties: [''],
-    values: ['rem']
+    values: ['rem'],
   },
   ttf: { unimplemented: true },
   'pointer-events': { properties: ['pointer-events'] },
@@ -316,16 +330,16 @@ module.exports = {
   'css-counters': {
     properties: [
       'counter-reset',
-      'counter-increment'
-    ]
+      'counter-increment',
+    ],
   },
   'css-resize': { properties: ['resize'] },
   'css-repeating-gradients': {
     properties: [''],
     values: [
       'repeating-linear-gradient',
-      'repeating-radial-gradient'
-    ]
+      'repeating-radial-gradient',
+    ],
   },
   'word-break': { properties: ['word-break'] },
   'viewport-units': {
@@ -334,16 +348,16 @@ module.exports = {
       'vw',
       'vh',
       'vmin',
-      'vmax'
-    ]
+      'vmax',
+    ],
   },
   outline: {
     properties: [
       'outline',
       'outline-style',
       'outline-width',
-      'outline-color'
-    ]
+      'outline-color',
+    ],
   },
   'css3-cursors': {
     properties: ['cursor'],
@@ -360,8 +374,8 @@ module.exports = {
       'nwse-resize',
       'col-resize',
       'row-resize',
-      'all-scroll'
-    ]
+      'all-scroll',
+    ],
   },
   'css-variables': { unimplemented: true },
   'css-backgroundblendmode': { properties: ['background-blend-mode'] },
@@ -371,12 +385,12 @@ module.exports = {
     properties: [
       'shape-outside',
       'shape-image-threshold',
-      'shape-margin'
-    ]
+      'shape-margin',
+    ],
   },
   'kerning-pairs-ligatures': {
     properties: ['text-rendering'],
-    values: ['optimizeLegibility']
+    values: ['optimizeLegibility'],
   },
   'css-image-orientation': { properties: ['image-orientation'] },
   'css-appearance': { properties: ['appearance'] },
@@ -384,7 +398,7 @@ module.exports = {
   'css-touch-action': { properties: ['touch-action'] },
   'css-clip-path': { properties: ['clip-path'] },
   'font-unicode-range': {
-    properties: ['unicode-range']
+    properties: ['unicode-range'],
   },
   'css-font-stretch': { properties: ['font-stretch'] },
   'font-size-adjust': { properties: ['font-size-adjust'] },
@@ -392,23 +406,27 @@ module.exports = {
     atrules: ['media'],
     params: [
       'min-resolution',
-      'max-resolution'
-    ]
+      'max-resolution',
+    ],
   },
   'css-image-set': {
     properties: [''],
-    values: ['image-set']
+    values: ['image-set'],
   },
   'css-initial-value': {
     properties: [''],
-    values: ['initial']
+    values: ['initial'],
   },
   'css-unset-value': {
     properties: [''],
-    values: ['unset']
+    values: ['unset'],
   },
   'css-revert-value': {
     properties: [''],
-    values: ['revert']
-  }
-}
+    values: ['revert'],
+  },
+};
+
+/** @typedef {keyof typeof FEATURES} FeatureKeys */
+
+export default /** @type {{[K in FeatureKeys]: Feature}} */ (FEATURES);

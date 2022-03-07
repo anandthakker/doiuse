@@ -1,167 +1,152 @@
-var fs = require('fs')
-var test = require('tape')
-var postcss = require('postcss')
-var doiuse = require('../')
-var atImport = require('postcss-import')
-var hasKeys = require('./has-keys')
-var mock = require('mock-fs')
+import fs from 'fs';
+import { dirname, join as joinPath } from 'path';
+import { fileURLToPath } from 'url';
 
-test('leaves css alone by default', function (t) {
-  var css, out
-  css = fs.readFileSync(require.resolve('./cases/gradient.css')).toString()
-  out = postcss(doiuse({
+import mock from 'mock-fs';
+import postcss from 'postcss';
+import atImport from 'postcss-import';
+import { test } from 'tap';
+
+import DoIUse from '../lib/DoIUse.js';
+
+import { hasKeys } from './utils.js';
+
+const selfPath = dirname(fileURLToPath(import.meta.url));
+
+test('leaves css alone by default', (t) => {
+  const css = fs.readFileSync(joinPath(selfPath, './cases/gradient.css')).toString();
+  const out = postcss(new DoIUse({
     browsers: [
       'ie >= 7',
       'safari >= 6',
-      'opera >= 10.1'
-    ]
-  })).process(css).css
-  t.equal(out, css)
-  t.end()
-})
+      'opera >= 10.1',
+    ],
+  })).process(css).css;
+  t.equal(out, css);
+  t.end();
+});
 
-test('calls back for unsupported feature usages', function (t) {
-  var count, css
-  css = fs.readFileSync(require.resolve('./cases/gradient.css'))
-  count = 0
-  postcss(doiuse({
+test('calls back for unsupported feature usages', async (t) => {
+  const css = fs.readFileSync(joinPath(selfPath, './cases/gradient.css'));
+  let count = 0;
+  await postcss(new DoIUse({
     browsers: ['ie 8'],
-    onFeatureUsage: function (usageInfo) {
-      count++
-      hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message'])
-      hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData'])
-    }
-  }))
-    .process(css).then(function () {
-      t.equal(count, 4)
-      t.end()
-    })
-})
+    onFeatureUsage(usageInfo) {
+      count++;
+      hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message']);
+      hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData']);
+    },
+  })).process(css);
+  t.equal(count, 4);
+  t.end();
+});
 
-test('ignores specified features and calls back for the others', function (t) {
-  var count, css
-  css = fs.readFileSync(require.resolve('./cases/gradient.css'))
-  count = 0
-  postcss(doiuse({
+test('ignores specified features and calls back for the others', async (t) => {
+  const css = fs.readFileSync(joinPath(selfPath, './cases/gradient.css'));
+  let count = 0;
+  await postcss(new DoIUse({
     browsers: ['ie 8'],
     ignore: [
-      'css-gradients'
+      'css-gradients',
     ],
-    onFeatureUsage: function (usageInfo) {
-      count++
-      hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message'])
-      hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData'])
-    }
-  }))
-    .process(css).then(function () {
-      t.equal(count, 2)
-      t.end()
-    })
-})
+    onFeatureUsage(usageInfo) {
+      count++;
+      hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message']);
+      hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData']);
+    },
+  })).process(css);
+  t.equal(count, 2);
+  t.end();
+});
 
-test('ignores specified files and calls back for others', function (t) {
-  var run, ignoreCss, processCss, pcss
-  ignoreCss = fs.readFileSync(require.resolve('./cases/ignore-file.css'))
-  processCss = fs.readFileSync(require.resolve('./cases/gradient.css'))
-  run = false
+test('ignores specified files and calls back for others', async (t) => {
+  const ignoreCss = fs.readFileSync(joinPath(selfPath, './cases/ignore-file.css'));
+  const processCss = fs.readFileSync(joinPath(selfPath, './cases/gradient.css'));
+  let run = false;
 
-  pcss = function () {
-    return postcss(doiuse({
+  const processor = postcss(new DoIUse({
+    browsers: ['ie 6'],
+    ignoreFiles: ['**/ignore-file.css'],
+    onFeatureUsage() {
+      run = true;
+    },
+  }));
+
+  await processor.process(ignoreCss, { from: './cases/ignore-file.css' });
+
+  t.notOk(run, 'should be false');
+  await processor.process(processCss, { from: './cases/gradient.css' });
+  t.ok(run, 'should be true');
+  t.end();
+});
+
+test('ignores rules from some imported files, and not others', async (t) => {
+  const cssPath = joinPath(selfPath, './cases/ignore-import.css');
+  const css = fs.readFileSync(cssPath);
+  let count = 0;
+
+  await postcss([atImport(),
+    new DoIUse({
       browsers: ['ie 6'],
       ignoreFiles: ['**/ignore-file.css'],
-      onFeatureUsage: function (usageInfo) {
-        run = true
-      }
-    }))
-  }
+      onFeatureUsage() {
+        count++;
+      },
+    })]).process(css, { from: cssPath });
+  t.equal(count, 2);
+  t.end();
+});
 
-  pcss().process(ignoreCss, { from: './cases/ignore-file.css' })
-    .then(function () {
-      t.false(run, 'should be false')
-    })
-    .then(function () {
-      return pcss().process(processCss, { from: './cases/gradient.css' })
-    })
-    .then(function () {
-      t.true(run, 'should be true')
-      t.end()
-    })
-})
+test('ignores rules specified in comments', async (t) => {
+  const ignoreCssPath = joinPath(selfPath, './cases/ignore-comment.css');
+  const ignoreCss = fs.readFileSync(ignoreCssPath);
 
-test('ignores rules from some imported files, and not others', function (t) {
-  var count, css, cssPath
-  cssPath = require.resolve('./cases/ignore-import.css')
-  css = fs.readFileSync(cssPath)
-  count = 0
+  const processCssPath = joinPath(selfPath, './cases/ignore-file.css');
+  const processCss = fs.readFileSync(processCssPath);
 
-  postcss([atImport(),
-    doiuse({
+  let count = 0;
+
+  const processor = postcss([atImport(),
+    new DoIUse({
       browsers: ['ie 6'],
-      ignoreFiles: ['**/ignore-file.css'],
-      onFeatureUsage: function (usageInfo) {
-        count++
-      }
-    })])
-    .process(css, { from: cssPath })
-    .then(function () {
-      t.equal(count, 2)
-      t.end()
-    })
-})
+      onFeatureUsage() {
+        count++;
+      },
+    })]);
 
-test('ignores rules specified in comments', function (t) {
-  var count, ignoreCss, ignoreCssPath, processCss, processCssPath
-  ignoreCssPath = require.resolve('./cases/ignore-comment.css')
-  ignoreCss = fs.readFileSync(ignoreCssPath)
+  await processor.process(ignoreCss, { from: ignoreCssPath });
 
-  processCssPath = require.resolve('./cases/ignore-file.css')
-  processCss = fs.readFileSync(processCssPath)
+  t.equal(count, 2);
 
-  count = 0
+  await processor.process(processCss, { from: processCssPath });
+  t.equal(count, 3, 'inline css disabing rules must apply only to current file');
+  t.end();
+});
 
-  var processor = postcss([atImport(),
-    doiuse({
-      browsers: ['ie 6'],
-      onFeatureUsage: function (usageInfo) {
-        count++
-      }
-    })])
-
-  processor.process(ignoreCss, { from: ignoreCssPath })
-    .then(function () {
-      t.equal(count, 2)
-    }).then(function () {
-      processor.process(processCss, { from: processCssPath })
-        .then(function () {
-          t.equal(count, 3, 'inline css disabing rules must apply only to current file')
-          t.end()
-        })
-    })
-})
-
-test('info with browserslist file', function (t) {
+test('info with browserslist file', (t) => {
+  // @ts-ignore Bad typings
   mock({
-    'browserslist': '# Comment\nSafari 8\nIE >= 11'
-  })
+    browserslist: '# Comment\nSafari 8\nIE >= 11',
+  });
 
-  var actual = doiuse({}).info().browsers
-  var expected = [['ie', '11'], ['safari', '8']]
+  const actual = new DoIUse({}).info().browsers;
+  const expected = [['ie', '11'], ['safari', '8']];
 
-  t.deepEqual(actual, expected)
+  t.same(actual, expected);
 
-  mock.restore()
+  mock.restore();
 
-  t.end()
-})
+  t.end();
+});
 
-test('info with no browserslist file or browsers config', function (t) {
-  var actual = doiuse({}).info().browsers
+test('info with no browserslist file or browsers config', (t) => {
+  const actual = new DoIUse({}).info().browsers;
 
-  var expected = doiuse({
-    browsers: doiuse['default']
-  }).info().browsers
+  const expected = new DoIUse({
+    browsers: DoIUse.default,
+  }).info().browsers;
 
-  t.deepEqual(actual, expected)
+  t.same(actual, expected);
 
-  t.end()
-})
+  t.end();
+});

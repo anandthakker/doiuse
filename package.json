@@ -1,12 +1,18 @@
 {
-  "name": "doiuse",
-  "version": "4.4.1",
+  "name": "doiuse2",
+  "version": "5.0.0",
   "description": "Lint CSS for browser support against caniuse database",
-  "main": "lib/doiuse.js",
-  "bin": "./cli.js",
+  "type": "module",
+  "main": "index.js",
+  "sideEffects": false,
+  "exports": {
+    "./lib/*": "./lib/*",
+    "./bin/*": "./bin/*"
+  },
+  "bin": "./bin/cli.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/anandthakker/doiuse.git"
+    "url": "https://github.com/clshortfuse/doiuse2.git"
   },
   "keywords": [
     "lint",
@@ -16,43 +22,53 @@
     "caniuse",
     "stylelint"
   ],
-  "author": "Anand Thakker",
+  "author": "Carlos Lopez Jr.",
   "contributors": [
+    "Anand Thakker <mail@anandthakker.net> (http://www.anandthakker.net/)",
     "Piotr Kuczynski <piotr.kuczynski@gmail.com> (https://github.com/pkuczynski)"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/anandthakker/doiuse/issues"
+    "url": "https://github.com/clshortfuse/doiuse2/issues"
   },
-  "homepage": "https://github.com/anandthakker/doiuse",
+  "homepage": "https://github.com/clshortfuse/doiuse2",
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "dependencies": {
     "browserslist": "^4.16.1",
     "caniuse-lite": "^1.0.30001179",
-    "css-rule-stream": "^1.1.0",
-    "duplexer2": "0.0.2",
+    "css-tokenize": "^1.0.1",
+    "duplexify": "^4.1.2",
     "ldjson-stream": "^1.2.1",
-    "multimatch": "^5.0.0",
+    "multimatch": "^6.0.0",
     "postcss": "^8.2.4",
     "source-map": "^0.7.3",
-    "through2": "^4.0.2",
-    "yargs": "^16.2.0"
+    "yargs": "^17.3.1"
   },
   "devDependencies": {
-    "@babel/cli": "^7.12.10",
-    "@babel/core": "^7.12.10",
+    "@types/caniuse-lite": "^1.0.1",
+    "@types/node": "^12.20.46",
+    "@types/tape": "^4.13.2",
+    "@types/yargs": "^17.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.14.0",
+    "@typescript-eslint/parser": "^5.14.0",
+    "c8": "^7.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-canonical": "^2.4.3",
+    "eslint-plugin-github": "^4.3.5",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsdoc": "^37.9.6",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-unicorn": "^41.0.0",
     "mock-fs": "^4.13.0",
     "postcss-import": "^14.0.0",
     "safe-regex": "^2.1.1",
-    "tape": "^5.1.1"
+    "tap": "^16.0.0",
+    "typescript": "^4.6.2"
   },
   "scripts": {
-    "prebuild": "rm -rf lib",
-    "build": "babel -d lib/ src/",
-    "pretest": "npm run build",
-    "test": "tape test/*.js",
-    "prepare": "npm run build"
+    "pretest": "eslint ./bin/**/*.js ./lib/**/*.js ./test/**/*.js",
+    "test": "c8 tap --no-coverage"
   }
 }
