@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "target": "es2019",
+    "useUnknownInCatchVariables": false,
+    "outDir": "types",
+    "removeComments": false,
+  },
+  "include": ["exports/**/*.js", "lib/**/*.js", "data/**/*.js"],
+}

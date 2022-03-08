@@ -1,13 +1,12 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "checkJs": true,
     "module": "esnext",
     "moduleResolution": "node",
     "noImplicitAny": true,
-    "resolveJsonModule": true,
     "strict": true,
     "target": "es2019",
-    "allowSyntheticDefaultImports": true,
     "useUnknownInCatchVariables": false
   },
   "exclude": [
