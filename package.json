@@ -3,11 +3,16 @@
   "version": "5.0.1",
   "description": "Lint CSS for browser support against caniuse database",
   "type": "module",
-  "main": "index.js",
-  "sideEffects": false,
   "exports": {
     "./lib/*": "./lib/*",
-    "./bin/*": "./bin/*"
+    ".": {
+      "require": "./exports/index.cjs",
+      "import": "./exports/index.js"
+    },
+    "./stream": {
+      "require": "./exports/stream.cjs",
+      "import": "./exports/stream.js"
+    }
   },
   "bin": "./bin/cli.js",
   "repository": {
@@ -54,6 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "c8": "^7.11.0",
+    "esbuild": "^0.14.25",
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-canonical": "^2.4.3",
@@ -70,6 +76,7 @@
   },
   "scripts": {
     "pretest": "eslint ./bin/**/*.js ./lib/**/*.js ./test/**/*.js",
-    "test": "c8 tap --no-coverage"
+    "test": "c8 tap --no-coverage",
+    "prepublish": "esbuild exports/*.js --bundle --platform=node --target=node12 --outdir=exports --out-extension:.js=.cjs"
   }
 }
