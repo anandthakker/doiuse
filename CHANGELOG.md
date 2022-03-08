@@ -4,6 +4,10 @@
 
 ...
 
+## 5.0.3 (2022-03-07)
+* Fixed extra errors being emitted
+* Add `types/**/*.d.ts`
+
 ## 5.0.2 (2022-03-07)
 * Fixed CommonJS support
 
