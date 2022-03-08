@@ -4,6 +4,9 @@
 
 ...
 
+## 5.0.2 (2022-03-07)
+* Fixed CommonJS support
+
 ## 5.0.1 (2022-03-07)
 * Fixed Node v12 support
 
