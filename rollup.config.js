@@ -18,5 +18,4 @@ for (const file of files) {
     },
   });
 }
-console.log(configs);
 export default configs;
