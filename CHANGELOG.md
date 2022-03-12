@@ -4,6 +4,10 @@
 
 ...
 
+## 5.0.4 (2022-03-07)
+* Fixed CommonJS support
+* Replaced `esbuild` to `rollup` for CommonJS support
+
 ## 5.0.3 (2022-03-07)
 * Fixed extra errors being emitted
 * Add `types/**/*.d.ts`
