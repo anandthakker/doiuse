@@ -4,7 +4,7 @@
 
 ...
 
-## 5.0.4 (2022-03-07)
+## 5.0.4 (2022-03-12)
 * Fixed CommonJS support
 * Replaced `esbuild` to `rollup` for CommonJS support
 
