@@ -1,6 +1,6 @@
 {
   "name": "doiuse2",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "description": "Lint CSS for browser support against caniuse database",
   "type": "module",
   "exports": {
@@ -46,7 +46,7 @@
     "css-tokenize": "^1.0.1",
     "duplexify": "^4.1.2",
     "ldjson-stream": "^1.2.1",
-    "multimatch": "^6.0.0",
+    "multimatch": "^5.0.0",
     "postcss": "^8.2.4",
     "source-map": "^0.7.3",
     "yargs": "^17.3.1"
@@ -59,7 +59,6 @@
     "@typescript-eslint/eslint-plugin": "^5.14.0",
     "@typescript-eslint/parser": "^5.14.0",
     "c8": "^7.11.0",
-    "esbuild": "^0.14.25",
     "eslint": "^8.10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-canonical": "^2.4.3",
@@ -70,6 +69,7 @@
     "eslint-plugin-unicorn": "^41.0.0",
     "mock-fs": "^4.13.0",
     "postcss-import": "^14.0.0",
+    "rollup": "^2.70.0",
     "safe-regex": "^2.1.1",
     "tap": "^16.0.0",
     "typescript": "^4.6.2"
@@ -77,7 +77,7 @@
   "scripts": {
     "pretest": "eslint ./bin/**/*.js ./lib/**/*.js ./test/**/*.js",
     "test": "c8 tap --no-coverage",
-    "prepare": "esbuild exports/*.js --bundle --platform=node --target=node12 --outdir=exports --out-extension:.js=.cjs",
+    "prepare": "rollup -c rollup.config.js",
     "prepublishOnly": "tsc"
   }
 }
