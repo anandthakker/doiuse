@@ -1,9 +1,13 @@
+/*
+expect:
+flexbox: 37
+*/
+
 a {
     display: flex;
     flex-flow: row;
     order: 0;
     flex: 0 1 2;
-    transition: flex 200ms;
 }
 .inline {
     display: inline-flex;
