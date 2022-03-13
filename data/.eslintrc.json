@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "canonical/filename-match-exported": "off",
+    "canonical/filename-match-regex": "off",
+    "object-shorthand": ["error", "consistent"],
+    "quote-props": ["error", "always"]
+  }
+}

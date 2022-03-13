@@ -75,7 +75,7 @@
     "typescript": "^4.6.2"
   },
   "scripts": {
-    "pretest": "eslint ./bin/**/*.js ./lib/**/*.js ./test/**/*.js",
+    "pretest": "eslint ./bin/**/*.js ./data/**/*.js ./lib/**/*.js ./test/**/*.js",
     "test": "c8 tap --no-coverage",
     "prepare": "rollup -c rollup.config.js",
     "prepublishOnly": "tsc"
