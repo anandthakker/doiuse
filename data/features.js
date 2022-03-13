@@ -77,8 +77,6 @@ import wordwrap from './features/wordwrap.js';
 
 /** @typedef {((rule:import('postcss').ChildNode) => boolean)} RuleCheck */
 
-/** @typedef {string|((s:string)=>boolean)|RegExp} FeatureValue */
-
 /** @typedef {Record<string, FeatureCheck|FeatureCheck[]|boolean> | RuleCheck | RuleCheck[]} Feature */
 
 /** @enum {Feature} */
