@@ -1,0 +1,21 @@
+/*
+expect:
+css-grid: 7
+*/
+
+#grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr
+}
+#A {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+  align-self: end;
+}
+#B {
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 10;
+}
+
