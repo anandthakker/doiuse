@@ -6,3 +6,4 @@ src/
 .gitignore
 .npmignore
 CONTRIBUTING.md
+coverage
