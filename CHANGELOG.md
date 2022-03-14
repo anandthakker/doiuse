@@ -4,6 +4,9 @@
 
 ...
 
+## 5.1.1 (2022-03-12)
+* Fix flexbox typo
+
 ## 5.1.0 (2022-03-12)
 * Add legacy support with `main` in package.json
 * Use individual files for feature checks
