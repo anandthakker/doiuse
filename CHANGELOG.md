@@ -4,6 +4,11 @@
 
 ...
 
+## 5.1.0 (2022-03-12)
+* Add legacy support with `main` in package.json
+* Use individual files for feature checks
+* Add missing css-grid values
+
 ## 5.0.4 (2022-03-12)
 * Fixed CommonJS support
 * Replaced `esbuild` to `rollup` for CommonJS support
