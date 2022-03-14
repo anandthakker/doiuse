@@ -1,6 +1,6 @@
 export default {
   'display': [
-    'display-flex',
+    'flex',
     'inline-flex',
   ],
   'flex': true,
