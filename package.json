@@ -2,6 +2,7 @@
   "name": "doiuse2",
   "version": "5.0.4",
   "description": "Lint CSS for browser support against caniuse database",
+  "main:": "./exports/index.cjs",
   "type": "module",
   "exports": {
     "./lib/*": "./lib/*",
