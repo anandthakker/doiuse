@@ -1,14 +1,22 @@
 import backgroundImgOpts from './features/background-img-opts.js';
+import backgroundPositionXY from './features/background-position-x-y.js';
 import borderImage from './features/border-image.js';
 import borderRadius from './features/border-radius.js';
 import calc from './features/calc.js';
+import cssAll from './features/css-all.js';
 import cssAnimation from './features/css-animation.js';
+import cssAnyLink from './features/css-any-link.js';
 import cssAppearance from './features/css-appearance.js';
+import cssAtCounterStyle from './features/css-at-counter-style.js';
+import cssAutofill from './features/css-autofill.js';
+import cssBackdropFilter from './features/css-backdrop-filter.js';
+import cssBackgroundOffsets from './features/css-background-offsets.js';
 import cssBackgroundblendmode from './features/css-backgroundblendmode.js';
 import cssBoxshadow from './features/css-boxshadow.js';
 import cssCanvas from './features/css-canvas.js';
 import cssClipPath from './features/css-clip-path.js';
 import cssCounters from './features/css-counters.js';
+import cssEnvFunction from './features/css-env-function.js';
 import cssFeaturequeries from './features/css-featurequeries.js';
 import cssFilters from './features/css-filters.js';
 import cssFixed from './features/css-fixed.js';
@@ -20,16 +28,20 @@ import cssHyphens from './features/css-hyphens.js';
 import cssImageOrientation from './features/css-image-orientation.js';
 import cssImageSet from './features/css-image-set.js';
 import cssInitialValue from './features/css-initial-value.js';
+import cssLogicalProps from './features/css-logical-props.js';
 import cssMasks from './features/css-masks.js';
 import cssMediaResolution from './features/css-media-resolution.js';
 import cssMediaqueries from './features/css-mediaqueries.js';
 import cssMixblendmode from './features/css-mixblendmode.js';
 import cssOpacity from './features/css-opacity.js';
+import cssOverflowOverlay from './features/css-overflow-overlay.js';
+import cssOverscrollBehavior from './features/css-overscroll-behavior.js';
 import cssPlaceholder from './features/css-placeholder.js';
 import cssReflections from './features/css-reflections.js';
 import cssRepeatingGradients from './features/css-repeating-gradients.js';
 import cssResize from './features/css-resize.js';
 import cssRevertValue from './features/css-revert-value.js';
+import cssScrollbar from './features/css-scrollbar.js';
 import cssSel2 from './features/css-sel2.js';
 import cssSel3 from './features/css-sel3.js';
 import cssSelection from './features/css-selection.js';
@@ -40,8 +52,10 @@ import cssTextshadow from './features/css-textshadow.js';
 import cssTouchAction from './features/css-touch-action.js';
 import cssTransitions from './features/css-transitions.js';
 import cssUnsetValue from './features/css-unset-value.js';
+import cssVariables from './features/css-variables.js';
 import css3Boxsizing from './features/css3-boxsizing.js';
 import css3Colors from './features/css3-colors.js';
+import css3CursorsGrab from './features/css3-cursors-grab.js';
 import css3CursorsNewer from './features/css3-cursors-newer.js';
 import css3Cursors from './features/css3-cursors.js';
 import css3Tabsize from './features/css3-tabsize.js';
@@ -82,16 +96,24 @@ import wordwrap from './features/wordwrap.js';
 /** @enum {Feature} */
 const FEATURES = {
   'background-img-opts': backgroundImgOpts,
+  'background-position-x-y': backgroundPositionXY,
   'border-image': borderImage,
   'border-radius': borderRadius,
   'calc': calc,
+  'css-all': cssAll,
   'css-animation': cssAnimation,
+  'css-any-link': cssAnyLink,
   'css-appearance': cssAppearance,
+  'css-at-counter-style': cssAtCounterStyle,
+  'css-autofill': cssAutofill,
+  'css-backdrop-filter': cssBackdropFilter,
+  'css-background-offsets': cssBackgroundOffsets,
   'css-backgroundblendmode': cssBackgroundblendmode,
   'css-boxshadow': cssBoxshadow,
   'css-canvas': cssCanvas,
   'css-clip-path': cssClipPath,
   'css-counters': cssCounters,
+  'css-env-function': cssEnvFunction,
   'css-featurequeries': cssFeaturequeries,
   'css-filters': cssFilters,
   'css-fixed': cssFixed,
@@ -103,16 +125,20 @@ const FEATURES = {
   'css-image-orientation': cssImageOrientation,
   'css-image-set': cssImageSet,
   'css-initial-value': cssInitialValue,
+  'css-logical-props': cssLogicalProps,
   'css-masks': cssMasks,
   'css-media-resolution': cssMediaResolution,
   'css-mediaqueries': cssMediaqueries,
   'css-mixblendmode': cssMixblendmode,
   'css-opacity': cssOpacity,
+  'css-overflow-overlay': cssOverflowOverlay,
+  'css-overscroll-behavior': cssOverscrollBehavior,
   'css-placeholder': cssPlaceholder,
   'css-reflections': cssReflections,
   'css-repeating-gradients': cssRepeatingGradients,
   'css-resize': cssResize,
   'css-revert-value': cssRevertValue,
+  'css-scrollbar': cssScrollbar,
   'css-sel2': cssSel2,
   'css-sel3': cssSel3,
   'css-selection': cssSelection,
@@ -123,8 +149,10 @@ const FEATURES = {
   'css-touch-action': cssTouchAction,
   'css-transitions': cssTransitions,
   'css-unset-value': cssUnsetValue,
+  'css-variables': cssVariables,
   'css3-boxsizing': css3Boxsizing,
   'css3-colors': css3Colors,
+  'css3-cursors-grab': css3CursorsGrab,
   'css3-cursors-newer': css3CursorsNewer,
   'css3-cursors': css3Cursors,
   'css3-tabsize': css3Tabsize,
