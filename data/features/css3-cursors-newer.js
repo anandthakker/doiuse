@@ -1,3 +1,3 @@
 export default {
-  'cursor': ['zoom-in', 'zoom-out', 'grab', 'grabbing'],
+  'cursor': ['zoom-in', 'zoom-out'],
 };

@@ -1,0 +1,15 @@
+/*
+expect:
+css-variables: 3
+*/
+
+:root {
+  --color: green;
+}
+body {
+  background-color: var(--color);
+}
+
+button {
+  --color: orange;
+}
