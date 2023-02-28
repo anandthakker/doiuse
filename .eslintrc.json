@@ -3,7 +3,7 @@
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
     "plugin:jsdoc/recommended",
-    "plugin:node/recommended",
+    "plugin:n/recommended",
     "plugin:unicorn/recommended",
     "plugin:import/recommended"
   ],
@@ -20,6 +20,7 @@
     "@typescript-eslint",
     "canonical",
     "jsdoc",
+    "n",
     "unicorn",
     "import"
   ],
@@ -111,9 +112,10 @@
     "eslint-comments/no-use": 0,
     "prettier/prettier": 0,
     "i18n-text/no-en": 0,
+    "import/no-extraneous-dependencies": 0,
     "import/no-namespace": 0,
-    "no-unused-vars": 0,
     "import/namespace": 0,
+    "no-unused-vars": 0,
     "no-constructor-return": 0,
     "default-case-last": 0,
     "no-undef": 0,
@@ -189,6 +191,7 @@
       }
     ],
     "import/prefer-default-export": 0,
+    "unicorn/switch-case-braces": 0,
     "unicorn/import-style": 0,
     "unicorn/no-useless-undefined": 0,
     "unicorn/no-array-for-each": 0,

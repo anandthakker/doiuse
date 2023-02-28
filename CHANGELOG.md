@@ -2,7 +2,35 @@
 
 ## Unreleased
 
-...
+* Use MDN
+
+## 6.0.0 (2023-02-28)
+* BREAKING: Drop Node v12 support
+* Add caniuse features
+* * `css-conic-gradients`
+* * `css-container-queries-style`
+* * `css-container-query-units`
+* * `css-font-palette`
+* * `css-grid-animation`
+* * `css-matches-pseudo`
+* * `css-math-functions`
+* * `css-media-range-syntax`
+* * `css-motion-paths`
+* * `css-print-color-adjust`
+* * `mdn-css-unicode-bidi-isolate`
+* * `mdn-css-unicode-bidi-isolate-override`
+* * `mdn-css-unicode-bidi-plaintext`
+* * `mdn-text-decoration-color`
+* * `mdn-text-decoration-line`
+* * `mdn-text-decoration-shorthand`
+* * `mdn-text-decoration-style`
+* Update dependencies
+* * browserlist 
+* * caniuse-lite
+* * postcss
+* * source-map
+* * yargs
+* Update dev dependencies
 
 ## 5.1.1 (2022-03-12)
 * Fix flexbox typo

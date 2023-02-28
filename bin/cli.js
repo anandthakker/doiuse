@@ -67,11 +67,9 @@ if (argv.config) {
     const config = JSON.parse(fileData.toString());
 
     for (const [key, value] of Object.entries(config)) {
-      if (key === 'browsers' && Array.isArray(value)) {
-        argv[key] = value.join(',');
-      } else {
-        argv[key] = value;
-      }
+      argv[key] = (key === 'browsers' && Array.isArray(value))
+        ? value.join(',')
+        : value;
     }
   } catch (err) {
     if (err && err.code === FILE_NOT_FOUND) {
@@ -117,14 +115,14 @@ if (argv.verbose >= 2) {
 }
 
 if (argv.l) {
-  // eslint-disable-next-line no-process-exit
+  // eslint-disable-next-line n/no-process-exit
   process.exit(0);
 }
 
 // Process the CSS
 if (argv.help || (argv._.length === 0 && process.stdin.isTTY)) {
   yargs.showHelp();
-  // eslint-disable-next-line no-process-exit
+  // eslint-disable-next-line n/no-process-exit
   process.exit();
 }
 
