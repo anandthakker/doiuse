@@ -1,9 +1,9 @@
 import safe from 'safe-regex';
 import { test } from 'tap';
 
-import FEATURES from '../data/features.js';
 import { REGEXES as CssSel2Regexes } from '../data/features/css-sel2.js';
 import { REGEXES as CssSel3Regexes } from '../data/features/css-sel3.js';
+import FEATURES from '../data/features.js';
 
 const regexes = new Set();
 

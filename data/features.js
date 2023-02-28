@@ -15,14 +15,19 @@ import cssBackgroundblendmode from './features/css-backgroundblendmode.js';
 import cssBoxshadow from './features/css-boxshadow.js';
 import cssCanvas from './features/css-canvas.js';
 import cssClipPath from './features/css-clip-path.js';
+import cssConicGradients from './features/css-conic-gradients.js';
+import cssContainerQueriesStyle from './features/css-container-queries-style.js';
+import cssContainerQueryUnits from './features/css-container-query-units.js';
 import cssCounters from './features/css-counters.js';
 import cssEnvFunction from './features/css-env-function.js';
 import cssFeaturequeries from './features/css-featurequeries.js';
 import cssFilters from './features/css-filters.js';
 import cssFixed from './features/css-fixed.js';
+import cssFontPalette from './features/css-font-palette.js';
 import cssFontStretch from './features/css-font-stretch.js';
 import cssGencontent from './features/css-gencontent.js';
 import cssGradients from './features/css-gradients.js';
+import cssGridAnimation from './features/css-grid-animation.js';
 import cssGrid from './features/css-grid.js';
 import cssHyphens from './features/css-hyphens.js';
 import cssImageOrientation from './features/css-image-orientation.js';
@@ -30,13 +35,18 @@ import cssImageSet from './features/css-image-set.js';
 import cssInitialValue from './features/css-initial-value.js';
 import cssLogicalProps from './features/css-logical-props.js';
 import cssMasks from './features/css-masks.js';
+import cssMatchesPseudo from './features/css-matches-pseudo.js';
+import cssMathFunctions from './features/css-math-functions.js';
+import cssMediaRangeSyntax from './features/css-media-range-syntax.js';
 import cssMediaResolution from './features/css-media-resolution.js';
 import cssMediaqueries from './features/css-mediaqueries.js';
 import cssMixblendmode from './features/css-mixblendmode.js';
+import cssMotionPaths from './features/css-motion-paths.js';
 import cssOpacity from './features/css-opacity.js';
 import cssOverflowOverlay from './features/css-overflow-overlay.js';
 import cssOverscrollBehavior from './features/css-overscroll-behavior.js';
 import cssPlaceholder from './features/css-placeholder.js';
+import cssPrintColorAdjust from './features/css-print-color-adjust.js';
 import cssReflections from './features/css-reflections.js';
 import cssRepeatingGradients from './features/css-repeating-gradients.js';
 import cssResize from './features/css-resize.js';
@@ -68,6 +78,13 @@ import fullscreen from './features/fullscreen.js';
 import inlineBlock from './features/inline-block.js';
 import intrinsicWidth from './features/intrinsic-width.js';
 import kerningPairsLigatures from './features/kerning-pairs-ligatures.js';
+import mdnCssUnicodeBidiIsolateOverride from './features/mdn-css-unicode-bidi-isolate-override.js';
+import mdnCssUnicodeBidiIsolate from './features/mdn-css-unicode-bidi-isolate.js';
+import mdnCssUnicodeBidiPlaintext from './features/mdn-css-unicode-bidi-plaintext.js';
+import mdnTextDecorationColor from './features/mdn-text-decoration-color.js';
+import mdnTextDecorationLine from './features/mdn-text-decoration-line.js';
+import mdnTextDecorationShorthand from './features/mdn-text-decoration-shorthand.js';
+import mdnTextDecorationStyle from './features/mdn-text-decoration-style.js';
 import minmaxwh from './features/minmaxwh.js';
 import multibackgrounds from './features/multibackgrounds.js';
 import multicolumn from './features/multicolumn.js';
@@ -112,28 +129,38 @@ const FEATURES = {
   'css-boxshadow': cssBoxshadow,
   'css-canvas': cssCanvas,
   'css-clip-path': cssClipPath,
+  'css-conic-gradients': cssConicGradients,
+  'css-container-queries-style': cssContainerQueriesStyle,
+  'css-container-query-units': cssContainerQueryUnits,
   'css-counters': cssCounters,
   'css-env-function': cssEnvFunction,
   'css-featurequeries': cssFeaturequeries,
   'css-filters': cssFilters,
   'css-fixed': cssFixed,
+  'css-font-palette': cssFontPalette,
   'css-font-stretch': cssFontStretch,
   'css-gencontent': cssGencontent,
   'css-gradients': cssGradients,
   'css-grid': cssGrid,
+  'css-grid-animation': cssGridAnimation,
   'css-hyphens': cssHyphens,
   'css-image-orientation': cssImageOrientation,
   'css-image-set': cssImageSet,
   'css-initial-value': cssInitialValue,
   'css-logical-props': cssLogicalProps,
+  'css-matches-pseudo': cssMatchesPseudo,
+  'css-math-functions': cssMathFunctions,
   'css-masks': cssMasks,
+  'css-media-range-syntax': cssMediaRangeSyntax,
   'css-media-resolution': cssMediaResolution,
   'css-mediaqueries': cssMediaqueries,
+  'css-motion-paths': cssMotionPaths,
   'css-mixblendmode': cssMixblendmode,
   'css-opacity': cssOpacity,
   'css-overflow-overlay': cssOverflowOverlay,
   'css-overscroll-behavior': cssOverscrollBehavior,
   'css-placeholder': cssPlaceholder,
+  'css-print-color-adjust': cssPrintColorAdjust,
   'css-reflections': cssReflections,
   'css-repeating-gradients': cssRepeatingGradients,
   'css-resize': cssResize,
@@ -165,6 +192,13 @@ const FEATURES = {
   'inline-block': inlineBlock,
   'intrinsic-width': intrinsicWidth,
   'kerning-pairs-ligatures': kerningPairsLigatures,
+  'mdn-css-unicode-bidi-isolate': mdnCssUnicodeBidiIsolate,
+  'mdn-css-unicode-bidi-isolate-override': mdnCssUnicodeBidiIsolateOverride,
+  'mdn-css-unicode-bidi-plaintext': mdnCssUnicodeBidiPlaintext,
+  'mdn-text-decoration-color': mdnTextDecorationColor,
+  'mdn-text-decoration-line': mdnTextDecorationLine,
+  'mdn-text-decoration-shorthand': mdnTextDecorationShorthand,
+  'mdn-text-decoration-style': mdnTextDecorationStyle,
   'minmaxwh': minmaxwh,
   'multibackgrounds': multibackgrounds,
   'multicolumn': multicolumn,
