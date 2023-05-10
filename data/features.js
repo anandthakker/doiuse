@@ -112,6 +112,10 @@ module.exports = {
       'align-content'
     ]
   },
+  'flexbox-gap': {
+    properties: ['gap'],
+    values: [''],
+  },
   calc: {
     values: ['calc'],
     properties: ['']
