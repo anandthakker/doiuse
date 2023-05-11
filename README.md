@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/clshortfuse/doiuse2.svg?branch=master)](https://travis-ci.org/clshortfuse/doiuse2)
-[![Release Notes](https://release-notes.com/badges/v2.svg)](https://release-notes.com/@open-source-community/clshortfuse-doiuse2)
+[![Build Status](https://travis-ci.org/anandthakker/doiuse.svg?branch=master)](https://travis-ci.org/anandthakker/doiuse)
+[![Release Notes](https://release-notes.com/badges/v2.svg)](https://release-notes.com/@open-source-community/anandthakker-doiuse)
 
 # doiuse
 
@@ -8,7 +8,7 @@ Lint CSS for browser support against [Can I use](http://caniuse.com) database.
 ## Install
 
 ```sh
-npm install -g doiuse2
+npm install -g doiuse
 ```
 
 ## Usage Examples

@@ -3,8 +3,8 @@
 ## Development
 
 ```sh
-git clone git@github.com:clshortfuse/doiuse2.git
-cd doiuse2
+git clone git@github.com:anandthakker/doiuse.git
+cd doiuse
 npm ci
 ```
 
