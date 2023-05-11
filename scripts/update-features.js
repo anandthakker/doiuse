@@ -30,21 +30,21 @@ await Promise.all(
   cssFeatures.map(async ([name]) => {
     const filepath = path.resolve(`data/features/${name}.js`);
 
-    const fileContent = await fs.readFile(filepath, 'utf8');
     const fullTitle = unpackFeature(caniuse.features[name]).title;
     const link = fullDatabase.data[name] ? `See: https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
     const stub = `// TODO: implement ${fullTitle} feature\nexport default {};\n// ${link}\n`;
 
-    // if the file is empty, add a TODO comment
-    if (fileContent.trim() === '') {
-      await fs.writeFile(
-        filepath,
-        stub,
-      );
-    }
-
     try {
       await fs.access(filepath);
+      const fileContent = await fs.readFile(filepath, 'utf8');
+
+      // if the file is empty, add a TODO comment
+      if (fileContent.trim() === '') {
+        await fs.writeFile(
+          filepath,
+          stub,
+        );
+      }
     } catch {
       await fs.writeFile(
         filepath,
