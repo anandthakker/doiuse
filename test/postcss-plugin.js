@@ -14,7 +14,7 @@ import { hasKeys } from './utils.js';
 const selfPath = dirname(fileURLToPath(import.meta.url));
 
 test('leaves css alone by default', (t) => {
-  const css = fs.readFileSync(joinPath(selfPath, './cases/gradient.css')).toString();
+  const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css')).toString();
   const out = postcss(new DoIUse({
     browsers: [
       'ie >= 7',
@@ -27,7 +27,7 @@ test('leaves css alone by default', (t) => {
 });
 
 test('calls back for unsupported feature usages', async (t) => {
-  const css = fs.readFileSync(joinPath(selfPath, './cases/gradient.css'));
+  const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css'));
   let count = 0;
   await postcss(new DoIUse({
     browsers: ['ie 8'],
@@ -42,7 +42,7 @@ test('calls back for unsupported feature usages', async (t) => {
 });
 
 test('ignores specified features and calls back for the others', async (t) => {
-  const css = fs.readFileSync(joinPath(selfPath, './cases/gradient.css'));
+  const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css'));
   let count = 0;
   await postcss(new DoIUse({
     browsers: ['ie 8'],
@@ -60,8 +60,8 @@ test('ignores specified features and calls back for the others', async (t) => {
 });
 
 test('ignores specified files and calls back for others', async (t) => {
-  const ignoreCss = fs.readFileSync(joinPath(selfPath, './cases/ignore-file.css'));
-  const processCss = fs.readFileSync(joinPath(selfPath, './cases/gradient.css'));
+  const ignoreCss = fs.readFileSync(joinPath(selfPath, './cases/generic/ignore-file.css'));
+  const processCss = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css'));
   let run = false;
 
   const processor = postcss(new DoIUse({
@@ -72,16 +72,16 @@ test('ignores specified files and calls back for others', async (t) => {
     },
   }));
 
-  await processor.process(ignoreCss, { from: './cases/ignore-file.css' });
+  await processor.process(ignoreCss, { from: './cases/generic/ignore-file.css' });
 
   t.notOk(run, 'should be false');
-  await processor.process(processCss, { from: './cases/gradient.css' });
+  await processor.process(processCss, { from: './cases/generic/gradient.css' });
   t.ok(run, 'should be true');
   t.end();
 });
 
 test('ignores rules from some imported files, and not others', async (t) => {
-  const cssPath = joinPath(selfPath, './cases/ignore-import.css');
+  const cssPath = joinPath(selfPath, './cases/generic/ignore-import.css');
   const css = fs.readFileSync(cssPath);
   let count = 0;
 
@@ -98,10 +98,10 @@ test('ignores rules from some imported files, and not others', async (t) => {
 });
 
 test('ignores rules specified in comments', async (t) => {
-  const ignoreCssPath = joinPath(selfPath, './cases/ignore-comment.css');
+  const ignoreCssPath = joinPath(selfPath, './cases/generic/ignore-comment.css');
   const ignoreCss = fs.readFileSync(ignoreCssPath);
 
-  const processCssPath = joinPath(selfPath, './cases/ignore-file.css');
+  const processCssPath = joinPath(selfPath, './cases/generic/ignore-file.css');
   const processCss = fs.readFileSync(processCssPath);
 
   let count = 0;

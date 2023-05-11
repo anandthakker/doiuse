@@ -1,0 +1,24 @@
+/*
+
+This file contains tests for CSS background-attachment
+Method of defining how a background image is attached to a scrollable element. Values include `scroll` (default), `fixed` and `local`.
+
+See: https://caniuse.com/background-attachment
+
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/
+
+/*
+expect:
+background-attachment: 4
+*/
+
+.test {
+  /* scroll is the default, so it shouldn't be flagged */
+  /* background-attachment: scroll; */
+  background-attachment: fixed;
+  background-attachment: local;
+  background-attachment: fixed, local;
+  background-attachment: local, fixed;
+}

@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for CSS Hyphenation
+Method of controlling when words at the end of lines should be hyphenated using the "hyphens" property.
+
+See: https://caniuse.com/css-hyphens
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

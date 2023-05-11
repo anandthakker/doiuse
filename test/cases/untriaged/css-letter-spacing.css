@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for letter-spacing CSS property
+Controls spacing between characters of text (i.e. "tracking" in typographical terms). Not to be confused with kerning.
+
+See: https://caniuse.com/css-letter-spacing
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

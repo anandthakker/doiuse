@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for CSS Appearance
+The `appearance` property defines how elements (particularly form controls) appear by default. By setting the value to `none` the default appearance can be entirely redefined using other CSS properties.
+
+See: https://caniuse.com/css-appearance
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for :indeterminate CSS pseudo-class
+The `:indeterminate` pseudo-class matches indeterminate checkboxes, indeterminate `<progress>` bars, and radio buttons with no checked button in their radio button group.
+
+See: https://caniuse.com/css-indeterminate-pseudo
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

@@ -23,7 +23,7 @@ test('works', (t) => {
 
   t.plan(expected.length + 1);
 
-  createReadStream(joinPath(selfPath, 'cases', 'gauntlet.css'))
+  createReadStream(joinPath(selfPath, 'cases', 'generic', 'gauntlet.css'))
     .pipe(new Tokenize())
     .pipe(new SourceMapTransform())
     .pipe(new PassThrough({

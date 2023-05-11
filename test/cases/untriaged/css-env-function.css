@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for CSS Environment Variables env()
+Usage of environment variables like `safe-area-inset-top`.
+
+See: https://caniuse.com/css-env-function
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

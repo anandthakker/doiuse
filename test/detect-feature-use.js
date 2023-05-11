@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'fs';
+import { readFileSync } from 'fs';
 import { dirname, join as joinPath } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -6,6 +6,7 @@ import postcss from 'postcss';
 import { test } from 'tap';
 
 import Detector from '../lib/Detector.js';
+import { getFiles } from '../utils/getFiles.js';
 
 const selfPath = dirname(fileURLToPath(import.meta.url));
 
@@ -95,16 +96,14 @@ function runTest(tc, cssString, expected) {
   });
 }
 
-const caseFiles = readdirSync(joinPath(selfPath, '/cases'))
-  .filter((tc) => /\.css$/.test(tc));
-
+// read in the test cases from /cases/**/*.css
 const cases = [];
-for (const tc of caseFiles) {
-  const cssString = readFileSync(joinPath(selfPath, 'cases', tc)).toString();
+for await (const caseFileName of getFiles(joinPath(selfPath, 'cases'))) {
+  const cssString = readFileSync(caseFileName).toString();
   const parsed = parseTestCase(cssString);
-  if (parsed) {
+  if (parsed && !caseFileName.includes('unimplemented')) {
     const testCase = {
-      name: tc,
+      name: caseFileName,
       expected: parsed.expected,
       cssString,
     };

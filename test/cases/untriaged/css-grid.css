@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for CSS Grid Layout (level 1)
+Method of using a grid concept to lay out content, providing a mechanism for authors to divide available space for layout into columns and rows using a set of predictable sizing behaviors. Includes support for all `grid-*` properties and the `fr` unit.
+
+See: https://caniuse.com/css-grid
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

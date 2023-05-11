@@ -6,7 +6,7 @@ import { test } from 'tap';
 
 const selfPath = dirname(fileURLToPath(import.meta.url));
 
-const cssFile = joinPath(selfPath, '/cases/gradient.css');
+const cssFile = joinPath(selfPath, '/cases/generic/gradient.css');
 const pathToCli = ` node ${joinPath(selfPath, '../bin/cli.js')}`;
 const catCss = ` cat ${cssFile} | tee /dev/tty `;
 
@@ -92,7 +92,7 @@ test('--list-only should work', (t) => {
 
 test('-c config file should work as input parameters', (t) => {
   const configFile = joinPath(selfPath, './fixtures/doiuse.config.json');
-  const overflowWrapCssFile = joinPath(selfPath, './cases/overflow-wrap.css');
+  const overflowWrapCssFile = joinPath(selfPath, './cases/generic/overflow-wrap.css');
   const expectedOverflowWrapConfig = '<streaming css input>:7:1: CSS3 Overflow-wrap only partially supported by: IE (11) (wordwrap)\n';
 
   cpExec(`${commands.doiuse}-c ${configFile} ${overflowWrapCssFile}`, (error, stdout) => {
