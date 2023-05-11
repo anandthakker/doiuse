@@ -34,12 +34,14 @@ await Promise.all(
     const filepath = path.resolve(`data/features/${name}.js`);
 
     const fileContent = await fs.readFile(filepath, 'utf8');
+    const link = fullDatabase.data[name] ? `See: https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
+    const stub = `// TODO: implement ${name} feature\nexport default {};\n// ${link}\n`;
 
     // if the file is empty, add a TODO comment
     if (fileContent.trim() === '') {
       await fs.writeFile(
         filepath,
-        `// TODO: implement ${name} feature\nexport default {};\n`,
+        stub,
       );
     }
 
@@ -48,7 +50,7 @@ await Promise.all(
     } catch {
       await fs.writeFile(
         filepath,
-        `// TODO: implement ${name} feature\nexport default {};\n`,
+        stub,
       );
     }
   }),

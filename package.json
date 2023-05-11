@@ -60,6 +60,7 @@
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "c8": "^7.13.0",
+    "caniuse-db": "^1.0.30001486",
     "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-canonical": "^2.6.0",
