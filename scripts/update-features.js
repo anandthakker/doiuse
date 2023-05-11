@@ -110,7 +110,7 @@ await Promise.all(
 
     if (!allTests.has(filename)) {
       const { title } = unpackFeature(caniuse.features[name]);
-      const link = fullDatabase.data[name] ? `See: https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
+      const link = fullDatabase.data[name] ? `https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
 
       const stub = testTemplate.replace('FULL_NAME', title).replace('LINK_TO_FEATURE', link);
 
