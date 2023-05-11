@@ -56,6 +56,7 @@ await Promise.all(
 
 // check every file in 'data/features' to make sure it's in the list of features
 // if not, delete it
+const notCSS = [];
 const dir = await fs.readdir('data/features');
 await Promise.all(
   dir
@@ -77,15 +78,18 @@ await Promise.all(
           console.warn(`\u001B[33mWARNING: ${filename}: ${title} isn't a CSS feature.${
             category ? ` It's tagged with ${category}.` : ''
           }\u001B[0m`);
+          notCSS.push([filename.replace(/\.js$/, '')]);
         }
       }
     }),
 );
 
+const allFeatures = [...cssFeatures, ...notCSS];
+
 // update the data/features.js file with all the features
 const template = await fs.readFile('scripts/features.template.js', 'utf8');
-const imports = cssFeatures.map(([name]) => `import ${kebabToCamel(name)} from './features/${name}.js';`).join('\n');
-const features = cssFeatures.map(([name]) => `  '${name}': ${kebabToCamel(name)},`).join('\n');
+const imports = allFeatures.map(([name]) => `import ${kebabToCamel(name)} from './features/${name}.js';`).join('\n');
+const features = allFeatures.map(([name]) => `  '${name}': ${kebabToCamel(name)},`).join('\n');
 
 const updatedTemplate = template
   .replace('/* IMPORTS_PLACEHOLDER */', imports)
@@ -100,7 +104,7 @@ const allTests = new Set([...existingTests, ...unimplementedTests]);
 const testTemplate = await fs.readFile('scripts/test.template.css', 'utf8');
 
 await Promise.all(
-  cssFeatures.map(async ([name]) => {
+  allFeatures.map(async ([name]) => {
     const filename = `${name}.css`;
     const pathToWrite = `test/cases/untriaged/${filename}`;
 
@@ -117,3 +121,18 @@ await Promise.all(
     }
   }),
 );
+
+// Give warnings for test cases that don't have a feature
+const noFeatures = [];
+[...existingTests, ...unimplementedTests].forEach((filename) => {
+  const name = filename.replace(/\.css$/, '');
+  const featureExists = cssFeatures.some(([id]) => id === name);
+  if (!featureExists) {
+    noFeatures.push(filename);
+  }
+});
+
+if (noFeatures.length > 0) {
+  console.warn("The following test cases don't have a corresponding feature:");
+  console.warn(noFeatures.join(', '));
+}
