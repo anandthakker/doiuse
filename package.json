@@ -1,5 +1,5 @@
 {
-  "name": "doiuse2",
+  "name": "doiuse",
   "version": "6.0.0",
   "description": "Lint CSS for browser support against caniuse database",
   "main:": "./exports/index.cjs",
@@ -18,7 +18,7 @@
   "bin": "./bin/cli.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/clshortfuse/doiuse2.git"
+    "url": "https://github.com/anandthakker/doiuse.git"
   },
   "keywords": [
     "lint",
@@ -35,9 +35,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/clshortfuse/doiuse2/issues"
+    "url": "https://github.com/anandthakker/doiuse/issues"
   },
-  "homepage": "https://github.com/clshortfuse/doiuse2",
+  "homepage": "https://github.com/anandthakker/doiuse",
   "engines": {
     "node": ">=14"
   },
