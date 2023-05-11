@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for Background-clip: text
+Non-standard method of clipping a background image to the foreground text.
+
+See: https://caniuse.com/background-clip-text
+
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/
+
+/*
+expect:
+background-clip-text: 2
+*/
+
+.test {
+  background-clip: text;
+  -webkit-background-clip: text;
+}

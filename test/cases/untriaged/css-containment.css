@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for CSS Containment
+The CSS `contain` property lets developers limit the scope of the browser's styles, layout and paint work for faster and more efficient rendering.
+
+See: https://caniuse.com/css-containment
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/

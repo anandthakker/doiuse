@@ -1,0 +1,11 @@
+/*
+
+This file contains tests for CSS box-decoration-break
+Controls whether the box's margins, borders, padding, and other decorations wrap the broken edges of the box fragments (when the box is split by a break (page/column/region/line).
+
+See: https://caniuse.com/css-boxdecorationbreak
+
+TODO: create a test for this feature and move it to test/cases/unimplemented/
+TODO: write an implementation for this feature and move it to test/cases/features/
+
+*/
