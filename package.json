@@ -81,6 +81,7 @@
     "pretest": "eslint ./bin/**/*.js ./data/**/*.js ./lib/**/*.js ./test/**/*.js",
     "test": "c8 tap --no-coverage",
     "prepare": "rollup -c rollup.config.js",
-    "prepublishOnly": "tsc"
+    "prepublishOnly": "tsc",
+    "updateFeatures": "node scripts/update-features.js"
   }
 }

@@ -24,9 +24,6 @@ const cssFeatures = Object.entries(caniuse.features)
     || id.toLowerCase().includes('text-decoration')
     || id.toLowerCase().includes('stylesheet'));
 
-// log the name of each feature
-// cssFeatures.forEach(([id]) => console.log(`CSS: ${id}`));
-
 // for each feature, make sure that data/features/{feature}.js exists
 // if not, create it.
 await Promise.all(
@@ -34,8 +31,9 @@ await Promise.all(
     const filepath = path.resolve(`data/features/${name}.js`);
 
     const fileContent = await fs.readFile(filepath, 'utf8');
+    const fullTitle = unpackFeature(caniuse.features[name]).title;
     const link = fullDatabase.data[name] ? `See: https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
-    const stub = `// TODO: implement ${name} feature\nexport default {};\n// ${link}\n`;
+    const stub = `// TODO: implement ${fullTitle} feature\nexport default {};\n// ${link}\n`;
 
     // if the file is empty, add a TODO comment
     if (fileContent.trim() === '') {
@@ -94,3 +92,28 @@ const updatedTemplate = template
   .replace('/* FEATURES_PLACEHOLDER */', features);
 
 await fs.writeFile('data/features.js', updatedTemplate);
+
+// create test stubs for each feature
+const existingTests = await fs.readdir('test/cases');
+const unimplementedTests = await fs.readdir('test/cases/unimplemented');
+const allTests = new Set([...existingTests, ...unimplementedTests]);
+const testTemplate = await fs.readFile('scripts/test.template.css', 'utf8');
+
+await Promise.all(
+  cssFeatures.map(async ([name]) => {
+    const filename = `${name}.css`;
+    const pathToWrite = `test/cases/untriaged/${filename}`;
+
+    if (!allTests.has(filename)) {
+      const { title } = unpackFeature(caniuse.features[name]);
+      const link = fullDatabase.data[name] ? `See: https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
+
+      const stub = testTemplate.replace('FULL_NAME', title).replace('LINK_TO_FEATURE', link);
+
+      await fs.writeFile(
+        pathToWrite,
+        stub,
+      );
+    }
+  }),
+);
