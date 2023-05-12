@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS all property
+A shorthand property for resetting all CSS properties except for `direction` and `unicode-bidi`.
+
+See: https://caniuse.com/css-all
+
+*/
+
+/*
+expect:
+css-all: 5
+*/
+
+.test {
+  all: initial;
+  all: inherit;
+  all: unset;
+  all: revert;
+  all: revert-layer;
+}

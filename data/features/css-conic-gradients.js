@@ -1,4 +1,4 @@
-const REGEX = /(^|[^-])conic-gradient/;
+const REGEX = /(^|[^-])(repeating-)?conic-gradient/;
 
 export default {
   'background': REGEX,

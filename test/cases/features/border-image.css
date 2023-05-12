@@ -1,0 +1,22 @@
+/*
+
+This file contains tests for CSS3 Border images
+Method of using images for borders
+
+See: https://caniuse.com/border-image
+
+*/
+
+/*
+expect:
+border-image: 6
+*/
+
+.test {
+  border-image: url("border.png") 30 30 30 30 round;
+  border-image-outset: 30;
+  border-image-repeat: round;
+  border-image-slice: 30;
+  border-image-source: url("border.png");
+  border-image-width: 30;
+}

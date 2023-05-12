@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS Feature Queries
+CSS Feature Queries allow authors to condition rules based on whether particular property declarations are supported in CSS using the @supports at rule.
+
+See: https://caniuse.com/css-featurequeries
+
+*/
+
+/*
+expect:
+css-featurequeries: 1
+*/
+
+@supports (display: grid) {
+  .test {
+    display: grid;
+  }
+}

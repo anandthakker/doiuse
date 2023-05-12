@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS Environment Variables env()
+Usage of environment variables like `safe-area-inset-top`.
+
+See: https://caniuse.com/css-env-function
+
+*/
+
+/*
+expect:
+css-env-function: 2
+*/
+
+.test {
+  padding-top: env(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top, 10px);
+}

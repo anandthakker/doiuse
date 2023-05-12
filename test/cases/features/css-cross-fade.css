@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS Cross-Fade Function
+Image function to create a "crossfade" between images. This allows one image to transition (fade) into another based on a percentage value.
+
+See: https://caniuse.com/css-cross-fade
+
+*/
+
+/*
+expect:
+css-cross-fade: 2
+*/
+
+.test {
+  background-image: -webkit-cross-fade(url("br.png"), url("tr.png"), 75%);
+  background-image: cross-fade(url("br.png"), url("tr.png"), 75%);
+}

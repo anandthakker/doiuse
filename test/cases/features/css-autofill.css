@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for :autofill CSS pseudo-class
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS
+
+*/
+
+/*
+expect:
+css-autofill: 2
+*/
+
+input:-webkit-autofill {
+  border: 3px solid blue;
+}
+input:autofill {
+  border: 3px solid blue;
+}

@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS clip-path property (for HTML)
+Method of defining the visible region of an HTML element using SVG or a shape definition.
+
+See: https://caniuse.com/css-clip-path
+
+*/
+
+/*
+expect:
+css-clip-path: 1
+*/
+
+.test {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}

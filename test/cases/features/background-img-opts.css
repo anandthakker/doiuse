@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS3 Background-image options
+New properties to affect background images, including background-clip, background-origin and background-size
+
+See: https://caniuse.com/background-img-opts
+
+*/
+
+/*
+expect:
+background-img-opts: 4
+background-clip-text: 1
+*/
+
+.test {
+  background-clip: text;
+  background-clip: padding-box;
+  background-origin: content-box;
+  background-size: cover;
+}

@@ -1,0 +1,25 @@
+/*
+
+This file contains tests for CSS Container Queries (Size)
+Size queries in Container Queries provide a way to query the size of a container, and conditionally apply CSS to the content of that container.
+
+See: https://caniuse.com/css-container-queries
+
+*/
+
+/*
+expect:
+css-container-queries: 2
+*/
+
+@container figure not style(--featured: true) {
+  figcaption {
+    /* Custom styling */
+  }
+}
+
+@container (min-width: 400px) {
+  figcaption {
+    /* Custom styling */
+  }
+}

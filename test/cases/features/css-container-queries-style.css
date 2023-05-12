@@ -1,0 +1,39 @@
+/*
+
+This file contains tests for CSS Container Style Queries
+Style queries in Container Queries provide a way to query the current styling of a container, and conditionally apply additional CSS to the contents of that container.
+
+See: https://caniuse.com/css-container-queries-style
+
+*/
+
+/*
+expect:
+css-container-queries-style: 3
+*/
+
+@container style(display: flex) {
+  .page-header__start {
+    /* custom styling */
+  }
+}
+
+@container figure style(--featured: true) {
+  img {
+    /* Custom styling */
+  }
+}
+
+@container figure not style(--featured: true) {
+  figcaption {
+    /* Custom styling */
+  }
+}
+
+/* other container queries should not be flagged */
+
+@container (min-width: 400px) {
+  figcaption {
+    /* Custom styling */
+  }
+}

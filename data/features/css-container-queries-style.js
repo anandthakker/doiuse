@@ -1,3 +1,3 @@
 import { checkAtRule } from '../../utils/util.js';
 
-export default checkAtRule(['container']);
+export default checkAtRule('container', 'style(');

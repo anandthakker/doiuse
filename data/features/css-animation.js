@@ -8,5 +8,7 @@ export default {
   'animation-play-state': true,
   'animation-delay': true,
   'animation-fill-mode': true,
-  '@keyframes': true,
 };
+
+// @keyframes isn't checked for, but if you try to use it,
+// you'll still get a warning anyway because of the 'animation' property

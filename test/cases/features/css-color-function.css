@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS color() function
+The CSS `color()` function allows the browser to display colors in any color space, such as the P3 color space which can display colors outside of the default sRGB color space.
+
+See: https://caniuse.com/css-color-function
+
+*/
+
+/*
+expect:
+css-color-function: 1
+*/
+
+.test {
+  color: color(display-p3 0.3 0.3 0.3 / 1);
+}

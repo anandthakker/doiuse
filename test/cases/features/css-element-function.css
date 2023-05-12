@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS element() function
+This function renders a live image generated from an arbitrary HTML element
+
+See: https://caniuse.com/css-element-function
+
+*/
+
+/*
+expect:
+css-element-function: 2
+*/
+
+.test {
+  background: -moz-element(#test);
+  background: element(#test);
+}

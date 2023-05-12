@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS caret-color
+The `caret-color` property allows the color to be set of the caret (blinking text insertion pointer) in an editable text area.
+
+See: https://caniuse.com/css-caret-color
+
+*/
+
+/*
+expect:
+css-caret-color: 1
+*/
+
+.test {
+  caret-color: red;
+}

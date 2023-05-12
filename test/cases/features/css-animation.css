@@ -1,0 +1,37 @@
+/*
+
+This file contains tests for CSS Animation
+Complex method of animating certain properties of an element
+
+See: https://caniuse.com/css-animation
+
+*/
+
+/*
+expect:
+css-animation: 9
+*/
+
+/* @keyframes is not checked atm */
+@keyframes test {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100px);
+  }
+}
+
+.test {
+  animation: test 1s ease-in-out infinite alternate;
+  animation-name: test;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-play-state: running;
+  animation-delay: 0s;
+
+  animation-fill-mode: none;
+}

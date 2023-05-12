@@ -1,0 +1,23 @@
+/*
+
+This file contains tests for CSS :any-link selector
+The `:any-link` CSS pseudo-class matches all elements that match `:link` or `:visited`
+
+See: https://caniuse.com/css-any-link
+
+*/
+
+/*
+expect:
+css-any-link: 2
+*/
+
+a:any-link {
+  border: 1px solid blue;
+  color: orange;
+}
+
+a:-webkit-any-link {
+  border: 1px solid blue;
+  color: orange;
+}
