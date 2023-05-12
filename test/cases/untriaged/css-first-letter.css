@@ -5,7 +5,9 @@ CSS pseudo-element that allows styling only the first "letter" of text within an
 
 See: https://caniuse.com/css-first-letter
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
+*/
 
+/*
+expect:
+css-first-letter: 0
 */

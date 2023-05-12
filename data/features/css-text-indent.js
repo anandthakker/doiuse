@@ -1,8 +1,8 @@
 /**
- * TODO: initially implement CSS text-indent
+ * TODO: initially implement feature
+ * CSS text-indent
  * The `text-indent` property applies indentation to lines of inline content in a block.
- *
- * See: https://caniuse.com/css-text-indent
+ * @see https://caniuse.com/css-text-indent
  */
 
 /**

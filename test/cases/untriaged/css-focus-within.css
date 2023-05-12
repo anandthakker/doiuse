@@ -5,7 +5,9 @@ The `:focus-within` pseudo-class matches elements that either themselves match `
 
 See: https://caniuse.com/css-focus-within
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
+*/
 
+/*
+expect:
+css-focus-within: 0
 */

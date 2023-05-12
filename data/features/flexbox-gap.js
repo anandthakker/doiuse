@@ -1,8 +1,8 @@
 /**
- * TODO: initially implement gap property for Flexbox
+ * TODO: initially implement feature
+ * gap property for Flexbox
  * `gap` for flexbox containers to create gaps/gutters between flex items
- *
- * See: https://caniuse.com/flexbox-gap
+ * @see https://caniuse.com/flexbox-gap
  */
 
 /**

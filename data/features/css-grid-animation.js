@@ -1,4 +1,4 @@
-const REGEX = /grid-template-((row)|(column))/;
+const REGEX = /grid/;
 
 export default {
   'transition': REGEX,

@@ -5,7 +5,9 @@ Method of displaying text or images before or after the given element's contents
 
 See: https://caniuse.com/css-gencontent
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
+*/
 
+/*
+expect:
+css-gencontent: 0
 */

@@ -1,8 +1,7 @@
 /**
  * TODO: initially implement Media Queries: scripting media feature
  * No description available.
- *
- * See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=Media+Queries:+scripting+media+feature
+ * @see This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=Media+Queries:+scripting+media+feature
  */
 
 /**

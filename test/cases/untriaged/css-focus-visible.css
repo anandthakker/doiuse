@@ -5,7 +5,9 @@ The `:focus-visible` pseudo-class applies while an element matches the `:focus` 
 
 See: https://caniuse.com/css-focus-visible
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
+*/
 
+/*
+expect:
+css-focus-visible: 0
 */

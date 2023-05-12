@@ -1,0 +1,23 @@
+/*
+
+This file contains tests for CSS Grid animation
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=CSS+Grid+animation
+
+*/
+
+/*
+expect:
+css-grid-animation: 7
+*/
+
+.test {
+  transition: grid 1s;
+  transition: grid-template 1s;
+  transition: grid-template-rows 1s;
+  transition: grid-template-columns 1s;
+
+  transition: grid-template-areas 1s;
+  transition: grid-auto-rows 1s;
+  transition: grid-auto-columns 1s;
+}

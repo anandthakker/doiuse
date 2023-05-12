@@ -1,8 +1,8 @@
 /**
- * TODO: initially implement CSS Regions
+ * TODO: initially implement feature
+ * CSS Regions
  * Method of flowing content into multiple elements, allowing magazine-like layouts. While once supported in WebKit-based browsers and Internet Explorer, implementing the feature is no longer being pursued by any browser.
- *
- * See: https://caniuse.com/css-regions
+ * @see https://caniuse.com/css-regions
  */
 
 /**
