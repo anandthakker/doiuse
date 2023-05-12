@@ -1,0 +1,23 @@
+/*
+
+This file contains tests for CSS Variables (Custom Properties)
+Permits the declaration and usage of cascading variables in stylesheets.
+
+See: https://caniuse.com/css-variables
+
+*/
+
+/*
+expect:
+css-variables: 4
+*/
+
+:root {
+  --main-bg-color: brown;
+  --main-text-color: white;
+}
+
+.test {
+  background-color: var(--main-bg-color);
+  color: var(--main-text-color);
+}

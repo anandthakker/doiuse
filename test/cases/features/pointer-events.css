@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS pointer-events (for HTML)
+This CSS property, when set to "none" allows elements to not receive hover/click events, instead the event will occur on anything behind it. 
+
+See: https://caniuse.com/pointer-events
+
+
+*/
+
+/*
+expect:
+pointer-events: 1
+*/
+
+.test {
+  pointer-events: none;
+}

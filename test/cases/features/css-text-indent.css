@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS text-indent
+The `text-indent` property applies indentation to lines of inline content in a block.
+
+See: https://caniuse.com/css-text-indent
+
+*/
+
+/*
+expect:
+css-text-indent: 1
+*/
+
+.test {
+  text-indent: 1em;
+}

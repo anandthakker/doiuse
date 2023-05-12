@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for High-quality kerning pairs & ligatures
+When used in HTML, the unofficial `text-rendering: optimizeLegibility` CSS property enables high-quality kerning and ligatures in certain browsers. Newer browsers have this behavior enabled by default.
+
+See: https://caniuse.com/kerning-pairs-ligatures
+
+*/
+
+/*
+expect:
+kerning-pairs-ligatures: 1
+*/
+
+.test {
+  text-rendering: optimizeLegibility;
+}

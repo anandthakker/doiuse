@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for plaintext from unicode-bidi
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=plaintext+from+unicode-bidi
+
+*/
+
+/*
+expect:
+mdn-css-unicode-bidi-plaintext: 1
+*/
+
+.test {
+  unicode-bidi: plaintext;
+}

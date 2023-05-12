@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for system-ui value for font-family
+Value for `font-family` that represents the default user interface font.
+
+See: https://caniuse.com/font-family-system-ui
+
+*/
+
+/*
+expect:
+font-family-system-ui: 1
+*/
+
+.test {
+  font-family: system-ui;
+}

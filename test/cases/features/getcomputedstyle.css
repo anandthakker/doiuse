@@ -1,0 +1,15 @@
+/*
+
+This file contains tests for getComputedStyle
+API to get the current computed CSS styles applied to an element. This may be the current value applied by an animation or as set by a stylesheet.
+
+See: https://caniuse.com/getcomputedstyle
+
+*/
+
+/*
+expect:
+getcomputedstyle: 0
+*/
+
+/* this is a js api, so we don't lint it */

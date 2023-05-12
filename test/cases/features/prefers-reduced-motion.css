@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for prefers-reduced-motion media query
+CSS media query based on a user preference for preferring reduced motion (animation, etc).
+
+See: https://caniuse.com/prefers-reduced-motion
+
+
+*/
+
+/*
+expect:
+prefers-reduced-motion: 1
+*/
+
+@media (prefers-reduced-motion: reduce) {
+  .test {
+    animation: none;
+  }
+}

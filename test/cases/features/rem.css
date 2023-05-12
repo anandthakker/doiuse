@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for rem (root em) units
+Type of unit similar to `em`, but relative only to the root element, not any parent element. Thus compounding does not occur as it does with `em` units.
+
+See: https://caniuse.com/rem
+
+
+*/
+
+/*
+expect:
+rem: 1
+*/
+
+.test {
+  font-size: 1rem;
+}

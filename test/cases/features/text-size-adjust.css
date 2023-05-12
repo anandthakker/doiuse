@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS text-size-adjust
+On mobile devices, the text-size-adjust CSS property allows Web authors to control if and how the text-inflating algorithm is applied to the textual content of the element it is applied to.
+
+See: https://caniuse.com/text-size-adjust
+
+
+*/
+
+/*
+expect:
+text-size-adjust: 1
+*/
+
+.test {
+  text-size-adjust: none;
+}

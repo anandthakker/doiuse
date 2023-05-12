@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for Pointer events
+This specification integrates various inputs from mice, touchscreens, and pens, making separate implementations no longer necessary and authoring for cross-device pointers easier. Not to be mistaken with the unrelated "pointer-events" CSS property.
+
+See: https://caniuse.com/pointer
+
+*/
+
+/*
+expect:
+pointer: 1
+*/
+
+.test {
+  touch-action: none;
+}

@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS image-set
+Method of letting the browser pick the most appropriate CSS image from a given set.
+
+See: https://caniuse.com/css-image-set
+
+*/
+
+/*
+expect:
+css-image-set: 2
+*/
+
+.test {
+  background-image: image-set(url("image.png") 1x, url("image-2x.png") 2x);
+  -webkit-background-image: -webkit-image-set(
+    url("image.png") 1x,
+    url("image-2x.png") 2x
+  );
+}

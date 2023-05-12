@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS Initial Letter
+Method of creating an enlarged cap, including a drop or raised cap, in a robust way.
+
+See: https://caniuse.com/css-initial-letter
+
+*/
+
+/*
+expect:
+css-initial-letter: 3
+*/
+
+.test {
+  /* Numeric values */
+  initial-letter: 1.5; /* Initial letter occupies 1.5 lines */
+  initial-letter: 3; /* Initial letter occupies 3 lines */
+  initial-letter: 3 2; /* Initial letter occupies 3 lines and
+                           sinks 2 lines */
+}

@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS filter() function
+This function filters a CSS input image with a set of filter functions (like blur, grayscale or hue)
+
+See: https://caniuse.com/css-filter-function
+
+*/
+
+/*
+expect:
+css-filter-function: 1
+*/
+
+.element {
+  background: filter(url(path/to/img.jpg), blur(5px));
+}

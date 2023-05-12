@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS text-orientation
+The CSS `text-orientation` property specifies the orientation of text within a line. Current values only have an effect in vertical typographic modes (defined with the `writing-mode` property)
+
+See: https://caniuse.com/css-text-orientation
+
+*/
+
+/*
+expect:
+css-text-orientation: 1
+*/
+
+.test {
+  text-orientation: upright;
+}

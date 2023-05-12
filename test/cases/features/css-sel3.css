@@ -1,0 +1,113 @@
+/*
+
+This file contains tests for CSS3 selectors
+Advanced element selection using selectors including: 
+`[foo^="bar"]`, 
+`[foo$="bar"]`, 
+`[foo*="bar"]`, 
+`:root`, 
+`:nth-child()`,  
+`:nth-last-child()`, 
+`:nth-of-type()`, 
+`:nth-last-of-type()`, 
+`:last-child`, 
+`:first-of-type`, 
+`:last-of-type`, 
+`:only-child`,
+`:only-of-type`,
+`:empty`,
+`:target`, 
+`:enabled`,
+`:disabled`,
+`:checked`, 
+`:not()`,
+`~` (general sibling)
+
+See: https://caniuse.com/css-sel3
+
+*/
+
+/*
+expect:
+css-sel3: 20
+*/
+
+.test[foo^="bar"] {
+  color: red;
+}
+
+.test[foo$="bar"] {
+  color: blue;
+}
+
+.test[foo*="bar"] {
+  color: green;
+}
+
+.test:root {
+  color: yellow;
+}
+
+.test:nth-child(2) {
+  color: orange;
+}
+
+.test:nth-last-child(2) {
+  color: purple;
+}
+
+.test:nth-of-type(2) {
+  color: pink;
+}
+
+.test:nth-last-of-type(2) {
+  color: brown;
+}
+
+.test:last-child {
+  color: black;
+}
+
+.test:first-of-type {
+  color: white;
+}
+
+.test:last-of-type {
+  color: cyan;
+}
+
+.test:only-child {
+  color: gray;
+}
+
+.test:only-of-type {
+  color: magenta;
+}
+
+.test:empty {
+  color: lime;
+}
+
+.test:target {
+  color: silver;
+}
+
+.test:enabled {
+  color: gold;
+}
+
+.test:disabled {
+  color: tomato;
+}
+
+.test:checked {
+  color: chocolate;
+}
+
+.test:not(.foo) {
+  color: teal;
+}
+
+.test ~ .foo {
+  color: indigo;
+}

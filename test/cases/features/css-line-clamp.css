@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS line-clamp
+CSS property that will contain text to a given amount of lines when used in combination with `display: -webkit-box`. It will end with ellipsis when `text-overflow: ellipsis` is included.
+
+See: https://caniuse.com/css-line-clamp
+
+*/
+
+/*
+expect:
+css-line-clamp: 2
+*/
+
+.test {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

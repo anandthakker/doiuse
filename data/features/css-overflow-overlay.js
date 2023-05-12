@@ -1,3 +1,3 @@
 export default {
-  'overflow-anchor': true,
+  'overflow': 'overlay',
 };

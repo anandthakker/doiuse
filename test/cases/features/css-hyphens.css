@@ -1,0 +1,27 @@
+/*
+
+This file contains tests for CSS Hyphenation
+Method of controlling when words at the end of lines should be hyphenated using the "hyphens" property.
+
+See: https://caniuse.com/css-hyphens
+
+*/
+
+/*
+expect:
+css-hyphens: 3
+*/
+
+dd {
+  width: 55px;
+  border: 1px solid black;
+}
+dd.none {
+  hyphens: none;
+}
+dd.manual {
+  hyphens: manual;
+}
+dd.auto {
+  hyphens: auto;
+}

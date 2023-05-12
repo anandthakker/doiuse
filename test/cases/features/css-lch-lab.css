@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for LCH and Lab color values
+The `lch()` and `lab()` color functions are based on the CIE LAB color space, representing colors in a way that closely matches human perception and provides access to a wider spectrum of colors than offered by the usual RGB color space.
+
+See: https://caniuse.com/css-lch-lab
+
+*/
+
+/*
+expect:
+css-lch-lab: 2
+*/
+
+.test {
+  color: lch(90% 50 30);
+  color: lab(90% 50 30);
+}

@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS position:sticky
+Keeps elements positioned as "fixed" or "relative" depending on how it appears in the viewport. As a result the element is "stuck" when necessary while scrolling.
+
+See: https://caniuse.com/css-sticky
+
+*/
+
+/*
+expect:
+css-sticky: 1
+*/
+
+.test {
+  position: sticky;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+}

@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS font-smooth
+Controls the application of anti-aliasing when fonts are rendered.
+
+See: https://caniuse.com/font-smooth
+
+*/
+
+/*
+expect:
+font-smooth: 1
+*/
+
+.test {
+  font-smooth: never;
+}

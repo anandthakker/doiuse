@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for ::selection CSS pseudo-element
+The ::selection CSS pseudo-element applies rules to the portion of a document that has been highlighted (e.g., selected with the mouse or another pointing device) by the user.
+
+See: https://caniuse.com/css-selection
+
+*/
+
+/*
+expect:
+css-selection: 1
+*/
+
+.test::selection {
+  color: red;
+}

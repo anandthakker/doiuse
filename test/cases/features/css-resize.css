@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS resize property
+Method of allowing an element to be resized by the user, with options to limit to a given direction. 
+
+See: https://caniuse.com/css-resize
+
+*/
+
+/*
+expect:
+css-resize: 1
+*/
+
+.test {
+  resize: both;
+}

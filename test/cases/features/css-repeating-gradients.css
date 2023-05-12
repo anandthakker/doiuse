@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS Repeating Gradients
+Method of defining a repeating linear or radial color gradient as a CSS image.
+
+See: https://caniuse.com/css-repeating-gradients
+
+*/
+
+/*
+expect:
+css-repeating-gradients: 2
+*/
+
+.test {
+  background: repeating-linear-gradient(45deg, red, yellow 10%, green 20%);
+  background: repeating-radial-gradient(circle, red, yellow 10%, green 20%);
+}

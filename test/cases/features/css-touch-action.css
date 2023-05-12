@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS touch-action property
+touch-action is a CSS property that controls filtering of gesture events, providing developers with a declarative mechanism to selectively disable touch scrolling (in one or both axes) or double-tap-zooming.
+
+See: https://caniuse.com/css-touch-action
+
+*/
+
+/*
+expect:
+css-touch-action: 1
+*/
+
+.test {
+  touch-action: none;
+}

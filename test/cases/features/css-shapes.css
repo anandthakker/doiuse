@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS Shapes Level 1
+Allows geometric shapes to be set in CSS to define an area for text to flow around. Includes properties `shape-outside`, `shape-margin` and `shape-image-threshold`
+
+See: https://caniuse.com/css-shapes
+
+*/
+
+/*
+expect:
+css-shapes: 3
+*/
+
+.test {
+  shape-outside: circle(50%);
+  shape-margin: 10px;
+  shape-image-threshold: 0.5;
+}

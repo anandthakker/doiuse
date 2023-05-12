@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS inline-block
+Method of displaying an element as a block while flowing it with text. 
+
+See: https://caniuse.com/inline-block
+
+*/
+
+/*
+expect:
+inline-block: 1
+*/
+
+.test {
+  display: inline-block;
+}

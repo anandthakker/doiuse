@@ -1,0 +1,15 @@
+/*
+
+This file contains tests for CSS namespaces
+Using the `@namespace` at-rule, elements of other namespaces (e.g. SVG) can be targeted using the pipe (`|`) selector.
+
+See: https://caniuse.com/css-namespaces
+
+*/
+
+/*
+expect:
+css-namespaces: 1
+*/
+
+@namespace svg url(http://www.w3.org/2000/svg);

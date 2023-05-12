@@ -1,0 +1,93 @@
+/*
+`*` (universal selector), 
+`>` (child selector), 
+`:first-child`, 
+`:link`, 
+`:visited`, 
+`:active`, 
+`:hover`, 
+`:focus`, 
+`:lang()`, 
+`+` (adjacent sibling selector), 
+`[attr]`, 
+`[attr="val"]`, 
+`[attr~="val"]`, 
+`[attr|="bar"]`, 
+`.foo` (class selector), 
+`#foo` (id selector)
+
+This file contains tests for CSS 2.1 selectors
+Basic CSS selectors including: 
+
+See: https://caniuse.com/css-sel2
+
+*/
+
+/*
+expect:
+css-sel2: 16
+*/
+
+* {
+  color: red;
+}
+
+.test > .foo {
+  color: blue;
+}
+
+.test:first-child {
+  color: green;
+}
+
+a:link {
+  color: yellow;
+}
+
+.test:visited {
+  color: orange;
+}
+
+.test:active {
+  color: purple;
+}
+
+.test:hover {
+  color: pink;
+}
+
+.test:focus {
+  color: brown;
+}
+
+.test:lang(en) {
+  color: gray;
+}
+
+.test + .foo {
+  color: black;
+}
+
+.test[foo] {
+  color: white;
+}
+
+.test[foo="bar"] {
+  color: cyan;
+}
+
+.test[foo~="bar"] {
+  color: magenta;
+}
+
+.test[foo|="bar"] {
+  color: lime;
+}
+
+.test.foo {
+  color: silver;
+}
+
+#test {
+  color: gold;
+}

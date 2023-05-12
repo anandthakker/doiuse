@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS Painting API
+Allows programmatic generation of images used by CSS
+
+See: https://caniuse.com/css-paint-api
+
+*/
+
+/*
+expect:
+css-paint-api: 1
+*/
+
+.test {
+  background-image: paint(foo);
+}

@@ -1,0 +1,24 @@
+/*
+
+This file contains tests for CSS font-palette
+The font-palette CSS property allows selecting a palette from a color font. In combination with the `@font-palette-values` at-rule, custom palettes can be defined.
+
+See: https://caniuse.com/css-font-palette
+
+*/
+
+/*
+expect:
+css-font-palette: 1
+*/
+
+@font-palette-values my-palette {
+  red: #f00;
+  green: #0f0;
+  blue: #00f;
+}
+
+.test {
+  font-family: my-palette;
+  font-palette: red;
+}

@@ -1,3 +1,3 @@
 import { checkSelector } from '../../utils/util.js';
 
-export default checkSelector('::selection');
+export default checkSelector(':selection');

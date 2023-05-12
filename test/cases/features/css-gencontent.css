@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS Generated content for pseudo-elements
+Method of displaying text or images before or after the given element's contents using the ::before and ::after pseudo-elements. All browsers with support also support the `attr()` notation in the `content` property. 
+
+See: https://caniuse.com/css-gencontent
+
+*/
+
+/*
+expect:
+css-gencontent: 2
+*/
+
+.test::before {
+  content: "before";
+}
+
+.test::after {
+  content: "after";
+}

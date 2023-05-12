@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for isolate from unicode-bidi
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=isolate+from+unicode-bidi
+
+*/
+
+/*
+expect:
+mdn-css-unicode-bidi-isolate: 1
+*/
+
+.test {
+  unicode-bidi: isolate;
+}

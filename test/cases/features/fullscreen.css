@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for Full Screen API
+API for allowing content (like a video or canvas element) to take up the entire screen.
+
+See: https://caniuse.com/fullscreen
+
+*/
+
+/*
+expect:
+fullscreen: 1
+*/
+
+.test:fullscreen {
+  background: red;
+}

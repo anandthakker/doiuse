@@ -1,4 +1,4 @@
-const VALUES = ['max-content', 'min-content', 'fit-content', 'fill-available', 'stretch'];
+const VALUES = ['max-content', 'min-content', 'fit-content', 'fill-available', 'stretch', 'fill'];
 
 export default {
   'width': VALUES,

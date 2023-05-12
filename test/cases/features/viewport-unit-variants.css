@@ -1,0 +1,47 @@
+/*
+
+This file contains tests for Small, Large, and Dynamic viewport units
+Viewport units similar to `vw` and `vh` that are based on shown or hidden browser UI states to address shortcomings of the original units. 
+Currently defined as the `sv*` units (`svb`, `svh`, `svi`, `svmax`, `svmin`, `svw`), 
+`lv*` units (`lvb`, `lvh`, `lvi`, `lvmax`, `lvmin`, `lvw`), 
+`dv*` units (`dvb`, `dvh`, `dvi`, `dvmax`, `dvmin`, `dvw`) and the 
+logical `vi`/`vb` units.
+
+See: https://caniuse.com/viewport-unit-variants
+
+*/
+
+/*
+expect:
+viewport-unit-variants: 20
+*/
+
+.test {
+  /* sv* units */
+  width: 100svb;
+  width: 100svh;
+  width: 100svi;
+  width: 100svmax;
+  width: 100svmin;
+  width: 100svw;
+
+  /* lv* units */
+  width: 100lvb;
+  width: 100lvh;
+  width: 100lvi;
+  width: 100lvmax;
+  width: 100lvmin;
+  width: 100lvw;
+
+  /* dv* units */
+  width: 100dvb;
+  width: 100dvh;
+  width: 100dvi;
+  width: 100dvmax;
+  width: 100dvmin;
+  width: 100dvw;
+
+  /* vi/vb units */
+  width: 100vi;
+  width: 100vb;
+}

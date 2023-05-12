@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS3 Media Queries
+Method of applying styles based on media information. Includes things like page and device dimensions
+
+See: https://caniuse.com/css-mediaqueries
+
+*/
+
+/*
+expect:
+css-mediaqueries: 1
+*/
+
+@media (min-width: 700px) {
+  .test {
+    color: red;
+  }
+}

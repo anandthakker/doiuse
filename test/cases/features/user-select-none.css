@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS user-select: none
+Method of preventing text/element selection using CSS. 
+
+See: https://caniuse.com/user-select-none
+
+*/
+
+/*
+expect:
+user-select-none: 1
+*/
+
+.test {
+  user-select: none;
+}

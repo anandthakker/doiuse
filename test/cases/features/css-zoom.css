@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS zoom
+Non-standard method of scaling content.
+
+See: https://caniuse.com/css-zoom
+
+*/
+
+/*
+expect:
+css-zoom: 1
+*/
+
+.test {
+  zoom: 1.5;
+}

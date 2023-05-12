@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS unicode-bidi property
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=CSS+unicode-bidi+property
+
+*/
+
+/*
+expect:
+css-unicode-bidi: 1
+*/
+
+.test {
+  unicode-bidi: bidi-override;
+}

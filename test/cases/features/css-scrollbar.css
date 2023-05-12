@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS scrollbar styling
+Methods of styling scrollbars' color and width.
+
+See: https://caniuse.com/css-scrollbar
+
+*/
+
+/*
+expect:
+css-scrollbar: 2
+*/
+
+/* the scrollbar-related ::-webkit- prefixed pseudo-elements are not part of this feature */
+/* scrollbar-gutter isn't included here either, not sure if it can be found anywhere else though? */
+
+.test {
+  scrollbar-color: red blue;
+  scrollbar-width: thin;
+}

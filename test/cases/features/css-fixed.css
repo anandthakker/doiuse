@@ -1,0 +1,23 @@
+/*
+
+This file contains tests for CSS position:fixed
+Method of keeping an element in a fixed location regardless of scroll position
+
+See: https://caniuse.com/css-fixed
+
+*/
+
+/*
+expect:
+css-fixed: 1
+*/
+
+.test {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+}

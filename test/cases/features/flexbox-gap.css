@@ -1,0 +1,24 @@
+/*
+
+This file contains tests for gap property for Flexbox
+`gap` for flexbox containers to create gaps/gutters between flex items
+
+See: https://caniuse.com/flexbox-gap
+
+*/
+
+/*
+expect:
+flexbox-gap: 1
+*/
+
+.test {
+  display: flex;
+  gap: 1rem;
+}
+
+/* should not trigger */
+.test {
+  display: grid;
+  gap: 1rem;
+}

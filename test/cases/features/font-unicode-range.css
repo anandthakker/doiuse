@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for Font unicode-range subsetting
+This @font-face descriptor defines the set of Unicode codepoints that may be supported by the font face for which it is declared. The descriptor value is a comma-delimited list of Unicode range (<urange>) values. The union of these ranges defines the set of codepoints that serves as a hint for user agents when deciding whether or not to download a font resource for a given text run.
+
+See: https://caniuse.com/font-unicode-range
+
+*/
+
+/*
+expect:
+font-unicode-range: 1
+*/
+
+@font-face {
+  font-family: "My Font";
+  src: url("myfont.woff2") format("woff2");
+  unicode-range: U+26;
+}

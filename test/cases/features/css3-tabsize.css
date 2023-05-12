@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS3 tab-size
+Method of customizing the width of the tab character. Only effective using 'white-space: pre', 'white-space: pre-wrap', and 'white-space: break-spaces'.
+
+See: https://caniuse.com/css3-tabsize
+
+*/
+
+/*
+expect:
+css3-tabsize: 1
+*/
+
+.test {
+  tab-size: 4;
+}

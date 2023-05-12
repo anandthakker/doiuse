@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for :focus-within CSS pseudo-class
+The `:focus-within` pseudo-class matches elements that either themselves match `:focus` or that have descendants which match `:focus`.
+
+See: https://caniuse.com/css-focus-within
+
+*/
+
+/*
+expect:
+css-focus-within: 1
+*/
+
+.test:focus-within {
+  color: red;
+}
+
+.test:focus {
+  color: blue;
+}

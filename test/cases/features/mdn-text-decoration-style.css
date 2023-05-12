@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for text-decoration-style property
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=text-decoration-style+property
+
+
+*/
+
+/*
+expect:
+mdn-text-decoration-style: 1
+*/
+
+.test {
+  text-decoration-style: solid;
+}

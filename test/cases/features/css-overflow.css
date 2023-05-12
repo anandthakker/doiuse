@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS overflow property
+Originally a single property for controlling overflowing content in both horizontal & vertical directions, the `overflow` property is now a shorthand for `overflow-x` & `overflow-y`. The latest version of the specification also introduces the `clip` value that blocks programmatic scrolling.
+
+See: https://caniuse.com/css-overflow
+
+*/
+
+/*
+expect:
+css-overflow: 3
+*/
+
+.test {
+  overflow: auto;
+  overflow-x: auto;
+  overflow-y: auto;
+}

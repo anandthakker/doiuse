@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS3 Opacity
+Method of setting the transparency level of an element
+
+See: https://caniuse.com/css-opacity
+
+*/
+
+/*
+expect:
+css-opacity: 1
+*/
+
+.test {
+  opacity: 0.5;
+}

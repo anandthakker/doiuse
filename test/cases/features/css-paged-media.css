@@ -1,0 +1,35 @@
+/*
+
+This file contains tests for CSS Paged Media (@page)
+CSS at-rule (`@page`) to define page-specific rules when printing web pages, such as margin per page and page dimensions.
+
+See: https://caniuse.com/css-paged-media
+
+*/
+
+/*
+expect:
+css-paged-media: 4
+*/
+
+/* Targets all the pages */
+@page {
+  size: 8.5in 9in;
+  margin-top: 4in;
+}
+
+/* Targets all even-numbered pages */
+@page :left {
+  margin-top: 4in;
+}
+
+/* Targets all odd-numbered pages */
+@page :right {
+  size: 11in;
+  margin-top: 4in;
+}
+
+/* Targets all selectors with `page: wide;` set */
+@page wide {
+  size: a4 landscape;
+}

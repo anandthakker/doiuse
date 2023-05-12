@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for CSS Table display
+Method of displaying elements as tables, rows, and cells. Includes support for all `display: table-*` properties as well as `display: inline-table`
+
+See: https://caniuse.com/css-table
+
+*/
+
+/*
+expect:
+css-table: 4
+*/
+
+.test {
+  display: table;
+  display: table-row;
+  display: table-column-group;
+  display: inline-table;
+}

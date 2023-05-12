@@ -1,0 +1,24 @@
+/*
+
+This file contains tests for ::first-letter CSS pseudo-element selector
+CSS pseudo-element that allows styling only the first "letter" of text within an element. Useful for implementing initial caps or drop caps styling.
+
+See: https://caniuse.com/css-first-letter
+
+*/
+
+/*
+expect:
+css-first-letter: 1
+*/
+
+p::first-letter {
+  color: white;
+  background-color: black;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 red;
+  font-size: 250%;
+  padding: 6px 3px;
+  margin-right: 6px;
+  float: left;
+}

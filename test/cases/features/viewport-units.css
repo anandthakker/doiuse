@@ -1,0 +1,23 @@
+/*
+
+This file contains tests for Viewport units: vw, vh, vmin, vmax
+Length units representing a percentage of the current viewport dimensions: width (vw), height (vh), the smaller of the two (vmin), or the larger of the two (vmax).
+
+See: https://caniuse.com/viewport-units
+
+
+*/
+
+/*
+expect:
+viewport-units: 6
+*/
+
+.test {
+  width: 100vw;
+  height: 100vh;
+  min-width: 100vmin;
+  min-height: 100vmin;
+  max-width: 100vmax;
+  max-height: 100vmax;
+}

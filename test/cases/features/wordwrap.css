@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS3 Overflow-wrap
+Allows lines to be broken within words if an otherwise unbreakable string is too long to fit. Currently mostly supported using the `word-wrap` property.
+
+See: https://caniuse.com/wordwrap
+
+
+*/
+
+/*
+expect:
+wordwrap: 2
+*/
+
+.test {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

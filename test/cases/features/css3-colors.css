@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS3 Colors
+Method of describing colors using Hue, Saturation and Lightness (hsl()) rather than just RGB, 
+as well as allowing alpha-transparency with rgba() and hsla().
+
+See: https://caniuse.com/css3-colors
+
+*/
+
+/*
+expect:
+css3-colors: 3
+*/
+
+.test {
+  color: hsl(0, 0%, 100%);
+  color: hsla(0, 0%, 100%, 0.692);
+  color: rgb(0, 0, 0); /* should not trigger */
+  color: rgba(0, 0, 0, 0);
+}

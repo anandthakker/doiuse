@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS3 Box-sizing
+Method of specifying whether or not an element's borders and padding should be included in size units
+
+See: https://caniuse.com/css3-boxsizing
+
+*/
+
+/*
+expect:
+css3-boxsizing: 1
+*/
+
+.test {
+  box-sizing: border-box;
+}

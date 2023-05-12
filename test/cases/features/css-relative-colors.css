@@ -1,0 +1,35 @@
+/*
+
+This file contains tests for CSS Relative colors
+The CSS Relative Color syntax allows a color to be defined relative to another color using the `from` keyword and optionally `calc()` for any of the color values.
+
+See: https://caniuse.com/css-relative-colors
+
+*/
+
+/*
+expect:
+css-relative-colors: 5
+*/
+
+.selector {
+  /* Dynamically change individual channels */
+  color: hsl(var(--color-h), calc(var(--color-s) - 10%), var(--color-l));
+}
+
+.selector {
+  /* change the transparency */
+  color: hsl(from var(--color) h s l / 0.5);
+
+  /* change the hue */
+  color: hsl(from var(--color) calc(h + 180deg) s l);
+
+  /* change the saturation */
+  color: hsl(from var(--color) h calc(s + 5%) l);
+
+  /* change all of them */
+  color: hsl(
+    from var(--color) calc(h + 10deg) calc(s + 5%) calc(l - 10%) /
+      calc(alpha - 15%)
+  );
+}

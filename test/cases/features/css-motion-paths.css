@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for CSS Motion Path
+Allows elements to be animated along SVG paths or shapes via the `offset-path` property. Originally defined as the `motion-path` property.
+
+See: https://caniuse.com/css-motion-paths
+
+*/
+
+/*
+expect:
+css-motion-paths: 4
+*/
+
+.test {
+  offset-path: ray(45deg closest-side contain);
+  offset-path: ray(45deg);
+  offset-path: url(#path);
+  offset-path: circle(50% at 25% 25%);
+}

@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS Filter Effects
+Method of applying filter effects using the `filter` property to elements, matching filters available in SVG. Filter functions include blur, brightness, contrast, drop-shadow, grayscale, hue-rotate, invert, opacity, sepia and saturate.
+
+See: https://caniuse.com/css-filters
+
+*/
+
+/*
+expect:
+css-filters: 1
+*/
+
+.test {
+  filter: blur(5px);
+}
