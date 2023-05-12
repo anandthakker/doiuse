@@ -1,0 +1,103 @@
+/*
+
+This file contains tests for CSS Logical Properties
+Logical properties and values provide control of layout through logical, rather than physical, direction and dimension mappings. These properties are `writing-mode` relative equivalents of their corresponding physical properties.
+
+See: https://caniuse.com/css-logical-props
+See: https://css-tricks.com/css-logical-properties-and-values/
+
+*/
+
+/*
+expect:
+css-logical-props: 61
+*/
+
+.test {
+  /* width values */
+  inline-size: 100px;
+  max-inline-size: 100px;
+  min-inline-size: 100px;
+  max-block-size: 100px;
+  min-block-size: 100px;
+  block-size: 100px;
+
+  /* border values */
+  border-block-start: 1px solid black;
+  border-block-end: 1px solid black;
+  border-inline-start: 1px solid black;
+  border-inline-end: 1px solid black;
+
+  border-block-start-color: black;
+  border-block-start-width: 1px;
+  border-block-start-style: solid;
+  border-block-end-color: black;
+
+  border-block-end-width: 1px;
+  border-block-end-style: solid;
+  border-inline-start-color: black;
+  border-inline-start-width: 1px;
+
+  border-inline-start-style: solid;
+  border-inline-end-color: black;
+  border-inline-end-width: 1px;
+  border-inline-end-style: solid;
+
+  border-block: 1px solid black;
+  border-inline: 1px solid black;
+  border-block-color: black;
+  border-block-width: 1px;
+
+  border-block-style: solid;
+  border-inline-color: black;
+  border-inline-width: 1px;
+  border-inline-style: solid;
+
+  /* margin values */
+  margin-block-start: 1px;
+  margin-block-end: 1px;
+  margin-inline-start: 1px;
+  margin-inline-end: 1px;
+
+  margin-block: 1px;
+  margin-inline: 1px;
+
+  /* padding values */
+  padding-block-start: 1px;
+  padding-block-end: 1px;
+  padding-inline-start: 1px;
+  padding-inline-end: 1px;
+
+  padding-block: 1px;
+  padding-inline: 1px;
+
+  /* position values */
+  inset-block-start: 1px;
+  inset-block-end: 1px;
+  inset-inline-start: 1px;
+  inset-inline-end: 1px;
+
+  inset-block: 1px;
+  inset-inline: 1px;
+  inset: 1px;
+
+  /* text-align values */
+  text-align: start;
+  text-align: end;
+
+  /* border-radius values */
+  border-start-start-radius: 1px;
+  border-start-end-radius: 1px;
+  border-end-start-radius: 1px;
+  border-end-end-radius: 1px;
+
+  /* floats */
+  float: inline-start;
+  float: inline-end;
+
+  /* others */
+  resize: block;
+  resize: inline;
+  overflow-block: scroll;
+  overflow-inline: scroll;
+}

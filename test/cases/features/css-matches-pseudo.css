@@ -1,0 +1,29 @@
+/*
+
+This file contains tests for :is() CSS pseudo-class
+The `:is()` (formerly `:matches()`, formerly `:any()`) pseudo-class checks whether the element at its position in the outer selector matches any of the selectors in its selector list. It's useful syntactic sugar that allows you to avoid writing out all the combinations manually as separate selectors. The effect is similar to nesting in Sass and most other CSS preprocessors.
+
+See: https://caniuse.com/css-matches-pseudo
+
+*/
+
+/*
+expect:
+css-matches-pseudo: 4
+*/
+
+.test:is(.foo, .bar) {
+  color: red;
+}
+
+.test:matches(.foo, .bar) {
+  color: red;
+}
+
+.test:any(.foo, .bar) {
+  color: red;
+}
+
+.test:where(.foo, .bar) {
+  color: red;
+}

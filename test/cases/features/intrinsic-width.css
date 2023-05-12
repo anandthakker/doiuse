@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for Intrinsic & Extrinsic Sizing
+Allows for the heights and widths to be specified in intrinsic values using the `max-content`, `min-content`, `fit-content` and `stretch` (formerly `fill`) properties.
+
+See: https://caniuse.com/intrinsic-width
+
+*/
+
+/*
+expect:
+intrinsic-width: 5
+*/
+
+.test {
+  width: max-content;
+  width: min-content;
+  width: fit-content;
+  width: stretch;
+  width: fill;
+}

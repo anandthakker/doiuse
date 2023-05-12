@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for @font-face Web fonts
+Method of displaying fonts downloaded from websites
+
+See: https://caniuse.com/fontface
+
+*/
+
+/*
+expect:
+fontface: 1
+*/
+
+@font-face {
+  font-family: "My Font";
+  src: url("myfont.woff2") format("woff2");
+}

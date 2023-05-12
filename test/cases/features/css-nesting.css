@@ -1,0 +1,39 @@
+/*
+
+This file contains tests for CSS Nesting
+CSS nesting provides the ability to nest one style rule inside another, with the selector of the child rule relative to the selector of the parent rule. Similar behavior previously required a CSS pre-processor.
+
+See: https://caniuse.com/css-nesting
+
+*/
+
+/*
+expect:
+css-nesting: 2
+*/
+
+.test {
+  color: red;
+
+  .child {
+    color: blue;
+  }
+}
+
+.test {
+  color: red;
+}
+
+.test .child {
+  color: blue;
+}
+
+.card {
+  font-size: 1rem;
+
+  @media (width >= 1024px) {
+    &.large {
+      font-size: 1.25rem;
+    }
+  }
+}

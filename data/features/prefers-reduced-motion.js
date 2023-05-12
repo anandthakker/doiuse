@@ -5,7 +5,9 @@
  * @see https://caniuse.com/prefers-reduced-motion
  */
 
+import { checkAtRule } from '../../utils/util.js';
+
 /**
  * @type {import('../features').Feature}
  */
-export default {};
+export default checkAtRule('media', 'prefers-reduced-motion');

@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS Text 4 text-spacing
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=CSS+Text+4+text-spacing
+
+*/
+
+/*
+expect:
+css-text-spacing: 1
+*/
+
+.test {
+  text-spacing: 1em;
+}

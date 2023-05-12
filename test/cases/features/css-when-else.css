@@ -1,0 +1,42 @@
+/*
+
+This file contains tests for CSS @when / @else conditional rules
+Syntax allowing CSS conditions (like media and support queries) to be written more simply, as well as making it possibly to write mutually exclusive rules using `@else` statements.
+
+See: https://caniuse.com/css-when-else
+
+*/
+
+/*
+expect:
+css-when-else: 3
+*/
+
+@when media(min-width: 768px) and supports(display: grid) {
+  div {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+} @else supports(clip-path: circle(1px)) and supports(transform: skewY(1deg)) {
+  div {
+    display: block;
+  }
+
+  .blog img {
+    clip-path: circle(50%);
+  }
+
+  .showcase {
+    transform: skewY(10deg);
+  }
+} @else {
+  /* Fallback. In case all of the above conditions evaluates to false */
+  div {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+}

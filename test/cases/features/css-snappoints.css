@@ -1,0 +1,41 @@
+/*
+
+This file contains tests for CSS Scroll Snap
+CSS technique that allows customizable scrolling experiences like pagination of carousels by setting defined snap positions.
+
+See: https://caniuse.com/css-snappoints
+
+*/
+
+/*
+expect:
+css-snappoints: 25
+*/
+
+.test {
+  scroll-snap-type: y mandatory;
+  scroll-padding: 10px;
+  scroll-padding-top: 10px;
+  scroll-padding-right: 10px;
+  scroll-padding-bottom: 10px;
+  scroll-padding-left: 10px;
+  scroll-padding-inline: 10px;
+  scroll-padding-inline-start: 10px;
+  scroll-padding-inline-end: 10px;
+  scroll-padding-block: 10px;
+  scroll-padding-block-start: 10px;
+  scroll-padding-block-end: 10px;
+  scroll-snap-align: 10px;
+  scroll-margin: 10px;
+  scroll-margin-top: 10px;
+  scroll-margin-right: 10px;
+  scroll-margin-bottom: 10px;
+  scroll-margin-left: 10px;
+  scroll-margin-inline: 10px;
+  scroll-margin-inline-start: 10px;
+  scroll-margin-inline-end: 10px;
+  scroll-margin-block: 10px;
+  scroll-margin-block-start: 10px;
+  scroll-margin-block-end: 10px;
+  scroll-snap-stop: always;
+}

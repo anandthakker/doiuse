@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS overflow: overlay
+The `overlay` value of the `overflow` CSS property is a non-standard value to make scrollbars appear on top of content rather than take up space. This value is deprecated and related functionality being standardized as [the `scrollbar-gutter` property](mdn-css_properties_scrollbar-gutter).
+
+See: https://caniuse.com/css-overflow-overlay
+
+*/
+
+/*
+expect:
+css-overflow-overlay: 1
+*/
+
+.test {
+  overflow: overlay;
+}

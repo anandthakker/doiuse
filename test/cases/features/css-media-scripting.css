@@ -1,0 +1,31 @@
+/*
+
+This file contains tests for Media Queries: scripting media feature
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=Media+Queries:+scripting+media+feature
+
+*/
+
+/*
+expect:
+css-media-scripting: 3
+*/
+
+@media (scripting: none) {
+  .script-none {
+    color: red;
+  }
+}
+
+@media (scripting: initial-only) {
+  .script-initial-only {
+    color: red;
+  }
+}
+
+@media (scripting: enabled) {
+  .script-enabled {
+    color: red;
+  }
+}

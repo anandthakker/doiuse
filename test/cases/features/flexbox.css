@@ -1,0 +1,34 @@
+/*
+
+This file contains tests for CSS Flexible Box Layout Module
+Method of positioning elements in horizontal or vertical stacks. Support includes all properties prefixed with `flex`, as well as `display: flex`, `display: inline-flex`, `align-content`, `align-items`, `align-self`, `justify-content` and `order`.
+
+See: https://caniuse.com/flexbox
+
+*/
+
+/*
+expect:
+flexbox: 9
+*/
+
+.test {
+  display: flex;
+  display: inline-flex;
+  flex: 1;
+  flex-direction: row;
+
+  flex-wrap: nowrap;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+
+  flex-flow: row nowrap;
+}
+
+/* should not trigger */
+.test {
+  display: grid;
+  align-items: start;
+  order: 1;
+}

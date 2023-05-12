@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS will-change property
+Method of optimizing animations by informing the browser which elements will change and what properties will change.
+
+See: https://caniuse.com/will-change
+
+*/
+
+/*
+expect:
+will-change: 1
+*/
+
+.test {
+  will-change: transform;
+}

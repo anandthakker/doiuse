@@ -1,0 +1,15 @@
+/*
+
+This file contains tests for CSS.supports() API
+The CSS.supports() static methods returns a Boolean value indicating if the browser supports a given CSS feature, or not.
+
+See: https://caniuse.com/css-supports-api
+
+*/
+
+/*
+expect:
+css-supports-api: 0
+*/
+
+/* this feature appears in JS, so it's not linted by this tool */

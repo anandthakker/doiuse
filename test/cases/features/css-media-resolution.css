@@ -1,0 +1,40 @@
+/*
+
+This file contains tests for Media Queries: resolution feature
+Allows a media query to be set based on the device pixels used per CSS unit. While the standard uses `min`/`max-resolution` for this, some browsers support the older non-standard `device-pixel-ratio` media query.
+
+See: https://caniuse.com/css-media-resolution
+
+*/
+
+/*
+expect:
+css-media-resolution: 4
+*/
+
+/* Exact resolution */
+@media (resolution: 150dpi) {
+  p {
+    color: red;
+  }
+}
+
+/* Minimum resolution */
+@media (min-resolution: 72dpi) {
+  p {
+    text-decoration: underline;
+  }
+}
+
+/* Maximum resolution */
+@media (max-resolution: 300dpi) {
+  p {
+    background: yellow;
+  }
+}
+
+@media (device-pixel-ratio: 2) {
+  p {
+    color: red;
+  }
+}

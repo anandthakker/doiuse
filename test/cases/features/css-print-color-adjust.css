@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for print-color-adjust property
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=print-color-adjust+property
+
+*/
+
+/*
+expect:
+css-print-color-adjust: 1
+*/
+
+.test {
+  print-color-adjust: exact;
+}

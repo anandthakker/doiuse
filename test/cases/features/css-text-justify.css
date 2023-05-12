@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS text-justify
+CSS property to define how text should be justified when `text-align: justify` is set.
+
+See: https://caniuse.com/css-text-justify
+
+*/
+
+/*
+expect:
+css-text-justify: 1 
+*/
+
+.test {
+  text-justify: inter-word;
+}

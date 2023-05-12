@@ -10,9 +10,4 @@ export default {
   'flex-direction': true,
   'flex-wrap': true,
   'flex-flow': true,
-  'justify-content': true,
-  'order': true,
-  'align-items': true,
-  'align-self': true,
-  'align-content': true,
 };

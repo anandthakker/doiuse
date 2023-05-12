@@ -1,0 +1,26 @@
+/*
+
+This file contains tests for prefers-color-scheme media query
+Media query to detect if the user has set their system to use a light or dark color theme.
+
+See: https://caniuse.com/prefers-color-scheme
+
+
+*/
+
+/*
+expect:
+prefers-color-scheme: 2
+*/
+
+@media (prefers-color-scheme: dark) {
+  .test {
+    color: white;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .test {
+    color: black;
+  }
+}

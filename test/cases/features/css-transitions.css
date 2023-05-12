@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS3 Transitions
+Simple method of animating certain properties of an element, with ability to define property, duration, delay and timing function. 
+
+See: https://caniuse.com/css-transitions
+
+*/
+
+/*
+expect:
+css-transitions: 5
+*/
+
+.test {
+  transition: all 1s ease-in-out;
+  transition-property: all;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}

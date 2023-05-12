@@ -1,0 +1,25 @@
+/*
+
+This file contains tests for #rrggbbaa hex color notation
+The CSS Color Module Level 4 defines new 4 & 8 character hex notation for color to include the opacity level.
+
+See: https://caniuse.com/css-rrggbbaa
+
+*/
+
+/*
+expect:
+css-rrggbbaa: 4
+*/
+
+.test {
+  color: #afffffff;
+  color: #afff;
+  color: #afff;
+  color: #afffffff;
+
+  /* should not trigger */
+  color: red;
+  color: #afffff;
+  color: #afffff;
+}

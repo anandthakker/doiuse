@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS page-break properties
+Properties to control the way elements are broken across (printed) pages.
+
+See: https://caniuse.com/css-page-break
+
+*/
+
+/*
+expect:
+css-page-break: 3
+*/
+
+.test {
+  page-break-after: avoid;
+  page-break-before: avoid;
+  page-break-inside: avoid;
+}

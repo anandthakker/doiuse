@@ -1,0 +1,24 @@
+/*
+
+This file contains tests for CSS @scroll-timeline
+CSS property that allows animations to be driven by a container's scroll position
+
+See: https://caniuse.com/css-scroll-timeline
+
+*/
+
+/*
+expect:
+css-scroll-timeline: 2
+*/
+
+@scroll-timeline scroll-in-document-timeline {
+  source: auto;
+  orientation: vertical;
+  scroll-offsets: 0%, 100%;
+}
+
+.test {
+  animation: test 1s infinite;
+  animation-timeline: scroll-in-document-timeline;
+}

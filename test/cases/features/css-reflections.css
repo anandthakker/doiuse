@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS Reflections
+Method of displaying a reflection of an element
+
+See: https://caniuse.com/css-reflections
+
+*/
+
+/*
+expect:
+css-reflections: 1
+*/
+
+.test {
+  -webkit-box-reflect: below 0px linear-gradient(transparent, transparent);
+}

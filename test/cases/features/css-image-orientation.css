@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS3 image-orientation
+CSS property used generally to fix the intended orientation of an image. This can be done using 90 degree increments or based on the image's EXIF data using the "from-image" value.
+
+See: https://caniuse.com/css-image-orientation
+
+*/
+
+/*
+expect:
+css-image-orientation: 1
+*/
+
+.test {
+  image-orientation: from-image;
+}

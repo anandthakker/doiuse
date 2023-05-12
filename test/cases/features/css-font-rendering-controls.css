@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for CSS font-display
+`@font-face` descriptor `font-display` that allows control over how a downloadable font renders before it is fully loaded.
+
+See: https://caniuse.com/css-font-rendering-controls
+
+*/
+
+/*
+expect:
+css-font-rendering-controls: 4
+*/
+
+.test {
+  font-display: block;
+  font-display: swap;
+  font-display: fallback;
+  font-display: optional;
+}

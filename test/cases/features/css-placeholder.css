@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for ::placeholder CSS pseudo-element
+The ::placeholder pseudo-element represents placeholder text in an input field: text that represents the input and provides a hint to the user on how to fill out the form. For example, a date-input field might have the placeholder text `YYYY-MM-DD` to clarify that numeric dates are to be entered in year-month-day order.
+
+See: https://caniuse.com/css-placeholder
+
+*/
+
+/*
+expect:
+css-placeholder: 1
+*/
+
+.test::placeholder {
+  color: red;
+}

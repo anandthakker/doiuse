@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS3 word-break
+Property to prevent or allow words to be broken over multiple lines between letters.
+
+See: https://caniuse.com/word-break
+
+*/
+
+/*
+expect:
+word-break: 1
+*/
+
+.test {
+  word-break: break-all;
+}

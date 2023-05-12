@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS grab & grabbing cursors
+Support for the `grab` & `grabbing` values for the `cursor` property. Used to indicate that something can be grabbed (dragged to be moved).
+
+See: https://caniuse.com/css3-cursors-grab
+
+*/
+
+/*
+expect:
+css3-cursors-grab: 2
+*/
+
+.test {
+  cursor: grab;
+  cursor: grabbing;
+}

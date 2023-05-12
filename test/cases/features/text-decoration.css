@@ -1,0 +1,27 @@
+/*
+
+This file contains tests for text-decoration styling
+Method of defining the type, style and color of lines in the text-decoration property. These can be defined as shorthand (e.g. `text-decoration: line-through dashed blue`) or as single properties (e.g. `text-decoration-color: blue`)
+
+See: https://caniuse.com/text-decoration
+
+*/
+
+/*
+expect:
+text-decoration: 7
+*/
+
+.test {
+  text-decoration: line-through dashed blue;
+  text-decoration-color: blue;
+  text-decoration-style: dashed;
+  text-decoration-line: line-through;
+
+  text-decoration-thickness: 1px;
+  text-decoration-skip: none;
+  text-decoration-skip-ink: auto;
+
+  /* should not trigger */
+  text-decoration: underline;
+}

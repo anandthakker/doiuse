@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS font-stretch
+If a font has multiple types of variations based on the width of characters, the `font-stretch` property allows the appropriate one to be selected. The property in itself does not cause the browser to stretch to a font.
+
+See: https://caniuse.com/css-font-stretch
+
+*/
+
+/*
+expect:
+css-font-stretch: 2
+*/
+
+.test {
+  font-stretch: ultra-condensed;
+  font-stretch: extra-condensed;
+}

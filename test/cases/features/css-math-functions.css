@@ -1,0 +1,19 @@
+/*
+
+This file contains tests for CSS math functions min(), max() and clamp()
+More advanced mathematical expressions in addition to `calc()`
+
+See: https://caniuse.com/css-math-functions
+
+*/
+
+/*
+expect:
+css-math-functions: 3
+*/
+
+.test {
+  width: min(100px, 50%);
+  width: max(100px, 50%);
+  width: clamp(100px, 50%, 200px);
+}

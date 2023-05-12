@@ -52,5 +52,9 @@ export default {
   'border-start-end-radius': true,
   'border-end-start-radius': true,
   'border-end-end-radius': true,
-
+  'text-align': ['start', 'end'],
+  'float': ['inline-start', 'inline-end'],
+  'resize': ['block', 'inline'],
+  'overflow-block': true,
+  'overflow-inline': true,
 };

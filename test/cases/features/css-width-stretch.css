@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for width: stretch property
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=width:+stretch+property
+
+*/
+
+/*
+expect:
+css-width-stretch: 1
+*/
+
+.test {
+  width: stretch;
+}

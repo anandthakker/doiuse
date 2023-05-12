@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for text-decoration-color property
+
+
+See: This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=text-decoration-color+property
+
+
+*/
+
+/*
+expect:
+mdn-text-decoration-color: 1
+*/
+
+.test {
+  text-decoration-color: red;
+}

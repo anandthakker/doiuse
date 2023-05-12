@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS outline properties
+The CSS outline properties draw a border around an element that does not affect layout, making it ideal for highlighting. This covers the `outline` shorthand, as well as `outline-width`, `outline-style`, `outline-color` and `outline-offset`. 
+
+See: https://caniuse.com/outline
+
+
+*/
+
+/*
+expect:
+outline: 1
+*/
+
+.test {
+  outline: 1px solid red;
+}

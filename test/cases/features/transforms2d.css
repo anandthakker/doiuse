@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS3 2D Transforms
+Method of transforming an element including rotating, scaling, etc. Includes support for `transform` as well as `transform-origin` properties.
+
+See: https://caniuse.com/transforms2d
+
+*/
+
+/*
+expect:
+transforms2d: 2
+*/
+
+.test {
+  transform: rotate(45deg);
+  transform-origin: 50% 50%;
+}

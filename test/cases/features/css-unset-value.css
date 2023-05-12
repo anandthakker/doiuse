@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS unset value
+A CSS value that's the same as "inherit" if a property is inherited or "initial" if a property is not inherited.
+
+See: https://caniuse.com/css-unset-value
+
+*/
+
+/*
+expect:
+css-unset-value: 1
+*/
+
+.test {
+  color: unset;
+}

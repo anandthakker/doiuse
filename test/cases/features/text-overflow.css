@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS3 Text-overflow
+Append ellipsis when text overflows its containing element
+
+See: https://caniuse.com/text-overflow
+
+
+*/
+
+/*
+expect:
+text-overflow: 1
+*/
+
+.test {
+  text-overflow: ellipsis;
+}

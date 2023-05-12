@@ -1,0 +1,20 @@
+/*
+
+This file contains tests for CSS min/max-width/height
+Method of setting a minimum or maximum width or height to an element. 
+
+See: https://caniuse.com/minmaxwh
+
+*/
+
+/*
+expect:
+minmaxwh: 4
+*/
+
+.test {
+  min-width: 100px;
+  max-width: 200px;
+  min-height: 100px;
+  max-height: 200px;
+}

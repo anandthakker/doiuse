@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for ui-serif, ui-sans-serif, ui-monospace and ui-rounded values for font-family
+Allows more control when choosing system interface fonts
+
+See: https://caniuse.com/extended-system-fonts
+
+*/
+
+/*
+expect:
+extended-system-fonts: 4
+*/
+
+.test {
+  font-family: ui-serif;
+  font-family: ui-sans-serif;
+  font-family: ui-monospace;
+  font-family: ui-rounded;
+  font-family: sans-serif; /* should not trigger */
+}

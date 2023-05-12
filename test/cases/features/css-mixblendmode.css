@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for Blending of HTML/SVG elements
+Allows blending between arbitrary SVG and HTML elements
+
+See: https://caniuse.com/css-mixblendmode
+
+*/
+
+/*
+expect:
+css-mixblendmode: 1
+*/
+
+.test {
+  mix-blend-mode: multiply;
+}
