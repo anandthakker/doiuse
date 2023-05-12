@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS background-blend-mode
+Allows blending between CSS background images, gradients, and colors.
+
+See: https://caniuse.com/css-backgroundblendmode
+
+*/
+
+/*
+expect:
+css-backgroundblendmode: 1
+*/
+
+.test {
+  background-blend-mode: multiply;
+}

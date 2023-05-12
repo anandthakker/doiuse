@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS Cascade Layers
+The `@layer` at-rule allows authors to explicitly layer their styles in the cascade, before specificity and order of appearance are considered.
+
+See: https://caniuse.com/css-cascade-layers
+
+*/
+
+/*
+expect:
+css-cascade-layers: 1
+*/
+
+@layer reset {
+  * {
+    /* Poor Man's Reset */
+    margin: 0;
+    padding: 0;
+  }
+}

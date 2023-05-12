@@ -1,0 +1,36 @@
+/*
+
+This file contains tests for CSS Exclusions Level 1
+Exclusions defines how inline content flows around elements. It extends the content wrapping ability of floats to any block-level element.
+
+See: https://caniuse.com/css-exclusions
+
+*/
+
+/*
+expect:
+css-exclusions: 1
+*/
+
+.container {
+  font-size: small;
+  width: 98%;
+  height: 100%;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+}
+.exclusion {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  background-color: lime;
+  -ms-wrap-flow: both;
+  padding: 10px;
+  -ms-wrap-margin: 15px;
+}
+.dummy_text {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  -ms-grid-row-span: 3;
+}

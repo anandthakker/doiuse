@@ -88,7 +88,7 @@ function runTest(tc, cssString, expected) {
         t.notOk(cb.results[feature]);
       } else {
         t.same(res, features);
-        t.equal(cb.results[feature].length, expected[feature], `count of ${feature}`);
+        t.equal(cb.results[feature]?.length, expected[feature], `count of ${feature}`);
       }
     }
 

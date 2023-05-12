@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for :default CSS pseudo-class
+The `:default` pseudo-class matches checkboxes and radio buttons which are checked by default, `<option>`s with the `selected` attribute, and the default submit button (if any) of a form.
+
+See: https://caniuse.com/css-default-pseudo
+
+*/
+
+/*
+expect:
+css-default-pseudo: 2
+*/
+
+input:default {
+  box-shadow: 0 0 2px 1px coral;
+}
+
+input:default + label {
+  color: coral;
+}

@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for CSS Conical Gradients
+Method of defining a conical or repeating conical color gradient as a CSS image.
+
+See: https://caniuse.com/css-conic-gradients
+
+*/
+
+/*
+expect:
+css-conic-gradients: 2
+*/
+
+.test {
+  background-image: conic-gradient(red, green, blue);
+  background-image: repeating-conic-gradient(red, green, blue);
+}

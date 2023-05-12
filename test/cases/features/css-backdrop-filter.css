@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS Backdrop Filter
+Method of applying filter effects (like blur, grayscale or hue) to content/elements below the target element.
+
+See: https://caniuse.com/css-backdrop-filter
+
+*/
+
+/*
+expect:
+css-backdrop-filter: 1
+*/
+
+.test {
+  backdrop-filter: invert(70%);
+}

@@ -1,0 +1,22 @@
+/*
+
+This file contains tests for CSS Container Query Units
+Container Query Units specify a length relative to the dimensions of a query container. The units include: `cqw`, `cqh`, `cqi`, `cqb`, `cqmin`, and `cqmax`.
+
+See: https://caniuse.com/css-container-query-units
+
+*/
+
+/*
+expect:
+css-container-query-units: 6
+*/
+
+.test {
+  font-size: 1cqw;
+  font-size: 1cqh;
+  font-size: 1cqi;
+  font-size: 1cqb;
+  font-size: 1cqmin;
+  font-size: 1cqmax;
+}

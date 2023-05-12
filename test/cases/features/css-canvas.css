@@ -1,0 +1,17 @@
+/*
+
+This file contains tests for CSS Canvas Drawings
+Method of using HTML5 Canvas as a background image. Not currently part of any specification.
+
+See: https://caniuse.com/css-canvas
+
+*/
+
+/*
+expect:
+css-canvas: 1
+*/
+
+.test {
+  background: -webkit-canvas(myCanvas);
+}

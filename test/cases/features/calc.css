@@ -1,0 +1,18 @@
+/*
+
+This file contains tests for calc() as CSS unit value
+Method of allowing calculated values for length units, i.e. `width: calc(100% - 3em)`
+
+See: https://caniuse.com/calc
+
+*/
+
+/*
+expect:
+calc: 2
+*/
+
+.test {
+  width: calc(100% - 80px);
+  width: calc(var(--width));
+}

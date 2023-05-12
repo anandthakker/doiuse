@@ -1,0 +1,23 @@
+/*
+
+This file contains tests for CSS Counter Styles
+The @counter-style CSS at-rule allows custom counter styles to be defined. A @counter-style rule defines how to convert a counter value into a string representation.
+
+See: https://caniuse.com/css-at-counter-style
+
+*/
+
+/*
+expect:
+css-at-counter-style: 1
+*/
+
+@counter-style thumbs {
+  system: cyclic;
+  symbols: "\1F44D";
+  suffix: " ";
+}
+
+ul {
+  list-style: thumbs;
+}

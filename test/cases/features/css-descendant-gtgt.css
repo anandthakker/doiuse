@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for Explicit descendant combinator >>
+An explicit, non-whitespace spelling of the descendant combinator. `A >> B` is equivalent to `A B`.
+
+See: https://caniuse.com/css-descendant-gtgt
+
+*/
+
+/*
+expect:
+css-descendant-gtgt: 1
+*/
+
+.test >> .second {
+  color: red;
+}
+
+.test .second {
+  color: green;
+}

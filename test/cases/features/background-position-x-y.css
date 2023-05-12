@@ -1,0 +1,19 @@
+/* 
+
+This file contains tests for background-position-x & background-position-y
+CSS longhand properties to define x or y positions separately.
+
+See: https://caniuse.com/background-position-x-y
+
+*/
+
+/*
+expect:
+background-position-x-y: 2;
+*/
+
+.test {
+  background-position-x: 0%;
+  background-position-y: 0%;
+  background-position: 0% 0%;
+}
