@@ -1,0 +1,59 @@
+/*
+
+This file contains tests for CSS Masks
+Method of displaying part of an element, using a selected image as a mask
+
+See: https://caniuse.com/css-masks
+
+*/
+
+/*
+expect:
+css-masks: 36
+*/
+
+.test {
+  /* an example of every css mask property in alphabetical order */
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  mask: url("mask.png");
+  mask-border: url("mask.png") 10;
+  mask-border-mode: alpha;
+
+  mask-border-outset: 10px;
+  mask-border-repeat: stretch;
+  mask-border-slice: 10 fill;
+  mask-border-source: url("mask.png");
+
+  mask-border-width: 10px;
+  mask-clip: border-box;
+  mask-composite: add;
+  mask-image: url("mask.png");
+
+  mask-mode: alpha;
+  mask-origin: border-box;
+  mask-position: 10px 10px;
+  mask-repeat: stretch;
+
+  mask-size: 10px 10px;
+  mask-type: alpha;
+
+  /* and webkit prefixed */
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  -webkit-mask: url("mask.png");
+  -webkit-mask-border: url("mask.png") 10;
+  -webkit-mask-border-mode: alpha;
+  -webkit-mask-border-outset: 10px;
+  -webkit-mask-border-repeat: stretch;
+  -webkit-mask-border-slice: 10 fill;
+  -webkit-mask-border-source: url("mask.png");
+  -webkit-mask-border-width: 10px;
+  -webkit-mask-clip: border-box;
+  -webkit-mask-composite: add;
+  -webkit-mask-image: url("mask.png");
+  -webkit-mask-mode: alpha;
+  -webkit-mask-origin: border-box;
+  -webkit-mask-position: 10px 10px;
+  -webkit-mask-repeat: stretch;
+  -webkit-mask-size: 10px 10px;
+  -webkit-mask-type: alpha;
+}

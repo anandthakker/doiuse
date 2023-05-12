@@ -123,13 +123,16 @@ await Promise.all(
 
     if (!allTests.has(filename)) {
       const { title } = unpackFeature(caniuse.features[name]);
-      const link = fullDatabase.data[name] ? `https://caniuse.com/${name}` : 'This feature comes from MDN: https://developer.mozilla.org/en-US/docs/Web/CSS';
+      const link = fullDatabase.data[name]
+        ? `https://caniuse.com/${name}`
+        : `This feature comes from MDN: https://developer.mozilla.org/en-US/search?q=${title.replaceAll(' ', '+')}`;
       const description = fullDatabase.data[name]?.description;
 
       const stub = testTemplate
         .replace('FEATURE_NAME', title)
         .replace('FEATURE_LINK', link)
-        .replace('FEATURE_DESCRIPTION', description ?? '');
+        .replace('FEATURE_DESCRIPTION', description ?? '')
+        .replace('FEATURE_ID', name);
 
       await fs.writeFile(
         pathToWrite,

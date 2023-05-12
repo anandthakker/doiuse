@@ -1,8 +1,7 @@
 /**
  * TODO: initially implement CSS overflow-anchor (Scroll Anchoring)
  * Changes in DOM elements above the visible region of a scrolling box can result in the page moving while the user is in the middle of consuming the content.  By default, the value of  `overflow-anchor` is `auto`, it can mitigate this jarring user experience by keeping track of the position of an anchor node and adjusting the scroll offset accordingly
- *
- * See: https://caniuse.com/css-overflow-anchor
+ * @see https://caniuse.com/css-overflow-anchor
  */
 
 /**

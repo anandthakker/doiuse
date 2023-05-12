@@ -5,7 +5,9 @@ If a font has multiple types of variations based on the width of characters, the
 
 See: https://caniuse.com/css-font-stretch
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
+*/
 
+/*
+expect:
+css-font-stretch: 0
 */

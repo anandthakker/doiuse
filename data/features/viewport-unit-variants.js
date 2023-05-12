@@ -1,8 +1,8 @@
 /**
- * TODO: initially implement Small, Large, and Dynamic viewport units
+ * TODO: initially implement feature
+ * Small, Large, and Dynamic viewport units
  * Viewport units similar to `vw` and `vh` that are based on shown or hidden browser UI states to address shortcomings of the original units. Currently defined as the `sv*` units (`svb`, `svh`, `svi`, `svmax`, `svmin`, `svw`), `lv*` units (`lvb`, `lvh`, `lvi`, `lvmax`, `lvmin`, `lvw`), `dv*` units (`dvb`, `dvh`, `dvi`, `dvmax`, `dvmin`, `dvw`) and the logical `vi`/`vb` units.
- *
- * See: https://caniuse.com/viewport-unit-variants
+ * @see https://caniuse.com/viewport-unit-variants
  */
 
 /**

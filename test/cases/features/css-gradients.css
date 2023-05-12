@@ -1,0 +1,21 @@
+/*
+
+This file contains tests for CSS Gradients
+Method of defining a linear or radial color gradient as a CSS image.
+
+See: https://caniuse.com/css-gradients
+
+*/
+
+/*
+expect:
+css-gradients: 2
+*/
+
+.radial {
+  background: radial-gradient(ellipse farthest-corner, black, white);
+}
+
+.simple1 {
+  background: linear-gradient(black, white);
+}

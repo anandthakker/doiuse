@@ -5,7 +5,9 @@ The font-palette CSS property allows selecting a palette from a color font. In c
 
 See: https://caniuse.com/css-font-palette
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
+*/
 
+/*
+expect:
+css-font-palette: 0
 */

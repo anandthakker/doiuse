@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "browserslist": "^4.21.5",
-    "caniuse-lite": "^1.0.30001486",
+    "caniuse-lite": "^1.0.30001487",
     "css-tokenize": "^1.0.1",
     "duplexify": "^4.1.2",
     "ldjson-stream": "^1.2.1",
@@ -60,7 +60,7 @@
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "c8": "^7.13.0",
-    "caniuse-db": "^1.0.30001486",
+    "caniuse-db": "^1.0.30001487",
     "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-canonical": "^2.6.0",

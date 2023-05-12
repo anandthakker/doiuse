@@ -1,8 +1,8 @@
 /**
- * TODO: initially implement #rrggbbaa hex color notation
+ * TODO: initially implement feature
+ * #rrggbbaa hex color notation
  * The CSS Color Module Level 4 defines new 4 & 8 character hex notation for color to include the opacity level.
- *
- * See: https://caniuse.com/css-rrggbbaa
+ * @see https://caniuse.com/css-rrggbbaa
  */
 
 /**

@@ -5,7 +5,31 @@ Method of using a grid concept to lay out content, providing a mechanism for aut
 
 See: https://caniuse.com/css-grid
 
-TODO: create a test for this feature and move it to test/cases/unimplemented/
-TODO: write an implementation for this feature and move it to test/cases/features/
-
 */
+
+/*
+expect:
+css-grid: 16
+*/
+
+.test {
+  display: grid;
+  grid: 1fr 1fr / 1fr 1fr;
+  grid-area: 1 / 1 / 2 / 2;
+  grid-auto-columns: 1fr;
+
+  grid-auto-flow: row;
+  grid-auto-rows: 1fr;
+  grid-column: 1 / 2;
+  grid-column-end: 2;
+
+  grid-column-start: 1;
+  grid-row: 1 / 2;
+  grid-row-end: 2;
+  grid-row-start: 1;
+
+  grid-template: 1fr 1fr / 1fr 1fr;
+  grid-template-areas: "a a" "b b";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
