@@ -1,0 +1,8 @@
+/*
+expect: multicolumn: 1
+*/
+
+.test {
+  grid-template-columns: 1fr 1fr;
+  columns: 100px 2;
+}

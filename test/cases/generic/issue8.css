@@ -1,0 +1,8 @@
+/*
+expect:
+transform3d: 0
+*/
+
+.test {
+  text-transform: capitalize;
+}
