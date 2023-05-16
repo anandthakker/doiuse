@@ -97,7 +97,7 @@ await Promise.all(
     }),
 );
 
-const allFeatures = [...cssFeatures, ...notCSS];
+const allFeatures = [...cssFeatures, ...notCSS].sort(([a], [b]) => a.localeCompare(b));
 
 // update the data/features.js file with all the features
 const template = await fs.readFile('scripts/features.template.js', 'utf8');
