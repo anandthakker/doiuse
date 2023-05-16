@@ -13,11 +13,6 @@ css-relative-colors: 5
 */
 
 .selector {
-  /* Dynamically change individual channels */
-  color: hsl(var(--color-h), calc(var(--color-s) - 10%), var(--color-l));
-}
-
-.selector {
   /* change the transparency */
   color: hsl(from var(--color) h s l / 0.5);
 
@@ -32,4 +27,18 @@ css-relative-colors: 5
     from var(--color) calc(h + 10deg) calc(s + 5%) calc(l - 10%) /
       calc(alpha - 15%)
   );
+
+  /* Dynamically change individual channels with from */
+  color: hsl(from var(--color-h), calc(var(--color-s) - 10%), var(--color-l));
+
+  /* should not trigger */
+  background: conic-gradient(
+    from 0deg at 50% 50%,
+    rgb(0 0 0 / 35%) -24.66deg,
+    rgb(255 255 255 / 35%) 0.25deg
+  );
+
+  /* should not trigger */
+  /* Dynamically change individual channels without from */
+  color: hsl(var(--color-h), calc(var(--color-s) - 10%), var(--color-l));
 }

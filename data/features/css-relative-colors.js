@@ -7,13 +7,6 @@
 /**
  * @type {import('../features').Feature}
  */
-export default (rule) => {
-  if (rule.type !== 'decl') {
-    return false;
-  }
-
-  const colorSpaces = ['rgb', 'rgba', 'hsl', 'hsla', 'hwb'];
-
-  return rule.value.match(/(from|calc\()/)
-  && colorSpaces.some((colorSpace) => rule.value.includes(colorSpace));
+export default {
+  '': /((rgb)|(rgba)|(hsl)|(hsla)|(hwb))\(\s*from/,
 };
