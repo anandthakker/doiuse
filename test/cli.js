@@ -35,18 +35,8 @@ const commandsWithIgnore = {
   doiuse: `${pathToCli} --browsers="IE >= 8" --ignore="css-gradients" `,
 };
 
-/**
- * @param {Parameters<import('child_process')['exec']>[0]} cmd
- * @param {Parameters<import('child_process')['exec']>[2]} cb
- */
-function exec(cmd, cb) {
-  // eslint-disable-next-line no-console
-  console.log(cmd);
-  cpExec(cmd, cb);
-}
-
 test('cli command: piped input', (t) => {
-  exec(`${commands.cat} | ${commands.doiuse}`, (error, stdout) => {
+  cpExec(`${commands.cat} | ${commands.doiuse}`, (error, stdout) => {
     t.equal(stdout, expected);
     t.notOk(error);
     t.end();
@@ -54,7 +44,7 @@ test('cli command: piped input', (t) => {
 });
 
 test('should take filename as input', (t) => {
-  exec(commands.doiuse + cssFile, (error, stdout) => {
+  cpExec(commands.doiuse + cssFile, (error, stdout) => {
     t.equal(stdout, expected.replace(/<streaming css input>/g, cssFile));
     t.notOk(error);
     t.end();
@@ -62,7 +52,7 @@ test('should take filename as input', (t) => {
 });
 
 test('cli command with ignore: piped input', (t) => {
-  exec(`${commandsWithIgnore.cat} | ${commandsWithIgnore.doiuse}`, (error, stdout) => {
+  cpExec(`${commandsWithIgnore.cat} | ${commandsWithIgnore.doiuse}`, (error, stdout) => {
     t.equal(stdout, expectedWithIgnore);
     t.notOk(error);
     t.end();
@@ -70,7 +60,7 @@ test('cli command with ignore: piped input', (t) => {
 });
 
 test('should take filename as input with ignore', (t) => {
-  exec(commandsWithIgnore.doiuse + cssFile, (error, stdout) => {
+  cpExec(commandsWithIgnore.doiuse + cssFile, (error, stdout) => {
     t.equal(stdout, expectedWithIgnore.replace(/<streaming css input>/g, cssFile));
     t.notOk(error);
     t.end();
@@ -78,7 +68,7 @@ test('should take filename as input with ignore', (t) => {
 });
 
 test('--json option should work', (t) => {
-  exec(`${commands.doiuse}--json ${cssFile}`, (error, stdout) => {
+  cpExec(`${commands.doiuse}--json ${cssFile}`, (error, stdout) => {
     const result = stdout.toString().trim()
       .split(/\r?\n/)
       .map((value) => JSON.parse(value).feature);
@@ -93,7 +83,7 @@ test('--json option should work', (t) => {
 });
 
 test('--list-only should work', (t) => {
-  exec(`${commands.doiuse}--list-only`, (error, stdout) => {
+  cpExec(`${commands.doiuse}--list-only`, (error, stdout) => {
     t.equal(stdout.toString().trim(), '[doiuse] Browsers: IE 11, IE 10, IE 9, IE 8');
     t.notOk(error);
     t.end();
@@ -105,7 +95,7 @@ test('-c config file should work as input parameters', (t) => {
   const overflowWrapCssFile = joinPath(selfPath, './cases/overflow-wrap.css');
   const expectedOverflowWrapConfig = '<streaming css input>:7:1: CSS3 Overflow-wrap only partially supported by: IE (11) (wordwrap)\n';
 
-  exec(`${commands.doiuse}-c ${configFile} ${overflowWrapCssFile}`, (error, stdout) => {
+  cpExec(`${commands.doiuse}-c ${configFile} ${overflowWrapCssFile}`, (error, stdout) => {
     t.equal(stdout, expectedOverflowWrapConfig.replace(/<streaming css input>/g, overflowWrapCssFile));
     t.notOk(error);
     t.end();
