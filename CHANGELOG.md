@@ -1,11 +1,7 @@
 # Changelog
 
-## Unreleased
-
-* Use MDN
-
-## 6.0.0 (2023-02-28)
-* BREAKING: Drop Node v12 support
+## 6.0.0 (Unreleased)
+* BREAKING: Drop Node v12 and v14 support
 * Add caniuse features
 * * `css-conic-gradients`
 * * `css-container-queries-style`
