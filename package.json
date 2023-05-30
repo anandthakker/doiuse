@@ -76,6 +76,15 @@
     "tap": "^16.3.4",
     "typescript": "^4.9.5"
   },
+  "files": [
+    "bin",
+    "data",
+    "features",
+    "exports",
+    "lib",
+    "types",
+    "utils"
+  ],
   "scripts": {
     "pretest": "eslint ./bin/**/*.js ./data/**/*.js ./lib/**/*.js ./test/**/*.js",
     "test": "c8 tap --no-coverage",
