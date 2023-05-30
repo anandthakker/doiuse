@@ -48,28 +48,32 @@ function exec(cmd, cb) {
 test('cli command: piped input', (t) => {
   exec(`${commands.cat} | ${commands.doiuse}`, (error, stdout) => {
     t.equal(stdout, expected);
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
 
 test('should take filename as input', (t) => {
   exec(commands.doiuse + cssFile, (error, stdout) => {
     t.equal(stdout, expected.replace(/<streaming css input>/g, cssFile));
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
 
 test('cli command with ignore: piped input', (t) => {
   exec(`${commandsWithIgnore.cat} | ${commandsWithIgnore.doiuse}`, (error, stdout) => {
     t.equal(stdout, expectedWithIgnore);
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
 
 test('should take filename as input with ignore', (t) => {
   exec(commandsWithIgnore.doiuse + cssFile, (error, stdout) => {
     t.equal(stdout, expectedWithIgnore.replace(/<streaming css input>/g, cssFile));
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
 
@@ -83,15 +87,16 @@ test('--json option should work', (t) => {
       'css-gradients',
       'css-repeating-gradients',
       'css-repeating-gradients']);
-
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
 
 test('--list-only should work', (t) => {
   exec(`${commands.doiuse}--list-only`, (error, stdout) => {
     t.equal(stdout.toString().trim(), '[doiuse] Browsers: IE 11, IE 10, IE 9, IE 8');
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
 
@@ -102,6 +107,7 @@ test('-c config file should work as input parameters', (t) => {
 
   exec(`${commands.doiuse}-c ${configFile} ${overflowWrapCssFile}`, (error, stdout) => {
     t.equal(stdout, expectedOverflowWrapConfig.replace(/<streaming css input>/g, overflowWrapCssFile));
-    t.end(error);
+    t.notOk(error);
+    t.end();
   });
 });
