@@ -108,7 +108,7 @@ if (argv.verbose >= 2) {
   for (const feature of Object.values(features)) {
     const out = [feature.caniuseData.title];
     if (argv.verbose >= 3) {
-      out.push('\n', feature.missing.join(', '), '\n');
+      out.push('\n', feature.missing, '\n');
     }
     console.log(out.join(''));
   }
