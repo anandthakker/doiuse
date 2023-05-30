@@ -39,7 +39,7 @@
   },
   "homepage": "https://github.com/anandthakker/doiuse",
   "engines": {
-    "node": ">=14"
+    "node": ">=16"
   },
   "dependencies": {
     "browserslist": "^4.21.5",
