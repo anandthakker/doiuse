@@ -10,9 +10,10 @@ See: https://caniuse.com/outline
 
 /*
 expect:
-outline: 1
+outline: 2
 */
 
 .test {
   outline: 1px solid red;
+  outline-offset: 1px;
 }
