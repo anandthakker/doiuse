@@ -1,6 +1,6 @@
 # Changelog
 
-## 6.0.0 (Unreleased)
+## 6.0.0 (2023-07-03)
 * BREAKING: Drop Node v12 and v14 support
 * Add caniuse features
 * * `css-conic-gradients`
