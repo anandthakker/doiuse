@@ -1,11 +1,25 @@
 {
+  "env": {
+    "es2021": true
+  },
   "extends": [
     "airbnb-base",
     "plugin:@typescript-eslint/recommended",
-    "plugin:jsdoc/recommended",
+    "plugin:jsdoc/recommended-typescript-flavor-error",
     "plugin:n/recommended",
     "plugin:unicorn/recommended",
     "plugin:import/recommended"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.cjs"
+      ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": 0,
+        "import/no-nodejs-modules": 0
+      }
+    }
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -13,8 +27,8 @@
       "impliedStrict": true
     },
     "ecmaVersion": 2019,
-    "sourceType": "module",
-    "project": "./jsconfig.json"
+    "project": "./jsconfig.json",
+    "sourceType": "module"
   },
   "plugins": [
     "@typescript-eslint",
@@ -26,129 +40,13 @@
   ],
   "root": true,
   "rules": {
-    "prefer-destructuring": [
-      "error",
-      {
-        "AssignmentExpression": {
-          "array": false,
-          "object": false
-        },
-        "VariableDeclarator": {
-          "array": false,
-          "object": true
-        }
-      },
-      {
-        "enforceForRenamedProperties": false
-      }
-    ],
-    "sort-imports": [
-      "error",
-      {
-        "ignoreDeclarationSort": true
-      }
-    ],
-    "spaced-comment": [
-      "error",
-      "always",
-      {
-        "block": {
-          "balanced": true,
-          "exceptions": [
-            "-",
-            "+"
-          ],
-          "markers": [
-            "=",
-            "!",
-            ":",
-            "::"
-          ]
-        },
-        "line": {
-          "exceptions": [
-            "-",
-            "+"
-          ],
-          "markers": [
-            "=",
-            "!",
-            "/"
-          ]
-        }
-      }
-    ],
-    "max-len": [
-      "error",
-      120,
-      2,
-      {
-        "ignoreComments": true,
-        "ignoreRegExpLiterals": true,
-        "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreUrls": true
-      }
-    ],
-    "consistent-return": "warn",
-    "no-console": [
-      "error",
-      {
-        "allow": [
-          "warn",
-          "error",
-          "time",
-          "timeEnd"
-        ]
-      }
-    ],
-    "no-plusplus": [
-      "off"
-    ],
-    "no-continue": 0,
-    "no-restricted-syntax": 0,
-    "require-await": 0,
-    "no-return-await": 0,
-    "eslint-comments/no-use": 0,
-    "prettier/prettier": 0,
-    "i18n-text/no-en": 0,
-    "import/no-extraneous-dependencies": 0,
-    "import/no-namespace": 0,
-    "import/namespace": 0,
-    "no-unused-vars": 0,
-    "no-constructor-return": 0,
-    "default-case-last": 0,
-    "no-undef": 0,
-    "import/named": 0,
-    "no-process-exit": 0,
-    "no-empty": [
-      "error",
-      {
-        "allowEmptyCatch": true
-      }
-    ],
-    "no-promise-executor-return": 0,
-    "canonical/filename-match-regex": ["error","^(?:.?[A-Z]?[a-z]+(?:[A-Z][a-z]+)*)*$",false],
-    "canonical/filename-no-index": 0,
-    "canonical/filename-match-exported": ["error", "pascal", null],
-    "@typescript-eslint/ban-ts-comment": [
-      "warn",
-      {
-        "ts-ignore": "allow-with-description"
-      }
-    ],
-    "@typescript-eslint/naming-convention": ["error", 
-      {
-        "selector": "typeLike",
-        "format": ["PascalCase"]
-      }
-    ],
-    "@typescript-eslint/explicit-module-boundary-types": 0,
-    "@typescript-eslint/require-await": "error",
-    "@typescript-eslint/return-await": [
-      "error",
-      "always"
-    ],
+    "no-continue": "off",
+    "no-restricted-syntax": "off",
+    "import/prefer-default-export": "off",
+    "jsdoc/require-property-description": "off",
+    "jsdoc/require-param-description": "off",
+    "jsdoc/require-returns": "off",
+    "jsdoc/require-returns-description": "off",
     "import/extensions": [
       "error",
       "always",
@@ -157,85 +55,17 @@
         "mjs": "never"
       }
     ],
-    "import/no-useless-path-segments": [
-      "error",
-      {
-        "noUselessIndex": false
-      }
-    ],
-    "import/order": [
-      "error",
-      {
-        "alphabetize": {
-          "caseInsensitive": false,
-          "order": "asc"
-        },
-        "groups": [
-          "builtin",
-          "external",
-          "parent",
-          "sibling",
-          "index"
-        ],
-        "newlines-between": "always",
-        "pathGroups": [
-          {
-            "group": "external",
-            "pattern": "@dataprocs/**",
-            "position": "after"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": [
-          "builtin"
-        ]
-      }
-    ],
-    "import/prefer-default-export": 0,
-    "unicorn/switch-case-braces": 0,
-    "unicorn/import-style": 0,
-    "unicorn/no-useless-undefined": 0,
-    "unicorn/no-array-for-each": 0,
-    "unicorn/prefer-spread": 0,
-    "unicorn/no-null": 0,
-    "unicorn/prefer-node-protocol": 0,
-    "unicorn/filename-case": 0,
-    "unicorn/prefer-dom-node-append": 0,
-    "unicorn/prevent-abbreviations": 0,
-    "unicorn/explicit-length-check": 0,
-    "unicorn/catch-error-name": 0,
-    "unicorn/prefer-dom-node-dataset": 0,
-    "unicorn/no-array-reduce": 0,
-    "unicorn/no-this-assignment": 0,
+    "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-useless-undefined": "off",
     "unicorn/prefer-ternary": [
       "error",
       "only-single-line"
     ],
-    "unicorn/no-empty-file": 0,
-    "unicorn/prefer-query-selector": 0,
-    "unicorn/prefer-dom-node-remove": 0,
-    "unicorn/no-for-loop": 0,
-    "jsdoc/newline-after-description": [
-      "warn",
-      "never"
-    ],
-    "jsdoc/no-undefined-types": 0,
-    "jsdoc/require-param-description": 0,
-    "jsdoc/require-property-description": 0,
-    "jsdoc/require-returns": [
-      0,
+    "unicorn/prevent-abbreviations": [
+      "error",
       {
-        "forceRequireReturn": false,
-        "forceReturnsWithAsync": true
-      }
-    ],
-    "jsdoc/require-returns-description": 0,
-    "jsdoc/valid-types": 0,
-    
-    "node/no-unsupported-features/es-syntax": [
-      "off",
-      {
-        "ignores": [],
-        "version": ">=14.0.0"
+        "checkFilenames": false
       }
     ]
   },
@@ -255,16 +85,5 @@
         "returns": "return"
       }
     }
-  },
-  "overrides": [
-    {
-      "files": [
-        "*.cjs"
-      ],
-      "rules": {
-        "import/no-nodejs-modules": 0,
-        "@typescript-eslint/no-var-requires": 0
-      }
-    }
-  ]
+  }
 }
