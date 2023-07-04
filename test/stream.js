@@ -1,4 +1,4 @@
-import { PassThrough } from 'stream';
+import { PassThrough } from 'node:stream';
 
 import { test } from 'tap';
 
@@ -52,8 +52,8 @@ test('streaming works with ignore option', (t) => {
 test('gracefully emit error on bad browsers list', (t) => {
   t.plan(1);
   const s = new CssUsageDuplex({ browsers: 'Blargh!' });
-  s.on('error', (e) => {
-    t.ok(e);
+  s.on('error', (error) => {
+    t.ok(error);
   });
   s.end('a{}');
 });

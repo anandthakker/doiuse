@@ -1,7 +1,7 @@
-import { createReadStream } from 'fs';
-import { dirname, join as joinPath } from 'path';
-import { PassThrough } from 'stream';
-import { fileURLToPath } from 'url';
+import { createReadStream } from 'node:fs';
+import { dirname, join as joinPath } from 'node:path';
+import { PassThrough } from 'node:stream';
+import { fileURLToPath } from 'node:url';
 
 import Tokenize from 'css-tokenize';
 import { test } from 'tap';

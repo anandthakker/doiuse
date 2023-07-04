@@ -19,7 +19,7 @@ function matchOutsideOfBrackets(pattern) {
   if (!(pattern instanceof RegExp)) {
     throw new TypeError('matchOutsideOfBrackets expects a RegExp');
   }
-  return (str) => pattern.test(str.replace(REGEXES.BRACKET_PARENS, ''));
+  return (string) => pattern.test(string.replaceAll(REGEXES.BRACKET_PARENS, ''));
 }
 
 export default checkSelector([

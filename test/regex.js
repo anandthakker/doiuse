@@ -19,11 +19,15 @@ function checkEntry(entry) {
   }
   if (typeof entry !== 'object') return;
   if (Array.isArray(entry)) {
-    entry.forEach((item) => checkEntry(item));
+    for (const item of entry) {
+      checkEntry(item);
+    }
     return;
   }
 
-  Object.values(entry).forEach((item) => checkEntry(item));
+  for (const item of Object.values(entry)) {
+    checkEntry(item);
+  }
 }
 
 checkEntry([

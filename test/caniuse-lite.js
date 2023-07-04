@@ -1,6 +1,6 @@
-import { readdirSync } from 'fs';
-import { dirname, join as joinPath } from 'path';
-import { fileURLToPath } from 'url';
+import { readdirSync } from 'node:fs';
+import { dirname, join as joinPath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { test } from 'tap';
 

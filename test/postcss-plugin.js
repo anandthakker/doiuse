@@ -1,6 +1,6 @@
-import fs from 'fs';
-import { dirname, join as joinPath } from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import { dirname, join as joinPath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import mock from 'mock-fs';
 import postcss from 'postcss';
@@ -32,7 +32,7 @@ test('calls back for unsupported feature usages', async (t) => {
   await postcss(new DoIUse({
     browsers: ['ie 8'],
     onFeatureUsage(usageInfo) {
-      count++;
+      count += 1;
       hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message']);
       hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData']);
     },
@@ -50,7 +50,7 @@ test('ignores specified features and calls back for the others', async (t) => {
       'css-gradients',
     ],
     onFeatureUsage(usageInfo) {
-      count++;
+      count += 1;
       hasKeys(t, usageInfo, ['feature', 'featureData', 'usage', 'message']);
       hasKeys(t, usageInfo.featureData, ['title', 'missing', 'missingData', 'caniuseData']);
     },
@@ -90,7 +90,7 @@ test('ignores rules from some imported files, and not others', async (t) => {
       browsers: ['ie 6'],
       ignoreFiles: ['**/ignore-file.css'],
       onFeatureUsage() {
-        count++;
+        count += 1;
       },
     })]).process(css, { from: cssPath });
   t.equal(count, 2);
@@ -110,7 +110,7 @@ test('ignores rules specified in comments', async (t) => {
     new DoIUse({
       browsers: ['ie 6'],
       onFeatureUsage() {
-        count++;
+        count += 1;
       },
     })]);
 
@@ -124,7 +124,6 @@ test('ignores rules specified in comments', async (t) => {
 });
 
 test('info with browserslist file', (t) => {
-  // @ts-ignore Bad typings
   mock({
     browserslist: '# Comment\nSafari 8\nIE >= 11',
   });

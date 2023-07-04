@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
-import { dirname, join as joinPath } from 'path';
-import { fileURLToPath } from 'url';
+import { readFileSync } from 'node:fs';
+import { dirname, join as joinPath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import postcss from 'postcss';
 import { test } from 'tap';
@@ -47,11 +47,11 @@ function parseTestCase(cssString) {
  */
 function spy() {
   const results = [];
-  /** @param {any} param */
-  function fn(param) {
-    const { feature } = param;
-    const { usage } = param;
-    const obj = {
+  /** @param {any} firstArgument */
+  function spyFunction(firstArgument) {
+    const { feature } = firstArgument;
+    const { usage } = firstArgument;
+    const entry = {
       feature,
       location: usage.source.start,
       selector: usage.selector,
@@ -63,10 +63,10 @@ function spy() {
       results[feature] = [];
     }
 
-    return results[feature].push(obj);
+    return results[feature].push(entry);
   }
-  fn.results = results;
-  return fn;
+  spyFunction.results = results;
+  return spyFunction;
 }
 
 /**
@@ -75,20 +75,21 @@ function spy() {
  * @param {Object} expected
  */
 function runTest(tc, cssString, expected) {
+  /** @type {any[]} */
   const features = Object.keys(expected).sort();
 
   test(`detecting CSS features (${tc.replace('.css', '')})`, (t) => {
     const detector = new Detector(features);
-    const cb = spy();
-    detector.process(postcss.parse(cssString), cb);
+    const callback = spy();
+    detector.process(postcss.parse(cssString), callback);
 
-    const res = Object.keys(cb.results).sort();
+    const resultKeys = Object.keys(callback.results).sort();
     for (const feature in expected) {
       if (expected[feature] === 0) {
-        t.notOk(cb.results[feature]);
+        t.notOk(callback.results[feature]);
       } else {
-        t.same(res, features);
-        t.equal(cb.results[feature]?.length, expected[feature], `count of ${feature}`);
+        t.same(resultKeys, features);
+        t.equal(callback.results[feature]?.length, expected[feature], `count of ${feature}`);
       }
     }
 

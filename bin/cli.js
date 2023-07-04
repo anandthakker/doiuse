@@ -2,9 +2,9 @@
 
 /* eslint-disable no-console */
 
-import fs from 'fs';
-import path from 'path';
-import { PassThrough } from 'stream';
+import fs from 'node:fs';
+import path from 'node:path';
+import { PassThrough } from 'node:stream';
 
 import browserslist from 'browserslist';
 import ldjson from 'ldjson-stream';
@@ -71,11 +71,11 @@ if (argv.config) {
         ? value.join(',')
         : value;
     }
-  } catch (err) {
-    if (err && err.code === FILE_NOT_FOUND) {
-      console.error('Config file not found', err);
+  } catch (error) {
+    if (error && error.code === FILE_NOT_FOUND) {
+      console.error('Config file not found', error);
     } else {
-      console.error(err);
+      console.error(error);
     }
   }
 }
@@ -87,7 +87,10 @@ if (argv.browsers) {
 argv.ignore = argv.ignore.split(',').map((s) => s.trim());
 
 // Informational output
-if (argv.l) { argv.v = ++argv.verbose; }
+if (argv.l) {
+  argv.verbose += 1;
+  argv.v = argv.verbose;
+}
 if (argv.verbose >= 1) {
   const browsers = browserslist(argv.browsers)
     .map((b) => {
@@ -99,18 +102,17 @@ if (argv.verbose >= 1) {
     .sort((a, b) => b[1] - a[1])
     .map((b) => b.join(' '))
     .join(', ');
-  console.log(`[doiuse] Browsers: ${browsers}`);
+  process.stdout.write(`[doiuse] Browsers: ${browsers}\n`);
 }
 
 if (argv.verbose >= 2) {
   const { features } = new DoIUse(argv.browsers).info();
-  console.log('\n[doiuse] Unsupported features:');
+  process.stdout.write('[doiuse] Unsupported features:\n');
   for (const feature of Object.values(features)) {
-    const out = [feature.caniuseData.title];
+    process.stdout.write(`${feature.caniuseData.title}\n`);
     if (argv.verbose >= 3) {
-      out.push('\n', feature.missing, '\n');
+      process.stdout.write(`\n${feature.missing}\n`);
     }
-    console.log(out.join(''));
   }
 }
 
@@ -146,7 +148,7 @@ outStream.pipe(process.stdout);
  */
 function processStream(stream, file) {
   stream.pipe(new CssUsageDuplex({ browsers: argv.browsers, ignore: argv.ignore }, file))
-    .on('error', (err) => { console.error(err); })
+    .on('error', (error) => { console.error(error); })
     .pipe(outStream);
 }
 if (argv._.length > 0) {

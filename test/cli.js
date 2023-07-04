@@ -1,6 +1,6 @@
-import { exec as cpExec } from 'child_process';
-import { dirname, join as joinPath } from 'path';
-import { fileURLToPath } from 'url';
+import { exec as cpExec } from 'node:child_process';
+import { dirname, join as joinPath } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 import { test } from 'tap';
 
@@ -45,7 +45,7 @@ test('cli command: piped input', (t) => {
 
 test('should take filename as input', (t) => {
   cpExec(commands.doiuse + cssFile, (error, stdout) => {
-    t.equal(stdout, expected.replace(/<streaming css input>/g, cssFile));
+    t.equal(stdout, expected.replaceAll('<streaming css input>', cssFile));
     t.notOk(error);
     t.end();
   });
@@ -61,7 +61,7 @@ test('cli command with ignore: piped input', (t) => {
 
 test('should take filename as input with ignore', (t) => {
   cpExec(commandsWithIgnore.doiuse + cssFile, (error, stdout) => {
-    t.equal(stdout, expectedWithIgnore.replace(/<streaming css input>/g, cssFile));
+    t.equal(stdout, expectedWithIgnore.replaceAll('<streaming css input>', cssFile));
     t.notOk(error);
     t.end();
   });
@@ -96,7 +96,7 @@ test('-c config file should work as input parameters', (t) => {
   const expectedOverflowWrapConfig = '<streaming css input>:7:1: CSS3 Overflow-wrap only partially supported by: IE (11) (wordwrap)\n';
 
   cpExec(`${commands.doiuse}-c ${configFile} ${overflowWrapCssFile}`, (error, stdout) => {
-    t.equal(stdout, expectedOverflowWrapConfig.replace(/<streaming css input>/g, overflowWrapCssFile));
+    t.equal(stdout, expectedOverflowWrapConfig.replaceAll('<streaming css input>', overflowWrapCssFile));
     t.notOk(error);
     t.end();
   });
