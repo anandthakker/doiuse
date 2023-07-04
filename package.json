@@ -55,7 +55,8 @@
   },
   "devDependencies": {
     "@types/caniuse-lite": "^1.0.1",
-    "@types/node": "^14.18.36",
+    "@types/duplexify": "^3.6.1",
+    "@types/node": "^16.18.34",
     "@types/tap": "^15.0.8",
     "@types/yargs": "^17.0.22",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
@@ -64,19 +65,17 @@
     "caniuse-db": "^1.0.30001487",
     "eslint": "^8.35.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-canonical": "^2.6.0",
-    "eslint-plugin-github": "^4.6.1",
+    "eslint-plugin-canonical": "^4.2.2",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsdoc": "^40.0.0",
-    "eslint-plugin-n": "^15.6.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-unicorn": "^45.0.2",
+    "eslint-plugin-jsdoc": "^46.4.3",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-unicorn": "^47.0.0",
     "mock-fs": "^4.14.0",
     "postcss-import": "^14.1.0",
     "rollup": "^2.79.1",
     "safe-regex": "^2.1.1",
     "tap": "^16.3.4",
-    "typescript": "^4.9.5"
+    "typescript": "^5.1.6"
   },
   "files": [
     "bin",
@@ -88,10 +87,10 @@
     "utils"
   ],
   "scripts": {
-    "pretest": "eslint ./bin/**/*.js ./data/**/*.js ./lib/**/*.js ./test/**/*.js",
+    "pretest": "eslint ./bin/**/*.js ./data/**/*.js ./lib/**/*.js ./test/**/*.js && tsc --noEmit",
     "test": "c8 tap --no-coverage",
     "prepare": "rollup -c rollup.config.js",
-    "prepublishOnly": "tsc",
+    "prepublishOnly": "tsc --emitDeclarationOnly",
     "updateFeatures": "scripts/update-caniuse.sh && node scripts/update-features.js"
   }
 }
