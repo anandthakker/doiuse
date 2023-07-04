@@ -8,7 +8,7 @@ const selfPath = dirname(fileURLToPath(import.meta.url));
 
 const cssFile = joinPath(selfPath, '/cases/generic/gradient.css');
 const pathToCli = ` node ${joinPath(selfPath, '../bin/cli.js')}`;
-const catCss = ` cat ${cssFile} | tee /dev/tty `;
+const catCss = ` cat ${cssFile} `;
 
 const expectedCssGradients = [
   '<streaming css input>:8:1: CSS Gradients not supported by: IE (8,9) (css-gradients)\n',
