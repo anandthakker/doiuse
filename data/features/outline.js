@@ -3,4 +3,5 @@ export default {
   'outline-style': true,
   'outline-width': true,
   'outline-color': true,
+  'outline-offset': true,
 };

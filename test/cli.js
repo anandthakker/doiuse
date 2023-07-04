@@ -92,8 +92,8 @@ test('--list-only should work', (t) => {
 
 test('-c config file should work as input parameters', (t) => {
   const configFile = joinPath(selfPath, './fixtures/doiuse.config.json');
-  const overflowWrapCssFile = joinPath(selfPath, './cases/generic/overflow-wrap.css');
-  const expectedOverflowWrapConfig = '<streaming css input>:7:1: CSS3 Overflow-wrap only partially supported by: IE (11) (wordwrap)\n';
+  const overflowWrapCssFile = joinPath(selfPath, './cases/generic/resize.css');
+  const expectedOverflowWrapConfig = '<streaming css input>:7:1: CSS resize property not supported by: IE (11) (css-resize)\n';
 
   cpExec(`${commands.doiuse}-c ${configFile} ${overflowWrapCssFile}`, (error, stdout) => {
     t.equal(stdout, expectedOverflowWrapConfig.replace(/<streaming css input>/g, overflowWrapCssFile));
