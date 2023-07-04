@@ -6,10 +6,11 @@
     "moduleResolution": "node",
     "noImplicitAny": true,
     "strict": true,
-    "target": "es2019",
-    "useUnknownInCatchVariables": false
+    "target": "ES2021",
+    "useUnknownInCatchVariables": false,
+    "resolveJsonModule": true
   },
   "exclude": [
-    "**/node_modules/*",
+    "**/node_modules/*"
   ]
 }

@@ -1,16 +1,24 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
     "allowJs": true,
+    "allowSyntheticDefaultImports": true,
     "checkJs": true,
     "declaration": true,
-    "emitDeclarationOnly": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2019",
-    "useUnknownInCatchVariables": false,
     "outDir": "types",
     "removeComments": false,
+    "target": "ES2021",
+    "useUnknownInCatchVariables": false,
+    "resolveJsonModule": true
   },
-  "include": ["exports/**/*.js", "lib/**/*.js", "data/**/*.js"],
+  "include": [
+    "bin/**/*.js",
+    "data/**/*.js",
+    "features/**/*.js",
+    "exports/**/*.js",
+    "lib/**/*.js",
+    "util/**/*.js",
+    "test/**/*.js"
+  ]
 }
