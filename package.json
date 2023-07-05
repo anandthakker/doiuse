@@ -87,7 +87,7 @@
     "utils"
   ],
   "scripts": {
-    "pretest": "eslint ./bin/**/*.js ./data/**/*.js ./lib/**/*.js ./test/**/*.js && tsc --noEmit",
+    "pretest": "eslint \"./bin/**/*.js\" \"./data/**/*.js\" \"./lib/**/*.js\" \"./test/**/*.js\" && tsc --noEmit",
     "test": "c8 tap --no-coverage",
     "prepare": "rollup -c rollup.config.js",
     "prepublishOnly": "tsc --emitDeclarationOnly",

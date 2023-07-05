@@ -5,6 +5,7 @@
     "object-shorthand": ["error", "consistent"],
     "quote-props": ["error", "always"],
     "unicorn/no-empty-file": "off",
+    "unicorn/prevent-abbreviations": "off",
     "max-len": "off"
   }
 }
