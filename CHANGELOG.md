@@ -1,5 +1,10 @@
 # Changelog
 
+## 6.0.1 (2023-07-05)
+* fix(DoIUse): support string constructor argument ab7df2f095637fe52d10d65eabe47facd5cd3633
+* typescript: reconfigure for ts 5.x and node v16.x 44359cba909e1c6a6fb605b24ba71732ba3dda94 Use Typescript 5.x types
+* fix(exports/stream): constructor as default export 959d763da9e465fd2dc73e7a36c093156fa47564
+
 ## 6.0.0 (2023-07-03)
 * BREAKING: Drop Node v12 and v14 support
 * Add caniuse features
