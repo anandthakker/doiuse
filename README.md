@@ -94,10 +94,10 @@ In particular, the approach to detecting features usage is currently quite naive
 ### As a transform stream
 
 ```javascript
-var doiuse = require('doiuse/stream');
+import DoIUse from 'doiuse/stream';
 
 process.stdin
-  .pipe(doiuse({ browsers: ['ie >= 8', '> 1%'], ignore: ['rem'] }))
+  .pipe(new DoIUse({ browsers: ['ie >= 8', '> 1%'], ignore: ['rem'] }))
   .on('data', function (usageInfo) {
     console.log(JSON.stringify(usageInfo))
   })
