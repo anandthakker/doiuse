@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* eslint-disable no-console */
-
 import fs from 'node:fs';
 import path from 'node:path';
 import { PassThrough } from 'node:stream';
@@ -75,10 +73,9 @@ if (argv.config) {
     }
   } catch (error) {
     if (error && error.code === FILE_NOT_FOUND) {
-      console.error('Config file not found', error);
-    } else {
-      console.error(error);
+      process.stderr.write('Config file not found\n');
     }
+    throw error;
   }
 }
 
@@ -122,7 +119,7 @@ if (argv.l) {
 if (argv.help || (argv._.length === 0 && process.stdin.isTTY)) {
   yargs.showHelp();
   // eslint-disable-next-line n/no-process-exit
-  process.exit();
+  process.exit(0);
 }
 
 /** @type {import("stream").Writable} */
@@ -149,7 +146,10 @@ function processStream(stream, file) {
     // @ts-expect-error Skip cast
     ignore,
   }, file))
-    .on('error', (error) => { console.error(error); })
+    .on('error', (error) => {
+      process.stderr.write('Error parsing file\n');
+      throw error;
+    })
     .pipe(outStream);
 }
 if (argv._.length > 0) {
