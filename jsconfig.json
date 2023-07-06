@@ -4,7 +4,6 @@
     "checkJs": true,
     "module": "esnext",
     "moduleResolution": "node",
-    "noImplicitAny": true,
     "strict": true,
     "target": "ES2021",
     "useUnknownInCatchVariables": false,
