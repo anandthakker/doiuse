@@ -99,7 +99,6 @@ for (const [featureId, packedFeature] of Object.entries(caniuse.features)) {
   // Some keys are extraneous
 
   const databaseEntry = (featureId in caniuseDb.data)
-    // @ts-expect-error Skip cast
     ? caniuseDb.data[featureId]
     : null;
 
@@ -157,7 +156,6 @@ await Promise.all(
     const fileContent = await fs.readFile(filepath, 'utf8');
 
     const { title } = unpackFeature(caniuse.features[name]);
-    // @ts-expect-error Can't cast JSON type
     const category = caniuseDb.data[name]?.categories.join(', ');
 
     if (fileContent.includes(' * TODO: initially implement ')
@@ -191,7 +189,6 @@ await Promise.all(
     const filename = `${featureId}.css`;
 
     if (allTests.has(filename)) return;
-    // @ts-expect-error Can't cast JSON type
     const fullData = caniuseDb.data[featureId];
     const { title } = unpackFeature(caniuse.features[featureId]);
     const stubOptions = {
