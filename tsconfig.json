@@ -6,6 +6,7 @@
     "declaration": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "noImplicitAny": true,
     "outDir": "types",
     "removeComments": false,
     "target": "ES2021",
@@ -19,6 +20,7 @@
     "exports/**/*.js",
     "lib/**/*.js",
     "util/**/*.js",
-    "test/**/*.js"
+    "test/**/*.js",
+    "scripts/**/*.js"
   ]
 }

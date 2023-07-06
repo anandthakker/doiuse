@@ -2,10 +2,17 @@
   "rules": {
     "canonical/filename-match-exported": "off",
     "canonical/filename-match-regex": "off",
-    "object-shorthand": ["error", "consistent"],
-    "quote-props": ["error", "always"],
+    "import/order": "off",
+    "max-len": "off",
+    "object-shorthand": [
+      "error",
+      "consistent"
+    ],
+    "quote-props": [
+      "error",
+      "always"
+    ],
     "unicorn/no-empty-file": "off",
-    "unicorn/prevent-abbreviations": "off",
-    "max-len": "off"
+    "unicorn/prevent-abbreviations": "off"
   }
 }
