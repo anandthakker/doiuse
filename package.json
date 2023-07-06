@@ -58,7 +58,7 @@
     "@types/duplexify": "^3.6.1",
     "@types/node": "^16.18.34",
     "@types/tap": "^15.0.8",
-    "@types/yargs": "^17.0.22",
+    "@types/yargs": "^17.0.24",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0",
     "c8": "^7.13.0",
