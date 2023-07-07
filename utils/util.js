@@ -55,14 +55,13 @@ export function checkSelector(selector) {
 
 /**
  * @param {FeatureCheck|FeatureCheck[]} [name]
- * @param {FeatureCheck|FeatureCheck[]} [params]
+ * @param {FeatureCheck|FeatureCheck[]} [parameters]
  * @return {(rule:import('postcss').ChildNode) => boolean}
  */
-export function checkAtRule(name, params) {
-  // @ts-ignore rule.name can be `undefined`
-  return (rule) => performFeatureCheck(name, rule.name)
-    // @ts-ignore rule.params can be `undefined`
-    && (!params || performFeatureCheck(params, rule.params));
+export function checkAtRule(name, parameters) {
+  return (rule) => rule.type === 'atrule'
+    && performFeatureCheck(name, rule.name)
+    && (!parameters || performFeatureCheck(parameters, rule.params));
 }
 
 /**
