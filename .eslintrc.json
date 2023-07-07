@@ -40,14 +40,6 @@
   ],
   "root": true,
   "rules": {
-    "no-return-await": "off",
-    "no-continue": "off",
-    "no-restricted-syntax": "off",
-    "import/prefer-default-export": "off",
-    "jsdoc/require-property-description": "off",
-    "jsdoc/require-param-description": "off",
-    "jsdoc/require-returns": "off",
-    "jsdoc/require-returns-description": "off",
     "import/extensions": [
       "error",
       "always",
@@ -56,6 +48,15 @@
         "mjs": "never"
       }
     ],
+    "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
+    "jsdoc/require-param-description": "off",
+    "jsdoc/require-property-description": "off",
+    "jsdoc/require-returns": "off",
+    "jsdoc/require-returns-description": "off",
+    "no-continue": "off",
+    "no-restricted-syntax": "off",
+    "no-return-await": "off",
     "unicorn/filename-case": "off",
     "unicorn/no-null": "off",
     "unicorn/no-useless-undefined": "off",
@@ -68,7 +69,8 @@
       {
         "checkFilenames": false
       }
-    ]
+    ],
+    "unicorn/switch-case-braces": "off"
   },
   "settings": {
     "jsdoc": {

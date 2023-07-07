@@ -1,19 +1,19 @@
-import { readdir } from 'fs/promises';
-import { resolve } from 'path';
+import { readdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
 
 /**
  * recursively get all files in a directory
- * @param {string} dir the directory to read
+ * @param {string} directory the directory to read
  * @yields {string} the path to each file
+ * @return {AsyncGenerator<string>} the path to each file
  */
-export async function* getFiles(dir) {
-  const dirents = await readdir(dir, { withFileTypes: true });
-  for (const dirent of dirents) {
-    const res = resolve(dir, dirent.name);
-    if (dirent.isDirectory()) {
-      yield* getFiles(res);
+export async function* getFiles(directory) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const path = resolve(directory, entry.name);
+    if (entry.isDirectory()) {
+      yield* getFiles(path);
     } else {
-      yield res;
+      yield path;
     }
   }
 }
