@@ -64,3 +64,17 @@ export function checkAtRule(name, params) {
     // @ts-ignore rule.params can be `undefined`
     && (!params || performFeatureCheck(params, rule.params));
 }
+
+/**
+ * @see https://drafts.csswg.org/css-values/#lengths
+ * @see https://drafts.csswg.org/css-values/#number-value
+ * @param {string[]} units
+ * @return {(rule:import('postcss').ChildNode) => boolean}
+ */
+export function checkCSSLengthUnits(...units) {
+  const regexp = new RegExp(`(\\+-)?[\\d.]*\\.?\\d+(e(\\+-)?\\d+)?(${units.join('|')})`, 'i');
+  return (rule) => (
+    (rule.type === 'decl') ? performFeatureCheck(regexp, rule.value)
+      : ((rule.type === 'atrule') ? performFeatureCheck(regexp, rule.params)
+        : false));
+}

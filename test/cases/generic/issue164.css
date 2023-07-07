@@ -1,0 +1,8 @@
+/*
+expect:
+viewport-unit-variants: 0
+*/
+
+.test {
+  visibility: visible;
+}

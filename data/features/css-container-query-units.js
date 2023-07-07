@@ -1,10 +1,10 @@
-export default {
-  '': [
-    'cqw',
-    'cqh',
-    'cqi',
-    'cqb',
-    'cqmin',
-    'cqmax',
-  ],
-};
+import { checkCSSLengthUnits } from '../../utils/util.js';
+
+export default checkCSSLengthUnits(
+  'cqw',
+  'cqh',
+  'cqi',
+  'cqb',
+  'cqmin',
+  'cqmax',
+);
