@@ -1,8 +1,14 @@
 # Changelog
 
+## 6.0.2 (2023-07-07)
+* fix(cli): actually throw error on failures 2ad9e2b63d86d936fd395d7c4d757b8eff3b661d
+* fix: properly check CSS length units 127502692f5ecd83b75c485379a78f0340da9053
+* perf(utils): only check selector on 'rule' nodes d9c6183c4ab13c19da1f6088bb0286492ca87d5d
+* perf(utils): only check atrule on 'atrule' nodes 08b9c2b448f7d41b058be24fcfc30858b3883fc2
+
 ## 6.0.1 (2023-07-05)
 * fix(DoIUse): support string constructor argument ab7df2f095637fe52d10d65eabe47facd5cd3633
-* typescript: reconfigure for ts 5.x and node v16.x 44359cba909e1c6a6fb605b24ba71732ba3dda94 Use Typescript 5.x types
+* typescript: reconfigure for ts 5.x and node v16.x 44359cba909e1c6a6fb605b24ba71732ba3dda94
 * fix(exports/stream): constructor as default export 959d763da9e465fd2dc73e7a36c093156fa47564
 
 ## 6.0.0 (2023-07-03)
