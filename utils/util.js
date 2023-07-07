@@ -49,8 +49,8 @@ export function performFeatureCheck(check, candidate) {
  * @return {(rule:import('postcss').ChildNode) => boolean}
  */
 export function checkSelector(selector) {
-  // @ts-ignore rule.selector can be `undefined`
-  return (rule) => performFeatureCheck(selector, rule.selector);
+  return (rule) => rule.type === 'rule'
+   && performFeatureCheck(selector, rule.selector);
 }
 
 /**
