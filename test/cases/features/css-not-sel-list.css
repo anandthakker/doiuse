@@ -12,7 +12,7 @@ See: https://caniuse.com/css-not-sel-list
 
 /*
 expect:
-css-not-sel-list: 4
+css-not-sel-list: 5
 */
 
 .test:not(a, .b, [c]) {
@@ -27,6 +27,10 @@ css-not-sel-list: 4
   color: red;
 }
 
+.test:not( a, b ) {
+  color: red;
+}
+
 .test:not(a.b) {
   color: red;
 }
@@ -37,4 +41,7 @@ css-not-sel-list: 4
 }
 .test:not(.b):not([c]) {
   color: red;
+}
+.test:not( a ) {
+  color :red;
 }
