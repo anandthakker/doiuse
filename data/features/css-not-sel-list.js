@@ -9,5 +9,5 @@ import { checkSelector } from '../../utils/util.js';
  * @type {import('../features').Feature}
  */
 export default checkSelector(
-  (selector) => selector.includes(':not(') && !/:not\(.?#?-?[\w[\]-]+\)/.test(selector),
+  (selector) => selector.includes(':not(') && !/:not\(\s*.?#?-?[\w[\]-]+\s*\)/.test(selector),
 );
