@@ -7,7 +7,7 @@ import postcss from 'postcss';
 import atImport from 'postcss-import';
 import { test } from 'tap';
 
-import DoIUse from '../lib/DoIUse.js';
+import doIUse from '../lib/DoIUse.js';
 
 import { hasKeys } from './utils.js';
 
@@ -15,7 +15,8 @@ const selfPath = dirname(fileURLToPath(import.meta.url));
 
 test('leaves css alone by default', (t) => {
   const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css')).toString();
-  const out = postcss(new DoIUse({
+  // @ts-expect-error This object shape still works with postcss
+  const out = postcss(doIUse({
     browsers: [
       'ie >= 7',
       'safari >= 6',
@@ -29,7 +30,8 @@ test('leaves css alone by default', (t) => {
 test('calls back for unsupported feature usages', async (t) => {
   const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css'));
   let count = 0;
-  await postcss(new DoIUse({
+  // @ts-expect-error This object shape still works with postcss
+  await postcss(doIUse({
     browsers: ['ie 8'],
     onFeatureUsage(usageInfo) {
       count += 1;
@@ -44,7 +46,8 @@ test('calls back for unsupported feature usages', async (t) => {
 test('ignores specified features and calls back for the others', async (t) => {
   const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css'));
   let count = 0;
-  await postcss(new DoIUse({
+  // @ts-expect-error This object shape still works with postcss
+  await postcss(doIUse({
     browsers: ['ie 8'],
     ignore: [
       'css-gradients',
@@ -64,7 +67,8 @@ test('ignores specified files and calls back for others', async (t) => {
   const processCss = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css'));
   let run = false;
 
-  const processor = postcss(new DoIUse({
+  // @ts-expect-error This object shape still works with postcss
+  const processor = postcss(doIUse({
     browsers: ['ie 6'],
     ignoreFiles: ['**/ignore-file.css'],
     onFeatureUsage() {
@@ -86,7 +90,7 @@ test('ignores rules from some imported files, and not others', async (t) => {
   let count = 0;
 
   await postcss([atImport(),
-    new DoIUse({
+    doIUse({
       browsers: ['ie 6'],
       ignoreFiles: ['**/ignore-file.css'],
       onFeatureUsage() {
@@ -107,7 +111,7 @@ test('ignores rules specified in comments', async (t) => {
   let count = 0;
 
   const processor = postcss([atImport(),
-    new DoIUse({
+    doIUse({
       browsers: ['ie 6'],
       onFeatureUsage() {
         count += 1;
@@ -128,7 +132,7 @@ test('info with browserslist file', (t) => {
     browserslist: '# Comment\nSafari 8\nIE >= 11',
   });
 
-  const actual = new DoIUse({}).info().browsers;
+  const actual = doIUse({}).info().browsers;
   const expected = [['ie', '11'], ['safari', '8']];
 
   t.same(actual, expected);
@@ -139,10 +143,10 @@ test('info with browserslist file', (t) => {
 });
 
 test('info with no browserslist file or browsers config', (t) => {
-  const actual = new DoIUse({}).info().browsers;
+  const actual = doIUse({}).info().browsers;
 
-  const expected = new DoIUse({
-    browsers: DoIUse.default,
+  const expected = doIUse({
+    browsers: doIUse.default,
   }).info().browsers;
 
   t.same(actual, expected);

@@ -8,7 +8,7 @@ import browserslist from 'browserslist';
 import ldjson from 'ldjson-stream';
 import yargs from 'yargs';
 
-import DoIUse from '../lib/DoIUse.js';
+import doIUse from '../lib/DoIUse.js';
 import CssUsageDuplex from '../lib/stream/CssUsageDuplex.js';
 import { formatBrowserName } from '../utils/util.js';
 
@@ -100,7 +100,7 @@ if (argv.l || argv.verbose >= 1) {
 }
 
 if (argv.verbose >= 2) {
-  const { features } = new DoIUse({ browsers }).info();
+  const { features } = doIUse({ browsers }).info();
   process.stdout.write('[doiuse] Unsupported features:\n');
   for (const feature of Object.values(features)) {
     process.stdout.write(`${feature.caniuseData.title}\n`);
