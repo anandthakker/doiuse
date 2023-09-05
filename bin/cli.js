@@ -3,9 +3,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { PassThrough } from 'node:stream';
+import { EOL } from 'node:os';
 
 import browserslist from 'browserslist';
-import ldjson from 'ldjson-stream';
 import yargs from 'yargs';
 
 import DoIUse from '../lib/DoIUse.js';
@@ -125,7 +125,12 @@ if (argv.help || (argv._.length === 0 && process.stdin.isTTY)) {
 /** @type {import("stream").Writable} */
 let outStream;
 if (argv.json) {
-  outStream = ldjson.serialize();
+  outStream = new PassThrough({
+    objectMode: true,
+    transform(object, encoding, next) {
+      next(null, JSON.stringify(object) + EOL);
+    },
+  });
 } else {
   outStream = new PassThrough({
     objectMode: true,
