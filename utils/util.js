@@ -3,6 +3,16 @@ import { agents } from 'caniuse-lite';
 /** @typedef {RegExp|string|((value:string) => boolean)} FeatureCheck */
 
 /**
+ * Strip the contents of url literals so they aren't matched
+ * by our naive substring matching.
+ * @param {string} input
+ * @return {string}
+ */
+export function stripUrls(input) {
+  return input.replaceAll(/url\([^)]*\)/g, 'url()');
+}
+
+/**
  * @param {string} browserKey
  * @param {string[]} [versions]
  * @return {string}
@@ -72,7 +82,7 @@ export function checkAtRule(name, parameters) {
 export function checkCSSLengthUnits(...units) {
   const regexp = new RegExp(`(\\+-)?[\\d.]*\\.?\\d+(e(\\+-)?\\d+)?(${units.join('|')})`, 'i');
   return (rule) => (
-    (rule.type === 'decl') ? performFeatureCheck(regexp, rule.value)
+    (rule.type === 'decl') ? performFeatureCheck(regexp, stripUrls(rule.value))
       : ((rule.type === 'atrule') ? performFeatureCheck(regexp, rule.params)
         : false));
 }
