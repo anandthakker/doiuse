@@ -23,6 +23,6 @@ export default (rule) => {
     isFlexbox ||= decl.prop === 'display' && (decl.value === 'flex' || decl.value === 'inline-flex');
     isGap ||= decl.prop === 'gap';
 
-    return isFlexbox || isGap;
+    return isFlexbox && isGap;
   });
 };
