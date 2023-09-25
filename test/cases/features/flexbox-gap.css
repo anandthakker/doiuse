@@ -9,13 +9,15 @@ See: https://caniuse.com/flexbox-gap
 
 /*
 expect:
-flexbox-gap: 1
+flexbox-gap: 2
 */
 
 .test {
   display: flex;
   gap: 1rem;
 }
+
+.test {display:flex;gap:1rem;}
 
 /* should not trigger */
 .test {
