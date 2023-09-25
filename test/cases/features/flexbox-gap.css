@@ -24,3 +24,10 @@ flexbox-gap: 2
   display: grid;
   gap: 1rem;
 }
+
+.test {display: flex;}
+
+.test {
+  display: block;
+  gap: 1rem;
+}
