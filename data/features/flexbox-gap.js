@@ -8,7 +8,7 @@
  * @type {import('../features').Feature}
  */
 export default (rule) => {
-  if (rule.type !== 'rule') {
+  if (!('some' in rule)) {
     return false;
   }
 
