@@ -44,4 +44,7 @@ viewport-unit-variants: 20
   /* vi/vb units */
   width: 100vi;
   width: 100vb;
+
+  /* should not trigger */ 
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik02LjU4NiA4TDQuMjkzIDUuNzA3YS45OTkuOTk5IDAgMTExLjQxNC0xLjQxNEw4IDYuNTg1bDIuMjkzLTIuMjkyYTEgMSAwIDAxMS40MTQgMS40MTNMOS40MTQgOGwyLjI5MyAyLjI5NGExIDEgMCAwMS0xLjQxNCAxLjQxNEw4IDkuNDEzbC0yLjI5MyAyLjI5M2ExIDEgMCAwMS0xLjQxNC0xLjQxNUw2LjU4NiA4eiIgZmlsbD0iIzI3MkIzNyIgZmlsbC1vcGFjaXR5PSIuMiIvPjwvc3ZnPg==")
 }
