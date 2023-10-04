@@ -8,21 +8,17 @@
  * @type {import('../features').Feature}
  */
 export default (rule) => {
-  if (!('some' in rule)) {
-    return false;
-  }
+  if (!('some' in rule)) return false;
 
-  let isFlexbox = false;
-  let isGap = false;
+  let hasFlexbox = false;
+  let hasGap = false;
 
   return rule.some((decl) => {
-    if (decl.type !== 'decl') {
-      return false;
-    }
+    if (decl.type !== 'decl') return false;
 
-    isFlexbox ||= decl.prop === 'display' && (decl.value === 'flex' || decl.value === 'inline-flex');
-    isGap ||= decl.prop === 'gap' || decl.prop.endsWith('-gap');
+    hasFlexbox ||= decl.prop === 'display' && (decl.value === 'flex' || decl.value === 'inline-flex');
+    hasGap ||= decl.prop === 'gap' || decl.prop === 'column-gap' || decl.prop === 'row-gap';
 
-    return isFlexbox && isGap;
+    return hasFlexbox && hasGap;
   });
 };
