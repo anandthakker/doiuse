@@ -9,7 +9,7 @@ See: https://caniuse.com/flexbox-gap
 
 /*
 expect:
-flexbox-gap: 4
+flexbox-gap: 5
 */
 
 .test {
@@ -27,6 +27,11 @@ flexbox-gap: 4
 .test {
   display: flex;
   row-gap: 1rem;
+}
+
+.test {
+  display: flex;
+  column-gap: 1rem;
 }
 
 /* should not trigger */
