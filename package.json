@@ -76,6 +76,13 @@
     "tap": "^16.3.4",
     "typescript": "^5.1.6"
   },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "types/*"
+      ]
+    }
+  },
   "files": [
     "bin",
     "data",
@@ -87,7 +94,7 @@
   ],
   "scripts": {
     "pretest": "eslint \"./bin/**/*.js\" \"./data/**/*.js\" \"./utils/**/*.js\" \"./lib/**/*.js\" \"./test/**/*.js\" && tsc --noEmit",
-    "test": "c8 tap --no-coverage",
+    "test": "c8 tap test/**/*.js --no-coverage",
     "prepare": "rollup -c rollup.config.js",
     "prepublishOnly": "tsc --emitDeclarationOnly",
     "updateFeatures": "scripts/update-caniuse.sh && node scripts/update-features.js"

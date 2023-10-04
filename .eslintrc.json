@@ -27,7 +27,6 @@
       "impliedStrict": true
     },
     "ecmaVersion": 2019,
-    "project": "./jsconfig.json",
     "sourceType": "module"
   },
   "plugins": [
