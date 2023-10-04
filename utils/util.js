@@ -39,7 +39,6 @@ export function performFeatureCheck(check, candidate) {
       }
       // Fallthrough
     default:
-      console.error(check);
       throw new TypeError(`Unexpected feature check: ${check}`);
   }
 }
