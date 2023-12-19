@@ -1,2 +1,9 @@
-// eslint-disable-next-line no-restricted-exports
-export { default } from '../lib/DoIUse.js';
+import DoIUse from '../lib/DoIUse.js';
+
+/**
+ * @param  {ConstructorParameters<typeof DoIUse>} options
+ * @return {DoIUse}
+ */
+export default function index(...options) {
+  return new DoIUse(...options);
+}
