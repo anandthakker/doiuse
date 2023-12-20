@@ -7,13 +7,8 @@ import postcss from 'postcss';
 import atImport from 'postcss-import';
 import { test } from 'tap';
 
-<<<<<<< HEAD
 import postcssrc from 'postcss-load-config';
-
-import doIUse from '../lib/DoIUse.js';
-=======
 import DoIUse from '../lib/DoIUse.js';
->>>>>>> parent of 72577bb (Change DoIUse from a class to a factory function to adhere to how postcss-load-config reads plugins)
 
 import { hasKeys } from './utils.js';
 
