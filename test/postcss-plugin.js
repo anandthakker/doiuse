@@ -7,6 +7,7 @@ import postcss from 'postcss';
 import atImport from 'postcss-import';
 import { test } from 'tap';
 
+import postcssrc from 'postcss-load-config';
 import DoIUse from '../lib/DoIUse.js';
 
 import { hasKeys } from './utils.js';
@@ -147,5 +148,13 @@ test('info with no browserslist file or browsers config', (t) => {
 
   t.same(actual, expected);
 
+  t.end();
+});
+
+test('loads postcss plugin with an empty configuration object using postcss-load-config', async (t) => {
+  const { plugins } = await postcssrc(null, fileURLToPath(`${import.meta.url}/../fixtures/.postcssrc.json`));
+  const { messages } = await postcss(plugins).process('html { display: flex }');
+
+  t.equal(messages[0].text, 'CSS Flexible Box Layout Module only partially supported by: IE (11) (flexbox)');
   t.end();
 });
