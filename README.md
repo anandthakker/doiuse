@@ -23,15 +23,15 @@ cat main.css | doiuse --browsers "ie >= 9, > 1%, last 2 versions"
 
 **Sample output:**
 ```
-/projects/website/main.css:5:3: CSS3 Box-sizing not supported by: IE (8,9,10,11), Chrome (36,37,38), Safari (8,7.1), Opera (24,25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10,11)
-/projects/website/main.css:6:3: CSS3 Box-sizing not supported by: IE (8,9,10,11), Chrome (36,37,38), Safari (8,7.1), Opera (24,25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10,11)
-/projects/website/main.css:8:3: CSS user-select: none not supported by: IE (8,9)
-/projects/website/main.css:9:3: CSS user-select: none not supported by: IE (8,9)
-/projects/website/main.css:10:3: CSS user-select: none not supported by: IE (8,9)
-/projects/website/main.css:11:3: CSS user-select: none not supported by: IE (8,9)
-/projects/website/main.css:12:3: CSS user-select: none not supported by: IE (8,9)
-/projects/website/main.css:13:3: Pointer events not supported by: IE (8,9,10), Firefox (32,33), Chrome (36,37,38), Safari (8,7.1), Opera (24,25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10)
-/projects/website/main.css:14:3: Pointer events not supported by: IE (8,9,10), Firefox (32,33), Chrome (36,37,38), Safari (8,7.1), Opera (24,25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10)
+/projects/website/main.css:5:3: CSS3 Box-sizing not supported by: IE (8-11), Chrome (36-38), Safari (8,7.1), Opera (24-25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10-11)
+/projects/website/main.css:6:3: CSS3 Box-sizing not supported by: IE (8-11), Chrome (36-38), Safari (8,7.1), Opera (24-25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10-11)
+/projects/website/main.css:8:3: CSS user-select: none not supported by: IE (8-9)
+/projects/website/main.css:9:3: CSS user-select: none not supported by: IE (8-9)
+/projects/website/main.css:10:3: CSS user-select: none not supported by: IE (8-9)
+/projects/website/main.css:11:3: CSS user-select: none not supported by: IE (8-9)
+/projects/website/main.css:12:3: CSS user-select: none not supported by: IE (8-9)
+/projects/website/main.css:13:3: Pointer events not supported by: IE (8-10), Firefox (32-33), Chrome (36-38), Safari (8,7.1), Opera (24-25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10)
+/projects/website/main.css:14:3: Pointer events not supported by: IE (8-10), Firefox (32-33), Chrome (36-38), Safari (8,7.1), Opera (24-25), iOS Safari (8,7.1,8.1), Android Browser (4.1,4.4,4.4.4), IE Mobile (10)
 /projects/website/main.css:32:3: CSS3 Transforms not supported by: IE (8)
 ```
 
