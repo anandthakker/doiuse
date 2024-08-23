@@ -71,6 +71,7 @@
     "eslint-plugin-unicorn": "^47.0.0",
     "mock-fs": "^4.14.0",
     "postcss-import": "^14.1.0",
+    "postcss-load-config": "^4.0.1",
     "rollup": "^2.79.1",
     "safe-regex": "^2.1.1",
     "tap": "^16.3.4",

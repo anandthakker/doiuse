@@ -7,3 +7,5 @@ import DoIUse from '../lib/DoIUse.js';
 export default function index(...options) {
   return new DoIUse(...options);
 }
+
+index.postcss = new DoIUse().postcss;
