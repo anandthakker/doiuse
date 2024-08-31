@@ -112,7 +112,6 @@ import cssResize from './features/css-resize.js';
 import cssRevertValue from './features/css-revert-value.js';
 import cssRrggbbaa from './features/css-rrggbbaa.js';
 import cssScrollBehavior from './features/css-scroll-behavior.js';
-import cssScrollTimeline from './features/css-scroll-timeline.js';
 import cssScrollbar from './features/css-scrollbar.js';
 import cssSel2 from './features/css-sel2.js';
 import cssSel3 from './features/css-sel3.js';
@@ -325,7 +324,6 @@ const FEATURES = {
   'css-revert-value': cssRevertValue,
   'css-rrggbbaa': cssRrggbbaa,
   'css-scroll-behavior': cssScrollBehavior,
-  'css-scroll-timeline': cssScrollTimeline,
   'css-scrollbar': cssScrollbar,
   'css-sel2': cssSel2,
   'css-sel3': cssSel3,
