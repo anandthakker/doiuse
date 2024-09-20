@@ -115,7 +115,7 @@ for (const [featureId, packedFeature] of Object.entries(caniuse.features)) {
     continue;
   }
 
-  const title = databaseEntry ? databaseEntry.title : unpackFeature(packedFeature).title;
+  const title = databaseEntry ? databaseEntry.title : unpackFeature(packedFeature)?.title;
 
   const stubOptions = {
     id: featureId,
@@ -154,8 +154,10 @@ await Promise.all(
     // make sure the file is empty or only contains a TODO comment
     const filepath = path.resolve(`data/features/${filename}`);
     const fileContent = await fs.readFile(filepath, 'utf8');
-
-    const { title } = unpackFeature(caniuse.features[name]);
+    
+    const feature = caniuse.features[name];
+    if (!feature) return; // Ignore removed features
+    const { title } = unpackFeature(feature);
     const category = caniuseDb.data[name]?.categories.join(', ');
 
     if (fileContent.includes(' * TODO: initially implement ')
