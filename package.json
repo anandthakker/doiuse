@@ -98,5 +98,8 @@
     "prepare": "rollup -c rollup.config.js",
     "prepublishOnly": "tsc --emitDeclarationOnly",
     "updateFeatures": "scripts/update-caniuse.sh && node scripts/update-features.js"
+  },
+  "tap": {
+    "disable-coverage": true
   }
 }
