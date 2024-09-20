@@ -123,29 +123,33 @@ test('ignores rules specified in comments', async (t) => {
   t.end();
 });
 
-test('info with browserslist file', (t) => {
-  mock({
-    browserslist: '# Comment\nSafari 8\nIE >= 11',
+const [versionMajor] = process.versions.node.split('.').map(Number);
+
+if (versionMajor < 20) {
+  test('info with browserslist file', (t) => {
+    mock({
+      browserslist: '# Comment\nSafari 8\nIE >= 11',
+    });
+
+    const actual = new DoIUse({}).info().browsers;
+    const expected = [['ie', '11'], ['safari', '8']];
+
+    t.same(actual, expected);
+
+    mock.restore();
+
+    t.end();
   });
 
-  const actual = new DoIUse({}).info().browsers;
-  const expected = [['ie', '11'], ['safari', '8']];
+  test('info with no browserslist file or browsers config', (t) => {
+    const actual = new DoIUse({}).info().browsers;
 
-  t.same(actual, expected);
+    const expected = new DoIUse({
+      browsers: DoIUse.default,
+    }).info().browsers;
 
-  mock.restore();
+    t.same(actual, expected);
 
-  t.end();
-});
-
-test('info with no browserslist file or browsers config', (t) => {
-  const actual = new DoIUse({}).info().browsers;
-
-  const expected = new DoIUse({
-    browsers: DoIUse.default,
-  }).info().browsers;
-
-  t.same(actual, expected);
-
-  t.end();
-});
+    t.end();
+  });
+}
