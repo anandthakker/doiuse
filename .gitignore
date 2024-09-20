@@ -4,3 +4,4 @@ node_modules
 **/*.cjs
 types/**
 .nyc_output
+.tap/**

@@ -1,6 +1,6 @@
 /**
  * @template {Object} T
- * @param {Tap.Test} t
+ * @param {import('tap').Test<?>} t
  * @param {T} object
  * @param {(keyof T)[]} keys
  */
