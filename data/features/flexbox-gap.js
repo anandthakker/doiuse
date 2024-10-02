@@ -8,7 +8,7 @@
  * @type {import('../features').Feature}
  */
 export default (rule) => {
-  if (!('some' in rule)) return false;
+  if (!('some' in rule) || !rule.nodes) return false;
 
   let hasFlexbox = false;
   let hasGap = false;
