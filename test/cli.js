@@ -11,13 +11,13 @@ const pathToCli = ` node ${joinPath(selfPath, '../bin/cli.js')}`;
 const catCss = ` cat ${cssFile} `;
 
 const expectedCssGradients = [
-  '<streaming css input>:8:1: CSS Gradients not supported by: IE (8,9) (css-gradients)\n',
-  '<streaming css input>:12:1: CSS Gradients not supported by: IE (8,9) (css-gradients)\n',
+  '<streaming css input>:8:1: CSS Gradients not supported by: IE (8-9) (css-gradients)\n',
+  '<streaming css input>:12:1: CSS Gradients not supported by: IE (8-9) (css-gradients)\n',
 ];
 
 const expectedCssRepeatingGradients = [
-  '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8,9) (css-repeating-gradients)\n',
-  '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8,9) (css-repeating-gradients)\n',
+  '<streaming css input>:16:1: CSS Repeating Gradients not supported by: IE (8-9) (css-repeating-gradients)\n',
+  '<streaming css input>:20:1: CSS Repeating Gradients not supported by: IE (8-9) (css-repeating-gradients)\n',
 ];
 const expected = [
   ...expectedCssGradients,
