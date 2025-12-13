@@ -1,0 +1,9 @@
+{
+  "plugins": {
+    "doiuse": {
+      "browsers": [
+        "IE > 10"
+      ]
+    }
+  }
+}
