@@ -23,7 +23,45 @@ export function formatBrowserName(browserKey, versions) {
   if (!versions) {
     return browserName || '';
   }
-  return (`${browserName} (${versions.join(',')})`);
+
+  const ranges = [];
+  let rangeStart = -1;
+  let rangeEnd = -1;
+
+  for (const [index, versionString] of versions.entries()) {
+    const current = +versionString;
+    const next = +versions[index + 1];
+
+    if (Number.isInteger(current)) {
+      if (rangeStart === -1) {
+        rangeStart = current;
+        rangeEnd = current;
+      } else if (current === rangeEnd + 1) {
+        rangeEnd = current;
+      } else {
+        ranges.push(rangeStart === rangeEnd ? [rangeStart] : [rangeStart, rangeEnd]);
+        rangeStart = current;
+        rangeEnd = current;
+      }
+
+      if (!Number.isInteger(next) || current + 1 !== next) {
+        ranges.push(rangeStart === rangeEnd ? [rangeStart] : [rangeStart, rangeEnd]);
+        rangeStart = -1;
+        rangeEnd = -1;
+      }
+    } else {
+      if (rangeStart !== -1) {
+        ranges.push(rangeStart === rangeEnd ? [rangeStart] : [rangeStart, rangeEnd]);
+        rangeStart = -1;
+        rangeEnd = -1;
+      }
+      ranges.push([versionString]);
+    }
+  }
+
+  const versionString = ranges.map((range) => range.join('-')).join(',');
+
+  return `${browserName} (${versionString})`;
 }
 
 /**
