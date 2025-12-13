@@ -13,7 +13,7 @@ import CssUsageDuplex from '../lib/stream/CssUsageDuplex.js';
 import { formatBrowserName } from '../utils/util.js';
 
 const FILE_NOT_FOUND = 'ENOENT';
-const argv = await yargs(process.argv.slice(2))
+const yargConfig = yargs(process.argv.slice(2))
   .usage('Lint your CSS for browser support.')
   .example('cat FILE | $0 -b "ios >= 6"', '')
   .example('$0 --browsers "ie >= 9, > 1%, last 3 versions" [FILE] [FILE] ...', '')
@@ -57,8 +57,9 @@ const argv = await yargs(process.argv.slice(2))
   })
   .count('verbose')
   .help('h', 'Show help message.')
-  .alias('h', 'help')
-  .argv;
+  .alias('h', 'help');
+
+const argv = yargConfig.parseSync();
 
 // Config file reading
 if (argv.config) {
@@ -117,7 +118,7 @@ if (argv.l) {
 
 // Process the CSS
 if (argv.help || (argv._.length === 0 && process.stdin.isTTY)) {
-  yargs.showHelp();
+  yargConfig.showHelp();
   // eslint-disable-next-line n/no-process-exit
   process.exit(0);
 }
