@@ -3,14 +3,17 @@
   "version": "6.0.6",
   "description": "Lint CSS for browser support against caniuse database",
   "main": "./exports/index.cjs",
+  "types": "./types/exports/index.d.ts",
   "type": "module",
   "exports": {
     "./lib/*": "./lib/*",
     ".": {
+      "types": "./types/exports/index.d.ts",
       "require": "./exports/index.cjs",
       "import": "./exports/index.js"
     },
     "./stream": {
+      "types": "./types/exports/stream.d.ts",
       "require": "./exports/stream.cjs",
       "import": "./exports/stream.js"
     }
