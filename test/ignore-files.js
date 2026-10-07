@@ -1,3 +1,7 @@
+// Characterization tests for the `ignoreFiles` option, the only user of
+// `multimatch`. The expectations were recorded against multimatch@5 and held
+// unchanged on v6; v7 (minimatch 9) differs only where noted inline. Keep them:
+// they make a future multimatch/minimatch bump a pass/fail check.
 import { createRequire } from 'node:module';
 
 import postcss from 'postcss';
