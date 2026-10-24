@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 import mock from 'mock-fs';
 import postcss from 'postcss';
+import sourceMap from 'source-map';
 import atImport from 'postcss-import';
 import { test } from 'tap';
 
@@ -11,7 +12,28 @@ import DoIUse from '../lib/DoIUse.js';
 
 import { hasKeys } from './utils.js';
 
+const { SourceMapGenerator } = sourceMap;
+
 const selfPath = dirname(fileURLToPath(import.meta.url));
+
+test('maps callback columns back to one-based source-map positions', async (t) => {
+  const css = 'a{background:linear-gradient(red,blue)}';
+  const map = new SourceMapGenerator({ file: 'generated.css' });
+  map.addMapping({ generated: { line: 1, column: 0 }, source: 'original.css', original: { line: 1, column: 0 } });
+  map.addMapping({ generated: { line: 1, column: 3 }, source: 'original.css', original: { line: 1, column: 10 } });
+  map.setSourceContent('original.css', 'a{        background:linear-gradient(red,blue)}');
+
+  let message;
+  await postcss(new DoIUse({
+    browsers: ['ie 8'],
+    onFeatureUsage(info) {
+      message = info.message;
+    },
+  })).process(css, { from: 'generated.css', map: { prev: map.toJSON() } });
+
+  t.equal(message, 'original.css:1:1: CSS Gradients not supported by: IE (8) (css-gradients)');
+  t.end();
+});
 
 test('leaves css alone by default', (t) => {
   const css = fs.readFileSync(joinPath(selfPath, './cases/generic/gradient.css')).toString();
